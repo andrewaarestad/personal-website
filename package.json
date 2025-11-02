@@ -18,6 +18,7 @@
     "type-check": "turbo run type-check",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,mdx,css,yml,yaml}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,mdx,css,yml,yaml}\"",
+    "pr-check": "turbo run pr-check",
     "clean": "turbo run clean && rm -rf node_modules .turbo"
   },
   "devDependencies": {

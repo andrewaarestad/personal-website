@@ -56,28 +56,112 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-turbo-
 
-      - name: Format check
-        run: pnpm format:check
-
-      - name: Lint
-        run: pnpm lint
-
-      - name: Type check
-        run: pnpm type-check
-
-      - name: Build
-        run: pnpm build
-
-      - name: Test
-        run: pnpm test
+      - name: Run all PR checks (parallelized)
+        id: pr_checks
+        run: pnpm pr-check
 
       - name: Build summary
         if: always()
         run: |
           echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Format check completed" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Linting completed" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Type checking completed" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Build completed" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Tests completed" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ steps.pr_checks.outcome }}" = "success" ]; then
+            echo "✅ All PR checks completed successfully:" >> $GITHUB_STEP_SUMMARY
+            echo "- Format check" >> $GITHUB_STEP_SUMMARY
+            echo "- Linting" >> $GITHUB_STEP_SUMMARY
+            echo "- Type checking" >> $GITHUB_STEP_SUMMARY
+            echo "- Build" >> $GITHUB_STEP_SUMMARY
+            echo "- Tests" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Some PR checks failed:" >> $GITHUB_STEP_SUMMARY
+            echo "- Format check" >> $GITHUB_STEP_SUMMARY
+            echo "- Linting" >> $GITHUB_STEP_SUMMARY
+            echo "- Type checking" >> $GITHUB_STEP_SUMMARY
+            echo "- Build" >> $GITHUB_STEP_SUMMARY
+            echo "- Tests" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please review the logs above to see which checks failed." >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "⚡ Checks run in parallel via Turborepo for maximum speed" >> $GITHUB_STEP_SUMMARY
+
+  migration-check:
+    name: Database Migration Check
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    permissions:
+      pull-requests: write
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check for pending migrations
+        id: check
+        continue-on-error: true
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          node .github/scripts/check-migrations.js
+
+      - name: Post migration comment or skip notice
+        if: steps.check.outputs.migration_comment != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const comment = ${{ toJSON(steps.check.outputs.migration_comment) }};
+            const checkSkipped = '${{ steps.check.outputs.check_skipped }}' === 'true';
+
+            // Find existing migration comment
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            // Look for either migrations detected or skip notice
+            const botComment = comments.find(comment =>
+              comment.user.type === 'Bot' &&
+              (comment.body.includes('🔄 Database Migration') ||
+               comment.body.includes('🔄 Database Migrations'))
+            );
+
+            if (botComment) {
+              // Update existing comment
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: comment
+              });
+            } else {
+              // Create new comment
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: comment
+              });
+            }
+
+      - name: Require migration approval
+        if: steps.check.outputs.has_migrations == 'true' && steps.check.outputs.check_skipped != 'true'
+        run: |
+          echo "::error::Database migrations detected. Please review and approve the migration comment above."
+          exit 1

@@ -19,6 +19,12 @@
     "test": {
       "dependsOn": ["^build"]
     },
+    "format:check": {
+      "cache": false
+    },
+    "pr-check": {
+      "dependsOn": ["format:check", "lint", "type-check", "build", "test"]
+    },
     "clean": {
       "cache": false
     }
