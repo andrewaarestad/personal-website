@@ -232,6 +232,12 @@ function main() {
 
   if (migrations.length === 0) {
     console.log("✅ No pending migrations detected");
+    // Set output variables to indicate no migrations were found
+    const outputFile = process.env.GITHUB_OUTPUT;
+    if (outputFile) {
+      fs.appendFileSync(outputFile, `has_migrations=false\n`);
+      fs.appendFileSync(outputFile, `check_skipped=false\n`);
+    }
     process.exit(0);
   }
 
