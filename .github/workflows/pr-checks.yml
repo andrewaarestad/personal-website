@@ -3,8 +3,6 @@ name: PR Checks
 on:
   pull_request:
     branches: ["main"]
-  push:
-    branches: ["claude/**"]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -165,3 +163,28 @@ jobs:
         run: |
           echo "::error::Database migrations detected. Please review and approve the migration comment above."
           exit 1
+
+  # Sentinel job - require this in branch protection rules
+  all-checks-pass:
+    name: All Checks Pass
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [quality, migration-check]
+
+    steps:
+      - name: Check all job results
+        run: |
+          echo "Quality job result: ${{ needs.quality.result }}"
+          echo "Migration check result: ${{ needs.migration-check.result }}"
+
+          if [[ "${{ needs.quality.result }}" != "success" ]] && [[ "${{ needs.quality.result }}" != "skipped" ]] && [[ "${{ needs.quality.result }}" != "cancelled" ]]; then
+            echo "::error::Code quality checks failed"
+            exit 1
+          fi
+
+          if [[ "${{ needs.migration-check.result }}" == "failure" ]]; then
+            echo "::error::Migration check failed"
+            exit 1
+          fi
+
+          echo "✅ All required checks passed!"
