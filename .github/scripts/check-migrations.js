@@ -16,6 +16,7 @@ const path = require("path");
 
 const MIGRATIONS_DIR = path.join(__dirname, "../../packages/db-client/prisma/migrations");
 const DB_CLIENT_DIR = path.join(__dirname, "../../packages/db-client");
+const MAX_SQL_LENGTH = 500;
 
 /**
  * Check if database is configured
@@ -156,8 +157,8 @@ function getMigrationSQL(dirname) {
   const sql = fs.readFileSync(sqlPath, "utf-8").trim();
 
   // Truncate long SQL
-  if (sql.length > 500) {
-    return sql.slice(0, 500) + "\n... (truncated)";
+  if (sql.length > MAX_SQL_LENGTH) {
+    return sql.slice(0, MAX_SQL_LENGTH) + "\n... (truncated)";
   }
 
   return sql;
