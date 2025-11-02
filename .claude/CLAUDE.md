@@ -27,11 +27,27 @@ personal-website/
 
 **Before making changes, review:**
 
+- [Agent Quick Reference](./docs/agent-quick-reference.md) - Quick start guide for AI agents
+- [Design Workflow Guide](./docs/design-workflow.md) - Design-first development workflow
 - [AI-Assisted Development Guide](./docs/ai-agents.md) - Comprehensive guide for AI collaboration
 - [Root README](./README.md) - Project setup and architecture
 - Package READMEs in `apps/website/` and `packages/db-client/`
 
 ## Key Conventions
+
+### Design-First Approach
+
+**Before implementing features, establish design guidelines:**
+
+1. **Brand Foundation** - Define mission, persona, voice & tone
+2. **Visual System** - Colors, typography, spacing, components
+3. **Mood Boards** - Interactive previews deployed to Vercel
+4. **Iteration** - Review, refine, repeat until approved
+5. **Implementation** - Build with approved design system
+
+**📖 See [Design Workflow Guide](./docs/design-workflow.md) for complete instructions.**
+
+This workflow is optimized for **Claude Code mobile** using CLI tools (shadcn, Playwright) instead of MCP servers.
 
 ### Code Quality
 
