@@ -165,3 +165,28 @@ jobs:
         run: |
           echo "::error::Database migrations detected. Please review and approve the migration comment above."
           exit 1
+
+  # Sentinel job - require this in branch protection rules
+  all-checks-pass:
+    name: All Checks Pass
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [quality, migration-check]
+
+    steps:
+      - name: Check all job results
+        run: |
+          echo "Quality job result: ${{ needs.quality.result }}"
+          echo "Migration check result: ${{ needs.migration-check.result }}"
+
+          if [[ "${{ needs.quality.result }}" != "success" ]]; then
+            echo "::error::Code quality checks failed"
+            exit 1
+          fi
+
+          if [[ "${{ needs.migration-check.result }}" != "success" ]] && [[ "${{ needs.migration-check.result }}" != "skipped" ]]; then
+            echo "::error::Migration check failed"
+            exit 1
+          fi
+
+          echo "✅ All required checks passed!"
