@@ -10,7 +10,6 @@
  * 4. Exits with code 0 if no migrations (all clear)
  */
 
-const { execSync } = require("child_process");
 const fs = require("fs");
 const path = require("path");
 
