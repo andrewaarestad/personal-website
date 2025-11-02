@@ -57,6 +57,7 @@ jobs:
             ${{ runner.os }}-turbo-
 
       - name: Run all PR checks (parallelized)
+        id: pr_checks
         run: pnpm pr-check
 
       - name: Build summary
@@ -64,12 +65,25 @@ jobs:
         run: |
           echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "✅ All PR checks completed successfully:" >> $GITHUB_STEP_SUMMARY
-          echo "- Format check" >> $GITHUB_STEP_SUMMARY
-          echo "- Linting" >> $GITHUB_STEP_SUMMARY
-          echo "- Type checking" >> $GITHUB_STEP_SUMMARY
-          echo "- Build" >> $GITHUB_STEP_SUMMARY
-          echo "- Tests" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ steps.pr_checks.outcome }}" = "success" ]; then
+            echo "✅ All PR checks completed successfully:" >> $GITHUB_STEP_SUMMARY
+            echo "- Format check" >> $GITHUB_STEP_SUMMARY
+            echo "- Linting" >> $GITHUB_STEP_SUMMARY
+            echo "- Type checking" >> $GITHUB_STEP_SUMMARY
+            echo "- Build" >> $GITHUB_STEP_SUMMARY
+            echo "- Tests" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Some PR checks failed:" >> $GITHUB_STEP_SUMMARY
+            echo "- Format check" >> $GITHUB_STEP_SUMMARY
+            echo "- Linting" >> $GITHUB_STEP_SUMMARY
+            echo "- Type checking" >> $GITHUB_STEP_SUMMARY
+            echo "- Build" >> $GITHUB_STEP_SUMMARY
+            echo "- Tests" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please review the logs above to see which checks failed." >> $GITHUB_STEP_SUMMARY
+          fi
+
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "⚡ Checks run in parallel via Turborepo for maximum speed" >> $GITHUB_STEP_SUMMARY
 
