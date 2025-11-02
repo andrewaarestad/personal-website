@@ -47,11 +47,14 @@ personal-website/
 pnpm install
 
 # Run all checks (ALWAYS run before committing)
-pnpm format:check
-pnpm lint
-pnpm type-check
-pnpm build
-pnpm test
+pnpm pr-check      # ⚡ FASTEST: Runs all checks in parallel
+
+# Or run checks individually for targeted debugging:
+pnpm format:check  # Check code formatting
+pnpm lint          # Check for linting errors
+pnpm type-check    # Verify TypeScript types
+pnpm build         # Build all packages
+pnpm test          # Run all tests
 
 # Development
 pnpm dev                                        # All packages
@@ -129,13 +132,18 @@ This project is configured for Model Context Protocol integrations:
 ### Before Committing
 
 ```bash
-# ALWAYS run this checklist:
+# ⚡ FASTEST: Run all checks in parallel (recommended)
+pnpm pr-check      # Runs format:check, lint, type-check, build, test
+
+# Alternative: Run checks individually for targeted debugging
 pnpm format        # Format all files
 pnpm lint          # Check for linting errors
 pnpm type-check    # Verify TypeScript
 pnpm build         # Ensure builds succeed
 pnpm test          # Run all tests
 ```
+
+**Pro tip for AI agents**: Use `pnpm pr-check` for the fastest validation. Only run individual commands if you need to debug a specific check failure.
 
 ## Future Features
 
