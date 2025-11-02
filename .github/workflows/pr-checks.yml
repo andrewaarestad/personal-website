@@ -124,9 +124,8 @@ jobs:
         if: steps.check.outputs.migration_comment != ''
         uses: actions/github-script@v7
         with:
-          migration_comment: ${{ steps.check.outputs.migration_comment }}
           script: |
-            const comment = inputs.migration_comment;
+            const comment = '${{ steps.check.outputs.migration_comment }}';
             const checkSkipped = '${{ steps.check.outputs.check_skipped }}' === 'true';
 
             // Find existing migration comment
