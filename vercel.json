@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm --filter @personal-website/db-client db:migrate:deploy && pnpm build --filter @personal-website/website",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "framework": "nextjs",
+  "outputDirectory": "apps/website/.next"
+}

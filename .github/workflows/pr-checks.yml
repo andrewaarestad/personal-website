@@ -81,3 +81,69 @@ jobs:
           echo "- ✅ Type checking completed" >> $GITHUB_STEP_SUMMARY
           echo "- ✅ Build completed" >> $GITHUB_STEP_SUMMARY
           echo "- ✅ Tests completed" >> $GITHUB_STEP_SUMMARY
+
+  migration-check:
+    name: Database Migration Check
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    permissions:
+      pull-requests: write
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check for pending migrations
+        id: check
+        continue-on-error: true
+        run: |
+          node .github/scripts/check-migrations.js
+
+      - name: Post migration comment
+        if: steps.check.outputs.has_migrations == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const comment = `${{ steps.check.outputs.migration_comment }}`;
+
+            // Find existing migration comment
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const botComment = comments.find(comment =>
+              comment.user.type === 'Bot' &&
+              comment.body.includes('🔄 Database Migrations Detected')
+            );
+
+            if (botComment) {
+              // Update existing comment
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: comment
+              });
+            } else {
+              // Create new comment
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: comment
+              });
+            }
+
+      - name: Require migration approval
+        if: steps.check.outputs.has_migrations == 'true'
+        run: |
+          echo "::error::Database migrations detected. Please review and approve the migration comment above."
+          exit 1
