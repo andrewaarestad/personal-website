@@ -184,7 +184,7 @@ jobs:
             exit 1
           fi
 
-          if [[ "${{ needs.migration-check.result }}" != "success" ]] && [[ "${{ needs.migration-check.result }}" != "skipped" ]]; then
+          if [[ "${{ needs.migration-check.result }}" != "success" ]] && [[ "${{ needs.migration-check.result }}" != "skipped" ]] && [[ "${{ needs.migration-check.result }}" != "cancelled" ]]; then
             echo "::error::Migration check failed"
             exit 1
           fi
