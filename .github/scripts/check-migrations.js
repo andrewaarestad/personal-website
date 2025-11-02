@@ -144,8 +144,9 @@ function main() {
   // Also print to console
   console.log(formatted);
 
-  // Exit with 1 to indicate migrations need approval
-  process.exit(1);
+  // Exit with 0 since detection was successful
+  // The workflow relies on output variables (has_migrations) for approval logic
+  process.exit(0);
 }
 
 main();
