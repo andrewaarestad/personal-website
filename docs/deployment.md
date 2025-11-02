@@ -132,16 +132,44 @@ pnpm db:migrate
 
 ### Migration Safety Checks
 
-When you create a PR with schema changes:
+The project includes automated migration checks that run on every PR.
 
-1. **Automated Detection**: The `migration-check` job detects pending migrations
-2. **PR Comment Posted**: A formatted comment is added to the PR showing:
-   - List of all pending migrations
+#### How It Works
+
+1. **Database Status Check**: Uses `prisma migrate status` to query the production database
+2. **Pending Migration Detection**: Compares local migrations with applied migrations in `_prisma_migrations` table
+3. **PR Comment Posted**: A formatted comment is added showing:
+   - List of pending migrations (only those not yet applied)
    - Timestamps
    - SQL preview (expandable)
    - Required approval notice
-3. **Check Fails**: The PR check fails until migrations are approved
-4. **Manual Approval**: Reviewer must resolve the comment thread to approve
+4. **Check Fails**: The PR check fails until migrations are approved
+5. **Manual Approval**: Reviewer must resolve the comment thread to approve
+
+#### Configuration Requirements
+
+**Database Connection**: The migration check requires `DATABASE_URL` to be set in GitHub Actions secrets.
+
+**Current Status**: ⚠️ Migration checks are **currently disabled** because the database is not yet provisioned.
+
+**To Enable**:
+
+1. Provision your production database
+2. Create a read-only database user:
+   ```sql
+   -- PostgreSQL example
+   CREATE ROLE github_readonly WITH LOGIN PASSWORD 'secure_password';
+   GRANT CONNECT ON DATABASE your_db TO github_readonly;
+   GRANT USAGE ON SCHEMA public TO github_readonly;
+   GRANT SELECT ON public._prisma_migrations TO github_readonly;
+   ```
+3. Add `DATABASE_URL` secret in GitHub:
+   - Settings → Secrets and variables → Actions
+   - Add secret: `DATABASE_URL`
+   - Value: Connection string with read-only user
+4. Migration checks will automatically activate on the next PR
+
+**Graceful Degradation**: Until `DATABASE_URL` is configured, PRs will show a skip notice explaining how to enable the checks
 
 ### Example Migration Comment
 

@@ -104,18 +104,29 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
       - name: Check for pending migrations
         id: check
         continue-on-error: true
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
           node .github/scripts/check-migrations.js
 
-      - name: Post migration comment
-        if: steps.check.outputs.has_migrations == 'true'
+      - name: Post migration comment or skip notice
+        if: steps.check.outputs.migration_comment != ''
         uses: actions/github-script@v7
         with:
           script: |
             const comment = `${{ steps.check.outputs.migration_comment }}`;
+            const checkSkipped = '${{ steps.check.outputs.check_skipped }}' === 'true';
 
             // Find existing migration comment
             const { data: comments } = await github.rest.issues.listComments({
@@ -124,9 +135,11 @@ jobs:
               issue_number: context.issue.number,
             });
 
+            // Look for either migrations detected or skip notice
             const botComment = comments.find(comment =>
               comment.user.type === 'Bot' &&
-              comment.body.includes('🔄 Database Migrations Detected')
+              (comment.body.includes('🔄 Database Migration') ||
+               comment.body.includes('🔄 Database Migrations'))
             );
 
             if (botComment) {
@@ -148,7 +161,7 @@ jobs:
             }
 
       - name: Require migration approval
-        if: steps.check.outputs.has_migrations == 'true'
+        if: steps.check.outputs.has_migrations == 'true' && steps.check.outputs.check_skipped != 'true'
         run: |
           echo "::error::Database migrations detected. Please review and approve the migration comment above."
           exit 1
