@@ -88,7 +88,7 @@ function getPendingMigrations() {
 
     // Parse output for pending migrations
     // Output format:
-    // "Following migration have not yet been applied:"
+    // "Following migrations have not yet been applied:"
     // "20231201123045_add_user_table"
     // "20231215140530_add_post_table"
 
