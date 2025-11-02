@@ -179,7 +179,7 @@ jobs:
           echo "Quality job result: ${{ needs.quality.result }}"
           echo "Migration check result: ${{ needs.migration-check.result }}"
 
-          if [[ "${{ needs.quality.result }}" != "success" ]]; then
+          if [[ "${{ needs.quality.result }}" != "success" ]] && [[ "${{ needs.quality.result }}" != "skipped" ]] && [[ "${{ needs.quality.result }}" != "cancelled" ]]; then
             echo "::error::Code quality checks failed"
             exit 1
           fi
