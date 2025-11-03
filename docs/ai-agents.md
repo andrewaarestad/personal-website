@@ -6,74 +6,99 @@ This document outlines how to effectively use AI agents to develop features for 
 
 This repository is configured as a showcase for AI-assisted development, demonstrating how modern AI tools can accelerate development while maintaining code quality and consistency.
 
-## MCP Integrations
+## 🎨 Design-First Workflow
 
-### shadcn/ui MCP
+**Before building features, we establish comprehensive design guidelines.**
 
-The shadcn/ui Model Context Protocol (MCP) integration allows AI agents to generate and install UI components on demand.
+This project uses a design-first approach optimized for AI collaboration:
+1. Define brand guidelines and personas
+2. Create a visual design system (colors, typography, spacing)
+3. Generate interactive mood boards
+4. Deploy to Vercel for review
+5. Iterate based on feedback
+6. Freeze design and implement
 
-#### Prerequisites
+**📖 See [Design Workflow Guide](./design-workflow.md) for complete instructions.**
 
-- shadcn/ui is configured in `apps/website/components.json`
-- Tailwind CSS is properly set up
-- The `cn()` utility is available at `@/lib/utils`
+This workflow is optimized for **Claude Code mobile and cloud environments**, using CLI tools and programmatic APIs.
 
-#### Usage Examples
+## Tool Integrations
 
-**Adding a Button Component:**
+### For Cloud Environments (Claude Code Mobile)
 
-```
-"Add a shadcn button component to the project"
-```
+When working in cloud environments (Claude Code mobile app), we use **CLI tools** instead of MCP servers:
 
-**Creating a Card Layout:**
+#### shadcn/ui CLI
 
-```
-"Create a card component using shadcn and use it to display blog posts on the homepage"
-```
+Use the shadcn CLI to add components:
 
-**Building a Form:**
-
-```
-"Add shadcn form components (input, label, button) and create a contact form"
-```
-
-#### How It Works
-
-1. AI agent invokes shadcn MCP
-2. MCP downloads the requested component
-3. Component is added to `apps/website/src/components/ui/`
-4. Component is automatically configured for the project
-5. AI agent can then use the component in pages/layouts
-
-### Playwright MCP
-
-Playwright MCP integration enables AI agents to create and run end-to-end tests.
-
-#### Prerequisites
-
-- Playwright will be configured when E2E testing is implemented
-- Test files will be located in `tests/e2e/`
-
-#### Usage Examples (Future)
-
-**Creating a Homepage Test:**
-
-```
-"Create a Playwright test that verifies the homepage loads and displays the correct heading"
+```bash
+pnpx shadcn@latest add button
+pnpx shadcn@latest add card
+pnpx shadcn@latest add form
 ```
 
-**Testing Navigation:**
+**Configuration:**
+- Configured in `apps/website/components.json`
+- Components added to `apps/website/src/components/ui/`
+- Automatically configured for Tailwind CSS
+- Uses `cn()` utility from `@/lib/utils`
+
+**Usage Examples:**
 
 ```
-"Add a Playwright test for the navigation menu that checks all links work"
+"Add a shadcn button component using the CLI"
+"Add card and badge components for the blog post listing"
+"Install form, input, and label components for the contact form"
 ```
 
-**Form Submission Test:**
+#### Playwright API
+
+Use Playwright programmatically for testing and screenshots:
+
+```bash
+pnpm --filter @personal-website/website add -D @playwright/test
+pnpm --filter @personal-website/website exec playwright install chromium
+```
+
+**Configuration:**
+- Config file: `apps/website/playwright.config.ts`
+- Design tests: `apps/website/design-tests/`
+- E2E tests: `apps/website/tests/e2e/` (future)
+
+**Usage Examples:**
 
 ```
-"Create an E2E test for the contact form submission flow"
+"Create a Playwright test to capture homepage screenshots"
+"Write a script to take screenshots of all mood board iterations"
+"Add a Playwright test for the contact form submission"
 ```
+
+### For Local Environments (Optional)
+
+If using Claude Desktop locally, MCP servers can be configured:
+
+#### shadcn/ui MCP (Optional)
+
+Provides semantic search and discovery of components.
+
+**Benefits:**
+- Browse component registry
+- Search by purpose ("find form components")
+- Get detailed component metadata
+
+**Setup:** Configure in Claude Desktop settings (not available in cloud)
+
+#### Playwright MCP (Optional)
+
+Enables interactive browser automation.
+
+**Benefits:**
+- Record interactions
+- Generate test code automatically
+- Structured page data
+
+**Setup:** Configure in Claude Desktop settings (not available in cloud)
 
 ## Best Practices for AI Collaboration
 
