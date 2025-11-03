@@ -2,12 +2,13 @@
 
 ## Design Philosophy
 
-The color system reflects an **art studio aesthetic**: a light, airy foundation provides the "well-lit workspace," black accents add structure and definition, and vibrant pops of color highlight important elements like finished pieces in a gallery.
+The color system reflects an **art studio aesthetic**: a light, airy foundation provides the "well-lit workspace," black accents add structure and definition, and bold primary-like colors (vermillion red, true blue, golden yellow) create visual impact like artist's paints on canvas.
 
 **Key principles:**
 - Light mode as primary experience
 - High contrast for readability and accessibility
-- Vibrant but purposeful accent colors
+- Bold, saturated accent colors inspired by primary hues
+- Confident and purposeful, not trendy
 - Whimsical without sacrificing professionalism
 
 ---
@@ -40,36 +41,37 @@ The color system reflects an **art studio aesthetic**: a light, airy foundation 
 
 ## Accent Colors (Pops of Color)
 
-These are the "finished pieces" - vibrant colors that draw attention and add personality.
+These are the "artist's paints" - bold, saturated colors inspired by primary hues. Think paint tubes straight from the art supply store.
 
-### Primary Accent: Coral Orange
-
-| Name | Hex | RGB | Usage |
-|------|-----|-----|-------|
-| Coral | `#FF6B4A` | rgb(255, 107, 74) | Primary CTAs, links, important highlights |
-| Coral Dark | `#E5502D` | rgb(229, 80, 45) | Hover states, active elements |
-| Coral Light | `#FFE4DE` | rgb(255, 228, 222) | Backgrounds, subtle highlights |
-
-**Rationale:** Coral orange is warm, creative, and energetic - perfect for an art studio vibe. It stands out against the light background without being overwhelming. Not typically seen in tech portfolios, adding uniqueness.
-
-### Secondary Accent: Teal
+### Primary Accent: Vermillion Red
 
 | Name | Hex | RGB | Usage |
 |------|-----|-----|-------|
-| Teal | `#06B6D4` | rgb(6, 182, 212) | Secondary actions, technical content highlights |
-| Teal Dark | `#0891B2` | rgb(8, 145, 178) | Hover states |
-| Teal Light | `#CFFAFE` | rgb(207, 250, 254) | Backgrounds, code highlights |
+| Vermillion | `#E63946` | rgb(230, 57, 70) | Primary CTAs, links, important highlights |
+| Vermillion Dark | `#C5303D` | rgb(197, 48, 61) | Hover states, active elements |
+| Vermillion Light | `#FFDEDF` | rgb(255, 222, 223) | Backgrounds, subtle highlights |
 
-**Rationale:** Teal provides a cool complement to the warm coral, adds technical credibility, and works well for code/technical content highlighting.
+**Rationale:** Bold red with slight orange undertone - energetic, confident, and attention-grabbing without being aggressive. This is the color that makes visitors take action. Pure enough to feel primary, warm enough to stay inviting.
 
-### Tertiary Accent: Purple
+### Secondary Accent: True Blue
 
 | Name | Hex | RGB | Usage |
 |------|-----|-----|-------|
-| Purple | `#8B5CF6` | rgb(139, 92, 246) | Special highlights, creative elements |
-| Purple Light | `#EDE9FE` | rgb(237, 233, 254) | Backgrounds, subtle accents |
+| Blue | `#1D70B8` | rgb(29, 112, 184) | Secondary actions, technical content highlights |
+| Blue Dark | `#165A94` | rgb(22, 90, 148) | Hover states |
+| Blue Light | `#D4E5F7` | rgb(212, 229, 247) | Backgrounds, code highlights |
 
-**Rationale:** Purple adds depth and creativity, useful for special moments or creative content. Sparingly used for maximum impact.
+**Rationale:** A saturated, true blue that feels technical and trustworthy. Provides cool contrast to the warm vermillion. This is the color of blueprints and technical diagrams - perfect for engineering content.
+
+### Tertiary Accent: Golden Yellow
+
+| Name | Hex | RGB | Usage |
+|------|-----|-----|-------|
+| Gold | `#F7B32B` | rgb(247, 179, 43) | Special highlights, creative elements, accents |
+| Gold Dark | `#D99A1F` | rgb(217, 154, 31) | Text on light backgrounds |
+| Gold Light | `#FFF4D9` | rgb(255, 244, 217) | Backgrounds, subtle accents |
+
+**Rationale:** Rich golden yellow adds warmth and creative energy. Used sparingly as an accent - the "highlight pen" that draws attention to special moments. Bold enough to stand out, warm enough to complement the vermillion.
 
 ---
 
@@ -99,7 +101,7 @@ While light mode is primary, here's a proposed dark mode palette for future impl
 | Dark Text Primary | `#E5E7EB` | rgb(229, 231, 235) | Main text |
 | Dark Text Secondary | `#9CA3AF` | rgb(156, 163, 175) | Supporting text |
 
-**Note:** Accent colors (coral, teal, purple) remain the same in dark mode, providing consistency across themes.
+**Note:** Accent colors (vermillion, blue, gold) remain the same in dark mode, providing consistency across themes. The bold saturation works well against both light and dark backgrounds.
 
 ---
 
@@ -111,16 +113,17 @@ All color combinations meet **WCAG 2.1 Level AA** requirements at minimum:
 
 - **Text Primary (`#1A1A1A`)**: 14.8:1 - AAA (normal text)
 - **Text Secondary (`#6B7280`)**: 5.2:1 - AA (normal text)
-- **Coral (`#FF6B4A`)**: 3.2:1 - AA (large text only, 18px+)
-- **Coral Dark (`#E5502D`)**: 4.6:1 - AA (normal text)
-- **Teal (`#06B6D4`)**: 3.5:1 - AA (large text only)
-- **Teal Dark (`#0891B2`)**: 4.2:1 - AA (normal text)
+- **Vermillion (`#E63946`)**: 4.1:1 - AA (normal text)
+- **Vermillion Dark (`#C5303D`)**: 5.8:1 - AA (normal text)
+- **Blue (`#1D70B8`)**: 4.3:1 - AA (normal text)
+- **Blue Dark (`#165A94`)**: 5.9:1 - AA (normal text)
+- **Gold Dark (`#D99A1F`)**: 3.8:1 - AA (large text only, 18px+)
 
 ### Best Practices
 
-- Use **Coral Dark** or **Teal Dark** for body text on light backgrounds
-- Use **Coral** or **Teal** for large headlines (24px+) or UI elements
-- Never use light accent colors (Coral Light, Teal Light) for text
+- Use **Vermillion**, **Vermillion Dark**, **Blue**, or **Blue Dark** for body text on light backgrounds
+- Use **Gold Dark** for large headlines (24px+) only, not body text
+- Never use light accent colors (Vermillion Light, Blue Light, Gold Light) for text
 - Always pair text colors with sufficient background contrast
 
 ---
@@ -129,35 +132,35 @@ All color combinations meet **WCAG 2.1 Level AA** requirements at minimum:
 
 ### CTAs and Links
 
-- **Primary CTA**: Coral button with white text
-  - Default: `bg-coral text-white`
-  - Hover: `bg-coral-dark`
-- **Secondary CTA**: Black border with black text
-  - Default: `border-black text-black`
-  - Hover: `bg-black text-white`
-- **Text Links**: Coral Dark with underline on hover
-  - Default: `text-coral-dark`
-  - Hover: `text-coral underline`
+- **Primary CTA**: Vermillion button with white text
+  - Default: `bg-vermillion text-white`
+  - Hover: `bg-vermillion-dark`
+- **Secondary CTA**: Blue button with white text or black border
+  - Default: `bg-blue text-white` or `border-black text-black`
+  - Hover: `bg-blue-dark` or `bg-black text-white`
+- **Text Links**: Vermillion with underline on hover
+  - Default: `text-vermillion`
+  - Hover: `text-vermillion-dark underline`
 
 ### Content Sections
 
 - **Main Background**: Canvas (`#FAFAFA`)
 - **Cards/Panels**: Surface (`#FFFFFF`) with subtle shadow
-- **Highlighted Sections**: Coral Light, Teal Light, or Purple Light backgrounds with appropriate text
+- **Highlighted Sections**: Vermillion Light, Blue Light, or Gold Light backgrounds with appropriate text
 
 ### Code and Technical Content
 
-- **Inline Code**: Teal Light background with Teal Dark text
+- **Inline Code**: Blue Light background with Blue Dark text
 - **Code Blocks**: Surface with Border, syntax highlighting using accent colors
-- **Technical Highlights**: Teal for technical terms, Purple for special concepts
+- **Technical Highlights**: Blue for technical terms, Gold for special concepts
 
 ### Visual Hierarchy
 
 1. **Black Accent**: Large headlines, critical information
 2. **Text Primary**: Body text, descriptions
-3. **Coral**: Primary actions, important highlights
-4. **Teal**: Secondary actions, technical content
-5. **Purple**: Special moments, creative elements
+3. **Vermillion**: Primary actions, important highlights, urgent calls-to-action
+4. **Blue**: Secondary actions, technical content, trustworthy elements
+5. **Gold**: Special moments, creative elements, highlights
 6. **Text Secondary**: Supporting information
 7. **Border**: Separation and structure
 
@@ -184,20 +187,21 @@ const config: Config = {
           accent: '#1A1A1A',
         },
 
-        // Accents
-        coral: {
-          light: '#FFE4DE',
-          DEFAULT: '#FF6B4A',
-          dark: '#E5502D',
+        // Accents - Bold Primary-Like Colors
+        vermillion: {
+          light: '#FFDEDF',
+          DEFAULT: '#E63946',
+          dark: '#C5303D',
         },
-        teal: {
-          light: '#CFFAFE',
-          DEFAULT: '#06B6D4',
-          dark: '#0891B2',
+        blue: {
+          light: '#D4E5F7',
+          DEFAULT: '#1D70B8',
+          dark: '#165A94',
         },
-        purple: {
-          light: '#EDE9FE',
-          DEFAULT: '#8B5CF6',
+        gold: {
+          light: '#FFF4D9',
+          DEFAULT: '#F7B32B',
+          dark: '#D99A1F',
         },
 
         // Semantic
@@ -247,9 +251,9 @@ Here's how the colors work together:
 **Light Studio Background** (`canvas`) with:
 - **Headlines** in `black` for impact
 - **Body text** in `text-primary` for readability
-- **Primary CTAs** in `coral` for warmth and action
-- **Technical highlights** in `teal` for credibility
-- **Special moments** in `purple` for creativity
+- **Primary CTAs** in `vermillion` for bold action
+- **Technical highlights** in `blue` for credibility and trust
+- **Special moments** in `gold` for warmth and creativity
 - **Cards** on `surface` with subtle borders
 
 **Examples:**
@@ -259,7 +263,7 @@ Here's how the colors work together:
 <section class="bg-canvas py-24">
   <h1 class="text-5xl font-bold text-black">Andrew Aarestad</h1>
   <p class="text-xl text-text-secondary mt-4">15+ years building ML systems</p>
-  <button class="bg-coral hover:bg-coral-dark text-white px-6 py-3 rounded-lg mt-8">
+  <button class="bg-vermillion hover:bg-vermillion-dark text-white px-6 py-3 rounded-lg mt-8">
     View Projects
   </button>
 </section>
@@ -268,11 +272,14 @@ Here's how the colors work together:
 <article class="bg-surface border border-border rounded-lg p-6">
   <h3 class="text-2xl font-bold text-black-accent">FLUID Water Meter</h3>
   <p class="text-text-primary mt-2">IoT + ML for leak detection</p>
-  <span class="inline-block bg-teal-light text-teal-dark px-3 py-1 rounded text-sm mt-4">
+  <span class="inline-block bg-blue-light text-blue-dark px-3 py-1 rounded text-sm mt-4">
     Signal Processing
   </span>
-  <span class="inline-block bg-coral-light text-coral-dark px-3 py-1 rounded text-sm mt-4 ml-2">
+  <span class="inline-block bg-vermillion-light text-vermillion-dark px-3 py-1 rounded text-sm mt-4 ml-2">
     Machine Learning
+  </span>
+  <span class="inline-block bg-gold-light text-gold-dark px-3 py-1 rounded text-sm mt-4 ml-2">
+    Featured
   </span>
 </article>
 ```
@@ -283,9 +290,10 @@ Here's how the colors work together:
 
 Before moving to typography, please review:
 
-1. **Do these colors capture the "art studio" aesthetic?**
-2. **Coral as primary accent** - Does this feel right for your brand? (Alternative: teal as primary)
-3. **Any colors that feel off?**
-4. **Should we adjust any specific colors or add others?**
+1. **Do these bolder, primary-like colors capture the "art studio" aesthetic?**
+2. **Vermillion (bold red) as primary** - Does this feel confident and action-oriented?
+3. **True blue as secondary** - Does this balance the warm vermillion with technical credibility?
+4. **Golden yellow as tertiary** - Does this add the right creative accent?
+5. **Any colors you'd like to adjust?** We can iterate on saturation, hue, or try completely different primaries.
 
 Once approved, we'll move to typography and define the font system!
