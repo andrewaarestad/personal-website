@@ -664,7 +664,7 @@ Vercel automatically deploys on every push to any branch. The workflow is:
 
 3. **Get preview URL**:
    - Vercel creates deployment automatically
-   - URL pattern: `https://personal-website-[hash]-andrewaarestad.vercel.app`
+   - URL pattern: `https://personal-website-[hash]-[username].vercel.app`
    - Check GitHub PR for Vercel bot comment with URL
    - Or check Vercel dashboard
 
