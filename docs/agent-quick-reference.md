@@ -218,8 +218,8 @@ ls apps/website/src/components/ui/
 pnpx shadcn@latest add [component]
 
 # Import correctly:
-import { Button } from "@/components/ui/button"  # ✅
-import { Button } from "../components/ui/button"  # ❌
+import { Button } from "@/components/ui/button"  // ✅
+import { Button } from "../components/ui/button"  // ❌
 ```
 
 ### "Screenshots are blank"
