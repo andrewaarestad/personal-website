@@ -71,6 +71,10 @@ The tone adapts to context while maintaining the core voice:
 
 ✅ **Good:** "Water meters need to measure flow in real-time, even when the signal is noisy. We used a Kalman filter to estimate the true flow rate by combining multiple measurements over time. This gave us accurate readings even in challenging conditions like air bubbles or turbulent flow."
 
+❌ **Bad:** "We used RAG for the chatbot."
+
+✅ **Good:** "The client's product documentation was spread across hundreds of pages. Users couldn't find answers quickly, leading to support tickets. We implemented Retrieval-Augmented Generation (RAG) to let users ask questions naturally while the system searched relevant documentation and synthesized answers. This reduced support volume by 40% while maintaining accuracy."
+
 ### Discussing Projects
 
 **Pattern:** Problem → Approach → Result → Lessons
@@ -105,15 +109,27 @@ The tone adapts to context while maintaining the core voice:
 
 ### Project Showcase Introduction
 
+**Example 1: IoT + Signal Processing**
 > FLUID Water Meter combined IoT hardware, real-time signal processing, and machine learning to detect water leaks in homes before they became expensive disasters.
 >
 > As co-founder and CTO, I led the development of ultrasonic flow measurement algorithms, built ML models for anomaly detection, and designed the cloud infrastructure to process telemetry from thousands of devices.
 
+**Example 2: Generative AI + Architecture**
+> Building a personalized eCommerce platform meant solving for real-time recommendations, dynamic pricing, and content moderation—all while handling marketplace transactions and subscriptions at scale.
+>
+> I architected the ML pipeline integrating recommendation models with user behavior tracking, deployed generative AI for automated content moderation, and designed the serverless infrastructure to handle traffic spikes during product launches.
+
 ### Technical Explanation
 
+**Example 1: Signal Processing**
 > The challenge was measuring flow accurately with ultrasonic sensors, which are sensitive to environmental factors like temperature, air bubbles, and installation angles.
 >
 > We used Kalman filtering to combine multiple sensor readings over time, building a state estimation model that could predict the true flow rate even when individual measurements were noisy. The algorithm ran on embedded hardware with strict power constraints, so we optimized for computational efficiency without sacrificing accuracy.
+
+**Example 2: ML Architecture**
+> Personalization at scale requires balancing model latency with recommendation quality. Users expect sub-200ms response times, but running deep learning models for each request would blow our infrastructure budget.
+>
+> We implemented a two-tier architecture: lightweight collaborative filtering for real-time responses, with a background job processing deep learning models to update user embeddings overnight. This gave us 95% of the recommendation quality at 10% of the infrastructure cost.
 
 ### Honest Reflection
 
@@ -121,7 +137,13 @@ The tone adapts to context while maintaining the core voice:
 
 ## Adapting Tone for Different Audiences
 
-### For Technical Decision-Makers
+### For Hiring Managers
+- Be specific about experience (years, scale, outcomes)
+- Show breadth across domains (signal processing, generative AI, personalization, architecture)
+- Demonstrate communication skills through clear explanations
+- Balance technical depth with business/product thinking
+
+### For Technical Decision-Makers (Clients)
 - Lead with business impact, provide technical depth as support
 - Be direct about capabilities and limitations
 - Show strategic thinking alongside technical expertise

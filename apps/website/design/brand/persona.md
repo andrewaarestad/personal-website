@@ -1,6 +1,46 @@
 # Target Personas
 
-## Primary Persona: The Technical Decision-Maker
+## Primary Persona A: The Hiring Manager
+
+**Name:** Morgan (Engineering Manager/Technical Recruiter)
+
+**Demographics:**
+- Age range: 30-50
+- Professional background: Engineering Manager, VP Engineering, Technical Recruiter, CTO
+- Technical expertise level: Medium to High - can evaluate technical credentials and experience
+- Industry: Tech companies, startups, established enterprises hiring for AI/ML roles
+
+**Goals:**
+- Vet candidates for senior AI/ML engineering or leadership positions
+- Assess real-world experience beyond resume keywords
+- Understand breadth and depth of technical expertise
+- Evaluate cultural fit and communication skills through portfolio/writing
+- Determine if candidate can bridge technical and business domains
+
+**Pain Points:**
+- Flooded with AI/ML resumes full of buzzwords but light on shipping experience
+- Difficulty distinguishing genuine expertise from recent bootcamp grads
+- Need to verify candidates can handle production systems, not just Kaggle competitions
+- Looking for evidence of leadership, architecture, and product thinking
+- Want to see how candidates communicate complex topics
+
+**User Journey:**
+1. **Discovery** - Finds site via LinkedIn, resume link, or candidate application
+2. **Vetting** - Reviews project showcases to verify resume claims
+3. **Depth Check** - Looks for 15+ years evidence, breadth across ML domains
+4. **Communication Assessment** - Reads thought leadership to gauge communication skills
+5. **Decision** - Reaches out for interview or moves to next stage
+
+**What they need from the site:**
+- Clear, verifiable evidence of shipping production ML systems
+- Breadth of experience: generative AI, personalization, signal processing, architecture
+- Demonstration of big-picture thinking and product sense
+- Professional but authentic personality that suggests good cultural fit
+- Easy contact information and links to LinkedIn/GitHub for verification
+
+---
+
+## Primary Persona B: The Technical Decision-Maker
 
 **Name:** Alex (Technical Leader/Founder)
 
@@ -119,10 +159,17 @@
 - Easy access to portfolio, GitHub, and contact information
 - Balance of technical depth and accessibility
 
-**For Technical Decision-Makers:**
+**For Hiring Managers:**
+- Clear evidence of 15+ years shipping production ML systems
+- Breadth showcase: generative AI, personalization, architecture, signal processing
+- Verifiable project details that support resume claims
+- Professional presentation with authentic personality
+- Easy verification via LinkedIn/GitHub links
+
+**For Technical Decision-Makers (Clients):**
 - Prominent showcase of significant projects with measurable impact
-- Clear evidence of 15+ years shipping ML systems
 - Thought leadership that demonstrates strategic thinking
+- Evidence of bridging technical depth with business outcomes
 - Professional but not corporate feel
 
 **For Industry Peers:**
