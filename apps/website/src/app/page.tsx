@@ -26,6 +26,20 @@ export default function HomePage() {
             </Link>
           </div>
 
+          {/* Mobile Hero Component Link */}
+          <div className="mb-8 p-8 bg-surface rounded-xl border-2 border-border-default">
+            <h2 className="text-2xl font-bold text-black mb-3">📱 Mobile Hero Component</h2>
+            <p className="text-body text-text-primary mb-6 max-w-2xl mx-auto">
+              Preview the homepage hero component designed for mobile screens. Three variants
+              following brand voice guidelines: direct, problem-solver, and understated expert.
+            </p>
+            <Link href="/design-preview/mobile-hero">
+              <Button size="lg" className="bg-blue hover:bg-blue-dark text-white">
+                View Mobile Hero →
+              </Button>
+            </Link>
+          </div>
+
           {/* Color Exploration Link */}
           <div className="mb-8 p-8 bg-surface rounded-xl border-2 border-border-default">
             <h2 className="text-2xl font-bold text-black mb-3">🎨 Color Palette Exploration</h2>
