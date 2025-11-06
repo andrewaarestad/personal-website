@@ -37,7 +37,7 @@ export default function MoodBoardV1Initial() {
             Mood Board v1: Initial
           </h1>
           <p className="text-body-lg text-text-secondary mt-2">
-            Electric Modern aesthetic • Bright Red, Cyan, Lime • System Typography
+            Electric Modern aesthetic • Bright Red, Cyan, Lime • Inter Typography
           </p>
         </div>
       </header>
@@ -736,8 +736,8 @@ if (predictionConfidence < THRESHOLD) {
                 Design System
               </h3>
               <p className="text-body-sm text-text-secondary">
-                Electric Modern aesthetic with bold accent colors and system font
-                stack. Built with Next.js and Tailwind CSS.
+                Electric Modern aesthetic with bold accent colors and Inter
+                typography. Built with Next.js and Tailwind CSS.
               </p>
             </div>
             <div>
@@ -756,9 +756,9 @@ if (predictionConfidence < THRESHOLD) {
                 Typography
               </h3>
               <ul className="text-body-sm text-text-secondary space-y-2">
-                <li>Headings: System UI (500-800)</li>
-                <li>Body: System UI (400-500)</li>
-                <li>Code: UI Monospace</li>
+                <li>Headings: Inter (500-800)</li>
+                <li>Body: Inter (400-500)</li>
+                <li>Code: JetBrains Mono</li>
               </ul>
             </div>
           </div>
