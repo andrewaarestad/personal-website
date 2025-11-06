@@ -7,8 +7,8 @@ This document outlines the design-first development workflow for this project, s
 Before writing production code, we establish comprehensive design guidelines through:
 1. **Brand & Strategy** - Who we are and who we serve
 2. **Visual Design System** - Colors, typography, spacing, components
-3. **Mood Board Iterations** - Live previews deployed to Vercel
-4. **Multimodal Review** - Claude sees designs, provides feedback, iterates
+3. **Mood Board Iterations** - Live, interactive pages deployed to Vercel
+4. **Interactive Review** - Review on real devices, provide feedback, iterate
 
 ## Workflow Overview
 
@@ -24,27 +24,22 @@ Before writing production code, we establish comprehensive design guidelines thr
 └────────┬────────┘
          │
 ┌────────▼────────┐
-│ 3. Generate     │
-│   Mood Boards   │
+│ 3. Build Mood   │
+│   Board Pages   │
 └────────┬────────┘
          │
 ┌────────▼────────┐
-│ 4. Take         │
-│  Screenshots    │
-└────────┬────────┘
-         │
-┌────────▼────────┐
-│ 5. Deploy to    │
+│ 4. Deploy to    │
 │    Vercel       │
 └────────┬────────┘
          │
 ┌────────▼────────┐
-│ 6. Review &     │
-│    Iterate      │
+│ 5. Interactive  │
+│   Review & Test │
 └────────┬────────┘
          │
 ┌────────▼────────┐
-│ 7. Freeze &     │
+│ 6. Freeze &     │
 │   Implement     │
 └─────────────────┘
 ```
@@ -507,148 +502,26 @@ export default async function MoodBoardPage({
 }
 ```
 
-## Phase 4: Generate Screenshots
+## Phase 4: Deploy to Vercel (Primary Review Method)
 
 ### Agent Instructions
 
-Use Playwright to programmatically capture screenshots of mood boards.
+**Vercel preview deployments are the recommended way to review mood boards.** They provide interactive, live previews that work better than static screenshots, especially in cloud environments.
 
-#### Setup (First Time Only)
+#### Why Vercel Previews > Screenshots
 
-1. **Install Playwright** (if not in package.json):
-   ```bash
-   pnpm --filter @personal-website/website add -D @playwright/test
-   ```
+✅ **Interactive**: Click buttons, test forms, see hover states, try navigation
+✅ **Real rendering**: Actual fonts, real browser rendering, true colors
+✅ **Multi-device**: View on real phones, tablets, desktops
+✅ **Zero setup**: No browser installation or resource constraints
+✅ **Shareable**: Send URL to anyone for feedback
+✅ **Always works**: No environment dependencies or resource issues
 
-2. **Install browsers**:
-   ```bash
-   pnpm --filter @personal-website/website exec playwright install chromium
-   ```
+❌ **Screenshots are**: Static images, resource-intensive, environment-dependent, limited to what you capture
 
-3. **Create Playwright config**:
-   Create `apps/website/playwright.config.ts` (see configuration template below)
+#### Deployment Workflow
 
-#### Configuration Template
-
-```typescript
-// apps/website/playwright.config.ts
-import { defineConfig, devices } from '@playwright/test';
-
-export default defineConfig({
-  testDir: './design-tests',
-  fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
-  use: {
-    baseURL: 'http://localhost:3000',
-    trace: 'on-first-retry',
-  },
-  projects: [
-    {
-      name: 'Desktop Chrome',
-      use: { ...devices['Desktop Chrome'] },
-    },
-    {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 13'] },
-    },
-    {
-      name: 'Tablet',
-      use: {
-        viewport: { width: 768, height: 1024 }
-      },
-    },
-  ],
-  webServer: {
-    command: 'pnpm dev',
-    url: 'http://localhost:3000',
-    reuseExistingServer: !process.env.CI,
-  },
-});
-```
-
-#### Screenshot Generation Script
-
-Create `apps/website/design-tests/mood-boards/capture.spec.ts`:
-
-```typescript
-import { test, expect } from '@playwright/test';
-import { mkdir } from 'fs/promises';
-import { join } from 'path';
-
-const BOARDS = ['v1-minimal', 'v2-bold']; // Update with your boards
-
-for (const board of BOARDS) {
-  test.describe(`Mood Board: ${board}`, () => {
-    test.beforeAll(async () => {
-      // Ensure screenshot directory exists
-      const dir = join(__dirname, '../../design/mood-boards', board, 'screenshots');
-      await mkdir(dir, { recursive: true });
-    });
-
-    test('capture full page', async ({ page, browserName }) => {
-      await page.goto(`/design-preview/${board}`);
-      await expect(page).toHaveTitle(/Design Preview/);
-
-      const screenshotPath = join(
-        __dirname,
-        '../../design/mood-boards',
-        board,
-        'screenshots',
-        `full-page-${browserName}.png`
-      );
-
-      await page.screenshot({
-        path: screenshotPath,
-        fullPage: true
-      });
-    });
-
-    test('capture color section', async ({ page, browserName }) => {
-      await page.goto(`/design-preview/${board}`);
-
-      const colorSection = page.locator('section').first();
-      const screenshotPath = join(
-        __dirname,
-        '../../design/mood-boards',
-        board,
-        'screenshots',
-        `colors-${browserName}.png`
-      );
-
-      await colorSection.screenshot({ path: screenshotPath });
-    });
-
-    // Add more sections as needed
-  });
-}
-```
-
-#### Running Screenshots
-
-```bash
-# From project root
-pnpm --filter @personal-website/website exec playwright test design-tests/mood-boards/capture.spec.ts
-
-# With UI
-pnpm --filter @personal-website/website exec playwright test design-tests/mood-boards/capture.spec.ts --ui
-```
-
-### Screenshot Workflow
-
-1. **Create mood board page**
-2. **Run dev server**: `pnpm dev`
-3. **Run Playwright test**: Captures screenshots to `design/mood-boards/[iteration]/screenshots/`
-4. **Review screenshots**: Read the files and show to user in conversation
-5. **Commit screenshots**: Include in git commit for documentation
-
-## Phase 5: Deploy to Vercel
-
-### Agent Instructions
-
-Vercel automatically deploys on every push to any branch. The workflow is:
+Vercel automatically deploys on every push to any branch:
 
 1. **Commit mood board changes**:
    ```bash
@@ -663,36 +536,43 @@ Vercel automatically deploys on every push to any branch. The workflow is:
    ```
 
 3. **Get preview URL**:
-   - Vercel creates deployment automatically
-   - URL pattern: `https://personal-website-[hash]-[username].vercel.app`
+   - Vercel creates deployment automatically (1-2 minutes)
    - Check GitHub PR for Vercel bot comment with URL
+   - URL pattern: `https://personal-website-[hash]-[username].vercel.app`
    - Or check Vercel dashboard
 
-4. **Share URL with user** for external review
+4. **Share URL with user**:
+   - Full site: `https://[preview-url].vercel.app`
+   - Specific mood board: `https://[preview-url].vercel.app/design-preview/[board]`
 
-### Preview URL Structure
+5. **User reviews on real devices**: Mobile, tablet, desktop - all interactive
 
-User can visit:
-- Full site: `https://[preview-url].vercel.app`
-- Specific mood board: `https://[preview-url].vercel.app/design-preview/[board]`
+### Important Notes
 
-## Phase 6: Review & Iterate
+- **Skip Playwright screenshots** in cloud environments - they often fail due to resource constraints or missing dependencies
+- **Vercel previews are more valuable** - real interaction beats static images
+- **Keep Playwright for E2E testing** - still useful for automated testing, just not for design review
+
+## Phase 5: Review & Iterate
 
 ### Agent Instructions
 
-1. **Show screenshots** in conversation (use multimodal capability)
+1. **Share Vercel preview URL** with user for interactive review
 2. **Explain design decisions** based on brand guidelines
 3. **Ask for feedback**:
    - Colors: Do they match brand personality?
    - Typography: Is hierarchy clear?
    - Components: Do they serve user needs?
    - Layout: Is it intuitive?
+   - Test on real devices: Does it look/feel right?
 
 4. **Document feedback** in mood board README
 5. **Create new iteration** based on feedback
 6. **Repeat** until user approves
 
 ### Review Checklist
+
+Share this checklist with the user to guide their review:
 
 ```markdown
 ## Design Review Checklist
@@ -704,24 +584,24 @@ User can visit:
 
 ### User Experience
 - [ ] Clear visual hierarchy
-- [ ] Intuitive navigation
+- [ ] Intuitive navigation and interaction
 - [ ] Readable text (contrast, size)
-- [ ] Responsive across devices
+- [ ] Responsive across devices (test on phone/tablet/desktop)
 
 ### Accessibility
 - [ ] Color contrast meets WCAG AA
 - [ ] Text is resizable
 - [ ] Focus states are visible
-- [ ] Alt text for images
+- [ ] Interactive elements are keyboard accessible
 
 ### Technical
 - [ ] Loads quickly
-- [ ] No console errors
+- [ ] No console errors (check browser DevTools)
 - [ ] Works across browsers
-- [ ] Mobile-friendly
+- [ ] Mobile-friendly (test on real device)
 ```
 
-## Phase 7: Freeze & Implement
+## Phase 6: Freeze & Implement
 
 ### Agent Instructions
 
@@ -802,10 +682,9 @@ pnpm dev                                           # Start dev server
 pnpx shadcn@latest add button                      # Add button component
 pnpx shadcn@latest add card                        # Add card component
 
-# Playwright
+# Playwright (optional - see Appendix A, local environments only)
 pnpm --filter @personal-website/website exec playwright install chromium
 pnpm --filter @personal-website/website exec playwright test design-tests/
-pnpm --filter @personal-website/website exec playwright test --ui
 
 # Quality checks
 pnpm pr-check                                      # Run all checks
@@ -818,24 +697,53 @@ git commit -m "Add design iteration"
 git push -u origin [branch-name]
 ```
 
+## Appendix A: Optional Playwright Screenshots (Local Environments Only)
+
+**Note**: This section is optional and only recommended for local development environments. **Skip this in cloud environments** as browsers often fail due to resource constraints.
+
+### When to Use Playwright Screenshots
+
+- ✅ Local development on your own machine
+- ✅ Want static images for documentation
+- ✅ Have full control over browser installation
+- ❌ Cloud environments (resource-constrained, missing dependencies)
+- ❌ Primary design review (Vercel previews are better)
+
+### Setup
+
+Playwright configuration is already included in this project for E2E testing. To use it for design screenshots:
+
+1. **Ensure Playwright is installed**:
+   ```bash
+   pnpm --filter @personal-website/website add -D @playwright/test
+   pnpm --filter @personal-website/website exec playwright install chromium
+   ```
+
+2. **Create screenshot script** (example in `design-tests/mood-boards/capture-v1.spec.ts`)
+
+3. **Run with dev server**:
+   ```bash
+   pnpm dev  # In one terminal
+   pnpm --filter @personal-website/website exec playwright test design-tests/ # In another
+   ```
+
+### Important: Exclude from Vitest
+
+Make sure `design-tests/` is excluded from Vitest in `vitest.config.ts`:
+
+```typescript
+export default defineConfig({
+  test: {
+    exclude: [
+      "**/node_modules/**",
+      "**/design-tests/**",  // Exclude Playwright tests
+      // ... other exclusions
+    ],
+  },
+});
+```
+
 ## Troubleshooting
-
-### Playwright Issues
-
-**Error: "Browser not installed"**
-```bash
-pnpm --filter @personal-website/website exec playwright install chromium
-```
-
-**Error: "Cannot find module"**
-```bash
-pnpm install
-```
-
-**Screenshots are blank**
-- Ensure dev server is running: `pnpm dev`
-- Check baseURL in playwright.config.ts
-- Add wait: `await page.waitForLoadState('networkidle')`
 
 ### Deployment Issues
 
