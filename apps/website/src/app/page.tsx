@@ -13,7 +13,7 @@ export default function HomePage() {
           <p className="text-lg text-text-secondary">A playground for AI-assisted development</p>
 
           {/* Design System Mood Board Link */}
-          <div className="mt-12 mb-8 p-8 bg-gradient-to-br from-vermillion-light/30 via-blue-light/30 to-gold-light/30 rounded-xl border border-border-default">
+          <div className="mt-12 mb-4 p-8 bg-gradient-to-br from-vermillion-light/30 via-blue-light/30 to-gold-light/30 rounded-xl border border-border-default">
             <h2 className="text-2xl font-bold text-black mb-3">🎨 Design System Mood Board</h2>
             <p className="text-body text-text-primary mb-6 max-w-2xl mx-auto">
               Check out our comprehensive design system showcasing colors, typography, components,
@@ -22,6 +22,20 @@ export default function HomePage() {
             <Link href="/design-preview/v1-initial">
               <Button size="lg" className="bg-vermillion hover:bg-vermillion-dark">
                 View Mood Board →
+              </Button>
+            </Link>
+          </div>
+
+          {/* Color Exploration Link */}
+          <div className="mb-8 p-8 bg-surface rounded-xl border-2 border-border-default">
+            <h2 className="text-2xl font-bold text-black mb-3">🎨 Color Palette Exploration</h2>
+            <p className="text-body text-text-primary mb-6 max-w-2xl mx-auto">
+              Explore 10 different color palette variations to find the perfect combination.
+              Compare vermillion with emerald, teal, purple, and more accent color options.
+            </p>
+            <Link href="/design-preview/color-exploration">
+              <Button size="lg" variant="outline" className="border-2 border-blue hover:bg-blue hover:text-white">
+                Explore Color Options →
               </Button>
             </Link>
           </div>
