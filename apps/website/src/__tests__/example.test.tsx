@@ -3,10 +3,15 @@ import { render, screen } from "@testing-library/react";
 import HomePage from "../app/page";
 
 describe("HomePage", () => {
-  it("renders the main heading", () => {
+  it("renders the hero section with main heading", () => {
     render(<HomePage />);
-    const heading = screen.getByRole("heading", { name: /personal website/i });
+    const heading = screen.getByRole("heading", { name: /I'm Andrew Aarestad/i });
     expect(heading).toBeInTheDocument();
+  });
+
+  it("displays the design process section", () => {
+    render(<HomePage />);
+    expect(screen.getByRole("heading", { name: /design process/i })).toBeInTheDocument();
   });
 
   it("displays the technology stack", () => {

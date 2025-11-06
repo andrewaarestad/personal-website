@@ -6,7 +6,7 @@ interface HomepageHeroProps {
 }
 
 export function HomepageHero({
-  variant = "understated",
+  variant = "direct",
   showAccent = true,
 }: HomepageHeroProps) {
   return (
