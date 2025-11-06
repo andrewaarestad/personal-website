@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { HomepageHero } from "@/components/homepage-hero";
+import { HomepageContactInfo } from "@/components/homepage-contact-info";
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-canvas">
       {/* Hero Section - Variant 1: Direct */}
       <HomepageHero />
+
+      {/* Contact Info Section */}
+      <HomepageContactInfo />
 
       {/* Design Process Section */}
       <section className="container mx-auto px-6 py-16 max-w-5xl">
