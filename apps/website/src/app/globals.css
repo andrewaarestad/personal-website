@@ -88,3 +88,103 @@
     @apply bg-canvas text-text-primary;
   }
 }
+
+/* ============================================
+   Polished Animations - Mobile-First
+   Performance: GPU-accelerated (transform/opacity only)
+   ============================================ */
+
+@layer utilities {
+  /* Button Animations */
+  button,
+  a[role="button"],
+  .button {
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+  }
+
+  button:hover,
+  a[role="button"]:hover,
+  .button:hover {
+    transform: scale(1.02);
+  }
+
+  button:active,
+  a[role="button"]:active,
+  .button:active {
+    transform: scale(0.98);
+    transition-duration: 150ms;
+  }
+
+  /* Card Animations - Hover Lift */
+  [class*="rounded-lg"]:has(h2, h3, h4),
+  [class*="rounded-xl"]:has(h2, h3, h4) {
+    transition: transform 250ms ease-out, box-shadow 250ms ease-out;
+  }
+
+  [class*="rounded-lg"]:has(h2, h3, h4):hover,
+  [class*="rounded-xl"]:has(h2, h3, h4):hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.15), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+
+  /* Input Focus Animations */
+  input:not([type="checkbox"]):not([type="radio"]),
+  textarea,
+  select {
+    transition: border-color 200ms ease-out, box-shadow 200ms ease-out;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 3px hsl(var(--ring) / 0.1);
+  }
+
+  /* Staggered Fade-In on Page Load */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Apply to main sections */
+  main > * {
+    animation: fadeInUp 600ms ease-out forwards;
+    opacity: 0;
+  }
+
+  main > *:nth-child(1) { animation-delay: 0ms; }
+  main > *:nth-child(2) { animation-delay: 100ms; }
+  main > *:nth-child(3) { animation-delay: 200ms; }
+  main > *:nth-child(4) { animation-delay: 300ms; }
+  main > *:nth-child(5) { animation-delay: 400ms; }
+  main > *:nth-child(6) { animation-delay: 500ms; }
+}
+
+/* ============================================
+   Accessibility: Respect User Preferences
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Ensure content is visible immediately */
+  main > * {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}
