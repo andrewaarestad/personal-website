@@ -116,13 +116,14 @@
   }
 
   /* Card Animations - Hover Lift */
-  [class*="rounded-lg"]:has(h2, h3, h4),
-  [class*="rounded-xl"]:has(h2, h3, h4) {
+  /* Target shadcn Card components and custom card containers */
+  [data-card],
+  .card {
     transition: transform 250ms ease-out, box-shadow 250ms ease-out;
   }
 
-  [class*="rounded-lg"]:has(h2, h3, h4):hover,
-  [class*="rounded-xl"]:has(h2, h3, h4):hover {
+  [data-card]:hover,
+  .card:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.15), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   }
@@ -154,10 +155,9 @@
     }
   }
 
-  /* Apply to main sections */
+  /* Apply to main sections - uses animation-fill-mode: backwards to handle initial state */
   main > * {
-    animation: fadeInUp 600ms ease-out forwards;
-    opacity: 0;
+    animation: fadeInUp 600ms ease-out backwards;
   }
 
   main > *:nth-child(1) { animation-delay: 0ms; }

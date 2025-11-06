@@ -37,7 +37,7 @@ export default function MoodBoardV1Initial() {
             Mood Board v1: Initial
           </h1>
           <p className="text-body-lg text-text-secondary mt-2">
-            Art studio aesthetic • Vermillion, Blue, Gold • Inter Typography
+            Electric Modern aesthetic • Bright Red, Cyan, Lime • System Typography
           </p>
         </div>
       </header>
@@ -86,66 +86,66 @@ export default function MoodBoardV1Initial() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
                 <p className="text-label-sm font-medium text-text-secondary mb-3">
-                  Vermillion (Primary)
+                  Bright Red (Primary)
                 </p>
                 <div className="grid gap-2">
                   <ColorSwatch
                     name="Light"
-                    hex="#FFDEDF"
+                    hex="#FEE2E2"
                     className="bg-vermillion-light"
                   />
                   <ColorSwatch
                     name="Default"
-                    hex="#E63946"
+                    hex="#EF4444"
                     className="bg-vermillion text-white"
                   />
                   <ColorSwatch
                     name="Dark"
-                    hex="#C5303D"
+                    hex="#DC2626"
                     className="bg-vermillion-dark text-white"
                   />
                 </div>
               </div>
               <div>
                 <p className="text-label-sm font-medium text-text-secondary mb-3">
-                  True Blue (Secondary)
+                  Cyan (Secondary)
                 </p>
                 <div className="grid gap-2">
                   <ColorSwatch
                     name="Light"
-                    hex="#D4E5F7"
+                    hex="#CFFAFE"
                     className="bg-blue-light"
                   />
                   <ColorSwatch
                     name="Default"
-                    hex="#1D70B8"
+                    hex="#06B6D4"
                     className="bg-blue text-white"
                   />
                   <ColorSwatch
                     name="Dark"
-                    hex="#165A94"
+                    hex="#0891B2"
                     className="bg-blue-dark text-white"
                   />
                 </div>
               </div>
               <div>
                 <p className="text-label-sm font-medium text-text-secondary mb-3">
-                  Golden Yellow (Tertiary)
+                  Lime (Tertiary)
                 </p>
                 <div className="grid gap-2">
                   <ColorSwatch
                     name="Light"
-                    hex="#FFF4D9"
+                    hex="#ECFCCB"
                     className="bg-gold-light"
                   />
                   <ColorSwatch
                     name="Default"
-                    hex="#F7B32B"
+                    hex="#84CC16"
                     className="bg-gold text-black-accent"
                   />
                   <ColorSwatch
                     name="Dark"
-                    hex="#D99A1F"
+                    hex="#65A30D"
                     className="bg-gold-dark text-black-accent"
                   />
                 </div>
@@ -443,7 +443,7 @@ export default function MoodBoardV1Initial() {
       </section>
 
       {/* Hero Section Example */}
-      <section className="bg-gradient-to-br from-canvas via-vermillion-light/20 to-blue-light/20 py-24">
+      <section className="bg-gradient-to-br from-canvas via-gradient-vermillion-subtle to-gradient-blue-subtle py-24">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-black mb-6">
@@ -736,8 +736,8 @@ if (predictionConfidence < THRESHOLD) {
                 Design System
               </h3>
               <p className="text-body-sm text-text-secondary">
-                Art studio aesthetic with bold accent colors and Inter
-                typography. Built with Next.js and Tailwind CSS.
+                Electric Modern aesthetic with bold accent colors and system font
+                stack. Built with Next.js and Tailwind CSS.
               </p>
             </div>
             <div>
@@ -745,9 +745,9 @@ if (predictionConfidence < THRESHOLD) {
                 Colors
               </h3>
               <ul className="text-body-sm text-text-secondary space-y-2">
-                <li>Vermillion #E63946</li>
-                <li>True Blue #1D70B8</li>
-                <li>Golden Yellow #F7B32B</li>
+                <li>Bright Red #EF4444</li>
+                <li>Cyan #06B6D4</li>
+                <li>Lime #84CC16</li>
                 <li>Canvas #FAFAFA</li>
               </ul>
             </div>
@@ -756,9 +756,9 @@ if (predictionConfidence < THRESHOLD) {
                 Typography
               </h3>
               <ul className="text-body-sm text-text-secondary space-y-2">
-                <li>Headings: Inter (500-800)</li>
-                <li>Body: Inter (400-500)</li>
-                <li>Code: JetBrains Mono</li>
+                <li>Headings: System UI (500-800)</li>
+                <li>Body: System UI (400-500)</li>
+                <li>Code: UI Monospace</li>
               </ul>
             </div>
           </div>

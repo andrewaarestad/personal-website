@@ -107,6 +107,10 @@ const config: Config = {
           dark: '#65A30D',
         },
 
+        // Gradient-specific colors with explicit opacity for compatibility
+        'gradient-vermillion-subtle': 'rgba(254, 226, 226, 0.1)',
+        'gradient-blue-subtle': 'rgba(207, 250, 254, 0.1)',
+
         // Semantic
         success: {
           light: '#D1FAE5',
@@ -126,11 +130,9 @@ const config: Config = {
         },
 
         // Text
-        text: {
-          primary: '#1A1A1A',
-          secondary: '#6B7280',
-          tertiary: '#9CA3AF',
-        },
+        'text-primary': '#1A1A1A',
+        'text-secondary': '#6B7280',
+        'text-tertiary': '#9CA3AF',
 
         // Borders
         'border-light': '#E5E7EB',
