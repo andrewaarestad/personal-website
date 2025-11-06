@@ -87,21 +87,24 @@ const config: Config = {
           accent: '#1A1A1A',
         },
 
-        // Accents - Bold Primary-Like Colors
+        // Accents - Electric Modern Theme
+        // Primary: Bright Red
         vermillion: {
-          light: '#FFDEDF',
-          DEFAULT: '#E63946',
-          dark: '#C5303D',
+          light: '#FEE2E2',
+          DEFAULT: '#EF4444',
+          dark: '#DC2626',
         },
+        // Secondary: Cyan
         blue: {
-          light: '#D4E5F7',
-          DEFAULT: '#1D70B8',
-          dark: '#165A94',
+          light: '#CFFAFE',
+          DEFAULT: '#06B6D4',
+          dark: '#0891B2',
         },
+        // Tertiary: Lime
         gold: {
-          light: '#FFF4D9',
-          DEFAULT: '#F7B32B',
-          dark: '#D99A1F',
+          light: '#ECFCCB',
+          DEFAULT: '#84CC16',
+          dark: '#65A30D',
         },
 
         // Semantic

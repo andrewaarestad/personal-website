@@ -13,21 +13,21 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 13% 11%;
 
-    /* Primary = Vermillion (Bold Red) */
-    --primary: 354 77% 56%; /* #E63946 */
-    --primary-foreground: 0 0% 100%; /* White text on vermillion */
+    /* Primary = Bright Red (Electric Modern) */
+    --primary: 0 84% 60%; /* #EF4444 */
+    --primary-foreground: 0 0% 100%; /* White text on red */
 
-    /* Secondary = True Blue */
-    --secondary: 209 73% 42%; /* #1D70B8 */
-    --secondary-foreground: 0 0% 100%; /* White text on blue */
+    /* Secondary = Cyan (Electric Modern) */
+    --secondary: 189 94% 43%; /* #06B6D4 */
+    --secondary-foreground: 0 0% 100%; /* White text on cyan */
 
     /* Muted = Light Gray for backgrounds */
     --muted: 220 13% 91%; /* #E5E7EB */
     --muted-foreground: 220 9% 46%; /* #6B7280 text-secondary */
 
-    /* Accent = Golden Yellow */
-    --accent: 42 93% 59%; /* #F7B32B */
-    --accent-foreground: 220 13% 11%; /* Dark text on gold */
+    /* Accent = Lime (Electric Modern) */
+    --accent: 84 81% 44%; /* #84CC16 */
+    --accent-foreground: 0 0% 100%; /* White text on lime */
 
     /* Destructive = Error Red */
     --destructive: 0 84% 60%; /* #EF4444 */
@@ -36,12 +36,12 @@
     /* Borders & Inputs */
     --border: 220 13% 82%; /* #D1D5DB */
     --input: 220 13% 82%;
-    --ring: 354 77% 56%; /* Vermillion for focus rings */
+    --ring: 0 84% 60%; /* Bright Red for focus rings */
 
     /* Charts - Use our accent colors */
-    --chart-1: 354 77% 56%; /* Vermillion */
-    --chart-2: 209 73% 42%; /* Blue */
-    --chart-3: 42 93% 59%; /* Gold */
+    --chart-1: 0 84% 60%; /* Bright Red */
+    --chart-2: 189 94% 43%; /* Cyan */
+    --chart-3: 84 81% 44%; /* Lime */
     --chart-4: 142 71% 45%; /* Success green */
     --chart-5: 24 95% 53%; /* Warning orange */
 
@@ -57,24 +57,24 @@
     --popover: 220 21% 11%;
     --popover-foreground: 220 13% 91%;
 
-    /* Keep accent colors consistent in dark mode */
-    --primary: 354 77% 56%; /* Vermillion stays bold */
+    /* Keep accent colors consistent in dark mode (Electric Modern) */
+    --primary: 0 84% 60%; /* Bright Red stays bold */
     --primary-foreground: 0 0% 100%;
-    --secondary: 209 73% 42%; /* Blue stays true */
+    --secondary: 189 94% 43%; /* Cyan stays bright */
     --secondary-foreground: 0 0% 100%;
     --muted: 220 21% 14%;
     --muted-foreground: 220 9% 64%;
-    --accent: 42 93% 59%; /* Gold stays bright */
+    --accent: 84 81% 44%; /* Lime stays vibrant */
     --accent-foreground: 220 13% 11%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     --border: 220 21% 14%;
     --input: 220 21% 14%;
-    --ring: 354 77% 56%;
+    --ring: 0 84% 60%;
 
-    --chart-1: 354 77% 56%;
-    --chart-2: 209 73% 42%;
-    --chart-3: 42 93% 59%;
+    --chart-1: 0 84% 60%;
+    --chart-2: 189 94% 43%;
+    --chart-3: 84 81% 44%;
     --chart-4: 142 71% 45%;
     --chart-5: 24 95% 53%;
   }
