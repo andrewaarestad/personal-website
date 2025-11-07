@@ -23,7 +23,7 @@ export function HomepageHero({
                 Hi, I&apos;m Andrew.
               </h1>
               <p className="text-body-lg text-text-secondary">
-                I like to build stuff.
+                I like to build products with TypeScript, Python, and C++.
               </p>
             </div>
             <Button className="bg-vermillion hover:bg-vermillion-dark text-white">
