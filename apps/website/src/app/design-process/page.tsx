@@ -165,7 +165,7 @@ export default function DesignProcessPage() {
 
           <div className="space-y-6">
             {/* Mobile Hero Component Link */}
-            <FeatureCard background="surface" border="blue">
+            <FeatureCard background="surface" border="info">
               <h3 className="text-h5 font-bold text-black mb-3">
                 Mobile Hero Component
               </h3>
@@ -175,14 +175,14 @@ export default function DesignProcessPage() {
                 understated expert.
               </p>
               <Link href="/design-preview/mobile-hero">
-                <Button size="lg" variant="blue">
+                <Button size="lg" variant="info">
                   View Mobile Hero →
                 </Button>
               </Link>
             </FeatureCard>
 
             {/* Design System Mood Board Link */}
-            <FeatureCard border="vermillion">
+            <FeatureCard border="brand">
               <h3 className="text-h5 font-bold text-black mb-3">
                 Design System Mood Board
               </h3>
@@ -191,14 +191,14 @@ export default function DesignProcessPage() {
                 components, and real-world examples. Built with the art studio aesthetic.
               </p>
               <Link href="/design-preview/v1-initial">
-                <Button size="lg" variant="vermillion">
+                <Button size="lg" variant="brand">
                   View Mood Board →
                 </Button>
               </Link>
             </FeatureCard>
 
             {/* Color Exploration Link */}
-            <FeatureCard background="surface" border="gold">
+            <FeatureCard background="surface" border="highlight">
               <h3 className="text-h5 font-bold text-black mb-3">
                 Color Palette Exploration
               </h3>
@@ -252,7 +252,7 @@ export default function DesignProcessPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button size="lg" variant="black">
+              <Button size="lg" variant="emphasis">
                 View on GitHub →
               </Button>
             </Link>

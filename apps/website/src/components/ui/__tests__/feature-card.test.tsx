@@ -70,21 +70,21 @@ describe("FeatureCard", () => {
       expect(card).toHaveClass("border-border-default");
     });
 
-    it("renders vermillion border with hover state", () => {
-      render(<FeatureCard border="vermillion" data-testid="card">Content</FeatureCard>);
+    it("renders brand border with hover state", () => {
+      render(<FeatureCard border="brand" data-testid="card">Content</FeatureCard>);
       const card = screen.getByTestId("card");
       expect(card).toHaveClass("border-2");
       expect(card).toHaveClass("hover:border-vermillion");
     });
 
-    it("renders blue border with hover state", () => {
-      render(<FeatureCard border="blue" data-testid="card">Content</FeatureCard>);
+    it("renders info border with hover state", () => {
+      render(<FeatureCard border="info" data-testid="card">Content</FeatureCard>);
       const card = screen.getByTestId("card");
       expect(card).toHaveClass("hover:border-blue");
     });
 
-    it("renders gold border with hover state", () => {
-      render(<FeatureCard border="gold" data-testid="card">Content</FeatureCard>);
+    it("renders highlight border with hover state", () => {
+      render(<FeatureCard border="highlight" data-testid="card">Content</FeatureCard>);
       const card = screen.getByTestId("card");
       expect(card).toHaveClass("hover:border-gold");
     });
@@ -135,7 +135,7 @@ describe("FeatureCard", () => {
       render(
         <FeatureCard
           background="surface"
-          border="blue"
+          border="info"
           padding="compact"
           data-testid="card"
         >

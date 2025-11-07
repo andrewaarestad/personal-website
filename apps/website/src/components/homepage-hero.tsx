@@ -26,7 +26,7 @@ export function HomepageHero({
                 I like to build products with TypeScript, Python, and C++.
               </p>
             </div>
-            <Button variant="vermillion">
+            <Button variant="brand">
               See my work →
             </Button>
           </div>
@@ -51,7 +51,7 @@ export function HomepageHero({
                 generative AI.
               </p>
             </div>
-            <Button variant="vermillion">
+            <Button variant="brand">
               View projects →
             </Button>
           </div>
@@ -75,7 +75,7 @@ export function HomepageHero({
                 ML pipelines.
               </p>
             </div>
-            <Button variant="vermillion">
+            <Button variant="brand">
               See what I&apos;ve built →
             </Button>
           </div>

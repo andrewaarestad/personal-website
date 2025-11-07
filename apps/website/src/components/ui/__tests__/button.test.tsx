@@ -3,30 +3,30 @@ import { render, screen } from "@testing-library/react";
 import { Button } from "../button";
 
 describe("Button", () => {
-  describe("Brand color variants", () => {
-    it("renders vermillion variant with correct classes", () => {
-      render(<Button variant="vermillion">Click me</Button>);
+  describe("Brand semantic variants", () => {
+    it("renders brand variant with correct classes", () => {
+      render(<Button variant="brand">Click me</Button>);
       const button = screen.getByRole("button");
       expect(button).toHaveClass("bg-vermillion");
       expect(button).toHaveClass("hover:bg-vermillion-dark");
     });
 
-    it("renders blue variant with correct classes", () => {
-      render(<Button variant="blue">Click me</Button>);
+    it("renders info variant with correct classes", () => {
+      render(<Button variant="info">Click me</Button>);
       const button = screen.getByRole("button");
       expect(button).toHaveClass("bg-blue");
       expect(button).toHaveClass("hover:bg-blue-dark");
     });
 
-    it("renders gold variant with correct classes", () => {
-      render(<Button variant="gold">Click me</Button>);
+    it("renders highlight variant with correct classes", () => {
+      render(<Button variant="highlight">Click me</Button>);
       const button = screen.getByRole("button");
       expect(button).toHaveClass("bg-gold");
       expect(button).toHaveClass("hover:bg-gold-dark");
     });
 
-    it("renders black variant with correct classes", () => {
-      render(<Button variant="black">Click me</Button>);
+    it("renders emphasis variant with correct classes", () => {
+      render(<Button variant="emphasis">Click me</Button>);
       const button = screen.getByRole("button");
       expect(button).toHaveClass("bg-black");
       expect(button).toHaveClass("hover:bg-black/90");
@@ -74,15 +74,15 @@ describe("Button", () => {
   });
 
   describe("Combining variants", () => {
-    it("combines brand color variant with size", () => {
-      render(<Button variant="vermillion" size="lg">Click me</Button>);
+    it("combines semantic variant with size", () => {
+      render(<Button variant="brand" size="lg">Click me</Button>);
       const button = screen.getByRole("button");
       expect(button).toHaveClass("bg-vermillion");
       expect(button).toHaveClass("h-10");
     });
 
-    it("combines brand color variant with custom className", () => {
-      render(<Button variant="blue" className="custom-class">Click me</Button>);
+    it("combines semantic variant with custom className", () => {
+      render(<Button variant="info" className="custom-class">Click me</Button>);
       const button = screen.getByRole("button");
       expect(button).toHaveClass("bg-blue");
       expect(button).toHaveClass("custom-class");

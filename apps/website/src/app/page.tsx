@@ -27,7 +27,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <FeatureCard border="vermillion">
+          <FeatureCard border="brand">
             <h3 className="text-h5 font-bold text-black mb-3">
               Explore the Full Design Journey
             </h3>
@@ -37,7 +37,7 @@ export default function HomePage() {
               and understand how AI collaboration shapes modern web development.
             </p>
             <Link href="/design-process">
-              <Button size="lg" variant="vermillion">
+              <Button size="lg" variant="brand">
                 View Design Process →
               </Button>
             </Link>

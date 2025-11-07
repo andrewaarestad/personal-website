@@ -19,14 +19,14 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        // Brand color variants
-        vermillion:
+        // Brand semantic variants (mapped to current theme colors)
+        brand:
           "bg-vermillion text-white shadow hover:bg-vermillion-dark",
-        blue:
+        info:
           "bg-blue text-white shadow hover:bg-blue-dark",
-        gold:
+        highlight:
           "bg-gold text-white shadow hover:bg-gold-dark",
-        black:
+        emphasis:
           "bg-black text-white shadow hover:bg-black/90",
       },
       size: {

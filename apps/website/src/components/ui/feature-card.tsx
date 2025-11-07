@@ -18,9 +18,9 @@ const featureCardVariants = cva(
         none: "",
         light: "border border-border-default",
         default: "border-2 border-border-default",
-        vermillion: "border-2 border-border-default hover:border-vermillion",
-        blue: "border-2 border-border-default hover:border-blue",
-        gold: "border-2 border-border-default hover:border-gold",
+        brand: "border-2 border-border-default hover:border-vermillion",
+        info: "border-2 border-border-default hover:border-blue",
+        highlight: "border-2 border-border-default hover:border-gold",
       },
       padding: {
         compact: "p-6",
