@@ -11,9 +11,13 @@ interface ContactLink {
   hoverColor: string;
 }
 
-export function HomepageContactInfo() {
+interface ContactCardProps {
+  link: ContactLink;
+}
+
+function ContactCard({ link }: ContactCardProps) {
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -25,21 +29,61 @@ export function HomepageContactInfo() {
         });
       },
       {
-        threshold: 0.1, // Trigger when 10% of the element is visible
-        rootMargin: "0px 0px -50px 0px", // Trigger slightly before it's fully in view
+        threshold: 0.3, // Trigger when 30% of the card is visible
+        rootMargin: "0px 0px -50px 0px", // Trigger slightly before fully in view
       }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
       }
     };
   }, [isVisible]);
+
+  return (
+    <Link
+      ref={cardRef}
+      href={link.url}
+      target={link.name !== "Email" ? "_blank" : undefined}
+      rel={link.name !== "Email" ? "noopener noreferrer" : undefined}
+      className={`group flex items-center gap-4 p-6 bg-canvas rounded-xl border-2 border-border-default hover:border-current transition-all duration-700 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      }`}
+    >
+      <div className={`${link.color} ${link.hoverColor} transition-colors`}>
+        {link.icon}
+      </div>
+      <div>
+        <div className="font-semibold text-body text-black group-hover:text-current transition-colors">
+          {link.name}
+        </div>
+        <div className="text-body-sm text-text-tertiary">
+          {link.name === "Email" ? "andrew@aarestad.com" : `@andrewaarestad`}
+        </div>
+      </div>
+      <svg
+        className="ml-auto w-5 h-5 text-text-tertiary group-hover:text-current transition-colors"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M9 5l7 7-7 7"
+        />
+      </svg>
+    </Link>
+  );
+}
+
+export function HomepageContactInfo() {
   const contactLinks: ContactLink[] = [
     {
       name: "GitHub",
@@ -118,69 +162,17 @@ export function HomepageContactInfo() {
   ];
 
   return (
-    <section ref={sectionRef} className="border-t border-border-light bg-surface">
+    <section className="border-t border-border-light bg-surface">
       <div className="container mx-auto px-6 py-16 max-w-5xl">
         <div className="max-w-2xl">
-          <h2
-            className={`text-h3 font-bold text-black mb-3 transition-all duration-500 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            Get in Touch
-          </h2>
-          <p
-            className={`text-body-lg text-text-secondary mb-8 transition-all duration-500 delay-100 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
+          <h2 className="text-h3 font-bold text-black mb-3">Get in Touch</h2>
+          <p className="text-body-lg text-text-secondary mb-8">
             Connect with me on social media or send an email.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {contactLinks.map((link, index) => (
-              <Link
-                key={link.name}
-                href={link.url}
-                target={link.name !== "Email" ? "_blank" : undefined}
-                rel={link.name !== "Email" ? "noopener noreferrer" : undefined}
-                className={`group flex items-center gap-4 p-6 bg-canvas rounded-xl border-2 border-border-default hover:border-current transition-all duration-500 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
-                style={{
-                  transitionDelay: isVisible ? `${200 + index * 100}ms` : "0ms",
-                }}
-              >
-                <div
-                  className={`${link.color} ${link.hoverColor} transition-colors`}
-                >
-                  {link.icon}
-                </div>
-                <div>
-                  <div className="font-semibold text-body text-black group-hover:text-current transition-colors">
-                    {link.name}
-                  </div>
-                  <div className="text-body-sm text-text-tertiary">
-                    {link.name === "Email"
-                      ? "andrew@aarestad.com"
-                      : `@andrewaarestad`}
-                  </div>
-                </div>
-                <svg
-                  className="ml-auto w-5 h-5 text-text-tertiary group-hover:text-current transition-colors"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </Link>
+            {contactLinks.map((link) => (
+              <ContactCard key={link.name} link={link} />
             ))}
           </div>
         </div>
