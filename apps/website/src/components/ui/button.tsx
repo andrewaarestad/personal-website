@@ -21,11 +21,11 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         // Brand semantic variants (mapped to current theme colors)
         brand:
-          "bg-vermillion text-white shadow hover:bg-vermillion-dark",
+          "bg-brand text-white shadow hover:bg-brand-dark",
         info:
-          "bg-blue text-white shadow hover:bg-blue-dark",
+          "bg-accent-cyan text-white shadow hover:bg-accent-cyan-dark",
         highlight:
-          "bg-gold text-white shadow hover:bg-gold-dark",
+          "bg-highlight text-white shadow hover:bg-highlight-dark",
         emphasis:
           "bg-black text-white shadow hover:bg-black/90",
       },

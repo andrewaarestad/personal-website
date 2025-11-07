@@ -7,22 +7,22 @@ describe("Button", () => {
     it("renders brand variant with correct classes", () => {
       render(<Button variant="brand">Click me</Button>);
       const button = screen.getByRole("button");
-      expect(button).toHaveClass("bg-vermillion");
-      expect(button).toHaveClass("hover:bg-vermillion-dark");
+      expect(button).toHaveClass("bg-brand");
+      expect(button).toHaveClass("hover:bg-brand-dark");
     });
 
     it("renders info variant with correct classes", () => {
       render(<Button variant="info">Click me</Button>);
       const button = screen.getByRole("button");
-      expect(button).toHaveClass("bg-blue");
-      expect(button).toHaveClass("hover:bg-blue-dark");
+      expect(button).toHaveClass("bg-accent-cyan");
+      expect(button).toHaveClass("hover:bg-accent-cyan-dark");
     });
 
     it("renders highlight variant with correct classes", () => {
       render(<Button variant="highlight">Click me</Button>);
       const button = screen.getByRole("button");
-      expect(button).toHaveClass("bg-gold");
-      expect(button).toHaveClass("hover:bg-gold-dark");
+      expect(button).toHaveClass("bg-highlight");
+      expect(button).toHaveClass("hover:bg-highlight-dark");
     });
 
     it("renders emphasis variant with correct classes", () => {
@@ -77,14 +77,14 @@ describe("Button", () => {
     it("combines semantic variant with size", () => {
       render(<Button variant="brand" size="lg">Click me</Button>);
       const button = screen.getByRole("button");
-      expect(button).toHaveClass("bg-vermillion");
+      expect(button).toHaveClass("bg-brand");
       expect(button).toHaveClass("h-10");
     });
 
     it("combines semantic variant with custom className", () => {
       render(<Button variant="info" className="custom-class">Click me</Button>);
       const button = screen.getByRole("button");
-      expect(button).toHaveClass("bg-blue");
+      expect(button).toHaveClass("bg-accent-cyan");
       expect(button).toHaveClass("custom-class");
     });
   });

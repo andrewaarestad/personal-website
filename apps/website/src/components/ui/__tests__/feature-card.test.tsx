@@ -8,31 +8,31 @@ describe("FeatureCard", () => {
       render(<FeatureCard data-testid="card">Content</FeatureCard>);
       const card = screen.getByTestId("card");
       expect(card).toHaveClass("bg-gradient-to-br");
-      expect(card).toHaveClass("from-vermillion-light/30");
+      expect(card).toHaveClass("from-brand-light/30");
     });
 
     it("renders gradient-primary variant with correct classes", () => {
       render(<FeatureCard background="gradient-primary" data-testid="card">Content</FeatureCard>);
       const card = screen.getByTestId("card");
-      expect(card).toHaveClass("from-vermillion-light/30");
-      expect(card).toHaveClass("via-blue-light/30");
-      expect(card).toHaveClass("to-gold-light/30");
+      expect(card).toHaveClass("from-brand-light/30");
+      expect(card).toHaveClass("via-accent-cyan-light/30");
+      expect(card).toHaveClass("to-highlight-light/30");
     });
 
     it("renders gradient-reverse variant with correct classes", () => {
       render(<FeatureCard background="gradient-reverse" data-testid="card">Content</FeatureCard>);
       const card = screen.getByTestId("card");
-      expect(card).toHaveClass("from-blue-light/30");
-      expect(card).toHaveClass("via-gold-light/30");
-      expect(card).toHaveClass("to-vermillion-light/30");
+      expect(card).toHaveClass("from-accent-cyan-light/30");
+      expect(card).toHaveClass("via-highlight-light/30");
+      expect(card).toHaveClass("to-brand-light/30");
     });
 
     it("renders gradient-subtle variant with correct classes", () => {
       render(<FeatureCard background="gradient-subtle" data-testid="card">Content</FeatureCard>);
       const card = screen.getByTestId("card");
-      expect(card).toHaveClass("from-gradient-vermillion-subtle");
+      expect(card).toHaveClass("from-gradient-brand-subtle");
       expect(card).toHaveClass("via-canvas");
-      expect(card).toHaveClass("to-gradient-blue-subtle");
+      expect(card).toHaveClass("to-gradient-accent-cyan-subtle");
     });
 
     it("renders surface background variant", () => {
@@ -74,19 +74,19 @@ describe("FeatureCard", () => {
       render(<FeatureCard border="brand" data-testid="card">Content</FeatureCard>);
       const card = screen.getByTestId("card");
       expect(card).toHaveClass("border-2");
-      expect(card).toHaveClass("hover:border-vermillion");
+      expect(card).toHaveClass("hover:border-brand");
     });
 
     it("renders info border with hover state", () => {
       render(<FeatureCard border="info" data-testid="card">Content</FeatureCard>);
       const card = screen.getByTestId("card");
-      expect(card).toHaveClass("hover:border-blue");
+      expect(card).toHaveClass("hover:border-accent-cyan");
     });
 
     it("renders highlight border with hover state", () => {
       render(<FeatureCard border="highlight" data-testid="card">Content</FeatureCard>);
       const card = screen.getByTestId("card");
-      expect(card).toHaveClass("hover:border-gold");
+      expect(card).toHaveClass("hover:border-highlight");
     });
   });
 
@@ -144,7 +144,7 @@ describe("FeatureCard", () => {
       );
       const card = screen.getByTestId("card");
       expect(card).toHaveClass("bg-surface");
-      expect(card).toHaveClass("hover:border-blue");
+      expect(card).toHaveClass("hover:border-accent-cyan");
       expect(card).toHaveClass("p-6");
     });
 
