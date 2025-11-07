@@ -178,7 +178,7 @@ export default function DesignProcessPage() {
             </div>
 
             {/* Design System Mood Board Link */}
-            <div className="p-8 bg-gradient-to-br from-vermillion-light/30 via-blue-light/30 to-gold-light/30 rounded-xl border border-border-default hover:border-vermillion transition-colors">
+            <div className="p-8 bg-gradient-to-br from-vermillion-light/30 via-blue-light/30 to-gold-light/30 rounded-xl border-2 border-border-default hover:border-vermillion transition-colors">
               <h3 className="text-h5 font-bold text-black mb-3">
                 Design System Mood Board
               </h3>
