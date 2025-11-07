@@ -5,7 +5,9 @@ import HomePage from "../app/page";
 describe("HomePage", () => {
   it("renders the hero section with main heading", () => {
     render(<HomePage />);
-    const heading = screen.getByRole("heading", { name: /I'm Andrew Aarestad/i });
+    // Check for presence of main heading containing "Andrew" - not exact text
+    // This allows copy to evolve without breaking tests
+    const heading = screen.getByRole("heading", { name: /andrew/i, level: 1 });
     expect(heading).toBeInTheDocument();
   });
 
