@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { PageContainer } from "@/components/ui/page-container";
+import { Section } from "@/components/ui/section";
+import { FeatureCard } from "@/components/ui/feature-card";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -17,7 +20,8 @@ export default function DesignProcessPage() {
   return (
     <main className="min-h-screen bg-canvas">
       {/* Hero Section */}
-      <section className="container mx-auto px-6 py-16 max-w-5xl">
+      <Section>
+        <PageContainer>
         <div className="mb-16">
           <h1 className="text-h2 font-bold text-black mb-4">Design Process</h1>
           <p className="text-h5 text-text-secondary max-w-3xl font-normal">
@@ -137,7 +141,7 @@ export default function DesignProcessPage() {
             </div>
 
             {/* Why This Approach */}
-            <div className="mt-12 p-8 bg-gradient-to-br from-blue-light/30 via-gold-light/30 to-vermillion-light/30 rounded-xl border border-border-default">
+            <FeatureCard background="gradient-reverse" border="light" className="mt-12">
               <h3 className="text-h5 font-bold text-black mb-3">Why Design-First?</h3>
               <p className="text-body text-text-secondary">
                 Starting with design prevents scope creep, ensures visual consistency,
@@ -145,7 +149,7 @@ export default function DesignProcessPage() {
                 decisions early through mood boards, we avoid costly refactors and
                 maintain quality throughout the development process.
               </p>
-            </div>
+            </FeatureCard>
           </div>
         </div>
 
@@ -161,7 +165,7 @@ export default function DesignProcessPage() {
 
           <div className="space-y-6">
             {/* Mobile Hero Component Link */}
-            <div className="p-8 bg-surface rounded-xl border-2 border-border-default hover:border-blue transition-colors">
+            <FeatureCard background="surface" border="blue">
               <h3 className="text-h5 font-bold text-black mb-3">
                 Mobile Hero Component
               </h3>
@@ -171,14 +175,14 @@ export default function DesignProcessPage() {
                 understated expert.
               </p>
               <Link href="/design-preview/mobile-hero">
-                <Button size="lg" className="bg-blue hover:bg-blue-dark text-white">
+                <Button size="lg" variant="blue">
                   View Mobile Hero →
                 </Button>
               </Link>
-            </div>
+            </FeatureCard>
 
             {/* Design System Mood Board Link */}
-            <div className="p-8 bg-gradient-to-br from-vermillion-light/30 via-blue-light/30 to-gold-light/30 rounded-xl border-2 border-border-default hover:border-vermillion transition-colors">
+            <FeatureCard border="vermillion">
               <h3 className="text-h5 font-bold text-black mb-3">
                 Design System Mood Board
               </h3>
@@ -187,14 +191,14 @@ export default function DesignProcessPage() {
                 components, and real-world examples. Built with the art studio aesthetic.
               </p>
               <Link href="/design-preview/v1-initial">
-                <Button size="lg" className="bg-vermillion hover:bg-vermillion-dark">
+                <Button size="lg" variant="vermillion">
                   View Mood Board →
                 </Button>
               </Link>
-            </div>
+            </FeatureCard>
 
             {/* Color Exploration Link */}
-            <div className="p-8 bg-surface rounded-xl border-2 border-border-default hover:border-gold transition-colors">
+            <FeatureCard background="surface" border="gold">
               <h3 className="text-h5 font-bold text-black mb-3">
                 Color Palette Exploration
               </h3>
@@ -212,7 +216,7 @@ export default function DesignProcessPage() {
                   Explore Color Options →
                 </Button>
               </Link>
-            </div>
+            </FeatureCard>
           </div>
         </div>
 
@@ -248,10 +252,7 @@ export default function DesignProcessPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button
-                size="lg"
-                className="bg-black hover:bg-black/90 text-white"
-              >
+              <Button size="lg" variant="black">
                 View on GitHub →
               </Button>
             </Link>
@@ -266,7 +267,8 @@ export default function DesignProcessPage() {
             </Link>
           </div>
         </div>
-      </section>
+        </PageContainer>
+      </Section>
     </main>
   );
 }
