@@ -17,52 +17,26 @@ export default function HomePage() {
         <div className="mb-12">
           <h2 className="text-h3 font-bold text-black mb-3">Design Process</h2>
           <p className="text-body-lg text-text-secondary max-w-2xl">
-            This site is built using a design-first workflow with AI assistance. Explore the mood boards and design explorations below.
+            This site is built using a design-first workflow with AI assistance.
+            Learn about the phases, explore interactive mood boards, and see the
+            meta-project of building a website about someone who builds websites.
           </p>
         </div>
 
-        <div className="space-y-6">
-          {/* Mobile Hero Component Link */}
-          <div className="p-8 bg-surface rounded-xl border-2 border-border-default hover:border-blue transition-colors">
-            <h3 className="text-h5 font-bold text-black mb-3">Mobile Hero Component</h3>
-            <p className="text-body text-text-secondary mb-6 max-w-2xl">
-              Preview the homepage hero component designed for mobile screens. Three variants
-              following brand voice guidelines: direct, problem-solver, and understated expert.
-            </p>
-            <Link href="/design-preview/mobile-hero">
-              <Button size="lg" className="bg-blue hover:bg-blue-dark text-white">
-                View Mobile Hero →
-              </Button>
-            </Link>
-          </div>
-
-          {/* Design System Mood Board Link */}
-          <div className="p-8 bg-gradient-to-br from-vermillion-light/30 via-blue-light/30 to-gold-light/30 rounded-xl border border-border-default hover:border-vermillion transition-colors">
-            <h3 className="text-h5 font-bold text-black mb-3">Design System Mood Board</h3>
-            <p className="text-body text-text-secondary mb-6 max-w-2xl">
-              Check out the comprehensive design system showcasing colors, typography, components,
-              and real-world examples. Built with the art studio aesthetic.
-            </p>
-            <Link href="/design-preview/v1-initial">
-              <Button size="lg" className="bg-vermillion hover:bg-vermillion-dark">
-                View Mood Board →
-              </Button>
-            </Link>
-          </div>
-
-          {/* Color Exploration Link */}
-          <div className="p-8 bg-surface rounded-xl border-2 border-border-default hover:border-gold transition-colors">
-            <h3 className="text-h5 font-bold text-black mb-3">Color Palette Exploration</h3>
-            <p className="text-body text-text-secondary mb-6 max-w-2xl">
-              Explore 10 different color palette variations to find the perfect combination.
-              Compare vermillion with emerald, teal, purple, and more accent color options.
-            </p>
-            <Link href="/design-preview/color-exploration">
-              <Button size="lg" variant="outline" className="border-2 border-gold hover:bg-gold hover:text-white">
-                Explore Color Options →
-              </Button>
-            </Link>
-          </div>
+        <div className="p-8 bg-gradient-to-br from-vermillion-light/30 via-blue-light/30 to-gold-light/30 rounded-xl border-2 border-border-default hover:border-vermillion transition-colors">
+          <h3 className="text-h5 font-bold text-black mb-3">
+            Explore the Full Design Journey
+          </h3>
+          <p className="text-body text-text-secondary mb-6 max-w-2xl">
+            Dive into the complete design process, from brand foundation to
+            implementation. See the 5-phase workflow, explore interactive mood boards,
+            and understand how AI collaboration shapes modern web development.
+          </p>
+          <Link href="/design-process">
+            <Button size="lg" className="bg-vermillion hover:bg-vermillion-dark">
+              View Design Process →
+            </Button>
+          </Link>
         </div>
       </section>
 

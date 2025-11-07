@@ -1,0 +1,272 @@
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Design Process | Andrew Aarestad",
+  description:
+    "A transparent look at building a personal website using design-first workflows and AI-assisted development. Explore the phases, mood boards, and the meta-project of showcasing web development through a developer's personal site.",
+  openGraph: {
+    title: "Design Process | Andrew Aarestad",
+    description:
+      "Building a website about someone who builds websites - a transparent look at design-first workflows and AI collaboration.",
+  },
+};
+
+export default function DesignProcessPage() {
+  return (
+    <main className="min-h-screen bg-canvas">
+      {/* Hero Section */}
+      <section className="container mx-auto px-6 py-16 max-w-5xl">
+        <div className="mb-16">
+          <h1 className="text-h2 font-bold text-black mb-4">Design Process</h1>
+          <p className="text-h5 text-text-secondary max-w-3xl font-normal">
+            This site is built using a design-first workflow with AI assistance.
+            Explore the phases, mood boards, and the recursive journey of building
+            a website about someone who builds websites.
+          </p>
+        </div>
+
+        {/* Meta-Project Section */}
+        <div className="mb-16">
+          <h2 className="text-h3 font-bold text-black mb-6">A Meta-Project</h2>
+          <div className="space-y-4 text-body text-text-secondary max-w-3xl">
+            <p>
+              This website is inherently recursive: it's a personal site for a web
+              developer, built to showcase the very skills it represents. Rather than
+              just presenting a finished product, I'm documenting the entire design
+              and development process—making the work itself part of the portfolio.
+            </p>
+            <p>
+              Transparency is a core value here. Every design decision, iteration, and
+              pivot is preserved in the mood boards below. This approach transforms a
+              standard portfolio into a living demonstration of design-first thinking,
+              AI-assisted development, and iterative refinement.
+            </p>
+            <p>
+              By building in public and treating the process as content, this project
+              becomes more than a website—it's proof of concept for modern web
+              development practices, showing how thoughtful design and AI collaboration
+              can work together to create something meaningful.
+            </p>
+          </div>
+        </div>
+
+        {/* Visual Timeline Section */}
+        <div className="mb-16">
+          <h2 className="text-h3 font-bold text-black mb-8">The Design-First Workflow</h2>
+          <div className="space-y-8">
+            {/* Timeline Visual */}
+            <div className="relative">
+              {/* Vertical line connector - hidden on mobile, shown on md+ */}
+              <div className="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-vermillion via-blue to-gold" />
+
+              {/* Phase 1: Brand Foundation */}
+              <div className="relative flex gap-6 mb-8">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-vermillion flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
+                  1
+                </div>
+                <div className="flex-grow pt-2">
+                  <h3 className="text-h5 font-bold text-black mb-2">Brand Foundation</h3>
+                  <p className="text-body text-text-secondary">
+                    Define mission, persona, voice & tone, and core values. Establish
+                    the identity before any visual work begins.
+                  </p>
+                </div>
+              </div>
+
+              {/* Phase 2: Visual System */}
+              <div className="relative flex gap-6 mb-8">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-blue flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
+                  2
+                </div>
+                <div className="flex-grow pt-2">
+                  <h3 className="text-h5 font-bold text-black mb-2">Visual System</h3>
+                  <p className="text-body text-text-secondary">
+                    Create color palettes, typography scales, spacing systems, and
+                    component patterns. Build the design language.
+                  </p>
+                </div>
+              </div>
+
+              {/* Phase 3: Mood Boards */}
+              <div className="relative flex gap-6 mb-8">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-gold flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
+                  3
+                </div>
+                <div className="flex-grow pt-2">
+                  <h3 className="text-h5 font-bold text-black mb-2">
+                    Interactive Mood Boards
+                  </h3>
+                  <p className="text-body text-text-secondary">
+                    Deploy working previews to Vercel for real-world testing. See
+                    designs in context, not just in Figma.
+                  </p>
+                </div>
+              </div>
+
+              {/* Phase 4: Iteration */}
+              <div className="relative flex gap-6 mb-8">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-vermillion flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
+                  4
+                </div>
+                <div className="flex-grow pt-2">
+                  <h3 className="text-h5 font-bold text-black mb-2">Review & Refine</h3>
+                  <p className="text-body text-text-secondary">
+                    Gather feedback, test on devices, refine the approach. Repeat until
+                    the design feels right.
+                  </p>
+                </div>
+              </div>
+
+              {/* Phase 5: Implementation */}
+              <div className="relative flex gap-6">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-blue flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
+                  5
+                </div>
+                <div className="flex-grow pt-2">
+                  <h3 className="text-h5 font-bold text-black mb-2">
+                    Build & Deploy
+                  </h3>
+                  <p className="text-body text-text-secondary">
+                    Implement the approved design with production-quality code. The
+                    design system guides every component.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Why This Approach */}
+            <div className="mt-12 p-8 bg-gradient-to-br from-blue-light/30 via-gold-light/30 to-vermillion-light/30 rounded-xl border border-border-default">
+              <h3 className="text-h5 font-bold text-black mb-3">Why Design-First?</h3>
+              <p className="text-body text-text-secondary">
+                Starting with design prevents scope creep, ensures visual consistency,
+                and creates a clear roadmap for implementation. By validating design
+                decisions early through mood boards, we avoid costly refactors and
+                maintain quality throughout the development process.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Explore Design Evolution Section */}
+        <div className="mb-16">
+          <h2 className="text-h3 font-bold text-black mb-6">
+            Explore the Design Evolution
+          </h2>
+          <p className="text-body-lg text-text-secondary mb-8 max-w-2xl">
+            Check out the interactive mood boards that showcase different phases of
+            the design process. Each represents real explorations and iterations.
+          </p>
+
+          <div className="space-y-6">
+            {/* Mobile Hero Component Link */}
+            <div className="p-8 bg-surface rounded-xl border-2 border-border-default hover:border-blue transition-colors">
+              <h3 className="text-h5 font-bold text-black mb-3">
+                Mobile Hero Component
+              </h3>
+              <p className="text-body text-text-secondary mb-6 max-w-2xl">
+                Preview the homepage hero component designed for mobile screens. Three
+                variants following brand voice guidelines: direct, problem-solver, and
+                understated expert.
+              </p>
+              <Link href="/design-preview/mobile-hero">
+                <Button size="lg" className="bg-blue hover:bg-blue-dark text-white">
+                  View Mobile Hero →
+                </Button>
+              </Link>
+            </div>
+
+            {/* Design System Mood Board Link */}
+            <div className="p-8 bg-gradient-to-br from-vermillion-light/30 via-blue-light/30 to-gold-light/30 rounded-xl border-2 border-border-default hover:border-vermillion transition-colors">
+              <h3 className="text-h5 font-bold text-black mb-3">
+                Design System Mood Board
+              </h3>
+              <p className="text-body text-text-secondary mb-6 max-w-2xl">
+                Check out the comprehensive design system showcasing colors, typography,
+                components, and real-world examples. Built with the art studio aesthetic.
+              </p>
+              <Link href="/design-preview/v1-initial">
+                <Button size="lg" className="bg-vermillion hover:bg-vermillion-dark">
+                  View Mood Board →
+                </Button>
+              </Link>
+            </div>
+
+            {/* Color Exploration Link */}
+            <div className="p-8 bg-surface rounded-xl border-2 border-border-default hover:border-gold transition-colors">
+              <h3 className="text-h5 font-bold text-black mb-3">
+                Color Palette Exploration
+              </h3>
+              <p className="text-body text-text-secondary mb-6 max-w-2xl">
+                Explore 10 different color palette variations to find the perfect
+                combination. Compare vermillion with emerald, teal, purple, and more
+                accent color options.
+              </p>
+              <Link href="/design-preview/color-exploration">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-gold hover:bg-gold hover:text-white"
+                >
+                  Explore Color Options →
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* AI-Assisted Development Section */}
+        <div className="mb-16">
+          <h2 className="text-h3 font-bold text-black mb-6">
+            Built with AI Collaboration
+          </h2>
+          <div className="space-y-4 text-body text-text-secondary max-w-3xl">
+            <p>
+              This entire project is built using Claude Code, demonstrating how AI can
+              assist in the full development lifecycle—from design exploration to
+              production deployment. The AI helps maintain consistency, suggests
+              improvements, and accelerates implementation while I guide the creative
+              direction and make final decisions.
+            </p>
+            <p>
+              The workflow balances AI assistance with human creativity: Claude handles
+              repetitive tasks, enforces code quality, and explores design variations,
+              while I focus on strategy, user experience, and the narrative. This
+              collaboration model represents a practical approach to modern web
+              development, where AI augments rather than replaces human expertise.
+            </p>
+            <p>
+              <strong className="text-black">This project is open source.</strong> Check
+              out the full codebase on GitHub to see the implementation details, commit
+              history, and AI-assisted development workflow in action.
+            </p>
+          </div>
+          <div className="mt-8 flex gap-4">
+            <Link
+              href="https://github.com/andrewaarestad/personal-website"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                size="lg"
+                className="bg-black hover:bg-black/90 text-white"
+              >
+                View on GitHub →
+              </Button>
+            </Link>
+            <Link href="/">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-blue hover:bg-blue hover:text-white"
+              >
+                ← Back to Home
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
