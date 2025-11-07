@@ -20,11 +20,10 @@ export function HomepageHero({
             )}
             <div>
               <h1 className="text-h1 font-extrabold text-black mb-4">
-                I&apos;m Andrew Aarestad.
-                <br />I build production ML systems.
+                Hi, I&apos;m Andrew.
               </h1>
               <p className="text-body-lg text-text-secondary">
-                Been at it for 15+ years—since before it was a household term.
+                I like to build products with TypeScript, Python, and C++.
               </p>
             </div>
             <Button className="bg-vermillion hover:bg-vermillion-dark text-white">
