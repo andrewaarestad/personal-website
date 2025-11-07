@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 interface ContactLink {
   name: string;
@@ -9,6 +12,34 @@ interface ContactLink {
 }
 
 export function HomepageContactInfo() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isVisible) {
+            setIsVisible(true);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of the element is visible
+        rootMargin: "0px 0px -50px 0px", // Trigger slightly before it's fully in view
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [isVisible]);
   const contactLinks: ContactLink[] = [
     {
       name: "GitHub",
@@ -87,22 +118,39 @@ export function HomepageContactInfo() {
   ];
 
   return (
-    <section className="border-t border-border-light bg-surface">
+    <section ref={sectionRef} className="border-t border-border-light bg-surface">
       <div className="container mx-auto px-6 py-16 max-w-5xl">
         <div className="max-w-2xl">
-          <h2 className="text-h3 font-bold text-black mb-3">Get in Touch</h2>
-          <p className="text-body-lg text-text-secondary mb-8">
+          <h2
+            className={`text-h3 font-bold text-black mb-3 transition-all duration-500 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            Get in Touch
+          </h2>
+          <p
+            className={`text-body-lg text-text-secondary mb-8 transition-all duration-500 delay-100 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
             Connect with me on social media or send an email.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {contactLinks.map((link) => (
+            {contactLinks.map((link, index) => (
               <Link
                 key={link.name}
                 href={link.url}
                 target={link.name !== "Email" ? "_blank" : undefined}
                 rel={link.name !== "Email" ? "noopener noreferrer" : undefined}
-                className="group flex items-center gap-4 p-6 bg-canvas rounded-xl border-2 border-border-default hover:border-current transition-all"
+                className={`group flex items-center gap-4 p-6 bg-canvas rounded-xl border-2 border-border-default hover:border-current transition-all duration-500 ${
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8"
+                }`}
+                style={{
+                  transitionDelay: isVisible ? `${200 + index * 100}ms` : "0ms",
+                }}
               >
                 <div
                   className={`${link.color} ${link.hoverColor} transition-colors`}
