@@ -89,7 +89,7 @@ export function HomepageContactInfo() {
       name: "GitHub",
       url: "https://github.com/andrewaarestad",
       color: "text-black",
-      hoverColor: "group-hover:text-vermillion",
+      hoverColor: "group-hover:text-brand",
       icon: (
         <svg
           className="w-6 h-6"
@@ -109,7 +109,7 @@ export function HomepageContactInfo() {
       name: "LinkedIn",
       url: "https://www.linkedin.com/in/andrewaarestad/",
       color: "text-black",
-      hoverColor: "group-hover:text-blue",
+      hoverColor: "group-hover:text-accent-cyan",
       icon: (
         <svg
           className="w-6 h-6"
@@ -125,7 +125,7 @@ export function HomepageContactInfo() {
       name: "Medium",
       url: "https://medium.com/@andrewaarestad",
       color: "text-black",
-      hoverColor: "group-hover:text-gold",
+      hoverColor: "group-hover:text-highlight",
       icon: (
         <svg
           className="w-6 h-6"
@@ -141,7 +141,7 @@ export function HomepageContactInfo() {
       name: "Email",
       url: "mailto:andrew@aarestad.com",
       color: "text-black",
-      hoverColor: "group-hover:text-vermillion",
+      hoverColor: "group-hover:text-brand",
       icon: (
         <svg
           className="w-6 h-6"

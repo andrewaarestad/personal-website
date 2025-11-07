@@ -50,19 +50,19 @@ export default function HomePage() {
         <PageContainer>
           <h2 className="text-h4 font-bold text-black mb-8">Built With</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <FeatureCard background="canvas" border="light" padding="compact" className="hover:border-vermillion">
+            <FeatureCard background="canvas" border="light" padding="compact" className="hover:border-brand">
               <h3 className="font-semibold text-h6 mb-2 text-black-accent">Next.js 15</h3>
               <p className="text-body-sm text-text-secondary">
                 Modern React framework with App Router and Server Components
               </p>
             </FeatureCard>
-            <FeatureCard background="canvas" border="light" padding="compact" className="hover:border-blue">
+            <FeatureCard background="canvas" border="light" padding="compact" className="hover:border-accent-cyan">
               <h3 className="font-semibold text-h6 mb-2 text-black-accent">Turborepo</h3>
               <p className="text-body-sm text-text-secondary">
                 High-performance build system for monorepos
               </p>
             </FeatureCard>
-            <FeatureCard background="canvas" border="light" padding="compact" className="hover:border-gold">
+            <FeatureCard background="canvas" border="light" padding="compact" className="hover:border-highlight">
               <h3 className="font-semibold text-h6 mb-2 text-black-accent">shadcn/ui Ready</h3>
               <p className="text-body-sm text-text-secondary">
                 Configured for beautiful UI components

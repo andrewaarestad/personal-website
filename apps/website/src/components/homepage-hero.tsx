@@ -10,7 +10,7 @@ export function HomepageHero({
   showAccent = true,
 }: HomepageHeroProps) {
   return (
-    <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-gradient-vermillion-subtle via-canvas to-gradient-blue-subtle">
+    <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-gradient-brand-subtle via-canvas to-gradient-accent-cyan-subtle">
       <div className="container mx-auto px-6 py-16 max-w-2xl">
         {/* Variant: Direct Intro */}
         {variant === "direct" && (
