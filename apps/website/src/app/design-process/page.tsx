@@ -246,7 +246,7 @@ export default function DesignProcessPage() {
               history, and AI-assisted development workflow in action.
             </p>
           </div>
-          <div className="mt-8 flex gap-4">
+          <div className="mt-8">
             <Link
               href="https://github.com/andrewaarestad/personal-website"
               target="_blank"
@@ -254,15 +254,6 @@ export default function DesignProcessPage() {
             >
               <Button size="lg" variant="emphasis">
                 View on GitHub →
-              </Button>
-            </Link>
-            <Link href="/">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-brand-secondary hover:bg-brand-secondary hover:text-white"
-              >
-                ← Back to Home
               </Button>
             </Link>
           </div>
