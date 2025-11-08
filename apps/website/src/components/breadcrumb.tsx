@@ -1,16 +1,51 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 export function Breadcrumb() {
   const pathname = usePathname();
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   // Don't show on homepage
   if (pathname === "/") {
     return null;
   }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollDifference = currentScrollY - lastScrollY;
+
+      // Always show at the very top
+      if (currentScrollY < 10) {
+        setIsVisible(true);
+        setLastScrollY(currentScrollY);
+        return;
+      }
+
+      // Add tolerance: only hide/show after scrolling 15px in a direction
+      if (Math.abs(scrollDifference) > 15) {
+        if (scrollDifference > 0) {
+          // Scrolling down - hide
+          setIsVisible(false);
+        } else {
+          // Scrolling up - show
+          setIsVisible(true);
+        }
+        setLastScrollY(currentScrollY);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
 
   // Parse pathname into breadcrumb segments
   const segments = pathname.split("/").filter(Boolean);
@@ -31,7 +66,11 @@ export function Breadcrumb() {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-40 flex items-center gap-2 text-body-sm px-6 py-4 bg-surface/80 backdrop-blur-sm border-b border-border-light"
+      className={cn(
+        "fixed top-0 left-0 right-0 z-40 flex items-center gap-2 text-body-sm px-6 py-4 bg-surface/80 backdrop-blur-sm border-b border-border-light",
+        "transition-transform duration-300 ease-in-out",
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      )}
       aria-label="Breadcrumb"
     >
       {breadcrumbs.map((crumb, index) => {
