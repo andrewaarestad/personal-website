@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
   title: "Personal Website",
@@ -23,10 +22,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">
-        <SiteHeader />
-        {children}
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

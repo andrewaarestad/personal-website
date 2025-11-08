@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageContainer } from "@/components/ui/page-container";
 import { Section } from "@/components/ui/section";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Embedded Signal Processing System - Andrew Aarestad",
@@ -21,11 +23,16 @@ export default function SignalProcessingSystemPage() {
               <p className="text-h4 text-text-secondary max-w-2xl mx-auto mb-12">
                 Coming Soon
               </p>
-              <p className="text-body-lg text-text-secondary max-w-2xl mx-auto">
+              <p className="text-body-lg text-text-secondary max-w-2xl mx-auto mb-8">
                 This project showcase is currently in development. Check back soon for
                 detailed information about the firmware architecture, real-time signal
                 processing algorithms, and optimization techniques used in this embedded system.
               </p>
+              <Link href="/projects">
+                <Button variant="brand" size="lg">
+                  ← Back to Projects
+                </Button>
+              </Link>
             </div>
           </div>
         </PageContainer>

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageContainer } from "@/components/ui/page-container";
 import { Section } from "@/components/ui/section";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "AI-Powered Analytics Platform - Andrew Aarestad",
@@ -21,11 +23,16 @@ export default function AIAnalyticsPlatformPage() {
               <p className="text-h4 text-text-secondary max-w-2xl mx-auto mb-12">
                 Coming Soon
               </p>
-              <p className="text-body-lg text-text-secondary max-w-2xl mx-auto">
+              <p className="text-body-lg text-text-secondary max-w-2xl mx-auto mb-8">
                 This project showcase is currently in development. Check back soon for
                 detailed information about the architecture, technical implementation,
                 and results of this cloud-scale machine learning platform.
               </p>
+              <Link href="/projects">
+                <Button variant="brand" size="lg">
+                  ← Back to Projects
+                </Button>
+              </Link>
             </div>
           </div>
         </PageContainer>
