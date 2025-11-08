@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 interface HomepageHeroProps {
@@ -26,8 +27,8 @@ export function HomepageHero({
                 I like to build products with TypeScript, Python, and C++.
               </p>
             </div>
-            <Button variant="brand">
-              See my work →
+            <Button variant="brand" asChild>
+              <Link href="/projects">See my work →</Link>
             </Button>
           </div>
         )}
@@ -51,8 +52,8 @@ export function HomepageHero({
                 generative AI.
               </p>
             </div>
-            <Button variant="brand">
-              View projects →
+            <Button variant="brand" asChild>
+              <Link href="/projects">View projects →</Link>
             </Button>
           </div>
         )}
@@ -75,8 +76,8 @@ export function HomepageHero({
                 ML pipelines.
               </p>
             </div>
-            <Button variant="brand">
-              See what I&apos;ve built →
+            <Button variant="brand" asChild>
+              <Link href="/projects">See what I&apos;ve built →</Link>
             </Button>
           </div>
         )}
