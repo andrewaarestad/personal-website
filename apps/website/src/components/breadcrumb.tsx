@@ -77,7 +77,7 @@ export function Breadcrumb() {
         const isLast = index === breadcrumbs.length - 1;
 
         return (
-          <div key={crumb.href} className="flex items-center gap-2">
+          <div key={index} className="flex items-center gap-2">
             {isLast ? (
               <span className="text-text-secondary">{crumb.label}</span>
             ) : (
