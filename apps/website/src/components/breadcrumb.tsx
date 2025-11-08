@@ -10,11 +10,6 @@ export function Breadcrumb() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Don't show on homepage
-  if (pathname === "/") {
-    return null;
-  }
-
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -46,6 +41,11 @@ export function Breadcrumb() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollY]);
+
+  // Don't show on homepage
+  if (pathname === "/") {
+    return null;
+  }
 
   // Parse pathname into breadcrumb segments
   const segments = pathname.split("/").filter(Boolean);
