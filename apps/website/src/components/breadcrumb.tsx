@@ -31,7 +31,7 @@ export function Breadcrumb() {
 
   return (
     <nav
-      className="fixed top-6 left-6 z-40 flex items-center gap-2 text-body-sm"
+      className="fixed top-0 left-0 right-0 z-40 flex items-center gap-2 text-body-sm px-6 py-4 bg-surface/80 backdrop-blur-sm border-b border-border-light"
       aria-label="Breadcrumb"
     >
       {breadcrumbs.map((crumb, index) => {
