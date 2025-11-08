@@ -25,7 +25,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <Breadcrumb />
-        {children}
+        <div className="pt-16">{children}</div>
       </body>
     </html>
   );

@@ -27,8 +27,8 @@ export function Breadcrumb() {
         return;
       }
 
-      // Add tolerance: only hide/show after scrolling 15px in a direction
-      if (Math.abs(scrollDifference) > 15) {
+      // Add tolerance: only hide/show after scrolling 5px in a direction
+      if (Math.abs(scrollDifference) > 5) {
         if (scrollDifference > 0) {
           // Scrolling down - hide
           setIsVisible(false);
