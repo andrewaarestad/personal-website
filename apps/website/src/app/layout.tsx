@@ -24,8 +24,10 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        <Breadcrumb />
-        <div className="pt-16">{children}</div>
+        <div className="mb-8">
+          <Breadcrumb />
+        </div>
+        <div>{children}</div>
       </body>
     </html>
   );
