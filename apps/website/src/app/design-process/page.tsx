@@ -267,6 +267,35 @@ export default function DesignProcessPage() {
             </Link>
           </div>
         </div>
+
+        {/* Tech Stack Section */}
+        <div className="mb-16">
+          <h2 className="text-h3 font-bold text-black mb-6">Built With</h2>
+          <p className="text-body-lg text-text-secondary mb-8 max-w-2xl">
+            This project uses modern web technologies and tools to deliver a fast,
+            scalable, and maintainable personal site.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <FeatureCard background="canvas" border="light" padding="compact" className="hover:border-brand">
+              <h3 className="font-semibold text-h6 mb-2 text-black-accent">Next.js 15</h3>
+              <p className="text-body-sm text-text-secondary">
+                Modern React framework with App Router and Server Components
+              </p>
+            </FeatureCard>
+            <FeatureCard background="canvas" border="light" padding="compact" className="hover:border-brand-secondary">
+              <h3 className="font-semibold text-h6 mb-2 text-black-accent">Turborepo</h3>
+              <p className="text-body-sm text-text-secondary">
+                High-performance build system for monorepos
+              </p>
+            </FeatureCard>
+            <FeatureCard background="canvas" border="light" padding="compact" className="hover:border-highlight">
+              <h3 className="font-semibold text-h6 mb-2 text-black-accent">shadcn/ui Ready</h3>
+              <p className="text-body-sm text-text-secondary">
+                Configured for beautiful UI components
+              </p>
+            </FeatureCard>
+          </div>
+        </div>
         </PageContainer>
       </Section>
     </main>
