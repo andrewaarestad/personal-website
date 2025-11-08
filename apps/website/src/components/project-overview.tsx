@@ -29,6 +29,7 @@ export function ProjectOverview({
             src={imageUrl}
             alt={imageAlt}
             fill
+            priority
             className="object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
@@ -39,11 +40,9 @@ export function ProjectOverview({
           <h3 className="text-h4 font-bold text-black">{title}</h3>
           <p className="text-body text-text-secondary">{description}</p>
 
-          <Link href={`/projects/${projectSlug}`}>
-            <Button variant="brand" size="default">
-              {ctaText} →
-            </Button>
-          </Link>
+          <Button variant="brand" size="default" asChild>
+            <Link href={`/projects/${projectSlug}`}>{ctaText} →</Link>
+          </Button>
         </div>
       </div>
     </FeatureCard>

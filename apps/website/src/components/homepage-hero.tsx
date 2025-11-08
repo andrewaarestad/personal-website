@@ -27,11 +27,9 @@ export function HomepageHero({
                 I like to build products with TypeScript, Python, and C++.
               </p>
             </div>
-            <Link href="/projects">
-              <Button variant="brand">
-                See my work →
-              </Button>
-            </Link>
+            <Button variant="brand" asChild>
+              <Link href="/projects">See my work →</Link>
+            </Button>
           </div>
         )}
 
@@ -54,11 +52,9 @@ export function HomepageHero({
                 generative AI.
               </p>
             </div>
-            <Link href="/projects">
-              <Button variant="brand">
-                View projects →
-              </Button>
-            </Link>
+            <Button variant="brand" asChild>
+              <Link href="/projects">View projects →</Link>
+            </Button>
           </div>
         )}
 
@@ -80,11 +76,9 @@ export function HomepageHero({
                 ML pipelines.
               </p>
             </div>
-            <Link href="/projects">
-              <Button variant="brand">
-                See what I&apos;ve built →
-              </Button>
-            </Link>
+            <Button variant="brand" asChild>
+              <Link href="/projects">See what I&apos;ve built →</Link>
+            </Button>
           </div>
         )}
       </div>
