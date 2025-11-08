@@ -390,12 +390,12 @@ Internal spacing for common UI components.
 
 ```html
 <!-- Compact badge -->
-<span class="px-2 py-1 text-label-sm bg-accent-cyan-light text-accent-cyan-dark rounded">
+<span class="px-2 py-1 text-label-sm bg-brand-secondary-light text-brand-secondary-dark rounded">
   Tag
 </span>
 
 <!-- Standard badge -->
-<span class="px-3 py-1.5 text-label bg-accent-cyan-light text-accent-cyan-dark rounded-md">
+<span class="px-3 py-1.5 text-label bg-brand-secondary-light text-brand-secondary-dark rounded-md">
   Tag
 </span>
 ```
@@ -647,7 +647,7 @@ Ensure interactive elements have clear focus indicators:
   Accessible Button
 </button>
 
-<a href="#" class="focus:outline-none focus:ring-2 focus:ring-accent-cyan focus:ring-offset-2">
+<a href="#" class="focus:outline-none focus:ring-2 focus:ring-brand-secondary focus:ring-offset-2">
   Accessible Link
 </a>
 ```

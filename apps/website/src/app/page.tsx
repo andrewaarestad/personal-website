@@ -56,7 +56,7 @@ export default function HomePage() {
                 Modern React framework with App Router and Server Components
               </p>
             </FeatureCard>
-            <FeatureCard background="canvas" border="light" padding="compact" className="hover:border-accent-cyan">
+            <FeatureCard background="canvas" border="light" padding="compact" className="hover:border-brand-secondary">
               <h3 className="font-semibold text-h6 mb-2 text-black-accent">Turborepo</h3>
               <p className="text-body-sm text-text-secondary">
                 High-performance build system for monorepos

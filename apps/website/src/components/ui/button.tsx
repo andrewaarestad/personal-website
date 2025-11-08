@@ -23,7 +23,7 @@ const buttonVariants = cva(
         brand:
           "bg-brand text-white shadow hover:bg-brand-dark",
         info:
-          "bg-accent-cyan text-white shadow hover:bg-accent-cyan-dark",
+          "bg-brand-secondary text-white shadow hover:bg-brand-secondary-dark",
         highlight:
           "bg-highlight text-white shadow hover:bg-highlight-dark",
         emphasis:

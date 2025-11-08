@@ -94,7 +94,7 @@ const config: Config = {
           DEFAULT: '#EF4444',  // Currently: Bright Red
           dark: '#DC2626',
         },
-        'accent-cyan': {
+        'brand-secondary': {
           light: '#CFFAFE',
           DEFAULT: '#06B6D4',  // Currently: Cyan
           dark: '#0891B2',
@@ -107,7 +107,7 @@ const config: Config = {
 
         // Gradient-specific colors with explicit opacity for compatibility
         'gradient-brand-subtle': 'rgba(254, 226, 226, 0.1)',
-        'gradient-accent-cyan-subtle': 'rgba(207, 250, 254, 0.1)',
+        'gradient-brand-secondary-subtle': 'rgba(207, 250, 254, 0.1)',
 
         // Semantic
         success: {

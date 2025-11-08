@@ -109,7 +109,7 @@ export function HomepageContactInfo() {
       name: "LinkedIn",
       url: "https://www.linkedin.com/in/andrewaarestad/",
       color: "text-black",
-      hoverColor: "group-hover:text-accent-cyan",
+      hoverColor: "group-hover:text-brand-secondary",
       icon: (
         <svg
           className="w-6 h-6"

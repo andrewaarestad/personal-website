@@ -4,7 +4,7 @@
 
 The color system reflects an **art studio aesthetic**: a light, airy foundation provides the "well-lit workspace," black accents add structure and definition, and bold primary-like colors create visual impact like artist's paints on canvas.
 
-**Semantic Naming:** Colors use semantic names (brand, accent-cyan, highlight) that map to current color choices. This allows theme changes without code updates - simply update hex values in tailwind.config.ts.
+**Semantic Naming:** Colors use semantic names (brand, brand-secondary, highlight) that map to current color choices. This allows theme changes without code updates - simply update hex values in tailwind.config.ts.
 
 **Key principles:**
 - Light mode as primary experience
@@ -56,13 +56,13 @@ These are the "artist's paints" - bold, saturated colors inspired by primary hue
 **Current Color:** Bright Red
 **Rationale:** Bold, energetic, and attention-grabbing without being aggressive. This is the color that makes visitors take action.
 
-### Accent Cyan (Secondary)
+### Brand Secondary (Secondary)
 
 | Name | Hex | RGB | Usage |
 |------|-----|-----|-------|
-| Accent Cyan | `#06B6D4` | rgb(6, 182, 212) | Secondary actions, technical content highlights |
-| Accent Cyan Dark | `#0891B2` | rgb(8, 145, 178) | Hover states |
-| Accent Cyan Light | `#CFFAFE` | rgb(207, 250, 254) | Backgrounds, code highlights |
+| Brand Secondary | `#06B6D4` | rgb(6, 182, 212) | Secondary actions, technical content highlights |
+| Brand Secondary Dark | `#0891B2` | rgb(8, 145, 178) | Hover states |
+| Brand Secondary Light | `#CFFAFE` | rgb(207, 250, 254) | Backgrounds, code highlights |
 
 **Current Color:** Cyan
 **Rationale:** Technical and trustworthy. Provides cool contrast to the warm brand color. Perfect for engineering content.
@@ -106,7 +106,7 @@ While light mode is primary, here's a proposed dark mode palette for future impl
 | Dark Text Primary | `#E5E7EB` | rgb(229, 231, 235) | Main text |
 | Dark Text Secondary | `#9CA3AF` | rgb(156, 163, 175) | Supporting text |
 
-**Note:** Accent colors (brand, accent-cyan, highlight) remain the same in dark mode, providing consistency across themes. The bold saturation works well against both light and dark backgrounds.
+**Note:** Accent colors (brand, brand-secondary, highlight) remain the same in dark mode, providing consistency across themes. The bold saturation works well against both light and dark backgrounds.
 
 ---
 
@@ -120,15 +120,15 @@ All color combinations meet **WCAG 2.1 Level AA** requirements at minimum:
 - **Text Secondary (`#6B7280`)**: 5.2:1 - AA (normal text)
 - **Brand (`#EF4444`)**: 4.5:1 - AA (normal text)
 - **Brand Dark (`#DC2626`)**: 5.2:1 - AA (normal text)
-- **Accent Cyan (`#06B6D4`)**: 3.5:1 - AA (large text only, 18px+)
-- **Accent Cyan Dark (`#0891B2`)**: 4.1:1 - AA (normal text)
+- **Brand Secondary (`#06B6D4`)**: 3.5:1 - AA (large text only, 18px+)
+- **Brand Secondary Dark (`#0891B2`)**: 4.1:1 - AA (normal text)
 - **Highlight Dark (`#65A30D`)**: 4.0:1 - AA (normal text)
 
 ### Best Practices
 
-- Use **Brand**, **Brand Dark**, **Accent Cyan Dark**, or **Highlight Dark** for body text on light backgrounds
-- Use **Accent Cyan** for large headlines (18px+) only, not body text
-- Never use light accent colors (Brand Light, Accent Cyan Light, Highlight Light) for text
+- Use **Brand**, **Brand Dark**, **Brand Secondary Dark**, or **Highlight Dark** for body text on light backgrounds
+- Use **Brand Secondary** for large headlines (18px+) only, not body text
+- Never use light accent colors (Brand Light, Brand Secondary Light, Highlight Light) for text
 - Always pair text colors with sufficient background contrast
 
 ---
@@ -140,9 +140,9 @@ All color combinations meet **WCAG 2.1 Level AA** requirements at minimum:
 - **Primary CTA**: Brand button with white text
   - Default: `bg-brand text-white`
   - Hover: `bg-brand-dark`
-- **Secondary CTA**: Accent Cyan button with white text or black border
-  - Default: `bg-accent-cyan text-white` or `border-black text-black`
-  - Hover: `bg-accent-cyan-dark` or `bg-black text-white`
+- **Secondary CTA**: Brand Secondary button with white text or black border
+  - Default: `bg-brand-secondary text-white` or `border-black text-black`
+  - Hover: `bg-brand-secondary-dark` or `bg-black text-white`
 - **Text Links**: Brand with underline on hover
   - Default: `text-brand`
   - Hover: `text-brand-dark underline`
@@ -151,20 +151,20 @@ All color combinations meet **WCAG 2.1 Level AA** requirements at minimum:
 
 - **Main Background**: Canvas (`#FAFAFA`)
 - **Cards/Panels**: Surface (`#FFFFFF`) with subtle shadow
-- **Highlighted Sections**: Brand Light, Accent Cyan Light, or Highlight Light backgrounds with appropriate text
+- **Highlighted Sections**: Brand Light, Brand Secondary Light, or Highlight Light backgrounds with appropriate text
 
 ### Code and Technical Content
 
-- **Inline Code**: Accent Cyan Light background with Accent Cyan Dark text
+- **Inline Code**: Brand Secondary Light background with Brand Secondary Dark text
 - **Code Blocks**: Surface with Border, syntax highlighting using accent colors
-- **Technical Highlights**: Accent Cyan for technical terms, Highlight for special concepts
+- **Technical Highlights**: Brand Secondary for technical terms, Highlight for special concepts
 
 ### Visual Hierarchy
 
 1. **Black Accent**: Large headlines, critical information
 2. **Text Primary**: Body text, descriptions
 3. **Brand**: Primary actions, important highlights, urgent calls-to-action
-4. **Accent Cyan**: Secondary actions, technical content, trustworthy elements
+4. **Brand Secondary**: Secondary actions, technical content, trustworthy elements
 5. **Highlight**: Special moments, creative elements, highlights
 6. **Text Secondary**: Supporting information
 7. **Border**: Separation and structure
@@ -198,7 +198,7 @@ const config: Config = {
           DEFAULT: '#EF4444',  // Currently: Bright Red
           dark: '#DC2626',
         },
-        'accent-cyan': {
+        'brand-secondary': {
           light: '#CFFAFE',
           DEFAULT: '#06B6D4',  // Currently: Cyan
           dark: '#0891B2',
@@ -257,7 +257,7 @@ Here's how the colors work together:
 - **Headlines** in `black` for impact
 - **Body text** in `text-primary` for readability
 - **Primary CTAs** in `brand` for bold action
-- **Technical highlights** in `accent-cyan` for credibility and trust
+- **Technical highlights** in `brand-secondary` for credibility and trust
 - **Special moments** in `highlight` for warmth and creativity
 - **Cards** on `surface` with subtle borders
 
@@ -277,7 +277,7 @@ Here's how the colors work together:
 <article class="bg-surface border border-border rounded-lg p-6">
   <h3 class="text-2xl font-bold text-black-accent">FLUID Water Meter</h3>
   <p class="text-text-primary mt-2">IoT + ML for leak detection</p>
-  <span class="inline-block bg-accent-cyan-light text-accent-cyan-dark px-3 py-1 rounded text-sm mt-4">
+  <span class="inline-block bg-brand-secondary-light text-brand-secondary-dark px-3 py-1 rounded text-sm mt-4">
     Signal Processing
   </span>
   <span class="inline-block bg-brand-light text-brand-dark px-3 py-1 rounded text-sm mt-4 ml-2">
@@ -295,7 +295,7 @@ Here's how the colors work together:
 
 Before moving to typography, please review:
 
-1. **Do the semantic color names make sense?** Brand, Accent Cyan, Highlight
+1. **Do the semantic color names make sense?** Brand, Brand Secondary, Highlight
 2. **Bright red as brand color** - Does this feel confident and action-oriented?
 3. **Cyan as secondary** - Does this balance the warm brand with technical credibility?
 4. **Lime as highlight** - Does this add the right creative accent?

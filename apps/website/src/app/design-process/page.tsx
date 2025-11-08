@@ -63,7 +63,7 @@ export default function DesignProcessPage() {
             {/* Timeline Visual */}
             <div className="relative">
               {/* Vertical line connector - hidden on mobile, shown on md+ */}
-              <div className="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand via-accent-cyan to-highlight" />
+              <div className="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand via-brand-secondary to-highlight" />
 
               {/* Phase 1: Brand Foundation */}
               <div className="relative flex gap-6 mb-8">
@@ -81,7 +81,7 @@ export default function DesignProcessPage() {
 
               {/* Phase 2: Visual System */}
               <div className="relative flex gap-6 mb-8">
-                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-accent-cyan flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-brand-secondary flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
                   2
                 </div>
                 <div className="flex-grow pt-2">
@@ -125,7 +125,7 @@ export default function DesignProcessPage() {
 
               {/* Phase 5: Implementation */}
               <div className="relative flex gap-6">
-                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-accent-cyan flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-brand-secondary flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
                   5
                 </div>
                 <div className="flex-grow pt-2">
@@ -260,7 +260,7 @@ export default function DesignProcessPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-accent-cyan hover:bg-accent-cyan hover:text-white"
+                className="border-2 border-brand-secondary hover:bg-brand-secondary hover:text-white"
               >
                 ← Back to Home
               </Button>

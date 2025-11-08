@@ -8,9 +8,9 @@ const featureCardVariants = cva(
   {
     variants: {
       background: {
-        "gradient-primary": "bg-gradient-to-br from-brand-light/30 via-accent-cyan-light/30 to-highlight-light/30",
-        "gradient-reverse": "bg-gradient-to-br from-accent-cyan-light/30 via-highlight-light/30 to-brand-light/30",
-        "gradient-subtle": "bg-gradient-to-br from-gradient-brand-subtle via-canvas to-gradient-accent-cyan-subtle",
+        "gradient-primary": "bg-gradient-to-br from-brand-light/30 via-brand-secondary-light/30 to-highlight-light/30",
+        "gradient-reverse": "bg-gradient-to-br from-brand-secondary-light/30 via-highlight-light/30 to-brand-light/30",
+        "gradient-subtle": "bg-gradient-to-br from-gradient-brand-subtle via-canvas to-gradient-brand-secondary-subtle",
         surface: "bg-surface",
         canvas: "bg-canvas",
       },
@@ -19,7 +19,7 @@ const featureCardVariants = cva(
         light: "border border-border-default",
         default: "border-2 border-border-default",
         brand: "border-2 border-border-default hover:border-brand",
-        info: "border-2 border-border-default hover:border-accent-cyan",
+        info: "border-2 border-border-default hover:border-brand-secondary",
         highlight: "border-2 border-border-default hover:border-highlight",
       },
       padding: {

@@ -10,7 +10,7 @@ export function HomepageHero({
   showAccent = true,
 }: HomepageHeroProps) {
   return (
-    <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-gradient-brand-subtle via-canvas to-gradient-accent-cyan-subtle">
+    <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-gradient-brand-subtle via-canvas to-gradient-brand-secondary-subtle">
       <div className="container mx-auto px-6 py-16 max-w-2xl">
         {/* Variant: Direct Intro */}
         {variant === "direct" && (
@@ -38,7 +38,7 @@ export function HomepageHero({
             {showAccent && (
               <div className="flex gap-2" aria-hidden="true">
                 <div className="w-2 h-2 rounded-full bg-brand" />
-                <div className="w-2 h-2 rounded-full bg-accent-cyan" />
+                <div className="w-2 h-2 rounded-full bg-brand-secondary" />
                 <div className="w-2 h-2 rounded-full bg-highlight" />
               </div>
             )}

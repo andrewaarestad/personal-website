@@ -76,7 +76,7 @@ export default function MobileHeroPreview() {
           <p className="text-body-sm text-text-secondary mb-6 max-w-2xl">
             Emphasizes the &quot;pragmatic&quot; brand pillar. Opens with what
             you DO, not who you are. Three-dot accent references the color
-            palette (brand, accent-cyan, highlight).
+            palette (brand, brand-secondary, highlight).
           </p>
         </div>
         <div className="max-w-md mx-auto">
@@ -135,9 +135,9 @@ export default function MobileHeroPreview() {
               Color Accents
             </h3>
             <p className="text-body text-text-secondary">
-              Subtle gradient background (brand to accent-cyan) provides visual
+              Subtle gradient background (brand to brand-secondary) provides visual
               interest without overwhelming. Accent elements use brand colors
-              (brand, accent-cyan, highlight) as small visual anchors.
+              (brand, brand-secondary, highlight) as small visual anchors.
             </p>
           </div>
           <div>

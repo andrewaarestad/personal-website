@@ -277,7 +277,7 @@ Use appropriate text sizes for different contexts:
 ```html
 <!-- Inline code -->
 <p>
-  Use the <code class="font-mono text-code bg-accent-cyan-light text-accent-cyan-dark px-2 py-1 rounded">
+  Use the <code class="font-mono text-code bg-brand-secondary-light text-brand-secondary-dark px-2 py-1 rounded">
     npm install
   </code> command.
 </p>
@@ -303,7 +303,7 @@ Use appropriate text sizes for different contexts:
 </button>
 
 <!-- Badge/Label -->
-<span class="text-label-sm font-medium bg-accent-cyan-light text-accent-cyan-dark px-3 py-1 rounded">
+<span class="text-label-sm font-medium bg-brand-secondary-light text-brand-secondary-dark px-3 py-1 rounded">
   Machine Learning
 </span>
 
@@ -342,10 +342,10 @@ Use appropriate text sizes for different contexts:
 ### Technical Content
 
 ```html
-<h3 class="text-h3 font-bold text-accent-cyan">
+<h3 class="text-h3 font-bold text-brand-secondary">
   Implementation Details
 </h3>
-<code class="font-mono text-code bg-accent-cyan-light text-accent-cyan-dark">
+<code class="font-mono text-code bg-brand-secondary-light text-brand-secondary-dark">
   Kalman filtering for state estimation
 </code>
 ```
@@ -452,7 +452,7 @@ All text meets WCAG AA standards when paired with recommended colors:
   </div>
 
   <div class="flex gap-2 mt-6">
-    <span class="text-label-sm font-medium bg-accent-cyan-light text-accent-cyan-dark px-3 py-1 rounded">
+    <span class="text-label-sm font-medium bg-brand-secondary-light text-brand-secondary-dark px-3 py-1 rounded">
       Signal Processing
     </span>
     <span class="text-label-sm font-medium bg-brand-light text-brand-dark px-3 py-1 rounded">

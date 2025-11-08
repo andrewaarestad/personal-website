@@ -14,8 +14,8 @@ describe("Button", () => {
     it("renders info variant with correct classes", () => {
       render(<Button variant="info">Click me</Button>);
       const button = screen.getByRole("button");
-      expect(button).toHaveClass("bg-accent-cyan");
-      expect(button).toHaveClass("hover:bg-accent-cyan-dark");
+      expect(button).toHaveClass("bg-brand-secondary");
+      expect(button).toHaveClass("hover:bg-brand-secondary-dark");
     });
 
     it("renders highlight variant with correct classes", () => {
@@ -84,7 +84,7 @@ describe("Button", () => {
     it("combines semantic variant with custom className", () => {
       render(<Button variant="info" className="custom-class">Click me</Button>);
       const button = screen.getByRole("button");
-      expect(button).toHaveClass("bg-accent-cyan");
+      expect(button).toHaveClass("bg-brand-secondary");
       expect(button).toHaveClass("custom-class");
     });
   });

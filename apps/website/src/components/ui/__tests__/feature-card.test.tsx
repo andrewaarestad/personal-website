@@ -15,14 +15,14 @@ describe("FeatureCard", () => {
       render(<FeatureCard background="gradient-primary" data-testid="card">Content</FeatureCard>);
       const card = screen.getByTestId("card");
       expect(card).toHaveClass("from-brand-light/30");
-      expect(card).toHaveClass("via-accent-cyan-light/30");
+      expect(card).toHaveClass("via-brand-secondary-light/30");
       expect(card).toHaveClass("to-highlight-light/30");
     });
 
     it("renders gradient-reverse variant with correct classes", () => {
       render(<FeatureCard background="gradient-reverse" data-testid="card">Content</FeatureCard>);
       const card = screen.getByTestId("card");
-      expect(card).toHaveClass("from-accent-cyan-light/30");
+      expect(card).toHaveClass("from-brand-secondary-light/30");
       expect(card).toHaveClass("via-highlight-light/30");
       expect(card).toHaveClass("to-brand-light/30");
     });
@@ -32,7 +32,7 @@ describe("FeatureCard", () => {
       const card = screen.getByTestId("card");
       expect(card).toHaveClass("from-gradient-brand-subtle");
       expect(card).toHaveClass("via-canvas");
-      expect(card).toHaveClass("to-gradient-accent-cyan-subtle");
+      expect(card).toHaveClass("to-gradient-brand-secondary-subtle");
     });
 
     it("renders surface background variant", () => {
@@ -80,7 +80,7 @@ describe("FeatureCard", () => {
     it("renders info border with hover state", () => {
       render(<FeatureCard border="info" data-testid="card">Content</FeatureCard>);
       const card = screen.getByTestId("card");
-      expect(card).toHaveClass("hover:border-accent-cyan");
+      expect(card).toHaveClass("hover:border-brand-secondary");
     });
 
     it("renders highlight border with hover state", () => {
@@ -144,7 +144,7 @@ describe("FeatureCard", () => {
       );
       const card = screen.getByTestId("card");
       expect(card).toHaveClass("bg-surface");
-      expect(card).toHaveClass("hover:border-accent-cyan");
+      expect(card).toHaveClass("hover:border-brand-secondary");
       expect(card).toHaveClass("p-6");
     });
 

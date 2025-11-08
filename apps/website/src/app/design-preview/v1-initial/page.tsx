@@ -114,17 +114,17 @@ export default function MoodBoardV1Initial() {
                   <ColorSwatch
                     name="Light"
                     hex="#CFFAFE"
-                    className="bg-accent-cyan-light"
+                    className="bg-brand-secondary-light"
                   />
                   <ColorSwatch
                     name="Default"
                     hex="#06B6D4"
-                    className="bg-accent-cyan text-white"
+                    className="bg-brand-secondary text-white"
                   />
                   <ColorSwatch
                     name="Dark"
                     hex="#0891B2"
-                    className="bg-accent-cyan-dark text-white"
+                    className="bg-brand-secondary-dark text-white"
                   />
                 </div>
               </div>
@@ -240,7 +240,7 @@ export default function MoodBoardV1Initial() {
           <div className="space-y-4">
             <p className="text-body text-text-primary">
               Inline code example:{" "}
-              <code className="font-mono text-code bg-accent-cyan-light text-accent-cyan-dark px-2 py-1 rounded">
+              <code className="font-mono text-code bg-brand-secondary-light text-brand-secondary-dark px-2 py-1 rounded">
                 const result = await processData()
               </code>
             </p>
@@ -371,7 +371,7 @@ export default function MoodBoardV1Initial() {
                 monitoring.
               </p>
               <div className="flex gap-2 mt-4 flex-wrap">
-                <Badge className="bg-accent-cyan-light text-accent-cyan-dark border-0">
+                <Badge className="bg-brand-secondary-light text-brand-secondary-dark border-0">
                   Signal Processing
                 </Badge>
                 <Badge className="bg-brand-light text-brand-dark border-0">
@@ -397,7 +397,7 @@ export default function MoodBoardV1Initial() {
                 data points, with automatic versioning and deployment.
               </p>
               <div className="flex gap-2 mt-4 flex-wrap">
-                <Badge className="bg-accent-cyan-light text-accent-cyan-dark border-0">
+                <Badge className="bg-brand-secondary-light text-brand-secondary-dark border-0">
                   Cloud Architecture
                 </Badge>
                 <Badge className="bg-highlight-light text-highlight-dark border-0">
@@ -443,7 +443,7 @@ export default function MoodBoardV1Initial() {
       </section>
 
       {/* Hero Section Example */}
-      <section className="bg-gradient-to-br from-canvas via-gradient-brand-subtle to-gradient-accent-cyan-subtle py-24">
+      <section className="bg-gradient-to-br from-canvas via-gradient-brand-subtle to-gradient-brand-secondary-subtle py-24">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-black mb-6">
@@ -485,7 +485,7 @@ export default function MoodBoardV1Initial() {
               <div className="flex gap-2">
                 <Badge
                   variant="outline"
-                  className="text-accent-cyan-dark border-accent-cyan-dark"
+                  className="text-brand-secondary-dark border-brand-secondary-dark"
                 >
                   Machine Learning
                 </Badge>
@@ -618,7 +618,7 @@ if (predictionConfidence < THRESHOLD) {
                     Generative AI Platform
                   </TableCell>
                   <TableCell>
-                    <Badge className="bg-accent-cyan-light text-accent-cyan-dark border-0">
+                    <Badge className="bg-brand-secondary-light text-brand-secondary-dark border-0">
                       NLP
                     </Badge>
                   </TableCell>
@@ -658,7 +658,7 @@ if (predictionConfidence < THRESHOLD) {
                     Computer Vision Pipeline
                   </TableCell>
                   <TableCell>
-                    <Badge className="bg-accent-cyan-light text-accent-cyan-dark border-0">
+                    <Badge className="bg-brand-secondary-light text-brand-secondary-dark border-0">
                       CV
                     </Badge>
                   </TableCell>
@@ -701,7 +701,7 @@ if (predictionConfidence < THRESHOLD) {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="aspect-video w-full bg-gradient-to-br from-brand-light via-accent-cyan-light to-highlight-light rounded-lg flex items-center justify-center border border-border-default">
+              <div className="aspect-video w-full bg-gradient-to-br from-brand-light via-brand-secondary-light to-highlight-light rounded-lg flex items-center justify-center border border-border-default">
                 <div className="text-center space-y-4">
                   <div className="text-6xl">🎬</div>
                   <p className="text-body-lg text-text-primary font-medium">
@@ -718,7 +718,7 @@ if (predictionConfidence < THRESHOLD) {
               <p className="text-body-sm text-text-secondary mt-4">
                 Replace this placeholder with an iframe or video element.
                 Example:{" "}
-                <code className="font-mono text-code bg-accent-cyan-light text-accent-cyan-dark px-2 py-0.5 rounded text-xs">
+                <code className="font-mono text-code bg-brand-secondary-light text-brand-secondary-dark px-2 py-0.5 rounded text-xs">
                   &lt;iframe src=&quot;...&quot; /&gt;
                 </code>
               </p>
