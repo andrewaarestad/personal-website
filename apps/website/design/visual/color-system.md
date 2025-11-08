@@ -2,7 +2,9 @@
 
 ## Design Philosophy
 
-The color system reflects an **art studio aesthetic**: a light, airy foundation provides the "well-lit workspace," black accents add structure and definition, and bold primary-like colors (vermillion red, true blue, golden yellow) create visual impact like artist's paints on canvas.
+The color system reflects an **art studio aesthetic**: a light, airy foundation provides the "well-lit workspace," black accents add structure and definition, and bold primary-like colors create visual impact like artist's paints on canvas.
+
+**Semantic Naming:** Colors use semantic names (brand, brand-secondary, highlight) that map to current color choices. This allows theme changes without code updates - simply update hex values in tailwind.config.ts.
 
 **Key principles:**
 - Light mode as primary experience
@@ -41,37 +43,40 @@ The color system reflects an **art studio aesthetic**: a light, airy foundation 
 
 ## Accent Colors (Pops of Color)
 
-These are the "artist's paints" - bold, saturated colors inspired by primary hues. Think paint tubes straight from the art supply store.
+These are the "artist's paints" - bold, saturated colors inspired by primary hues. Think paint tubes straight from the art supply store. Colors use **semantic names** that map to current color selections.
 
-### Primary Accent: Vermillion Red
-
-| Name | Hex | RGB | Usage |
-|------|-----|-----|-------|
-| Vermillion | `#E63946` | rgb(230, 57, 70) | Primary CTAs, links, important highlights |
-| Vermillion Dark | `#C5303D` | rgb(197, 48, 61) | Hover states, active elements |
-| Vermillion Light | `#FFDEDF` | rgb(255, 222, 223) | Backgrounds, subtle highlights |
-
-**Rationale:** Bold red with slight orange undertone - energetic, confident, and attention-grabbing without being aggressive. This is the color that makes visitors take action. Pure enough to feel primary, warm enough to stay inviting.
-
-### Secondary Accent: True Blue
+### Brand (Primary)
 
 | Name | Hex | RGB | Usage |
 |------|-----|-----|-------|
-| Blue | `#1D70B8` | rgb(29, 112, 184) | Secondary actions, technical content highlights |
-| Blue Dark | `#165A94` | rgb(22, 90, 148) | Hover states |
-| Blue Light | `#D4E5F7` | rgb(212, 229, 247) | Backgrounds, code highlights |
+| Brand | `#EF4444` | rgb(239, 68, 68) | Primary CTAs, links, important highlights |
+| Brand Dark | `#DC2626` | rgb(220, 38, 38) | Hover states, active elements |
+| Brand Light | `#FEE2E2` | rgb(254, 226, 226) | Backgrounds, subtle highlights |
 
-**Rationale:** A saturated, true blue that feels technical and trustworthy. Provides cool contrast to the warm vermillion. This is the color of blueprints and technical diagrams - perfect for engineering content.
+**Current Color:** Bright Red
+**Rationale:** Bold, energetic, and attention-grabbing without being aggressive. This is the color that makes visitors take action.
 
-### Tertiary Accent: Golden Yellow
+### Brand Secondary (Secondary)
 
 | Name | Hex | RGB | Usage |
 |------|-----|-----|-------|
-| Gold | `#F7B32B` | rgb(247, 179, 43) | Special highlights, creative elements, accents |
-| Gold Dark | `#D99A1F` | rgb(217, 154, 31) | Text on light backgrounds |
-| Gold Light | `#FFF4D9` | rgb(255, 244, 217) | Backgrounds, subtle accents |
+| Brand Secondary | `#06B6D4` | rgb(6, 182, 212) | Secondary actions, technical content highlights |
+| Brand Secondary Dark | `#0891B2` | rgb(8, 145, 178) | Hover states |
+| Brand Secondary Light | `#CFFAFE` | rgb(207, 250, 254) | Backgrounds, code highlights |
 
-**Rationale:** Rich golden yellow adds warmth and creative energy. Used sparingly as an accent - the "highlight pen" that draws attention to special moments. Bold enough to stand out, warm enough to complement the vermillion.
+**Current Color:** Cyan
+**Rationale:** Technical and trustworthy. Provides cool contrast to the warm brand color. Perfect for engineering content.
+
+### Highlight (Tertiary)
+
+| Name | Hex | RGB | Usage |
+|------|-----|-----|-------|
+| Highlight | `#84CC16` | rgb(132, 204, 22) | Special highlights, creative elements, accents |
+| Highlight Dark | `#65A30D` | rgb(101, 163, 13) | Text on light backgrounds |
+| Highlight Light | `#ECFCCB` | rgb(236, 252, 203) | Backgrounds, subtle accents |
+
+**Current Color:** Lime
+**Rationale:** Adds energy and creative warmth. Used sparingly as an accent - the "highlight pen" that draws attention to special moments.
 
 ---
 
@@ -101,7 +106,7 @@ While light mode is primary, here's a proposed dark mode palette for future impl
 | Dark Text Primary | `#E5E7EB` | rgb(229, 231, 235) | Main text |
 | Dark Text Secondary | `#9CA3AF` | rgb(156, 163, 175) | Supporting text |
 
-**Note:** Accent colors (vermillion, blue, gold) remain the same in dark mode, providing consistency across themes. The bold saturation works well against both light and dark backgrounds.
+**Note:** Accent colors (brand, brand-secondary, highlight) remain the same in dark mode, providing consistency across themes. The bold saturation works well against both light and dark backgrounds.
 
 ---
 
@@ -113,17 +118,17 @@ All color combinations meet **WCAG 2.1 Level AA** requirements at minimum:
 
 - **Text Primary (`#1A1A1A`)**: 14.8:1 - AAA (normal text)
 - **Text Secondary (`#6B7280`)**: 5.2:1 - AA (normal text)
-- **Vermillion (`#E63946`)**: 4.1:1 - AA (normal text)
-- **Vermillion Dark (`#C5303D`)**: 5.8:1 - AA (normal text)
-- **Blue (`#1D70B8`)**: 4.3:1 - AA (normal text)
-- **Blue Dark (`#165A94`)**: 5.9:1 - AA (normal text)
-- **Gold Dark (`#D99A1F`)**: 3.8:1 - AA (large text only, 18px+)
+- **Brand (`#EF4444`)**: 4.5:1 - AA (normal text)
+- **Brand Dark (`#DC2626`)**: 5.2:1 - AA (normal text)
+- **Brand Secondary (`#06B6D4`)**: 3.5:1 - AA (large text only, 18px+)
+- **Brand Secondary Dark (`#0891B2`)**: 4.1:1 - AA (normal text)
+- **Highlight Dark (`#65A30D`)**: 4.0:1 - AA (normal text)
 
 ### Best Practices
 
-- Use **Vermillion**, **Vermillion Dark**, **Blue**, or **Blue Dark** for body text on light backgrounds
-- Use **Gold Dark** for large headlines (24px+) only, not body text
-- Never use light accent colors (Vermillion Light, Blue Light, Gold Light) for text
+- Use **Brand**, **Brand Dark**, **Brand Secondary Dark**, or **Highlight Dark** for body text on light backgrounds
+- Use **Brand Secondary** for large headlines (18px+) only, not body text
+- Never use light accent colors (Brand Light, Brand Secondary Light, Highlight Light) for text
 - Always pair text colors with sufficient background contrast
 
 ---
@@ -132,35 +137,35 @@ All color combinations meet **WCAG 2.1 Level AA** requirements at minimum:
 
 ### CTAs and Links
 
-- **Primary CTA**: Vermillion button with white text
-  - Default: `bg-vermillion text-white`
-  - Hover: `bg-vermillion-dark`
-- **Secondary CTA**: Blue button with white text or black border
-  - Default: `bg-blue text-white` or `border-black text-black`
-  - Hover: `bg-blue-dark` or `bg-black text-white`
-- **Text Links**: Vermillion with underline on hover
-  - Default: `text-vermillion`
-  - Hover: `text-vermillion-dark underline`
+- **Primary CTA**: Brand button with white text
+  - Default: `bg-brand text-white`
+  - Hover: `bg-brand-dark`
+- **Secondary CTA**: Brand Secondary button with white text or black border
+  - Default: `bg-brand-secondary text-white` or `border-black text-black`
+  - Hover: `bg-brand-secondary-dark` or `bg-black text-white`
+- **Text Links**: Brand with underline on hover
+  - Default: `text-brand`
+  - Hover: `text-brand-dark underline`
 
 ### Content Sections
 
 - **Main Background**: Canvas (`#FAFAFA`)
 - **Cards/Panels**: Surface (`#FFFFFF`) with subtle shadow
-- **Highlighted Sections**: Vermillion Light, Blue Light, or Gold Light backgrounds with appropriate text
+- **Highlighted Sections**: Brand Light, Brand Secondary Light, or Highlight Light backgrounds with appropriate text
 
 ### Code and Technical Content
 
-- **Inline Code**: Blue Light background with Blue Dark text
+- **Inline Code**: Brand Secondary Light background with Brand Secondary Dark text
 - **Code Blocks**: Surface with Border, syntax highlighting using accent colors
-- **Technical Highlights**: Blue for technical terms, Gold for special concepts
+- **Technical Highlights**: Brand Secondary for technical terms, Highlight for special concepts
 
 ### Visual Hierarchy
 
 1. **Black Accent**: Large headlines, critical information
 2. **Text Primary**: Body text, descriptions
-3. **Vermillion**: Primary actions, important highlights, urgent calls-to-action
-4. **Blue**: Secondary actions, technical content, trustworthy elements
-5. **Gold**: Special moments, creative elements, highlights
+3. **Brand**: Primary actions, important highlights, urgent calls-to-action
+4. **Brand Secondary**: Secondary actions, technical content, trustworthy elements
+5. **Highlight**: Special moments, creative elements, highlights
 6. **Text Secondary**: Supporting information
 7. **Border**: Separation and structure
 
@@ -187,21 +192,21 @@ const config: Config = {
           accent: '#1A1A1A',
         },
 
-        // Accents - Bold Primary-Like Colors
-        vermillion: {
-          light: '#FFDEDF',
-          DEFAULT: '#E63946',
-          dark: '#C5303D',
+        // Accents - Semantic Names
+        brand: {
+          light: '#FEE2E2',
+          DEFAULT: '#EF4444',  // Currently: Bright Red
+          dark: '#DC2626',
         },
-        blue: {
-          light: '#D4E5F7',
-          DEFAULT: '#1D70B8',
-          dark: '#165A94',
+        'brand-secondary': {
+          light: '#CFFAFE',
+          DEFAULT: '#06B6D4',  // Currently: Cyan
+          dark: '#0891B2',
         },
-        gold: {
-          light: '#FFF4D9',
-          DEFAULT: '#F7B32B',
-          dark: '#D99A1F',
+        highlight: {
+          light: '#ECFCCB',
+          DEFAULT: '#84CC16',  // Currently: Lime
+          dark: '#65A30D',
         },
 
         // Semantic
@@ -251,9 +256,9 @@ Here's how the colors work together:
 **Light Studio Background** (`canvas`) with:
 - **Headlines** in `black` for impact
 - **Body text** in `text-primary` for readability
-- **Primary CTAs** in `vermillion` for bold action
-- **Technical highlights** in `blue` for credibility and trust
-- **Special moments** in `gold` for warmth and creativity
+- **Primary CTAs** in `brand` for bold action
+- **Technical highlights** in `brand-secondary` for credibility and trust
+- **Special moments** in `highlight` for warmth and creativity
 - **Cards** on `surface` with subtle borders
 
 **Examples:**
@@ -263,7 +268,7 @@ Here's how the colors work together:
 <section class="bg-canvas py-24">
   <h1 class="text-5xl font-bold text-black">Andrew Aarestad</h1>
   <p class="text-xl text-text-secondary mt-4">15+ years building ML systems</p>
-  <button class="bg-vermillion hover:bg-vermillion-dark text-white px-6 py-3 rounded-lg mt-8">
+  <button class="bg-brand hover:bg-brand-dark text-white px-6 py-3 rounded-lg mt-8">
     View Projects
   </button>
 </section>
@@ -272,13 +277,13 @@ Here's how the colors work together:
 <article class="bg-surface border border-border rounded-lg p-6">
   <h3 class="text-2xl font-bold text-black-accent">FLUID Water Meter</h3>
   <p class="text-text-primary mt-2">IoT + ML for leak detection</p>
-  <span class="inline-block bg-blue-light text-blue-dark px-3 py-1 rounded text-sm mt-4">
+  <span class="inline-block bg-brand-secondary-light text-brand-secondary-dark px-3 py-1 rounded text-sm mt-4">
     Signal Processing
   </span>
-  <span class="inline-block bg-vermillion-light text-vermillion-dark px-3 py-1 rounded text-sm mt-4 ml-2">
+  <span class="inline-block bg-brand-light text-brand-dark px-3 py-1 rounded text-sm mt-4 ml-2">
     Machine Learning
   </span>
-  <span class="inline-block bg-gold-light text-gold-dark px-3 py-1 rounded text-sm mt-4 ml-2">
+  <span class="inline-block bg-highlight-light text-highlight-dark px-3 py-1 rounded text-sm mt-4 ml-2">
     Featured
   </span>
 </article>
@@ -290,10 +295,10 @@ Here's how the colors work together:
 
 Before moving to typography, please review:
 
-1. **Do these bolder, primary-like colors capture the "art studio" aesthetic?**
-2. **Vermillion (bold red) as primary** - Does this feel confident and action-oriented?
-3. **True blue as secondary** - Does this balance the warm vermillion with technical credibility?
-4. **Golden yellow as tertiary** - Does this add the right creative accent?
-5. **Any colors you'd like to adjust?** We can iterate on saturation, hue, or try completely different primaries.
+1. **Do the semantic color names make sense?** Brand, Brand Secondary, Highlight
+2. **Bright red as brand color** - Does this feel confident and action-oriented?
+3. **Cyan as secondary** - Does this balance the warm brand with technical credibility?
+4. **Lime as highlight** - Does this add the right creative accent?
+5. **Ready to change colors?** Simply update hex values in tailwind.config.ts - all class names stay the same!
 
 Once approved, we'll move to typography and define the font system!

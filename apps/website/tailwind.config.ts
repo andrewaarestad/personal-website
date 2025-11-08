@@ -87,29 +87,27 @@ const config: Config = {
           accent: '#1A1A1A',
         },
 
-        // Accents - Electric Modern Theme
-        // Primary: Bright Red
-        vermillion: {
+        // Brand Theme Colors - Electric Modern Theme
+        // Semantic names that map to current color choices
+        brand: {
           light: '#FEE2E2',
-          DEFAULT: '#EF4444',
+          DEFAULT: '#EF4444',  // Currently: Bright Red
           dark: '#DC2626',
         },
-        // Secondary: Cyan
-        blue: {
+        'brand-secondary': {
           light: '#CFFAFE',
-          DEFAULT: '#06B6D4',
+          DEFAULT: '#06B6D4',  // Currently: Cyan
           dark: '#0891B2',
         },
-        // Tertiary: Lime
-        gold: {
+        highlight: {
           light: '#ECFCCB',
-          DEFAULT: '#84CC16',
+          DEFAULT: '#84CC16',  // Currently: Lime
           dark: '#65A30D',
         },
 
         // Gradient-specific colors with explicit opacity for compatibility
-        'gradient-vermillion-subtle': 'rgba(254, 226, 226, 0.1)',
-        'gradient-blue-subtle': 'rgba(207, 250, 254, 0.1)',
+        'gradient-brand-subtle': 'rgba(254, 226, 226, 0.1)',
+        'gradient-brand-secondary-subtle': 'rgba(207, 250, 254, 0.1)',
 
         // Semantic
         success: {

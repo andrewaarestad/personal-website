@@ -59,7 +59,7 @@ export default function MobileHeroPreview() {
           <p className="text-body-sm text-text-secondary mb-6 max-w-2xl">
             Uses first person with straightforward introduction. The
             &quot;since before it was a household term&quot; adds dry humor
-            without being jokey. Vermillion accent line provides visual anchor.
+            without being jokey. Brand accent line provides visual anchor.
           </p>
         </div>
         <div className="max-w-md mx-auto">
@@ -76,7 +76,7 @@ export default function MobileHeroPreview() {
           <p className="text-body-sm text-text-secondary mb-6 max-w-2xl">
             Emphasizes the &quot;pragmatic&quot; brand pillar. Opens with what
             you DO, not who you are. Three-dot accent references the color
-            palette (vermillion, blue, gold).
+            palette (brand, brand-secondary, highlight).
           </p>
         </div>
         <div className="max-w-md mx-auto">
@@ -89,12 +89,12 @@ export default function MobileHeroPreview() {
         <div className="container mx-auto px-6 py-8 bg-surface">
           <h3 className="text-h6 font-semibold text-black mb-2">
             Variant 3: Understated Expert{" "}
-            <span className="text-vermillion text-body-sm">(Recommended)</span>
+            <span className="text-brand text-body-sm">(Recommended)</span>
           </h3>
           <p className="text-body-sm text-text-secondary mb-6 max-w-2xl">
             Super concise headline with personality. &quot;15+ years
             shipping&quot; is concrete and aligns with voice guide. Follows
-            &quot;start with big picture, add depth&quot; pattern. Gold accent
+            &quot;start with big picture, add depth&quot; pattern. Highlight accent
             line is subtle and warm.
           </p>
         </div>
@@ -135,9 +135,9 @@ export default function MobileHeroPreview() {
               Color Accents
             </h3>
             <p className="text-body text-text-secondary">
-              Subtle gradient background (vermillion to blue) provides visual
+              Subtle gradient background (brand to brand-secondary) provides visual
               interest without overwhelming. Accent elements use brand colors
-              (vermillion, blue, gold) as small visual anchors.
+              (brand, brand-secondary, highlight) as small visual anchors.
             </p>
           </div>
           <div>

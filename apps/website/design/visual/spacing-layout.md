@@ -193,7 +193,7 @@ Large, impactful header section with generous spacing.
     <p class="text-body-xl text-text-secondary max-w-2xl mb-8">
       15+ years building ML systems
     </p>
-    <button class="bg-vermillion hover:bg-vermillion-dark text-white px-6 py-3 rounded-lg">
+    <button class="bg-brand hover:bg-brand-dark text-white px-6 py-3 rounded-lg">
       View Projects
     </button>
   </div>
@@ -390,12 +390,12 @@ Internal spacing for common UI components.
 
 ```html
 <!-- Compact badge -->
-<span class="px-2 py-1 text-label-sm bg-blue-light text-blue-dark rounded">
+<span class="px-2 py-1 text-label-sm bg-brand-secondary-light text-brand-secondary-dark rounded">
   Tag
 </span>
 
 <!-- Standard badge -->
-<span class="px-3 py-1.5 text-label bg-blue-light text-blue-dark rounded-md">
+<span class="px-3 py-1.5 text-label bg-brand-secondary-light text-brand-secondary-dark rounded-md">
   Tag
 </span>
 ```
@@ -643,11 +643,11 @@ Images should adapt to container width:
 Ensure interactive elements have clear focus indicators:
 
 ```html
-<button class="focus:outline-none focus:ring-2 focus:ring-vermillion focus:ring-offset-2">
+<button class="focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2">
   Accessible Button
 </button>
 
-<a href="#" class="focus:outline-none focus:ring-2 focus:ring-blue focus:ring-offset-2">
+<a href="#" class="focus:outline-none focus:ring-2 focus:ring-brand-secondary focus:ring-offset-2">
   Accessible Link
 </a>
 ```
@@ -657,7 +657,7 @@ Ensure interactive elements have clear focus indicators:
 Provide keyboard navigation shortcuts:
 
 ```html
-<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-vermillion text-white px-4 py-2 rounded-lg">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-brand text-white px-4 py-2 rounded-lg">
   Skip to main content
 </a>
 
@@ -696,10 +696,10 @@ Ensure interactive elements are large enough (minimum 44×44px):
         Andrew Aarestad
       </a>
       <div class="flex items-center gap-6">
-        <a href="/projects" class="text-body text-text-primary hover:text-vermillion">
+        <a href="/projects" class="text-body text-text-primary hover:text-brand">
           Projects
         </a>
-        <a href="/about" class="text-body text-text-primary hover:text-vermillion">
+        <a href="/about" class="text-body text-text-primary hover:text-brand">
           About
         </a>
       </div>
@@ -727,8 +727,8 @@ Ensure interactive elements are large enough (minimum 44×44px):
           Links
         </h4>
         <ul class="space-y-2">
-          <li><a href="/projects" class="text-body-sm text-text-secondary hover:text-vermillion">Projects</a></li>
-          <li><a href="/about" class="text-body-sm text-text-secondary hover:text-vermillion">About</a></li>
+          <li><a href="/projects" class="text-body-sm text-text-secondary hover:text-brand">Projects</a></li>
+          <li><a href="/about" class="text-body-sm text-text-secondary hover:text-brand">About</a></li>
         </ul>
       </div>
       <div>
@@ -736,8 +736,8 @@ Ensure interactive elements are large enough (minimum 44×44px):
           Connect
         </h4>
         <ul class="space-y-2">
-          <li><a href="#" class="text-body-sm text-text-secondary hover:text-vermillion">GitHub</a></li>
-          <li><a href="#" class="text-body-sm text-text-secondary hover:text-vermillion">LinkedIn</a></li>
+          <li><a href="#" class="text-body-sm text-text-secondary hover:text-brand">GitHub</a></li>
+          <li><a href="#" class="text-body-sm text-text-secondary hover:text-brand">LinkedIn</a></li>
         </ul>
       </div>
     </div>

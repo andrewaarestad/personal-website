@@ -10,13 +10,13 @@ export function HomepageHero({
   showAccent = true,
 }: HomepageHeroProps) {
   return (
-    <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-gradient-vermillion-subtle via-canvas to-gradient-blue-subtle">
+    <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-gradient-brand-subtle via-canvas to-gradient-brand-secondary-subtle">
       <div className="container mx-auto px-6 py-16 max-w-2xl">
         {/* Variant: Direct Intro */}
         {variant === "direct" && (
           <div className="space-y-8">
             {showAccent && (
-              <div className="w-12 h-1 bg-vermillion" aria-hidden="true" />
+              <div className="w-12 h-1 bg-brand" aria-hidden="true" />
             )}
             <div>
               <h1 className="text-h1 font-extrabold text-black mb-4">
@@ -26,7 +26,7 @@ export function HomepageHero({
                 I like to build products with TypeScript, Python, and C++.
               </p>
             </div>
-            <Button className="bg-vermillion hover:bg-vermillion-dark text-white">
+            <Button variant="brand">
               See my work →
             </Button>
           </div>
@@ -37,9 +37,9 @@ export function HomepageHero({
           <div className="space-y-8">
             {showAccent && (
               <div className="flex gap-2" aria-hidden="true">
-                <div className="w-2 h-2 rounded-full bg-vermillion" />
-                <div className="w-2 h-2 rounded-full bg-blue" />
-                <div className="w-2 h-2 rounded-full bg-gold" />
+                <div className="w-2 h-2 rounded-full bg-brand" />
+                <div className="w-2 h-2 rounded-full bg-brand-secondary" />
+                <div className="w-2 h-2 rounded-full bg-highlight" />
               </div>
             )}
             <div>
@@ -51,7 +51,7 @@ export function HomepageHero({
                 generative AI.
               </p>
             </div>
-            <Button className="bg-vermillion hover:bg-vermillion-dark text-white">
+            <Button variant="brand">
               View projects →
             </Button>
           </div>
@@ -61,7 +61,7 @@ export function HomepageHero({
         {variant === "understated" && (
           <div className="space-y-8">
             {showAccent && (
-              <div className="w-16 h-0.5 bg-gold" aria-hidden="true" />
+              <div className="w-16 h-0.5 bg-highlight" aria-hidden="true" />
             )}
             <div>
               <h1 className="text-h1 font-extrabold text-black mb-6 leading-tight">
@@ -75,7 +75,7 @@ export function HomepageHero({
                 ML pipelines.
               </p>
             </div>
-            <Button className="bg-vermillion hover:bg-vermillion-dark text-white">
+            <Button variant="brand">
               See what I&apos;ve built →
             </Button>
           </div>

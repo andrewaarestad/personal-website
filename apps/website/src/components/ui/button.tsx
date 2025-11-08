@@ -19,6 +19,15 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // Brand semantic variants (mapped to current theme colors)
+        brand:
+          "bg-brand text-white shadow hover:bg-brand-dark",
+        info:
+          "bg-brand-secondary text-white shadow hover:bg-brand-secondary-dark",
+        highlight:
+          "bg-highlight text-white shadow hover:bg-highlight-dark",
+        emphasis:
+          "bg-black text-white shadow hover:bg-black/90",
       },
       size: {
         default: "h-9 px-4 py-2",

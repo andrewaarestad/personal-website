@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { FeatureCard } from "@/components/ui/feature-card";
+import { PageContainer } from "@/components/ui/page-container";
+import { Section } from "@/components/ui/section";
 
 export const metadata: Metadata = {
   title: "Color Palette Exploration | Design Preview",
@@ -16,8 +20,8 @@ type ColorPalette = {
 
 const palettes: ColorPalette[] = [
   {
-    name: "Current Baseline",
-    description: "The current design system - bold vermillion, trustworthy blue, creative gold",
+    name: "Initial Exploration",
+    description: "Our first exploration - bold vermillion, trustworthy blue, creative gold",
     primary: { name: "Vermillion", hex: "#E63946" },
     secondary: { name: "True Blue", hex: "#1D70B8" },
     tertiary: { name: "Golden Yellow", hex: "#F7B32B" },
@@ -89,93 +93,120 @@ const palettes: ColorPalette[] = [
 
 export default function ColorExplorationPage() {
   return (
-    <main className="min-h-screen" style={{ backgroundColor: "#FAFAFA" }}>
+    <main className="min-h-screen bg-canvas">
       {/* Header */}
-      <header
-        style={{
-          borderBottom: "1px solid #D1D5DB",
-          backgroundColor: "#FFFFFF",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1280px",
-            margin: "0 auto",
-            padding: "2rem 1.5rem",
-          }}
-        >
+      <Section className="bg-surface border-b border-border-light">
+        <PageContainer>
           <Link
             href="/"
-            style={{
-              color: "#6B7280",
-              textDecoration: "none",
-              fontSize: "0.875rem",
-              marginBottom: "0.5rem",
-              display: "inline-block",
-            }}
+            className="text-text-secondary no-underline text-body-sm mb-2 inline-block hover:text-text-primary"
           >
             ← Back to Home
           </Link>
-          <h1
-            style={{
-              fontSize: "3rem",
-              fontWeight: "800",
-              color: "#000000",
-              marginBottom: "0.5rem",
-            }}
-          >
+          <h1 className="text-h1 font-extrabold text-black mb-2">
             Color Palette Exploration
           </h1>
-          <p
-            style={{
-              fontSize: "1.125rem",
-              color: "#6B7280",
-              maxWidth: "42rem",
-            }}
-          >
-            Exploring alternative color combinations for the design system. Each
-            palette shows the three accent colors with example components to see
-            how they feel together.
+          <p className="text-body-lg text-text-secondary max-w-2xl">
+            Exploring alternative color combinations for the design system. The
+            active theme uses semantic component variants, while explorations
+            below show alternative color options.
           </p>
-        </div>
-      </header>
+        </PageContainer>
+      </Section>
+
+      {/* Current Active Theme - Uses Real Component System */}
+      <Section>
+        <PageContainer>
+          <div className="mb-8">
+            <h2 className="text-h3 font-bold text-black mb-2">Current Active Theme</h2>
+            <p className="text-body text-text-secondary max-w-3xl mb-8">
+              This section uses the actual shared component system with semantic
+              variant names. If theme colors change in tailwind.config.ts, these
+              components will automatically reflect the new colors.
+            </p>
+          </div>
+
+          <FeatureCard className="mb-8">
+            <h3 className="text-h5 font-bold text-black mb-4">
+              Semantic Component Variants
+            </h3>
+            <p className="text-body text-text-secondary mb-6">
+              These buttons use semantic variants (brand, info, highlight, emphasis)
+              that map to the current theme colors. Change the theme, and these
+              update automatically.
+            </p>
+
+            <div className="flex gap-3 mb-6 flex-wrap">
+              <Button variant="brand" size="lg">Brand (Primary)</Button>
+              <Button variant="info" size="lg">Info (Secondary)</Button>
+              <Button variant="highlight" size="lg">Highlight (Tertiary)</Button>
+              <Button variant="emphasis" size="lg">Emphasis (Contrast)</Button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <FeatureCard background="surface" border="brand" padding="compact">
+                <h4 className="text-h6 font-semibold text-black mb-2">Brand Accent</h4>
+                <p className="text-body-sm text-text-secondary">
+                  Primary brand color for key actions
+                </p>
+              </FeatureCard>
+
+              <FeatureCard background="surface" border="info" padding="compact">
+                <h4 className="text-h6 font-semibold text-black mb-2">Info Accent</h4>
+                <p className="text-body-sm text-text-secondary">
+                  Secondary color for informational elements
+                </p>
+              </FeatureCard>
+
+              <FeatureCard background="surface" border="highlight" padding="compact">
+                <h4 className="text-h6 font-semibold text-black mb-2">Highlight Accent</h4>
+                <p className="text-body-sm text-text-secondary">
+                  Tertiary color for highlights and accents
+                </p>
+              </FeatureCard>
+            </div>
+          </FeatureCard>
+        </PageContainer>
+      </Section>
+
+      {/* Divider */}
+      <div className="border-t border-border-light" />
+
+      {/* Exploratory Palettes Header */}
+      <Section className="pt-12">
+        <PageContainer>
+          <h2 className="text-h3 font-bold text-black mb-2">
+            Exploratory Color Variations
+          </h2>
+          <p className="text-body text-text-secondary max-w-3xl mb-8">
+            These are alternative color palette explorations using inline styles.
+            They show different color combinations we've considered but haven't
+            integrated into the component system yet.
+          </p>
+        </PageContainer>
+      </Section>
 
       {/* Palettes Grid */}
-      <div
-        style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-          padding: "3rem 1.5rem",
-        }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(450px, 1fr))",
-            gap: "2rem",
-          }}
-        >
-          {palettes.map((palette, index) => (
-            <PaletteCard key={index} palette={palette} index={index + 1} />
-          ))}
-        </div>
-      </div>
+      <Section spacing="small">
+        <PageContainer>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {palettes.map((palette, index) => (
+              <PaletteCard key={index} palette={palette} index={index + 1} />
+            ))}
+          </div>
+        </PageContainer>
+      </Section>
 
       {/* Footer Note */}
-      <div
-        style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-          padding: "3rem 1.5rem",
-          borderTop: "1px solid #E5E7EB",
-        }}
-      >
-        <p style={{ color: "#6B7280", fontSize: "0.875rem", textAlign: "center" }}>
-          All palettes use the same canvas background (#FAFAFA) and text colors
-          for consistent comparison. Focus on how the accent colors interact and
-          the overall feeling each combination creates.
-        </p>
-      </div>
+      <Section className="border-t border-border-light">
+        <PageContainer>
+          <p className="text-body-sm text-text-secondary text-center">
+            Exploratory palettes use inline styles for rapid iteration. The
+            Current Active Theme section above uses the production component
+            system and will update automatically when theme colors change.
+          </p>
+        </PageContainer>
+      </Section>
     </main>
   );
 }

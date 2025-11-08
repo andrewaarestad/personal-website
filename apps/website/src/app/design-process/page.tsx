@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { PageContainer } from "@/components/ui/page-container";
+import { Section } from "@/components/ui/section";
+import { FeatureCard } from "@/components/ui/feature-card";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -17,7 +20,8 @@ export default function DesignProcessPage() {
   return (
     <main className="min-h-screen bg-canvas">
       {/* Hero Section */}
-      <section className="container mx-auto px-6 py-16 max-w-5xl">
+      <Section>
+        <PageContainer>
         <div className="mb-16">
           <h1 className="text-h2 font-bold text-black mb-4">Design Process</h1>
           <p className="text-h5 text-text-secondary max-w-3xl font-normal">
@@ -59,11 +63,11 @@ export default function DesignProcessPage() {
             {/* Timeline Visual */}
             <div className="relative">
               {/* Vertical line connector - hidden on mobile, shown on md+ */}
-              <div className="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-vermillion via-blue to-gold" />
+              <div className="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand via-brand-secondary to-highlight" />
 
               {/* Phase 1: Brand Foundation */}
               <div className="relative flex gap-6 mb-8">
-                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-vermillion flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-brand flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
                   1
                 </div>
                 <div className="flex-grow pt-2">
@@ -77,7 +81,7 @@ export default function DesignProcessPage() {
 
               {/* Phase 2: Visual System */}
               <div className="relative flex gap-6 mb-8">
-                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-blue flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-brand-secondary flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
                   2
                 </div>
                 <div className="flex-grow pt-2">
@@ -91,7 +95,7 @@ export default function DesignProcessPage() {
 
               {/* Phase 3: Mood Boards */}
               <div className="relative flex gap-6 mb-8">
-                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-gold flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-highlight flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
                   3
                 </div>
                 <div className="flex-grow pt-2">
@@ -107,7 +111,7 @@ export default function DesignProcessPage() {
 
               {/* Phase 4: Iteration */}
               <div className="relative flex gap-6 mb-8">
-                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-vermillion flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-brand flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
                   4
                 </div>
                 <div className="flex-grow pt-2">
@@ -121,7 +125,7 @@ export default function DesignProcessPage() {
 
               {/* Phase 5: Implementation */}
               <div className="relative flex gap-6">
-                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-blue flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-brand-secondary flex items-center justify-center text-white font-bold text-h5 z-10 border-4 border-canvas">
                   5
                 </div>
                 <div className="flex-grow pt-2">
@@ -137,7 +141,7 @@ export default function DesignProcessPage() {
             </div>
 
             {/* Why This Approach */}
-            <div className="mt-12 p-8 bg-gradient-to-br from-blue-light/30 via-gold-light/30 to-vermillion-light/30 rounded-xl border border-border-default">
+            <FeatureCard background="gradient-reverse" border="light" className="mt-12">
               <h3 className="text-h5 font-bold text-black mb-3">Why Design-First?</h3>
               <p className="text-body text-text-secondary">
                 Starting with design prevents scope creep, ensures visual consistency,
@@ -145,7 +149,7 @@ export default function DesignProcessPage() {
                 decisions early through mood boards, we avoid costly refactors and
                 maintain quality throughout the development process.
               </p>
-            </div>
+            </FeatureCard>
           </div>
         </div>
 
@@ -161,7 +165,7 @@ export default function DesignProcessPage() {
 
           <div className="space-y-6">
             {/* Mobile Hero Component Link */}
-            <div className="p-8 bg-surface rounded-xl border-2 border-border-default hover:border-blue transition-colors">
+            <FeatureCard background="surface" border="info">
               <h3 className="text-h5 font-bold text-black mb-3">
                 Mobile Hero Component
               </h3>
@@ -171,14 +175,14 @@ export default function DesignProcessPage() {
                 understated expert.
               </p>
               <Link href="/design-preview/mobile-hero">
-                <Button size="lg" className="bg-blue hover:bg-blue-dark text-white">
+                <Button size="lg" variant="info">
                   View Mobile Hero →
                 </Button>
               </Link>
-            </div>
+            </FeatureCard>
 
             {/* Design System Mood Board Link */}
-            <div className="p-8 bg-gradient-to-br from-vermillion-light/30 via-blue-light/30 to-gold-light/30 rounded-xl border-2 border-border-default hover:border-vermillion transition-colors">
+            <FeatureCard border="brand">
               <h3 className="text-h5 font-bold text-black mb-3">
                 Design System Mood Board
               </h3>
@@ -187,14 +191,14 @@ export default function DesignProcessPage() {
                 components, and real-world examples. Built with the art studio aesthetic.
               </p>
               <Link href="/design-preview/v1-initial">
-                <Button size="lg" className="bg-vermillion hover:bg-vermillion-dark">
+                <Button size="lg" variant="brand">
                   View Mood Board →
                 </Button>
               </Link>
-            </div>
+            </FeatureCard>
 
             {/* Color Exploration Link */}
-            <div className="p-8 bg-surface rounded-xl border-2 border-border-default hover:border-gold transition-colors">
+            <FeatureCard background="surface" border="highlight">
               <h3 className="text-h5 font-bold text-black mb-3">
                 Color Palette Exploration
               </h3>
@@ -207,12 +211,12 @@ export default function DesignProcessPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-2 border-gold hover:bg-gold hover:text-white"
+                  className="border-2 border-highlight hover:bg-highlight hover:text-white"
                 >
                   Explore Color Options →
                 </Button>
               </Link>
-            </div>
+            </FeatureCard>
           </div>
         </div>
 
@@ -248,10 +252,7 @@ export default function DesignProcessPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button
-                size="lg"
-                className="bg-black hover:bg-black/90 text-white"
-              >
+              <Button size="lg" variant="emphasis">
                 View on GitHub →
               </Button>
             </Link>
@@ -259,14 +260,15 @@ export default function DesignProcessPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-blue hover:bg-blue hover:text-white"
+                className="border-2 border-brand-secondary hover:bg-brand-secondary hover:text-white"
               >
                 ← Back to Home
               </Button>
             </Link>
           </div>
         </div>
-      </section>
+        </PageContainer>
+      </Section>
     </main>
   );
 }

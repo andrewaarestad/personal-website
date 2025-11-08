@@ -92,17 +92,17 @@ export default function MoodBoardV1Initial() {
                   <ColorSwatch
                     name="Light"
                     hex="#FEE2E2"
-                    className="bg-vermillion-light"
+                    className="bg-brand-light"
                   />
                   <ColorSwatch
                     name="Default"
                     hex="#EF4444"
-                    className="bg-vermillion text-white"
+                    className="bg-brand text-white"
                   />
                   <ColorSwatch
                     name="Dark"
                     hex="#DC2626"
-                    className="bg-vermillion-dark text-white"
+                    className="bg-brand-dark text-white"
                   />
                 </div>
               </div>
@@ -114,17 +114,17 @@ export default function MoodBoardV1Initial() {
                   <ColorSwatch
                     name="Light"
                     hex="#CFFAFE"
-                    className="bg-blue-light"
+                    className="bg-brand-secondary-light"
                   />
                   <ColorSwatch
                     name="Default"
                     hex="#06B6D4"
-                    className="bg-blue text-white"
+                    className="bg-brand-secondary text-white"
                   />
                   <ColorSwatch
                     name="Dark"
                     hex="#0891B2"
-                    className="bg-blue-dark text-white"
+                    className="bg-brand-secondary-dark text-white"
                   />
                 </div>
               </div>
@@ -136,17 +136,17 @@ export default function MoodBoardV1Initial() {
                   <ColorSwatch
                     name="Light"
                     hex="#ECFCCB"
-                    className="bg-gold-light"
+                    className="bg-highlight-light"
                   />
                   <ColorSwatch
                     name="Default"
                     hex="#84CC16"
-                    className="bg-gold text-black-accent"
+                    className="bg-highlight text-black-accent"
                   />
                   <ColorSwatch
                     name="Dark"
                     hex="#65A30D"
-                    className="bg-gold-dark text-black-accent"
+                    className="bg-highlight-dark text-black-accent"
                   />
                 </div>
               </div>
@@ -240,7 +240,7 @@ export default function MoodBoardV1Initial() {
           <div className="space-y-4">
             <p className="text-body text-text-primary">
               Inline code example:{" "}
-              <code className="font-mono text-code bg-blue-light text-blue-dark px-2 py-1 rounded">
+              <code className="font-mono text-code bg-brand-secondary-light text-brand-secondary-dark px-2 py-1 rounded">
                 const result = await processData()
               </code>
             </p>
@@ -272,8 +272,8 @@ export default function MoodBoardV1Initial() {
               Variants
             </h3>
             <div className="flex flex-wrap gap-4">
-              <Button>Primary (Vermillion)</Button>
-              <Button variant="secondary">Secondary (Blue)</Button>
+              <Button>Primary (Brand)</Button>
+              <Button variant="secondary">Secondary (Accent Cyan)</Button>
               <Button variant="outline">Outline</Button>
               <Button variant="ghost">Ghost</Button>
               <Button variant="destructive">Destructive</Button>
@@ -371,10 +371,10 @@ export default function MoodBoardV1Initial() {
                 monitoring.
               </p>
               <div className="flex gap-2 mt-4 flex-wrap">
-                <Badge className="bg-blue-light text-blue-dark border-0">
+                <Badge className="bg-brand-secondary-light text-brand-secondary-dark border-0">
                   Signal Processing
                 </Badge>
-                <Badge className="bg-vermillion-light text-vermillion-dark border-0">
+                <Badge className="bg-brand-light text-brand-dark border-0">
                   Machine Learning
                 </Badge>
               </div>
@@ -397,10 +397,10 @@ export default function MoodBoardV1Initial() {
                 data points, with automatic versioning and deployment.
               </p>
               <div className="flex gap-2 mt-4 flex-wrap">
-                <Badge className="bg-blue-light text-blue-dark border-0">
+                <Badge className="bg-brand-secondary-light text-brand-secondary-dark border-0">
                   Cloud Architecture
                 </Badge>
-                <Badge className="bg-gold-light text-gold-dark border-0">
+                <Badge className="bg-highlight-light text-highlight-dark border-0">
                   MLOps
                 </Badge>
               </div>
@@ -425,10 +425,10 @@ export default function MoodBoardV1Initial() {
                 ship. The hard part is making algorithms work at scale.
               </p>
               <div className="flex gap-2 mt-4 flex-wrap">
-                <Badge className="bg-gold-light text-gold-dark border-0">
+                <Badge className="bg-highlight-light text-highlight-dark border-0">
                   Innovation
                 </Badge>
-                <Badge className="bg-vermillion-light text-vermillion-dark border-0">
+                <Badge className="bg-brand-light text-brand-dark border-0">
                   Product
                 </Badge>
               </div>
@@ -443,7 +443,7 @@ export default function MoodBoardV1Initial() {
       </section>
 
       {/* Hero Section Example */}
-      <section className="bg-gradient-to-br from-canvas via-gradient-vermillion-subtle to-gradient-blue-subtle py-24">
+      <section className="bg-gradient-to-br from-canvas via-gradient-brand-subtle to-gradient-brand-secondary-subtle py-24">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-black mb-6">
@@ -485,13 +485,13 @@ export default function MoodBoardV1Initial() {
               <div className="flex gap-2">
                 <Badge
                   variant="outline"
-                  className="text-blue-dark border-blue-dark"
+                  className="text-brand-secondary-dark border-brand-secondary-dark"
                 >
                   Machine Learning
                 </Badge>
                 <Badge
                   variant="outline"
-                  className="text-vermillion-dark border-vermillion-dark"
+                  className="text-brand-dark border-brand-dark"
                 >
                   Engineering
                 </Badge>
@@ -525,8 +525,8 @@ export default function MoodBoardV1Initial() {
               <li>Can you version your datasets?</li>
             </ul>
 
-            <div className="bg-gold-light border-l-4 border-gold p-6 my-8 rounded-r">
-              <h3 className="text-h4 font-semibold text-gold-dark mb-2">
+            <div className="bg-highlight-light border-l-4 border-highlight p-6 my-8 rounded-r">
+              <h3 className="text-h4 font-semibold text-highlight-dark mb-2">
                 Key Insight
               </h3>
               <p className="text-body text-text-primary">
@@ -618,7 +618,7 @@ if (predictionConfidence < THRESHOLD) {
                     Generative AI Platform
                   </TableCell>
                   <TableCell>
-                    <Badge className="bg-blue-light text-blue-dark border-0">
+                    <Badge className="bg-brand-secondary-light text-brand-secondary-dark border-0">
                       NLP
                     </Badge>
                   </TableCell>
@@ -632,7 +632,7 @@ if (predictionConfidence < THRESHOLD) {
                     FLUID Water Meter
                   </TableCell>
                   <TableCell>
-                    <Badge className="bg-vermillion-light text-vermillion-dark border-0">
+                    <Badge className="bg-brand-light text-brand-dark border-0">
                       IoT + ML
                     </Badge>
                   </TableCell>
@@ -644,7 +644,7 @@ if (predictionConfidence < THRESHOLD) {
                     Anomaly Detection System
                   </TableCell>
                   <TableCell>
-                    <Badge className="bg-gold-light text-gold-dark border-0">
+                    <Badge className="bg-highlight-light text-highlight-dark border-0">
                       Time Series
                     </Badge>
                   </TableCell>
@@ -658,7 +658,7 @@ if (predictionConfidence < THRESHOLD) {
                     Computer Vision Pipeline
                   </TableCell>
                   <TableCell>
-                    <Badge className="bg-blue-light text-blue-dark border-0">
+                    <Badge className="bg-brand-secondary-light text-brand-secondary-dark border-0">
                       CV
                     </Badge>
                   </TableCell>
@@ -672,7 +672,7 @@ if (predictionConfidence < THRESHOLD) {
                     Recommendation Engine
                   </TableCell>
                   <TableCell>
-                    <Badge className="bg-vermillion-light text-vermillion-dark border-0">
+                    <Badge className="bg-brand-light text-brand-dark border-0">
                       RecSys
                     </Badge>
                   </TableCell>
@@ -701,7 +701,7 @@ if (predictionConfidence < THRESHOLD) {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="aspect-video w-full bg-gradient-to-br from-vermillion-light via-blue-light to-gold-light rounded-lg flex items-center justify-center border border-border-default">
+              <div className="aspect-video w-full bg-gradient-to-br from-brand-light via-brand-secondary-light to-highlight-light rounded-lg flex items-center justify-center border border-border-default">
                 <div className="text-center space-y-4">
                   <div className="text-6xl">🎬</div>
                   <p className="text-body-lg text-text-primary font-medium">
@@ -718,7 +718,7 @@ if (predictionConfidence < THRESHOLD) {
               <p className="text-body-sm text-text-secondary mt-4">
                 Replace this placeholder with an iframe or video element.
                 Example:{" "}
-                <code className="font-mono text-code bg-blue-light text-blue-dark px-2 py-0.5 rounded text-xs">
+                <code className="font-mono text-code bg-brand-secondary-light text-brand-secondary-dark px-2 py-0.5 rounded text-xs">
                   &lt;iframe src=&quot;...&quot; /&gt;
                 </code>
               </p>

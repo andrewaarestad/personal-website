@@ -110,7 +110,7 @@ apps/website/
 ### Colors (Tailwind Classes)
 ```
 Backgrounds: bg-canvas, bg-surface
-Accents: bg-vermillion, bg-blue, bg-gold (with -light, -dark variants)
+Accents: bg-brand, bg-brand-secondary, bg-highlight (with -light, -dark variants)
 Text: text-text-primary, text-text-secondary, text-black, text-black-accent
 Borders: border-border-light, border-border-default
 ```
