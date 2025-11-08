@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -8,17 +8,17 @@ import { cn } from "@/lib/utils";
 export function Breadcrumb() {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      const scrollDifference = currentScrollY - lastScrollY;
+      const scrollDifference = currentScrollY - lastScrollY.current;
 
       // Always show at the very top
       if (currentScrollY < 10) {
         setIsVisible(true);
-        setLastScrollY(currentScrollY);
+        lastScrollY.current = currentScrollY;
         return;
       }
 
@@ -31,7 +31,7 @@ export function Breadcrumb() {
           // Scrolling up - show
           setIsVisible(true);
         }
-        setLastScrollY(currentScrollY);
+        lastScrollY.current = currentScrollY;
       }
     };
 
@@ -40,7 +40,7 @@ export function Breadcrumb() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [lastScrollY]);
+  }, []);
 
   // Don't show on homepage
   if (pathname === "/") {
