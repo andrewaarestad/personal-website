@@ -34,9 +34,6 @@ export function Breadcrumb() {
       className="fixed top-6 left-6 z-40 flex items-center gap-2 text-body-sm"
       aria-label="Breadcrumb"
     >
-      {/* Brand accent */}
-      <div className="w-8 h-[2px] bg-brand mr-2" aria-hidden="true" />
-
       {breadcrumbs.map((crumb, index) => {
         const isLast = index === breadcrumbs.length - 1;
 
