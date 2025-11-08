@@ -44,6 +44,28 @@ export default function HomePage() {
           </FeatureCard>
         </PageContainer>
       </Section>
+
+      {/* Open Source Section */}
+      <Section className="bg-surface border-t border-border-light">
+        <PageContainer>
+          <div className="text-center">
+            <h2 className="text-h4 font-bold text-black mb-4">Open Source</h2>
+            <p className="text-body-lg text-text-secondary mb-8 max-w-2xl mx-auto">
+              This project is open source. Check out the code, see the commit history,
+              and explore how AI-assisted development works in practice.
+            </p>
+            <Link
+              href="https://github.com/andrewaarestad/personal-website"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button size="lg" variant="emphasis">
+                View on GitHub →
+              </Button>
+            </Link>
+          </div>
+        </PageContainer>
+      </Section>
     </main>
   );
 }
