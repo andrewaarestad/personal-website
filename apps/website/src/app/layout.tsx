@@ -24,9 +24,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        <div className="mb-8">
-          <Breadcrumb />
-        </div>
+        <Breadcrumb />
         <div>{children}</div>
       </body>
     </html>
