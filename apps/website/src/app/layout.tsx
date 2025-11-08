@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { FloatingNav } from "@/components/floating-nav";
+import { Breadcrumb } from "@/components/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Personal Website",
@@ -24,8 +24,8 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
+        <Breadcrumb />
         {children}
-        <FloatingNav />
       </body>
     </html>
   );
