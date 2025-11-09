@@ -45,29 +45,24 @@ export default function HomePage() {
         </PageContainer>
       </Section>
 
-      {/* Tech Stack Section */}
+      {/* Open Source Section */}
       <Section className="bg-surface border-t border-border-light">
         <PageContainer>
-          <h2 className="text-h4 font-bold text-black mb-8">Built With</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <FeatureCard background="canvas" border="light" padding="compact" className="hover:border-brand">
-              <h3 className="font-semibold text-h6 mb-2 text-black-accent">Next.js 15</h3>
-              <p className="text-body-sm text-text-secondary">
-                Modern React framework with App Router and Server Components
-              </p>
-            </FeatureCard>
-            <FeatureCard background="canvas" border="light" padding="compact" className="hover:border-brand-secondary">
-              <h3 className="font-semibold text-h6 mb-2 text-black-accent">Turborepo</h3>
-              <p className="text-body-sm text-text-secondary">
-                High-performance build system for monorepos
-              </p>
-            </FeatureCard>
-            <FeatureCard background="canvas" border="light" padding="compact" className="hover:border-highlight">
-              <h3 className="font-semibold text-h6 mb-2 text-black-accent">shadcn/ui Ready</h3>
-              <p className="text-body-sm text-text-secondary">
-                Configured for beautiful UI components
-              </p>
-            </FeatureCard>
+          <div className="text-center">
+            <h2 className="text-h4 font-bold text-black mb-4">Open Source</h2>
+            <p className="text-body-lg text-text-secondary mb-8 max-w-2xl mx-auto">
+              This project is open source. Check out the code, see the commit history,
+              and explore how AI-assisted development works in practice.
+            </p>
+            <Link
+              href="https://github.com/andrewaarestad/personal-website"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button size="lg" variant="emphasis">
+                View on GitHub →
+              </Button>
+            </Link>
           </div>
         </PageContainer>
       </Section>

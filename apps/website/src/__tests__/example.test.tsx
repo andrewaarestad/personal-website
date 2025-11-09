@@ -25,15 +25,4 @@ describe("HomePage", () => {
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute("href", "/design-process");
   });
-
-  it("displays the technology stack section with feature cards", () => {
-    render(<HomePage />);
-    // Test for "Built With" section heading (flexible match)
-    expect(screen.getByRole("heading", { name: /built with/i })).toBeInTheDocument();
-
-    // Test for presence of multiple tech stack cards by finding all headings at level 3
-    // The tech stack section has 3 cards, each with an h3 heading
-    const allH3Headings = screen.getAllByRole("heading", { level: 3 });
-    expect(allH3Headings.length).toBeGreaterThanOrEqual(3);
-  });
 });
