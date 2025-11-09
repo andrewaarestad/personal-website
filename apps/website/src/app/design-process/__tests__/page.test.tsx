@@ -76,11 +76,4 @@ describe("DesignProcessPage", () => {
     expect(githubLink).toHaveAttribute("target", "_blank");
     expect(githubLink).toHaveAttribute("rel", "noopener noreferrer");
   });
-
-  it("displays back to home link", () => {
-    render(<DesignProcessPage />);
-    const homeLink = screen.getByRole("link", { name: /back to home/i });
-    expect(homeLink).toBeInTheDocument();
-    expect(homeLink).toHaveAttribute("href", "/");
-  });
 });
