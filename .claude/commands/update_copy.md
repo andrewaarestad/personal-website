@@ -230,7 +230,7 @@ After all chunks have been reviewed (or user exits early):
 
 **Overall:** This copy needs revision
 
-**Suggestion A:** "I'm Andrew Aarestad, an AI/ML engineer who's been building production systems for over 15 years—since before machine learning was a household term."
+**Suggestion A:** "I'm [Your Name], an AI/ML engineer who's been building production systems for over 15 years—since before machine learning was a household term."
 *Rationale:* Removes performative enthusiasm and hype language. Uses specific experience ("15+ years") instead of vague claims. Establishes credibility through genuine, matter-of-fact statement.
 
 **Suggestion B:** "I build AI/ML systems that ship. For over 15 years, I've worked at the intersection of research and product, from firmware-level signal processing to cloud-scale ML pipelines."
