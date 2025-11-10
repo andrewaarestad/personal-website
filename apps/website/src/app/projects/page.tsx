@@ -5,7 +5,7 @@ import { ProjectOverview } from "@/components/project-overview";
 
 export const metadata: Metadata = {
   title: "Projects - Andrew Aarestad",
-  description: "Portfolio of projects showcasing TypeScript, Python, and C++ development.",
+  description: "Things I've built - production ML systems, IoT devices, experimental algorithms, and technical rabbit holes worth documenting.",
 };
 
 export default function ProjectsPage() {
