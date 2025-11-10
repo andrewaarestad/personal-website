@@ -37,7 +37,7 @@ export default function ProjectsPage() {
               description="Co-founded and led development of an IoT water monitoring platform. Built ultrasonic state estimation algorithms with Kalman filtering, ML models for leak detection, and AWS-based data pipelines processing telemetry from thousands of devices. Tech stack: C++, Python, Node.js, React Native, FPGA, AWS IoT."
               imageUrl="https://placehold.co/800x600/4F46E5/FFFFFF/png?text=FLUID+Water+Meter"
               imageAlt="FLUID Water Meter - IoT water monitoring platform"
-              projectSlug="signal-processing-system"
+              projectSlug="fluid-water-meter"
             />
 
             <ProjectOverview
@@ -45,7 +45,7 @@ export default function ProjectsPage() {
               description="Machine learning system for estimating ambient temperature from multi-sensor data, featuring data fusion algorithms and statistical modeling. Project details coming soon."
               imageUrl="https://placehold.co/800x600/7C3AED/FFFFFF/png?text=Temperature+Estimation"
               imageAlt="Ambient Temperature Estimation"
-              projectSlug="ai-analytics-platform"
+              projectSlug="ambient-temperature-estimation"
             />
           </div>
         </PageContainer>
