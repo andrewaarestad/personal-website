@@ -19,9 +19,7 @@ export default function ProjectsPage() {
             <div>
               <h1 className="text-h1 font-extrabold text-black mb-4">Projects</h1>
               <p className="text-body-lg text-text-secondary max-w-2xl">
-                A collection of projects spanning machine learning, full-stack development,
-                and systems programming. Each project showcases different aspects of
-                building intelligent systems that actually ship.
+                Some of my favorite product launches and experiments.
               </p>
             </div>
           </div>
