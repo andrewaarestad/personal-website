@@ -32,7 +32,7 @@ export default function ProjectsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ProjectOverview
               title="FLUID Water Meter"
-              description="Co-founded and led development of an IoT water monitoring platform. Built ultrasonic state estimation algorithms with Kalman filtering, ML models for leak detection, and AWS-based data pipelines processing telemetry from thousands of devices. Tech stack: C++, Python, Node.js, React Native, FPGA, AWS IoT."
+              description="Co-founded an IoT platform to detect water leaks in homes before they became expensive disasters. Built ultrasonic flow meter, telemetry infrastructure, app/web platforms, ML models and other fun stuff."
               imageUrl="https://placehold.co/800x600/4F46E5/FFFFFF/png?text=FLUID+Water+Meter"
               imageAlt="FLUID Water Meter - IoT water monitoring platform"
               projectSlug="fluid-water-meter"
