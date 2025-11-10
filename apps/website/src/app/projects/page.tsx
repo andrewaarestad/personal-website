@@ -33,19 +33,19 @@ export default function ProjectsPage() {
         <PageContainer>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ProjectOverview
-              title="AI-Powered Analytics Platform"
-              description="A cloud-scale machine learning pipeline for real-time data analytics. Built with Python, TensorFlow, and deployed on AWS. Features automated model training, A/B testing infrastructure, and comprehensive monitoring."
-              imageUrl="https://placehold.co/800x600/4F46E5/FFFFFF/png?text=AI+Analytics"
-              imageAlt="AI-Powered Analytics Platform"
-              projectSlug="ai-analytics-platform"
+              title="FLUID Water Meter"
+              description="Co-founded and led development of an IoT water monitoring platform. Built ultrasonic state estimation algorithms with Kalman filtering, ML models for leak detection, and AWS-based data pipelines processing telemetry from thousands of devices. Tech stack: C++, Python, Node.js, React Native, FPGA, AWS IoT."
+              imageUrl="https://placehold.co/800x600/4F46E5/FFFFFF/png?text=FLUID+Water+Meter"
+              imageAlt="FLUID Water Meter - IoT water monitoring platform"
+              projectSlug="fluid-water-meter"
             />
 
             <ProjectOverview
-              title="Embedded Signal Processing System"
-              description="Firmware-level signal processing for IoT devices. Implemented in C++ with real-time constraints, featuring adaptive filtering algorithms and low-power optimization. Deployed on ARM Cortex-M processors."
-              imageUrl="https://placehold.co/800x600/7C3AED/FFFFFF/png?text=Signal+Processing"
-              imageAlt="Embedded Signal Processing System"
-              projectSlug="signal-processing-system"
+              title="Ambient Temperature Estimation"
+              description="Machine learning system for estimating ambient temperature from multi-sensor data, featuring data fusion algorithms and statistical modeling. Project details coming soon."
+              imageUrl="https://placehold.co/800x600/7C3AED/FFFFFF/png?text=Temperature+Estimation"
+              imageAlt="Ambient Temperature Estimation"
+              projectSlug="ambient-temperature-estimation"
             />
           </div>
         </PageContainer>
