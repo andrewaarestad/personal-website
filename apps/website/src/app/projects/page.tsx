@@ -40,7 +40,7 @@ export default function ProjectsPage() {
 
             <ProjectOverview
               title="Ambient Temperature Estimation"
-              description="Machine learning system for estimating ambient temperature from multi-sensor data, featuring data fusion algorithms and statistical modeling. Project details coming soon."
+              description="Multi-sensor data fusion system for ambient temperature estimation. Combines statistical modeling with ML to extract signal from noise. Shipped to production with open source components."
               imageUrl="https://placehold.co/800x600/7C3AED/FFFFFF/png?text=Temperature+Estimation"
               imageAlt="Ambient Temperature Estimation"
               projectSlug="ambient-temperature-estimation"
