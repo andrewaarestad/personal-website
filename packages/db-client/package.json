@@ -15,6 +15,7 @@
     }
   },
   "scripts": {
+    "postinstall": "prisma generate",
     "build": "tsc",
     "dev": "tsc --watch",
     "type-check": "tsc --noEmit",
@@ -27,7 +28,8 @@
     "db:migrate": "prisma migrate dev",
     "db:migrate:deploy": "prisma migrate deploy",
     "db:migrate:status": "prisma migrate status",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "pr-check": "pnpm run lint && pnpm run type-check && pnpm run build && pnpm run test"
   },
   "dependencies": {
     "@prisma/client": "^6.1.0"
