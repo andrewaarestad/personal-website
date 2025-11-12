@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Breadcrumb } from "@/components/breadcrumb";
+import { MainContent } from "@/components/main-content";
 
 export const metadata: Metadata = {
   title: "Personal Website",
@@ -25,7 +26,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <Breadcrumb />
-        <div>{children}</div>
+        <MainContent>{children}</MainContent>
       </body>
     </html>
   );
