@@ -5,16 +5,10 @@ import { HomepageContactInfo } from "@/components/homepage-contact-info";
 import { PageContainer } from "@/components/ui/page-container";
 import { Section } from "@/components/ui/section";
 import { FeatureCard } from "@/components/ui/feature-card";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-background">
-      {/* Theme Toggle - Fixed position for homepage */}
-      <div className="fixed top-4 right-6 z-50">
-        <ThemeToggle />
-      </div>
-
       {/* Hero Section - Variant 1: Direct */}
       <HomepageHero />
 

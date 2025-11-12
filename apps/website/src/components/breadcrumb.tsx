@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 export function Breadcrumb() {
   const pathname = usePathname();
@@ -68,14 +67,13 @@ export function Breadcrumb() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-40 flex items-center justify-between gap-2 text-body-sm px-6 py-4 bg-card/80 backdrop-blur-sm border-b border-border-light",
+        "fixed top-0 left-0 right-0 z-40 flex items-center gap-2 text-body-sm px-6 py-4 bg-card/80 backdrop-blur-sm border-b border-border-light",
         "transition-transform duration-300 ease-in-out",
         isVisible ? "translate-y-0" : "-translate-y-full"
       )}
       aria-label="Breadcrumb"
     >
-      <div className="flex items-center gap-2">
-        {breadcrumbs.map((crumb, index) => {
+      {breadcrumbs.map((crumb, index) => {
         const isLast = index === breadcrumbs.length - 1;
 
         return (
@@ -102,8 +100,6 @@ export function Breadcrumb() {
           </div>
         );
       })}
-      </div>
-      <ThemeToggle />
     </nav>
   );
 }

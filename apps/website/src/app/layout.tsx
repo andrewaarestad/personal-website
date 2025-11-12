@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { MainContent } from "@/components/main-content";
+import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/providers/theme-provider";
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Breadcrumb />
           <MainContent>{children}</MainContent>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
