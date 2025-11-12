@@ -45,6 +45,14 @@ export default function ProjectsPage() {
               imageAlt="Ambient Temperature Estimation"
               projectSlug="ambient-temperature-estimation"
             />
+
+            <ProjectOverview
+              title="[SAMPLE] PostLayout System Demo"
+              description="A demonstration of the PostLayout component system. This sample showcases all section types (headings, text, images, text-image combinations) working together to create rich, interactive project pages."
+              imageUrl="https://placehold.co/800x600/10B981/FFFFFF/png?text=PostLayout+Demo"
+              imageAlt="PostLayout system demonstration"
+              projectSlug="sample-post"
+            />
           </div>
         </PageContainer>
       </Section>
