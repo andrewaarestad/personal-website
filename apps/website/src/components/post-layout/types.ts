@@ -1,4 +1,4 @@
-import type { ReactElement } from "react";
+import type { ReactElement, ReactNode } from "react";
 
 /**
  * Base interface for all post sections
@@ -56,4 +56,13 @@ export interface TextImageSectionProps extends PostSectionProps {
   imageUrl: string;
   imageAlt?: string;
   layout: TextImageSectionLayout;
+}
+
+/**
+ * Props for DataVisualizationSection component
+ */
+export interface DataVisualizationSectionProps extends PostSectionProps {
+  title?: string;
+  description?: string;
+  children: ReactNode;
 }

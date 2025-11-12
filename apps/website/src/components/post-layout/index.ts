@@ -11,6 +11,7 @@ export { H2Section } from "./H2Section";
 export { TextSection } from "./TextSection";
 export { ImageSection } from "./ImageSection";
 export { TextImageSection } from "./TextImageSection";
+export { DataVisualizationSection } from "./DataVisualizationSection";
 
 export type {
   PostSection,
@@ -21,4 +22,5 @@ export type {
   ImageSectionProps,
   TextImageSectionProps,
   TextImageSectionLayout,
+  DataVisualizationSectionProps,
 } from "./types";

@@ -6,7 +6,10 @@ import {
   TextSection,
   ImageSection,
   TextImageSection,
+  DataVisualizationSection,
 } from "@/components/post-layout";
+import { WaterFlowChart } from "@/components/charts/WaterFlowChart";
+import { generateWaterFlowData } from "@/lib/sample-data";
 
 export const metadata: Metadata = {
   title: "Sample Post - PostLayout Demo - Andrew Aarestad",
@@ -15,6 +18,9 @@ export const metadata: Metadata = {
 };
 
 export default function SamplePostPage() {
+  // Generate sample water flow data (5 minutes at 1Hz)
+  const waterFlowData = generateWaterFlowData();
+
   return (
     <PostLayout>
       {[
@@ -64,7 +70,16 @@ export default function SamplePostPage() {
           text="The system was built on a streaming architecture using Apache Kafka for ingestion and Apache Flink for real-time processing. Models were trained using Python's scikit-learn and deployed via TensorFlow Serving. We implemented a feature store using Redis to maintain rolling windows of metrics for inference, enabling sub-second detection latency even at scale."
         />,
 
-        // Section 9: Text with Image (image on right)
+        // Section 9: Interactive Data Visualization
+        <DataVisualizationSection
+          key="flow-visualization"
+          title="Real-Time Flow Detection"
+          description="Interactive visualization showing 5 minutes of ultrasonic flow measurement data sampled at 1Hz. The chart demonstrates typical household water usage patterns including faucet usage, toilet flush, and shower events detected by our IoT sensor system."
+        >
+          <WaterFlowChart data={waterFlowData} height={400} enableArea={true} />
+        </DataVisualizationSection>,
+
+        // Section 10: Text with Image (image on right)
         <TextImageSection
           key="results-1"
           text="In production, the system achieved 94% precision and 89% recall on a labeled test set of known incidents. More importantly, it detected several critical issues hours before they would have triggered traditional alerts, including a gradual memory leak in a payment service and cascading failures in a microservices mesh."
@@ -73,23 +88,23 @@ export default function SamplePostPage() {
           layout="image-right"
         />,
 
-        // Section 10: Results Image
+        // Section 11: Results Image
         <ImageSection
           key="dashboard-image"
           imageUrl="https://placehold.co/1200x600/F59E0B/FFFFFF/png?text=Monitoring+Dashboard"
           alt="Real-time monitoring dashboard"
         />,
 
-        // Section 11: Impact Heading
+        // Section 12: Impact Heading
         <H2Section key="impact-heading" text="Impact and Lessons Learned" />,
 
-        // Section 12: Impact Text
+        // Section 13: Impact Text
         <TextSection
           key="impact-text"
           text="The deployment reduced mean time to detection (MTTD) by 73% while cutting false positive alerts by 82%. This translated to fewer middle-of-the-night pages for on-call engineers and faster incident response. The project demonstrated that thoughtful ML application—combining domain knowledge with algorithmic sophistication—can meaningfully improve operational excellence."
         />,
 
-        // Section 13: Final Text with Image
+        // Section 14: Final Text with Image
         <TextImageSection
           key="lessons-1"
           text="Key lessons included the importance of model explainability (we added SHAP values to help engineers understand why alerts fired), the need for continuous retraining pipelines to handle concept drift, and the value of close collaboration between ML engineers and SREs throughout development."
@@ -98,10 +113,10 @@ export default function SamplePostPage() {
           layout="image-left"
         />,
 
-        // Section 14: Conclusion
+        // Section 15: Conclusion
         <TextSection
           key="conclusion"
-          text="This sample post demonstrates the flexibility of the PostLayout system. Real project pages can leverage these same components to create engaging, visually rich narratives about technical work. The modular design makes it easy to compose pages that are both informative and beautiful."
+          text="This sample post demonstrates the flexibility of the PostLayout system. Real project pages can leverage these components to create engaging, visually rich narratives combining text, images, and interactive data visualizations. The modular design makes it easy to compose pages that are both informative and beautiful."
         />,
       ]}
     </PostLayout>
