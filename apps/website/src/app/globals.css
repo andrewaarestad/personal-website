@@ -4,7 +4,17 @@
 
 @layer base {
   :root {
-    /* Custom Design System - Light Mode (Primary) */
+    /* ============================================
+       Custom Design System - Light Mode
+       Source: apps/website/design/visual/color-system.md
+
+       These CSS custom properties are the single source of truth for colors.
+       They enable dark mode support and consistent theming throughout the app.
+       All color values are defined in HSL format for better manipulation.
+
+       See tailwind.config.ts for Tailwind utility class mappings.
+       ============================================ */
+
     /* Foundation Colors */
     --background: 0 0% 98%; /* #FAFAFA canvas */
     --foreground: 220 13% 11%; /* #1A1A1A text-primary */
@@ -92,7 +102,15 @@
   }
 
   .dark {
-    /* Dark Mode - Based on design system */
+    /* ============================================
+       Custom Design System - Dark Mode
+       Source: apps/website/design/visual/color-system.md
+
+       Dark mode values maintain visual hierarchy while adapting to
+       low-light environments. Accent colors remain consistent with
+       light mode for brand recognition.
+       ============================================ */
+
     --background: 220 26% 6%; /* #0F1419 Dark blue-gray canvas */
     --foreground: 220 13% 91%; /* #E5E7EB Light text */
     --card: 220 21% 11%; /* #1A1F25 Dark card surface */

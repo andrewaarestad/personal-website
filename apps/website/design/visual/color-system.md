@@ -95,9 +95,9 @@ These are the "artist's paints" - bold, saturated colors inspired by primary hue
 
 ---
 
-## Dark Mode (Future Consideration)
+## Dark Mode
 
-While light mode is primary, here's a proposed dark mode palette for future implementation:
+Dark mode is fully implemented with automatic time-based switching (6pm-6am) and manual theme toggle.
 
 | Name | Hex | RGB | Usage |
 |------|-----|-----|-------|
@@ -105,8 +105,13 @@ While light mode is primary, here's a proposed dark mode palette for future impl
 | Dark Surface | `#1A1F25` | rgb(26, 31, 37) | Card backgrounds |
 | Dark Text Primary | `#E5E7EB` | rgb(229, 231, 235) | Main text |
 | Dark Text Secondary | `#9CA3AF` | rgb(156, 163, 175) | Supporting text |
+| Dark Text Tertiary | `#6B7280` | rgb(107, 114, 128) | Dimmer text |
+| Dark Border Light | `#2D333A` | rgb(45, 51, 58) | Subtle borders |
+| Dark Border Default | `#353B43` | rgb(53, 59, 67) | Standard borders |
 
-**Note:** Accent colors (brand, brand-secondary, highlight) remain the same in dark mode, providing consistency across themes. The bold saturation works well against both light and dark backgrounds.
+**Key Principle:** Accent colors (brand, brand-secondary, highlight) remain the same in dark mode, providing consistency across themes. The bold saturation works well against both light and dark backgrounds.
+
+**Implementation**: All dark mode values are defined in `globals.css` under the `.dark` selector. The theme toggle is located in the global footer.
 
 ---
 
@@ -171,9 +176,42 @@ All color combinations meet **WCAG 2.1 Level AA** requirements at minimum:
 
 ---
 
-## Tailwind Configuration
+## Implementation
 
-Add these custom colors to `apps/website/tailwind.config.ts`:
+### CSS Custom Properties (Source of Truth)
+
+All colors are defined as **CSS custom properties** in `apps/website/src/app/globals.css`. This approach provides:
+- **Dark mode support**: Easy theme switching via `.dark` class
+- **Consistency**: Single source of truth for all color values
+- **Flexibility**: Colors can be changed globally without modifying code
+- **HSL format**: Better for color manipulation and opacity control
+
+**File**: `apps/website/src/app/globals.css`
+
+```css
+@layer base {
+  :root {
+    /* Light Mode */
+    --background: 0 0% 98%; /* #FAFAFA */
+    --brand: 0 84% 60%; /* #EF4444 */
+    --brand-secondary: 189 94% 43%; /* #06B6D4 */
+    /* ... all other colors ... */
+  }
+
+  .dark {
+    /* Dark Mode */
+    --background: 220 26% 6%; /* #0F1419 */
+    --brand: 0 84% 60%; /* Same in dark mode */
+    /* ... dark mode overrides ... */
+  }
+}
+```
+
+### Tailwind Configuration
+
+Tailwind utilities reference the CSS custom properties defined above:
+
+**File**: `apps/website/tailwind.config.ts`
 
 ```typescript
 import type { Config } from 'tailwindcss';
@@ -182,63 +220,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Foundation
-        canvas: '#FAFAFA',
-        surface: '#FFFFFF',
-
-        // Structure
-        black: {
-          DEFAULT: '#000000',
-          accent: '#1A1A1A',
-        },
-
-        // Accents - Semantic Names
+        // All colors reference CSS custom properties via hsl()
+        background: "hsl(var(--background))",
         brand: {
-          light: '#FEE2E2',
-          DEFAULT: '#EF4444',  // Currently: Bright Red
-          dark: '#DC2626',
+          light: "hsl(var(--brand-light))",
+          DEFAULT: "hsl(var(--brand))",
+          dark: "hsl(var(--brand-dark))",
         },
         'brand-secondary': {
-          light: '#CFFAFE',
-          DEFAULT: '#06B6D4',  // Currently: Cyan
-          dark: '#0891B2',
+          light: "hsl(var(--brand-secondary-light))",
+          DEFAULT: "hsl(var(--brand-secondary))",
+          dark: "hsl(var(--brand-secondary-dark))",
         },
-        highlight: {
-          light: '#ECFCCB',
-          DEFAULT: '#84CC16',  // Currently: Lime
-          dark: '#65A30D',
-        },
-
-        // Semantic
-        success: {
-          light: '#D1FAE5',
-          DEFAULT: '#10B981',
-        },
-        error: {
-          light: '#FEE2E2',
-          DEFAULT: '#EF4444',
-        },
-        warning: {
-          light: '#FEF3C7',
-          DEFAULT: '#F59E0B',
-        },
-        info: {
-          light: '#DBEAFE',
-          DEFAULT: '#3B82F6',
-        },
-
-        // Text
-        text: {
-          primary: '#1A1A1A',
-          secondary: '#6B7280',
-          tertiary: '#9CA3AF',
-        },
-
-        // Borders
-        border: {
-          light: '#E5E7EB',
-          DEFAULT: '#D1D5DB',
-        },
+        // ... etc
       },
     },
   },
@@ -246,6 +240,26 @@ const config: Config = {
 
 export default config;
 ```
+
+### How to Change Colors
+
+To update the color system:
+
+1. **Modify values in `globals.css`** - This is the single source of truth
+2. **Both light and dark modes** will update automatically
+3. **All Tailwind utilities** (e.g., `bg-brand`, `text-brand`) will use the new values
+4. **No code changes needed** - just update the CSS custom property values
+
+**Example**: To change the brand color from red to blue:
+
+```css
+/* In globals.css */
+:root {
+  --brand: 217 91% 60%; /* #3B82F6 blue instead of #EF4444 red */
+}
+```
+
+All instances of `bg-brand`, `text-brand`, `border-brand`, etc. will now be blue!
 
 ---
 
@@ -291,14 +305,14 @@ Here's how the colors work together:
 
 ---
 
-## Next Steps
+## Status
 
-Before moving to typography, please review:
+✅ **Implemented** - This color system is fully implemented across the website.
 
-1. **Do the semantic color names make sense?** Brand, Brand Secondary, Highlight
-2. **Bright red as brand color** - Does this feel confident and action-oriented?
-3. **Cyan as secondary** - Does this balance the warm brand with technical credibility?
-4. **Lime as highlight** - Does this add the right creative accent?
-5. **Ready to change colors?** Simply update hex values in tailwind.config.ts - all class names stay the same!
+**Quick Reference:**
+- **Source of truth**: `apps/website/src/app/globals.css` (CSS custom properties)
+- **Tailwind mapping**: `apps/website/tailwind.config.ts` (references CSS variables)
+- **Theme toggle**: Located in global footer with light/dark/system modes
+- **Auto-switching**: Dark mode activates 6pm-6am when using system theme
 
-Once approved, we'll move to typography and define the font system!
+**To modify colors**: Edit the CSS custom property values in `globals.css` - all Tailwind utilities and components will update automatically.
