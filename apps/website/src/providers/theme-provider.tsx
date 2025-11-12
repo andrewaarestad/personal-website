@@ -17,6 +17,7 @@ import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes"
  * - Dark mode: 6pm (18:00) to 6am (06:00)
  * - Light mode: 6am (06:00) to 6pm (18:00)
  * - If user manually selects light or dark, their choice is preserved
+ * - IMPORTANT: Manipulates the resolved theme directly without changing the stored preference
  */
 type ThemeProviderProps = React.ComponentProps<typeof NextThemesProvider>
 
@@ -38,9 +39,13 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 /**
  * Internal component that syncs theme based on time of day
  * Only runs when theme is set to "system" to respect user preferences
+ *
+ * Note: This manipulates the resolved theme (HTML class) directly without
+ * changing the stored theme preference, so the user's "system" selection
+ * is preserved and time-based updates continue to work.
  */
 function TimeBasedThemeSync() {
-  const { theme, setTheme, systemTheme } = useTheme()
+  const { theme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
 
   // Wait for hydration to prevent mismatch
@@ -61,11 +66,16 @@ function TimeBasedThemeSync() {
       const shouldBeDark = hour >= 18 || hour < 6
       const preferredTheme = shouldBeDark ? 'dark' : 'light'
 
-      // Only update if different from system theme to avoid unnecessary re-renders
-      if (preferredTheme !== systemTheme) {
-        // Set the theme directly based on time
-        // This overrides system preference with time-based preference
-        setTheme(preferredTheme)
+      // Only update if different from current resolved theme to avoid unnecessary changes
+      if (preferredTheme !== resolvedTheme) {
+        // Directly manipulate the HTML class without calling setTheme
+        // This preserves the user's "system" preference while applying time-based override
+        const root = document.documentElement
+        if (shouldBeDark) {
+          root.classList.add('dark')
+        } else {
+          root.classList.remove('dark')
+        }
       }
     }
 
@@ -76,7 +86,7 @@ function TimeBasedThemeSync() {
     const interval = setInterval(updateThemeBasedOnTime, 60000)
 
     return () => clearInterval(interval)
-  }, [mounted, theme, systemTheme, setTheme])
+  }, [mounted, theme, resolvedTheme])
 
   return null
 }
