@@ -97,7 +97,7 @@ These are the "artist's paints" - bold, saturated colors inspired by primary hue
 
 ## Dark Mode
 
-Dark mode is fully implemented with automatic time-based switching (6pm-6am) and manual theme toggle.
+Dark mode is fully implemented with system preference detection and manual theme toggle.
 
 | Name | Hex | RGB | Usage |
 |------|-----|-----|-------|
@@ -110,6 +110,12 @@ Dark mode is fully implemented with automatic time-based switching (6pm-6am) and
 | Dark Border Default | `#353B43` | rgb(53, 59, 67) | Standard borders |
 
 **Key Principle:** Accent colors (brand, brand-secondary, highlight) remain the same in dark mode, providing consistency across themes. The bold saturation works well against both light and dark backgrounds.
+
+**Behavior:**
+- Respects system preference (light/dark) by default
+- Falls back to light mode if system preference unavailable
+- User can manually select light, dark, or system theme via footer toggle
+- Theme preference persists in localStorage
 
 **Implementation**: All dark mode values are defined in `globals.css` under the `.dark` selector. The theme toggle is located in the global footer.
 
@@ -313,6 +319,6 @@ Here's how the colors work together:
 - **Source of truth**: `apps/website/src/app/globals.css` (CSS custom properties)
 - **Tailwind mapping**: `apps/website/tailwind.config.ts` (references CSS variables)
 - **Theme toggle**: Located in global footer with light/dark/system modes
-- **Auto-switching**: Dark mode activates 6pm-6am when using system theme
+- **Default behavior**: Follows system preference, falls back to light mode
 
 **To modify colors**: Edit the CSS custom property values in `globals.css` - all Tailwind utilities and components will update automatically.
