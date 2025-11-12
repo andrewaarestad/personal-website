@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { MainContent } from "@/components/main-content";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 export const metadata: Metadata = {
   title: "Personal Website",
@@ -15,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -25,8 +26,10 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        <Breadcrumb />
-        <MainContent>{children}</MainContent>
+        <ThemeProvider>
+          <Breadcrumb />
+          <MainContent>{children}</MainContent>
+        </ThemeProvider>
       </body>
     </html>
   );

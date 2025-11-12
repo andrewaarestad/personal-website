@@ -11,7 +11,7 @@ export function HomepageHero({
   showAccent = true,
 }: HomepageHeroProps) {
   return (
-    <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-gradient-brand-subtle via-canvas to-gradient-brand-secondary-subtle">
+    <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-gradient-brand-subtle via-background to-gradient-brand-secondary-subtle">
       <div className="container mx-auto px-6 py-16 max-w-2xl">
         {/* Variant: Direct Intro */}
         {variant === "direct" && (
@@ -20,7 +20,7 @@ export function HomepageHero({
               <div className="w-12 h-1 bg-brand" aria-hidden="true" />
             )}
             <div>
-              <h1 className="text-h1 font-extrabold text-black mb-4">
+              <h1 className="text-h1 font-extrabold text-foreground mb-4">
                 Hi, I&apos;m Andrew.
               </h1>
               <p className="text-body-lg text-text-secondary">
@@ -44,7 +44,7 @@ export function HomepageHero({
               </div>
             )}
             <div>
-              <h1 className="text-h1 font-extrabold text-black mb-4">
+              <h1 className="text-h1 font-extrabold text-foreground mb-4">
                 Building intelligent systems that actually ship.
               </h1>
               <p className="text-body-lg text-text-secondary">
@@ -65,7 +65,7 @@ export function HomepageHero({
               <div className="w-16 h-0.5 bg-highlight" aria-hidden="true" />
             )}
             <div>
-              <h1 className="text-h1 font-extrabold text-black mb-6 leading-tight">
+              <h1 className="text-h1 font-extrabold text-foreground mb-6 leading-tight">
                 ML engineer.
                 <br />
                 15+ years shipping.

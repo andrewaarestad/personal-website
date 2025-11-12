@@ -45,14 +45,57 @@
     --chart-4: 142 71% 45%; /* Success green */
     --chart-5: 24 95% 53%; /* Warning orange */
 
+    /* Brand Theme Colors - Light Mode (for Tailwind compatibility) */
+    --brand-light: 0 84% 94%; /* #FEE2E2 */
+    --brand: 0 84% 60%; /* #EF4444 Bright Red */
+    --brand-dark: 0 72% 51%; /* #DC2626 */
+
+    --brand-secondary-light: 189 94% 91%; /* #CFFAFE */
+    --brand-secondary: 189 94% 43%; /* #06B6D4 Cyan */
+    --brand-secondary-dark: 189 85% 35%; /* #0891B2 */
+
+    --highlight-light: 84 81% 88%; /* #ECFCCB */
+    --highlight: 84 81% 44%; /* #84CC16 Lime */
+    --highlight-dark: 84 65% 35%; /* #65A30D */
+
+    /* Semantic Colors */
+    --success-light: 142 71% 85%; /* #D1FAE5 */
+    --success: 142 71% 45%; /* #10B981 */
+
+    --error-light: 0 84% 94%; /* #FEE2E2 */
+    --error: 0 84% 60%; /* #EF4444 */
+
+    --warning-light: 45 93% 89%; /* #FEF3C7 */
+    --warning: 24 95% 53%; /* #F59E0B */
+
+    --info-light: 214 95% 93%; /* #DBEAFE */
+    --info: 217 91% 60%; /* #3B82F6 */
+
+    /* Text Colors */
+    --text-primary: 220 13% 11%; /* #1A1A1A */
+    --text-secondary: 220 9% 46%; /* #6B7280 */
+    --text-tertiary: 220 6% 62%; /* #9CA3AF */
+
+    /* Border Colors */
+    --border-light: 220 13% 91%; /* #E5E7EB */
+    --border-default: 220 13% 82%; /* #D1D5DB */
+
+    /* Gradients - Subtle overlays */
+    --gradient-brand-subtle: 0 84% 60% / 0.05; /* Subtle red tint */
+    --gradient-brand-secondary-subtle: 189 94% 43% / 0.05; /* Subtle cyan tint */
+
+    /* Structure Colors */
+    --black: 0 0% 0%; /* #000000 */
+    --black-accent: 0 0% 10%; /* #1A1A1A */
+
     --radius: 0.5rem;
   }
 
   .dark {
-    /* Dark Mode (Future) - Based on design system */
-    --background: 220 26% 6%; /* #0F1419 */
-    --foreground: 220 13% 91%; /* #E5E7EB */
-    --card: 220 21% 11%; /* #1A1F25 */
+    /* Dark Mode - Based on design system */
+    --background: 220 26% 6%; /* #0F1419 Dark blue-gray canvas */
+    --foreground: 220 13% 91%; /* #E5E7EB Light text */
+    --card: 220 21% 11%; /* #1A1F25 Dark card surface */
     --card-foreground: 220 13% 91%;
     --popover: 220 21% 11%;
     --popover-foreground: 220 13% 91%;
@@ -62,13 +105,13 @@
     --primary-foreground: 0 0% 100%;
     --secondary: 189 94% 43%; /* Cyan stays bright */
     --secondary-foreground: 0 0% 100%;
-    --muted: 220 21% 14%;
-    --muted-foreground: 220 9% 64%;
+    --muted: 220 21% 14%; /* Dark muted background */
+    --muted-foreground: 220 9% 64%; /* Light muted text */
     --accent: 84 81% 44%; /* Lime stays vibrant */
-    --accent-foreground: 220 13% 11%;
+    --accent-foreground: 220 13% 11%; /* Dark text on lime */
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 21% 14%;
+    --border: 220 21% 18%; /* Subtle dark border */
     --input: 220 21% 14%;
     --ring: 0 84% 60%;
 
@@ -77,6 +120,49 @@
     --chart-3: 84 81% 44%;
     --chart-4: 142 71% 45%;
     --chart-5: 24 95% 53%;
+
+    /* Brand Theme Colors - Dark Mode (same accent colors) */
+    --brand-light: 0 84% 94%; /* Keep light variant for rare cases */
+    --brand: 0 84% 60%; /* #EF4444 Same bright red */
+    --brand-dark: 0 72% 51%;
+
+    --brand-secondary-light: 189 94% 91%;
+    --brand-secondary: 189 94% 43%; /* #06B6D4 Same cyan */
+    --brand-secondary-dark: 189 85% 35%;
+
+    --highlight-light: 84 81% 88%;
+    --highlight: 84 81% 44%; /* #84CC16 Same lime */
+    --highlight-dark: 84 65% 35%;
+
+    /* Semantic Colors (same as light mode) */
+    --success-light: 142 71% 85%;
+    --success: 142 71% 45%;
+
+    --error-light: 0 84% 94%;
+    --error: 0 84% 60%;
+
+    --warning-light: 45 93% 89%;
+    --warning: 24 95% 53%;
+
+    --info-light: 214 95% 93%;
+    --info: 217 91% 60%;
+
+    /* Text Colors - Dark Mode */
+    --text-primary: 220 13% 91%; /* #E5E7EB Light text */
+    --text-secondary: 220 9% 64%; /* #9CA3AF Medium gray */
+    --text-tertiary: 220 6% 52%; /* #6B7280 Dimmer text */
+
+    /* Border Colors - Dark Mode */
+    --border-light: 220 21% 18%; /* #2D333A Subtle border */
+    --border-default: 220 21% 22%; /* #353B43 Default border */
+
+    /* Gradients - Slightly more visible in dark mode */
+    --gradient-brand-subtle: 0 84% 60% / 0.08; /* Subtle red glow */
+    --gradient-brand-secondary-subtle: 189 94% 43% / 0.08; /* Subtle cyan glow */
+
+    /* Structure Colors - Dark Mode */
+    --black: 0 0% 100%; /* Invert to white */
+    --black-accent: 220 13% 91%; /* Light accent */
   }
 }
 
@@ -85,7 +171,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-canvas text-text-primary;
+    @apply bg-background text-foreground;
   }
 }
 
