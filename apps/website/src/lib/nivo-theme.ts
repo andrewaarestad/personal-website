@@ -3,7 +3,7 @@
  *
  * This theme ensures all charts across the site have consistent:
  * - Typography (Inter font family)
- * - Colors (matching brand palette, adapts to light/dark mode)
+ * - Colors (infrastructure colors adapt to light/dark mode; brand colors remain consistent)
  * - Spacing and sizing
  * - Grid and axis styling
  *
