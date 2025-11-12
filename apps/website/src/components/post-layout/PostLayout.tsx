@@ -1,4 +1,3 @@
-import * as React from "react";
 import { PageContainer } from "@/components/ui/page-container";
 import { Section } from "@/components/ui/section";
 import type { PostSection } from "./types";
