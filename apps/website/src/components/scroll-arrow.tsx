@@ -24,6 +24,7 @@ export function ScrollArrow({ minViewportHeight = 700 }: ScrollArrowProps) {
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setIsVisible(false);
+        window.removeEventListener("scroll", handleScroll);
       }
     };
 
