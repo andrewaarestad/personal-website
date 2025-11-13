@@ -8,7 +8,7 @@ import { FeatureCard } from "@/components/ui/feature-card";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-canvas">
+    <main className="min-h-screen bg-background">
       {/* Hero Section - Variant 1: Direct */}
       <HomepageHero />
 
@@ -19,7 +19,7 @@ export default function HomePage() {
       <Section>
         <PageContainer>
           <div className="mb-12">
-            <h2 className="text-h3 font-bold text-black mb-3">Design Process</h2>
+            <h2 className="text-h3 font-bold text-foreground mb-3">Design Process</h2>
             <p className="text-body-lg text-text-secondary max-w-2xl">
               This site is built using a design-first workflow with AI assistance.
               Learn about the phases, explore interactive mood boards, and see the
@@ -28,7 +28,7 @@ export default function HomePage() {
           </div>
 
           <FeatureCard border="brand">
-            <h3 className="text-h5 font-bold text-black mb-3">
+            <h3 className="text-h5 font-bold text-foreground mb-3">
               Explore the Full Design Journey
             </h3>
             <p className="text-body text-text-secondary mb-6 max-w-2xl">
@@ -46,10 +46,10 @@ export default function HomePage() {
       </Section>
 
       {/* Open Source Section */}
-      <Section className="bg-surface border-t border-border-light">
+      <Section className="bg-card border-t border-border-light">
         <PageContainer>
           <div className="text-center">
-            <h2 className="text-h4 font-bold text-black mb-4">Open Source</h2>
+            <h2 className="text-h4 font-bold text-foreground mb-4">Open Source</h2>
             <p className="text-body-lg text-text-secondary mb-8 max-w-2xl mx-auto">
               This project is open source. Check out the code, see the commit history,
               and explore how AI-assisted development works in practice.

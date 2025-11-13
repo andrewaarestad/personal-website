@@ -1,7 +1,8 @@
 "use client";
 
 import { ResponsiveLine } from "@nivo/line";
-import { nivoTheme, chartColors } from "@/lib/nivo-theme";
+import { useTheme } from "next-themes";
+import { getNivoTheme, chartColors } from "@/lib/nivo-theme";
 import type { WaterFlowDataPoint } from "@/lib/sample-data";
 import { formatTimestamp, formatTimestampDetailed } from "@/lib/sample-data";
 
@@ -46,6 +47,10 @@ export function WaterFlowChart({
   enableArea = true,
   enablePoints = false,
 }: WaterFlowChartProps) {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+  const theme = getNivoTheme(isDark);
+
   // Transform data into Nivo's expected format
   const chartData = [
     {
@@ -61,7 +66,7 @@ export function WaterFlowChart({
     <div style={{ height: `${height}px` }} className="w-full">
       <ResponsiveLine
         data={chartData}
-        theme={nivoTheme as any}
+        theme={theme as any}
         colors={[chartColors.brandSecondary]} // Cyan for water - thematically perfect
         margin={{ top: 20, right: 20, bottom: 60, left: 60 }}
         // X-axis configuration (time)
@@ -126,19 +131,32 @@ export function WaterFlowChart({
           return (
             <div
               style={{
-                background: "#FFFFFF",
+                background: isDark ? "#1A1F25" : "#FFFFFF",
                 padding: "12px 16px",
-                border: "1px solid #E5E7EB",
+                border: isDark ? "1px solid #2D333A" : "1px solid #E5E7EB",
                 borderRadius: "0.5rem",
-                boxShadow:
-                  "0 10px 25px -5px rgb(0 0 0 / 0.15), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+                boxShadow: isDark
+                  ? "0 10px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.3)"
+                  : "0 10px 25px -5px rgb(0 0 0 / 0.15), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
                 fontFamily: "Inter, sans-serif",
               }}
             >
-              <div style={{ fontSize: "12px", color: "#6B7280", marginBottom: "4px" }}>
+              <div
+                style={{
+                  fontSize: "12px",
+                  color: isDark ? "#9CA3AF" : "#6B7280",
+                  marginBottom: "4px",
+                }}
+              >
                 {formatTimestampDetailed(timestamp)}
               </div>
-              <div style={{ fontSize: "16px", color: "#1A1A1A", fontWeight: 600 }}>
+              <div
+                style={{
+                  fontSize: "16px",
+                  color: isDark ? "#E5E7EB" : "#1A1A1A",
+                  fontWeight: 600,
+                }}
+              >
                 {flowRate.toFixed(2)} GPM
               </div>
             </div>
