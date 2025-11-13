@@ -30,7 +30,7 @@ export function ScrollArrow({ minViewportHeight = 700 }: ScrollArrowProps) {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScroll, { passive: true });
     };
   }, [minViewportHeight]);
 
