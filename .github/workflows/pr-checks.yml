@@ -46,6 +46,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Generate Prisma clients
+        run: pnpm turbo run db:generate
+
       - name: Setup Turborepo cache
         uses: actions/cache@v4
         with:

@@ -76,65 +76,65 @@ const config: Config = {
           "5": "hsl(var(--chart-5))",
         },
 
-        // Custom Design System Colors
-        // Foundation
-        canvas: '#FAFAFA',
-        surface: '#FFFFFF',
+        // Custom Design System Colors - Now all reference CSS variables
+        // Foundation (aliases for compatibility)
+        canvas: "hsl(var(--background))",
+        surface: "hsl(var(--card))",
 
         // Structure
         black: {
-          DEFAULT: '#000000',
-          accent: '#1A1A1A',
+          DEFAULT: "hsl(var(--black))",
+          accent: "hsl(var(--black-accent))",
         },
 
         // Brand Theme Colors - Electric Modern Theme
         // Semantic names that map to current color choices
         brand: {
-          light: '#FEE2E2',
-          DEFAULT: '#EF4444',  // Currently: Bright Red
-          dark: '#DC2626',
+          light: "hsl(var(--brand-light))",
+          DEFAULT: "hsl(var(--brand))",
+          dark: "hsl(var(--brand-dark))",
         },
         'brand-secondary': {
-          light: '#CFFAFE',
-          DEFAULT: '#06B6D4',  // Currently: Cyan
-          dark: '#0891B2',
+          light: "hsl(var(--brand-secondary-light))",
+          DEFAULT: "hsl(var(--brand-secondary))",
+          dark: "hsl(var(--brand-secondary-dark))",
         },
         highlight: {
-          light: '#ECFCCB',
-          DEFAULT: '#84CC16',  // Currently: Lime
-          dark: '#65A30D',
+          light: "hsl(var(--highlight-light))",
+          DEFAULT: "hsl(var(--highlight))",
+          dark: "hsl(var(--highlight-dark))",
         },
 
-        // Gradient-specific colors with explicit opacity for compatibility
-        'gradient-brand-subtle': 'rgba(254, 226, 226, 0.1)',
-        'gradient-brand-secondary-subtle': 'rgba(207, 250, 254, 0.1)',
+        // Gradient-specific colors with CSS variables
+        'gradient-brand-subtle': "hsl(var(--gradient-brand-subtle))",
+        'gradient-brand-secondary-subtle': "hsl(var(--gradient-brand-secondary-subtle))",
 
         // Semantic
         success: {
-          light: '#D1FAE5',
-          DEFAULT: '#10B981',
+          light: "hsl(var(--success-light))",
+          DEFAULT: "hsl(var(--success))",
         },
         error: {
-          light: '#FEE2E2',
-          DEFAULT: '#EF4444',
+          light: "hsl(var(--error-light))",
+          DEFAULT: "hsl(var(--error))",
         },
         warning: {
-          light: '#FEF3C7',
-          DEFAULT: '#F59E0B',
+          light: "hsl(var(--warning-light))",
+          DEFAULT: "hsl(var(--warning))",
         },
         info: {
-          light: '#DBEAFE',
-          DEFAULT: '#3B82F6',
+          light: "hsl(var(--info-light))",
+          DEFAULT: "hsl(var(--info))",
         },
 
         // Text
-        'text-primary': '#1A1A1A',
-        'text-secondary': '#6B7280',
-        'text-tertiary': '#9CA3AF',
+        'text-primary': "hsl(var(--text-primary))",
+        'text-secondary': "hsl(var(--text-secondary))",
+        'text-tertiary': "hsl(var(--text-tertiary))",
 
         // Borders
-        'border-light': '#E5E7EB',
-        'border-default': '#D1D5DB',
+        'border-light': "hsl(var(--border-light))",
+        'border-default': "hsl(var(--border-default))",
       },
       borderRadius: {
         lg: "var(--radius)",
