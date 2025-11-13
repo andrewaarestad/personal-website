@@ -5,12 +5,16 @@ import { HomepageContactInfo } from "@/components/homepage-contact-info";
 import { PageContainer } from "@/components/ui/page-container";
 import { Section } from "@/components/ui/section";
 import { FeatureCard } from "@/components/ui/feature-card";
+import { ScrollArrow } from "@/components/scroll-arrow";
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Section - Variant 1: Direct */}
       <HomepageHero />
+
+      {/* Scroll indicator for initial page load */}
+      <ScrollArrow />
 
       {/* Contact Info Section */}
       <HomepageContactInfo />
