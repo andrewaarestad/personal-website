@@ -4,11 +4,41 @@ Quick reference for AI agents working on this project.
 
 ## 🎯 First Time Working on This Project?
 
-1. **Read**: `docs/design-workflow.md` - Complete workflow guide
-2. **Check**: `apps/website/design/README.md` - Current design status
-3. **Ask**: User what phase we're in (brand, visual, mood board, or implementation)
+1. **Read**: `docs/design-workflow.md` - Complete visual design workflow
+2. **Read**: `docs/copywriting-workflow.md` - Complete copywriting workflow
+3. **Check**: `design/README.md` - Current design status
+4. **Ask**: User what you're working on (design, content, features, etc.)
 
 ## 📋 Common Workflows
+
+### Creating Content (Stories, Project Pages)
+
+```
+User: "Help me write a project page about [topic]"
+
+You should:
+1. Read: design/brand/guidelines.md (mission, values, personality)
+2. Read: design/brand/voice-tone.md (writing style, do's/don'ts)
+3. Read: Top 3 similar pages (e.g., apps/website/src/app/projects/*.tsx)
+4. Conduct web research on topic
+5. Create story outline using design/templates/story-outline-template.md
+6. Create writing plan using design/templates/writing-plan-template.md
+7. ⚠️ STOP - Present outline + writing plan to user
+8. Wait for user approval
+9. Implement with PostLayout components
+10. Test on Vercel preview
+```
+
+**Key:** Always STOP for approval after outline/plan, before writing.
+
+**PostLayout Components:**
+- H1Section, H2Section - Headings
+- TextSection - Body text
+- ImageSection - Full-width images
+- TextImageSection - Text + image (image-left or image-right)
+- DataVisualizationSection - Charts, widgets
+
+**Reference:** `apps/website/src/app/projects/sample-post/page.tsx`
 
 ### Starting Design Work
 
@@ -16,10 +46,10 @@ Quick reference for AI agents working on this project.
 User: "Let's start on the design"
 
 You should:
-1. Check if brand guidelines exist (apps/website/design/brand/guidelines.md)
+1. Check if brand guidelines exist (design/brand/guidelines.md)
 2. If not: "Let's define brand guidelines first. What's the mission of this site?"
 3. Use templates from docs/design-workflow.md
-4. Create documents in apps/website/design/brand/
+4. Create documents in design/brand/
 ```
 
 ### Creating a Mood Board
@@ -29,7 +59,7 @@ User: "Create a mood board for the homepage"
 
 You should:
 1. Ensure brand + visual system are documented
-2. Create directory: apps/website/design/mood-boards/v1-[name]/
+2. Create directory: design/mood-boards/v1-[name]/
 3. Create page: apps/website/src/app/design-preview/v1-[name]/page.tsx
 4. Showcase colors, typography, components, layout
 5. Create README.md with iteration notes
@@ -100,20 +130,39 @@ git push -u origin claude/[description]-[session-id]
 
 ```
 docs/
-├── design-workflow.md          # 📖 Complete workflow guide
+├── design-workflow.md          # 📖 Visual design workflow guide
+├── copywriting-workflow.md     # ✍️ Content creation workflow guide
 ├── ai-agents.md                # General AI collaboration guide
 └── agent-quick-reference.md    # This file
 
+design/                         # Design documentation (root level)
+├── brand/                      # Brand guidelines
+│   ├── guidelines.md           # Mission, values, personality
+│   ├── voice-tone.md           # Writing style guide
+│   └── copywriting-checklist.md # Quick reference for writing
+├── visual/                     # Visual design system
+│   ├── color-system.md
+│   ├── typography.md
+│   └── spacing-layout.md
+├── mood-boards/                # Design iterations
+├── templates/                  # Content templates
+│   ├── story-outline-template.md
+│   └── writing-plan-template.md
+└── examples/                   # Example documents
+    └── research-example.md
+
 apps/website/
-├── design/                     # Design documentation
-│   ├── brand/                  # Brand guidelines
-│   ├── visual/                 # Visual design system
-│   └── mood-boards/            # Iterations
 ├── design-tests/               # Playwright automation
 ├── src/app/
 │   ├── design-preview/         # Mood board pages
 │   │   └── [board]/page.tsx
+│   ├── projects/               # Project pages
+│   │   ├── sample-post/        # PostLayout example
+│   │   └── [project]/
 │   └── page.tsx                # Homepage
+├── src/components/
+│   ├── post-layout/            # PostLayout components
+│   └── ui/                     # shadcn components
 ├── components.json             # shadcn config
 ├── playwright.config.ts        # Playwright config
 └── package.json                # Dependencies
@@ -144,6 +193,39 @@ Phase 5: Implementation
     Update: globals.css
     Add components with shadcn CLI
     Build features
+```
+
+## ✍️ Copywriting Workflow Phases
+
+```
+Phase 1: Preparation
+└─> Read: design/brand/guidelines.md
+    Read: design/brand/voice-tone.md
+    Review: 3 similar content pieces
+
+Phase 2: Research
+└─> WebSearch: Topic research
+    Create: Research notes (see design/examples/research-example.md)
+
+Phase 3: Story Outline
+└─> Use: design/templates/story-outline-template.md
+    Plan: Narrative structure
+    Map: PostLayout components
+
+Phase 4: Writing Plan
+└─> Use: design/templates/writing-plan-template.md
+    Define: Tone, style, rhetorical approaches
+
+Phase 5: ⚠️ USER APPROVAL (STOP HERE!)
+└─> Present: Outline + Writing Plan
+    Ask: For feedback
+    Iterate: Until approved
+
+Phase 6: Implementation
+└─> Write: Content following approved plan
+    Use: PostLayout components
+    Add: Metadata for SEO
+    Test: Vercel preview
 ```
 
 ## 🚨 Important Rules

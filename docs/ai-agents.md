@@ -22,6 +22,97 @@ This project uses a design-first approach optimized for AI collaboration:
 
 This workflow is optimized for **Claude Code mobile and cloud environments**, using CLI tools and programmatic APIs.
 
+## ✍️ Copywriting & Content Creation Workflow
+
+**Just as we design-first for visual elements, we follow a content-first workflow for stories and pages.**
+
+When creating long-form content (project pages, thought leadership, tutorials), follow this structured process:
+
+1. **Preparation** - Review brand guidelines, voice & tone, existing content
+2. **Research** - Conduct web research on the topic
+3. **Story Outline** - Plan narrative structure and PostLayout component sequence
+4. **Writing Plan** - Define tone, style, and rhetorical approaches
+5. **User Approval** - ⚠️ STOP and get feedback before writing
+6. **Implementation** - Write content and implement with PostLayout components
+
+**📖 See [Copywriting Workflow Guide](./copywriting-workflow.md) for complete instructions.**
+
+### Key Copywriting Resources
+
+**Guidelines:**
+- `design/brand/guidelines.md` - Brand mission, values, personality
+- `design/brand/voice-tone.md` - Writing style, tone spectrum, do's/don'ts
+- `design/brand/copywriting-checklist.md` - Quick reference during writing
+
+**Templates:**
+- `design/templates/story-outline-template.md` - Structure your content
+- `design/templates/writing-plan-template.md` - Plan tone and style
+
+**Examples:**
+- `design/examples/research-example.md` - Sample research notes
+- `apps/website/src/app/projects/sample-post/page.tsx` - Complete PostLayout example
+
+### PostLayout Component System
+
+For long-form content, use the PostLayout component system:
+
+**Available Components:**
+- `H1Section` - Main page title
+- `H2Section` - Section headings
+- `TextSection` - Body text (supports multi-paragraph)
+- `ImageSection` - Full-width images
+- `TextImageSection` - Text + image side-by-side (image-left or image-right)
+- `DataVisualizationSection` - Charts, graphs, interactive widgets
+
+**Example Usage:**
+
+```typescript
+import {
+  PostLayout,
+  H1Section,
+  H2Section,
+  TextSection,
+  ImageSection,
+} from "@/components/post-layout";
+
+export default function MyStory() {
+  return (
+    <PostLayout>
+      {[
+        <H1Section key="title" text="My Story Title" />,
+        <TextSection key="intro" text="Introduction paragraph..." />,
+        <H2Section key="section1" text="The Challenge" />,
+        <TextSection key="problem" text="Problem description..." />,
+        <ImageSection
+          key="diagram"
+          imageUrl="https://..."
+          alt="Descriptive alt text"
+        />,
+      ]}
+    </PostLayout>
+  );
+}
+```
+
+### Brand Voice Quick Reference
+
+When writing content:
+
+✅ **DO:**
+- Start with big picture before technical details
+- Use specific numbers ("5,000 devices" not "at scale")
+- Explain technical terms in context
+- Discuss trade-offs honestly
+- Write like a human (occasional fragments OK)
+
+❌ **DON'T:**
+- Use hype language (revolutionary, game-changing)
+- Hide behind jargon without explanation
+- Be performatively enthusiastic ("Super excited to share...")
+- Use corporate speak (leverage, synergy, ideate)
+
+**Full checklist:** `design/brand/copywriting-checklist.md`
+
 ## Tool Integrations
 
 ### For Cloud Environments (Claude Code Mobile)
@@ -164,6 +255,26 @@ Ask AI to document complex features:
 ```
 
 ## Common Workflows
+
+### Creating Long-Form Content (Project Pages, Stories)
+
+```
+1. "Help me create a project page about [topic]"
+   Agent: Reads brand guidelines, voice-tone guide, existing content
+   Agent: Conducts web research on topic
+
+2. Agent: Creates story outline using template
+   Agent: Creates writing plan using template
+   Agent: Presents outline + plan for approval
+
+3. User: Reviews and provides feedback
+
+4. Agent: Implements approved plan with PostLayout components
+   Agent: Adds metadata for SEO
+   Agent: Tests locally and on Vercel preview
+```
+
+**Key Difference:** Always STOP for approval after outline/plan, before writing.
 
 ### Adding a New Page
 
