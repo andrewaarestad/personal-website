@@ -49,6 +49,25 @@ personal-website/
 
 This workflow is optimized for **Claude Code mobile** using CLI tools (shadcn, Playwright) instead of MCP servers.
 
+### Content-First Approach (Copywriting)
+
+**When creating long-form content (project pages, stories), follow a structured copywriting workflow:**
+
+1. **Preparation** - Review brand guidelines, voice & tone, existing content
+2. **Research** - Conduct web research on the topic
+3. **Story Outline** - Plan narrative structure and component sequence
+4. **Writing Plan** - Define tone, style, and rhetorical approaches
+5. **User Approval** - ⚠️ STOP and get feedback before writing
+6. **Implementation** - Write content using PostLayout components
+
+**📖 See [Copywriting Workflow Guide](./docs/copywriting-workflow.md) for complete instructions.**
+
+**Key Resources:**
+- Brand guidelines: `design/brand/guidelines.md`
+- Voice & tone guide: `design/brand/voice-tone.md`
+- Templates: `design/templates/`
+- PostLayout example: `apps/website/src/app/projects/sample-post/page.tsx`
+
 ### Code Quality
 
 - **TypeScript**: Strict mode enabled - all code must be fully typed

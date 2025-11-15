@@ -526,7 +526,7 @@ Vercel automatically deploys on every push to any branch:
 1. **Commit mood board changes**:
    ```bash
    git add apps/website/src/app/design-preview/
-   git add apps/website/design/
+   git add design/
    git commit -m "Add mood board iteration: [iteration-name]"
    ```
 
@@ -692,7 +692,7 @@ pnpm format                                        # Format code
 pnpm type-check                                    # Check TypeScript
 
 # Git
-git add apps/website/design/
+git add design/
 git commit -m "Add design iteration"
 git push -u origin [branch-name]
 ```
