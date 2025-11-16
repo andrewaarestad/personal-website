@@ -37,9 +37,7 @@ export function Footer() {
 
           {/* Theme Toggle */}
           <div className="flex items-center gap-2">
-            <span className="text-body-sm text-text-tertiary hidden sm:inline">
-              Theme:
-            </span>
+            <span className="text-body-sm text-text-tertiary hidden sm:inline">Theme:</span>
             <ThemeToggle />
           </div>
         </div>

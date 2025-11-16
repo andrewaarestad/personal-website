@@ -5,6 +5,7 @@
 The voice is distinctly **genuine, technical, and pragmatic** - shaped by 15+ years of shipping real ML systems. It's the voice of someone who has solved real problems and learned hard lessons, sharing that experience without pretension or hype.
 
 **Key attributes:**
+
 - **Dry but not cynical** - Honest and direct without being negative or jaded
 - **Technical but accessible** - Depth available for those who want it, big picture for everyone
 - **Earnest and genuine** - No performative enthusiasm, just authentic interest and curiosity
@@ -13,29 +14,33 @@ The voice is distinctly **genuine, technical, and pragmatic** - shaped by 15+ ye
 ## Writing Style
 
 ### Formality Level
+
 **Conversational Professional** - Not corporate-speak, but not overly casual either. Like talking with a knowledgeable colleague over coffee.
 
 ### Technical Depth
+
 **Layered Accessibility** - Start with the big picture that anyone can understand, then provide technical depth for those who want to dig deeper. Never assume the reader wants to stay at surface level, but never trap them in jargon without context.
 
 ### Content Length
+
 **As long as it needs to be** - Concise when possible, detailed when valuable. Avoid both fluff and unnecessary brevity. Respect the reader's time while providing substance.
 
 ### Perspective
+
 **First person when relevant** - This is a personal site. Use "I" when discussing your work, experience, and perspective. Use "we" when discussing collaborative work. Use "you" when addressing the reader directly.
 
 ## Tone Spectrum
 
 The tone adapts to context while maintaining the core voice:
 
-| Context | Tone | Example |
-|---------|------|---------|
-| Homepage / About | Welcoming, straightforward | "I'm an AI/ML engineer who's been building production systems since before it was cool." |
-| Project Showcases | Technical, enthusiastic about the problem | "The challenge was combining Kalman filtering with real-time telemetry processing while keeping power consumption under 500mW." |
-| Technical Deep Dives | Detailed, educational, honest | "This approach has trade-offs. You gain real-time performance but sacrifice some accuracy during rapid state transitions." |
-| Discussing Challenges | Constructive, realistic, not complaining | "The biggest lesson was that model accuracy matters less than deployment reliability when you're shipping to production." |
-| Personal Interests | Playful, curious, genuine | "When I'm not training models, you'll find me..." |
-| Error Messages | Helpful, direct, not apologetic | "That page doesn't exist. Try the home page or check the URL." |
+| Context               | Tone                                      | Example                                                                                                                         |
+| --------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Homepage / About      | Welcoming, straightforward                | "I'm an AI/ML engineer who's been building production systems since before it was cool."                                        |
+| Project Showcases     | Technical, enthusiastic about the problem | "The challenge was combining Kalman filtering with real-time telemetry processing while keeping power consumption under 500mW." |
+| Technical Deep Dives  | Detailed, educational, honest             | "This approach has trade-offs. You gain real-time performance but sacrifice some accuracy during rapid state transitions."      |
+| Discussing Challenges | Constructive, realistic, not complaining  | "The biggest lesson was that model accuracy matters less than deployment reliability when you're shipping to production."       |
+| Personal Interests    | Playful, curious, genuine                 | "When I'm not training models, you'll find me..."                                                                               |
+| Error Messages        | Helpful, direct, not apologetic           | "That page doesn't exist. Try the home page or check the URL."                                                                  |
 
 ## Do's and Don'ts
 
@@ -110,11 +115,13 @@ The tone adapts to context while maintaining the core voice:
 ### Project Showcase Introduction
 
 **Example 1: IoT + Signal Processing**
+
 > FLUID Water Meter combined IoT hardware, real-time signal processing, and machine learning to detect water leaks in homes before they became expensive disasters.
 >
 > As co-founder and CTO, I led the development of ultrasonic flow measurement algorithms, built ML models for anomaly detection, and designed the cloud infrastructure to process telemetry from thousands of devices.
 
 **Example 2: Generative AI + Architecture**
+
 > Building a personalized eCommerce platform meant solving for real-time recommendations, dynamic pricing, and content moderation—all while handling marketplace transactions and subscriptions at scale.
 >
 > I architected the ML pipeline integrating recommendation models with user behavior tracking, deployed generative AI for automated content moderation, and designed the serverless infrastructure to handle traffic spikes during product launches.
@@ -122,11 +129,13 @@ The tone adapts to context while maintaining the core voice:
 ### Technical Explanation
 
 **Example 1: Signal Processing**
+
 > The challenge was measuring flow accurately with ultrasonic sensors, which are sensitive to environmental factors like temperature, air bubbles, and installation angles.
 >
 > We used Kalman filtering to combine multiple sensor readings over time, building a state estimation model that could predict the true flow rate even when individual measurements were noisy. The algorithm ran on embedded hardware with strict power constraints, so we optimized for computational efficiency without sacrificing accuracy.
 
 **Example 2: ML Architecture**
+
 > Personalization at scale requires balancing model latency with recommendation quality. Users expect sub-200ms response times, but running deep learning models for each request would blow our infrastructure budget.
 >
 > We implemented a two-tier architecture: lightweight collaborative filtering for real-time responses, with a background job processing deep learning models to update user embeddings overnight. This gave us 95% of the recommendation quality at 10% of the infrastructure cost.
@@ -138,22 +147,26 @@ The tone adapts to context while maintaining the core voice:
 ## Adapting Tone for Different Audiences
 
 ### For Hiring Managers
+
 - Be specific about experience (years, scale, outcomes)
 - Show breadth across domains (signal processing, generative AI, personalization, architecture)
 - Demonstrate communication skills through clear explanations
 - Balance technical depth with business/product thinking
 
 ### For Technical Decision-Makers (Clients)
+
 - Lead with business impact, provide technical depth as support
 - Be direct about capabilities and limitations
 - Show strategic thinking alongside technical expertise
 
 ### For Industry Peers
+
 - Get into implementation details
 - Discuss trade-offs and lessons learned
 - Share knowledge openly, assume technical context
 
 ### For General Audiences
+
 - Start with relatable problems
 - Explain technical concepts in plain language
 - Show enthusiasm through clear explanations, not exclamation points

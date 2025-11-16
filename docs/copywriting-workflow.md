@@ -53,6 +53,7 @@ This ensures every piece of content aligns with our brand voice, serves our audi
 ## Phase 1: Preparation & Context Gathering
 
 ### Purpose
+
 Ground yourself in the brand, understand the voice, and familiarize yourself with existing content before starting any new piece.
 
 ### Agent Instructions
@@ -60,11 +61,13 @@ Ground yourself in the brand, understand the voice, and familiarize yourself wit
 #### Step 1.1: Review Brand Guidelines
 
 **Required Reading:**
+
 - `/design/brand/guidelines.md` - Brand mission, values, personality, positioning
 - `/design/brand/voice-tone.md` - Writing style, tone spectrum, do's and don'ts
 - `/design/brand/persona.md` - Target audience definitions (if completed)
 
 **What to Look For:**
+
 - **Mission & Values**: What does this site stand for? What are we trying to communicate?
 - **Brand Personality**: What adjectives describe the voice? (Technical, Whimsical, Genuine, Pragmatic)
 - **Key Messages**: What should readers take away?
@@ -77,16 +80,19 @@ Ground yourself in the brand, understand the voice, and familiarize yourself wit
 Look in `apps/website/src/app/` for existing pages similar to what you'll create:
 
 **Project Pages:**
+
 - `apps/website/src/app/projects/fluid-water-meter/page.tsx` - Full project showcase (traditional layout)
 - `apps/website/src/app/projects/sample-post/page.tsx` - PostLayout system demo (comprehensive)
 - `apps/website/src/app/projects/ambient-temperature-estimation/page.tsx` - Coming soon stub
 
 **Other Content Types:**
+
 - Homepage: `apps/website/src/app/page.tsx`
 - Design process: `apps/website/src/app/design-process/page.tsx`
 - Projects listing: `apps/website/src/app/projects/page.tsx`
 
 **What to Analyze:**
+
 - **Structure**: How are pages organized? What's the narrative flow?
 - **Voice**: How does the writing sound? What tone is used?
 - **Technical Depth**: How is complexity layered? Big picture → details?
@@ -113,6 +119,7 @@ Look in `apps/website/src/app/` for existing pages similar to what you'll create
 #### Step 1.4: Understand Content Goals
 
 **Ask the User:**
+
 - What type of content is this? (Project showcase, thought leadership, tutorial, etc.)
 - Who is the primary audience? (Hiring managers, technical peers, general audience)
 - What's the key message or takeaway?
@@ -127,6 +134,7 @@ Look in `apps/website/src/app/` for existing pages similar to what you'll create
 ## Phase 2: Topic Research
 
 ### Purpose
+
 Gather comprehensive information about the topic, focusing on aspects relevant to the brand positioning and audience needs.
 
 ### Agent Instructions
@@ -136,6 +144,7 @@ Gather comprehensive information about the topic, focusing on aspects relevant t
 Based on the content type and audience, determine what you need to research:
 
 **For Project Pages:**
+
 - Technical details about the problem space
 - Relevant technologies, algorithms, approaches
 - Industry context and challenges
@@ -143,6 +152,7 @@ Based on the content type and audience, determine what you need to research:
 - Specific metrics, outcomes, or results
 
 **For Thought Leadership:**
+
 - Current state of the topic in the industry
 - Diverse perspectives and viewpoints
 - Real-world examples and case studies
@@ -150,6 +160,7 @@ Based on the content type and audience, determine what you need to research:
 - Alignment with brand values (pragmatic innovation, technical depth, constructive realism)
 
 **For Tutorials/How-To:**
+
 - Current best practices
 - Common pitfalls and challenges
 - Prerequisites and background knowledge needed
@@ -158,6 +169,7 @@ Based on the content type and audience, determine what you need to research:
 #### Step 2.2: Conduct Web Research
 
 **Use WebSearch tool to find:**
+
 - Technical articles and documentation
 - Industry perspectives and analysis
 - Real-world examples and case studies
@@ -165,6 +177,7 @@ Based on the content type and audience, determine what you need to research:
 - Data, statistics, benchmarks
 
 **Focus Areas Aligned with Brand:**
+
 - Bridges between research and product
 - Pragmatic, shipping-focused insights
 - Technical depth with business context
@@ -172,6 +185,7 @@ Based on the content type and audience, determine what you need to research:
 - Real-world validation and results
 
 **Research Quality Criteria:**
+
 - **Authoritative sources**: Technical documentation, peer-reviewed research, established industry voices
 - **Recent information**: Prefer current sources (last 1-2 years) unless historical context is needed
 - **Diverse perspectives**: Don't rely on a single source
@@ -191,6 +205,7 @@ Based on the content type and audience, determine what you need to research:
 **Target Audience:** [Who this is for]
 
 ## Key Questions to Answer
+
 - [Question 1]
 - [Question 2]
 - [Question 3]
@@ -198,27 +213,32 @@ Based on the content type and audience, determine what you need to research:
 ## Research Findings
 
 ### [Category 1: e.g., Problem Space]
+
 - **Finding:** [What you learned]
 - **Source:** [URL or reference]
 - **Relevance:** [Why this matters for our content]
 - **Quote/Data:** [Specific quotes or data points]
 
 ### [Category 2: e.g., Technical Approach]
+
 ...
 
 ## Alignment with Brand Values
+
 - **Pragmatic Innovation:** [How this topic demonstrates shipping real systems]
 - **Technical Depth:** [What technical details we can explore]
 - **Genuine Curiosity:** [What's genuinely interesting here]
 - **Constructive Realism:** [What trade-offs and challenges exist]
 
 ## Content Opportunities
+
 - Stories or examples we could tell
 - Data visualizations we could create
 - Technical concepts to explain
 - Lessons learned or insights to share
 
 ## Open Questions
+
 - [What still needs clarification]
 - [What the user might need to provide]
 ```
@@ -226,6 +246,7 @@ Based on the content type and audience, determine what you need to research:
 #### Step 2.4: Review Codebase (if applicable)
 
 If writing about a feature or project in this codebase:
+
 - Review relevant source code
 - Check tests for usage examples
 - Review documentation and comments
@@ -236,6 +257,7 @@ If writing about a feature or project in this codebase:
 ## Phase 3: Story Outline Creation
 
 ### Purpose
+
 Plan the narrative structure, content flow, and component mapping before writing.
 
 ### Agent Instructions
@@ -282,6 +304,7 @@ For a project page about an ML anomaly detection system:
 
 ```markdown
 ## Thesis Statement
+
 This project demonstrates how combining unsupervised learning with domain expertise can dramatically improve operational reliability. We reduced false positives by 82% while catching critical issues hours earlier than traditional threshold-based alerts.
 
 ## Narrative Structure
@@ -343,6 +366,7 @@ Before moving to Phase 4, verify your outline:
 ## Phase 4: Writing Plan Development
 
 ### Purpose
+
 Define the specific tone, style, and rhetorical approaches for implementing the outline.
 
 ### Agent Instructions
@@ -389,9 +413,11 @@ For the ML anomaly detection project:
 
 ```markdown
 ## Tone
+
 Technical, enthusiastic about the problem, honest about challenges
 
 ## Voice Alignment
+
 - **Dry but not cynical**: Discuss alert fatigue as a real problem without complaining
 - **Technical but accessible**: Start with big picture (alerting problems), then dive into algorithms
 - **Genuine curiosity**: Show what was interesting about the multi-stage approach
@@ -400,22 +426,26 @@ Technical, enthusiastic about the problem, honest about challenges
 ## Section-by-Section Notes
 
 ### Introduction
+
 - **Style**: Direct, get right to the point
 - **Avoid**: Performative enthusiasm ("Super excited to share...")
 - **Use**: "This project used ML to predict..." not "We leveraged cutting-edge AI to revolutionize..."
 
 ### The Challenge
+
 - **Pattern**: Problem → Context → Why it matters
 - **Voice**: Constructive (not complaining about existing systems)
 - **Example**: "Traditional threshold-based alerting creates alert fatigue while missing subtle patterns"
 
 ### Our Approach
+
 - **Pattern**: Context → Technical detail → Why it matters
 - **Depth**: Layer complexity - start with pipeline overview, then explain autoencoder rationale
 - **Avoid**: Jargon without explanation
 - **Example**: "We used isolation forests to score anomalies because [reason that matters]"
 
 ### Results & Impact
+
 - **Style**: Specific numbers, concrete outcomes
 - **Avoid**: Hype language ("game-changing"), vague metrics ("significantly improved")
 - **Use**: "73% reduction in MTTD" not "dramatically faster detection"
@@ -437,6 +467,7 @@ Before seeking approval:
 ## Phase 5: User Approval Checkpoint ⚠️
 
 ### Purpose
+
 **STOP** and get user feedback before investing time in writing and implementation.
 
 ### Agent Instructions
@@ -449,6 +480,7 @@ Before seeking approval:
 # Content Plan for Review: [Title]
 
 ## Overview
+
 - **Content Type**: [Project page / Thought leadership / etc.]
 - **Target Audience**: [Who this is for]
 - **Key Message**: [One sentence]
@@ -456,9 +488,11 @@ Before seeking approval:
 ## Story Outline
 
 ### Thesis Statement
+
 [Your 2-3 sentence thesis]
 
 ### Narrative Structure
+
 1. **[Section Name]** (Components: H1, Text)
    - [Key points]
 
@@ -468,6 +502,7 @@ Before seeking approval:
 [... rest of outline ...]
 
 ### Media & Interactive Elements
+
 - **Images needed**: [List with descriptions]
 - **Data visualizations**: [What charts/graphs]
 - **Future components flagged**: [What's not yet built but would enhance the story]
@@ -475,14 +510,17 @@ Before seeking approval:
 ## Writing Plan
 
 ### Tone & Voice
+
 - **Selected Tone**: [e.g., Technical, educational, honest]
 - **Voice Alignment**: [How we'll embody brand characteristics]
 
 ### Key Rhetorical Approaches
+
 - [Pattern 1: e.g., Context → Concept → Why It Matters]
 - [Pattern 2: e.g., Problem → Approach → Result → Lessons]
 
 ### Section Highlights
+
 - **[Section Name]**: [Writing approach notes]
 - **[Section Name]**: [Writing approach notes]
 
@@ -498,6 +536,7 @@ Before seeking approval:
 #### Step 5.2: Ask Specific Questions
 
 **Always ask:**
+
 - "Does this outline match your vision for the content?"
 - "Is the technical depth appropriate?"
 - "Are there any specific examples or details I should include?"
@@ -507,11 +546,13 @@ Before seeking approval:
 #### Step 5.3: Iterate Based on Feedback
 
 **If user requests changes:**
+
 - Update the outline and/or writing plan
 - Present revised version
 - Repeat until approval
 
 **If user approves:**
+
 - Document approval (note it in your context)
 - Proceed to Phase 6
 
@@ -522,6 +563,7 @@ Before seeking approval:
 ## Phase 6: Implementation & Quality Check
 
 ### Purpose
+
 Execute the approved plan with high quality and verify before delivery.
 
 ### Agent Instructions
@@ -620,23 +662,27 @@ export default function YourPage() {
 #### Step 6.2: Writing Guidelines
 
 **Voice & Tone:**
+
 - Reference `design/brand/copywriting-checklist.md` throughout writing
 - Follow your approved writing plan
 - Use the Do's and Don'ts from `design/brand/voice-tone.md`
 
 **Technical Content:**
+
 - **Pattern: Context → Concept → Why It Matters** for explanations
 - Always explain why technical choices matter
 - Layer complexity: big picture first, details for those who want them
 - Use concrete examples and specific numbers
 
 **Structure:**
+
 - Keep paragraphs focused and scannable
 - Use `\n\n` for paragraph breaks within TextSection
 - Break long content into multiple TextSection components if needed
 - Balance text-heavy sections with images
 
 **Images:**
+
 - Use placeholders if real images aren't available: `https://placehold.co/[width]x[height]/[color]/[textcolor]/png?text=[text]`
 - Always include descriptive alt text
 - Prefer images that illustrate concepts, not just decoration
@@ -653,11 +699,13 @@ export const metadata: Metadata = {
 ```
 
 **Title Guidelines:**
+
 - Keep under 60 characters
 - Include key topic/keywords
 - Always end with " - Andrew Aarestad"
 
 **Description Guidelines:**
+
 - 120-160 characters optimal for search results
 - Compelling summary that makes people want to click
 - Include key terms naturally
@@ -666,11 +714,13 @@ export const metadata: Metadata = {
 #### Step 6.4: Handle Media Assets
 
 **Real Images:**
+
 - If user provides images, use them
 - Optimize before adding (Next.js Image component handles some optimization)
 - Store in `public/images/[project-name]/`
 
 **Placeholder Images:**
+
 - Use `https://placehold.co/` with appropriate dimensions
 - Common sizes:
   - Full-width hero: 1200x600
@@ -679,6 +729,7 @@ export const metadata: Metadata = {
 - Use brand colors when possible: `4F46E5` (purple), `EF4444` (red), `06B6D4` (cyan)
 
 **Charts & Data Visualizations:**
+
 - If chart component exists, integrate it
 - If component doesn't exist, use placeholder with clear description
 - Flag for future development in documentation
@@ -724,6 +775,7 @@ If your outline includes interactive elements not yet built:
 **Before marking implementation complete, verify:**
 
 **Content Quality:**
+
 - [ ] Follows approved outline structure
 - [ ] Implements approved writing plan
 - [ ] Voice & tone align with brand guidelines
@@ -734,6 +786,7 @@ If your outline includes interactive elements not yet built:
 - [ ] Big picture presented before diving into details
 
 **Technical Quality:**
+
 - [ ] PostLayout components used correctly
 - [ ] All sections have unique keys
 - [ ] Metadata is optimized for SEO
@@ -743,17 +796,20 @@ If your outline includes interactive elements not yet built:
 - [ ] File is in correct location
 
 **Accessibility:**
+
 - [ ] Alt text describes image content meaningfully
 - [ ] Heading hierarchy is logical (H1 → H2, not skipping levels)
 - [ ] Text has sufficient contrast
 - [ ] Links have descriptive text (not "click here")
 
 **Media:**
+
 - [ ] Images load correctly (or placeholders are appropriate)
 - [ ] Image dimensions are reasonable
 - [ ] Charts/visualizations work (or placeholders document what's needed)
 
 **Writing Checklist (from brand/voice-tone.md):**
+
 - [ ] Started with big picture before diving into details?
 - [ ] Explained technical terms in context, not just used them?
 - [ ] Discussed trade-offs and challenges honestly?
@@ -766,22 +822,26 @@ If your outline includes interactive elements not yet built:
 #### Step 6.7: Preview and Test
 
 **Run development server:**
+
 ```bash
 pnpm dev
 ```
 
 **Navigate to your page:**
+
 ```
 http://localhost:3000/[your-route]
 ```
 
 **Visual checks:**
+
 - Spacing and layout look correct
 - Images render properly
 - Text is readable
 - Mobile responsiveness (resize browser)
 
 **Deploy to Vercel for real device testing:**
+
 ```bash
 git add apps/website/src/app/[your-route]/
 git commit -m "Add [content type]: [title]"
@@ -793,6 +853,7 @@ Review on Vercel preview URL on multiple devices.
 #### Step 6.8: Final Delivery
 
 **Present to user:**
+
 - Link to Vercel preview
 - Summary of what was created
 - Note any custom components flagged for future development
@@ -809,10 +870,12 @@ Quick reference for all available section components.
 **Purpose:** Primary page heading, used once at the top
 
 **Props:**
+
 - `key` (string, required): Unique identifier
 - `text` (string, required): The heading text
 
 **Example:**
+
 ```typescript
 <H1Section
   key="title"
@@ -829,10 +892,12 @@ Quick reference for all available section components.
 **Purpose:** Major content section divisions
 
 **Props:**
+
 - `key` (string, required): Unique identifier
 - `text` (string, required): The heading text
 
 **Example:**
+
 ```typescript
 <H2Section
   key="approach-heading"
@@ -849,10 +914,12 @@ Quick reference for all available section components.
 **Purpose:** Paragraphs of body content
 
 **Props:**
+
 - `key` (string, required): Unique identifier
 - `text` (string, required): The text content (supports multi-paragraph with `\n\n`)
 
 **Example:**
+
 ```typescript
 <TextSection
   key="intro"
@@ -869,11 +936,13 @@ Quick reference for all available section components.
 **Purpose:** Standalone images, diagrams, screenshots
 
 **Props:**
+
 - `key` (string, required): Unique identifier
 - `imageUrl` (string, required): Image source URL
 - `alt` (string, optional): Alt text for accessibility
 
 **Example:**
+
 ```typescript
 <ImageSection
   key="architecture"
@@ -891,6 +960,7 @@ Quick reference for all available section components.
 **Purpose:** Combine text with supporting image, side-by-side on desktop, stacked on mobile
 
 **Props:**
+
 - `key` (string, required): Unique identifier
 - `text` (string, required): The text content
 - `imageUrl` (string, required): Image source URL
@@ -898,6 +968,7 @@ Quick reference for all available section components.
 - `layout` ("image-left" | "image-right", required): Image position
 
 **Example:**
+
 ```typescript
 <TextImageSection
   key="approach-visual"
@@ -917,12 +988,14 @@ Quick reference for all available section components.
 **Purpose:** Container for charts, graphs, interactive visualizations
 
 **Props:**
+
 - `key` (string, required): Unique identifier
 - `title` (string, optional): Chart title
 - `description` (string, optional): Chart description
 - `children` (ReactNode, required): The chart/visualization component
 
 **Example:**
+
 ```typescript
 <DataVisualizationSection
   key="flow-chart"
@@ -1010,42 +1083,52 @@ Quick reference for all available section components.
 ## Common Pitfalls & How to Avoid Them
 
 ### Pitfall 1: Skipping Brand Guidelines Review
+
 **Symptom:** Content sounds generic or doesn't match site voice
 **Fix:** Always start with Phase 1, read guidelines thoroughly
 
 ### Pitfall 2: Implementing Before Approval
+
 **Symptom:** Wasted effort when user wants different structure
 **Fix:** STOP at Phase 5, get explicit approval
 
 ### Pitfall 3: Using Hype Language
+
 **Symptom:** "Revolutionary," "game-changing," "cutting-edge"
 **Fix:** Review Do's and Don'ts in voice-tone.md, use concrete specifics
 
 ### Pitfall 4: Hiding Behind Jargon
+
 **Symptom:** Technical terms without context or explanation
 **Fix:** Use Context → Concept → Why It Matters pattern
 
 ### Pitfall 5: Performative Enthusiasm
+
 **Symptom:** "Super excited to share," "I had the privilege..."
 **Fix:** Be genuine and direct, let the work speak for itself
 
 ### Pitfall 6: Vague Claims
+
 **Symptom:** "At scale," "significantly improved," "extensive experience"
 **Fix:** Use specific numbers: "5,000 devices," "73% reduction," "15+ years"
 
 ### Pitfall 7: Insufficient Research
+
 **Symptom:** Shallow content lacking depth or interesting insights
 **Fix:** Spend more time in Phase 2, look for unique angles
 
 ### Pitfall 8: Ignoring Accessibility
+
 **Symptom:** Missing alt text, poor contrast, unclear link text
 **Fix:** Use Quality Control Checklist in Phase 6
 
 ### Pitfall 9: Poor Component Selection
+
 **Symptom:** Text-heavy with no visual breaks, or too many images
 **Fix:** Reference sample-post.tsx, balance text and visuals
 
 ### Pitfall 10: Skipping the Writing Plan
+
 **Symptom:** Inconsistent tone, unclear rhetorical approach
 **Fix:** Complete Phase 4 thoroughly, document section-by-section notes
 
@@ -1074,22 +1157,27 @@ When asked to create content:
 ## Tools & Resources
 
 **Required Reading:**
+
 - `design/brand/guidelines.md` - Brand foundation
 - `design/brand/voice-tone.md` - Writing style guide
 - `design/brand/copywriting-checklist.md` - Quick reference checklist
 
 **Templates:**
+
 - `design/templates/story-outline-template.md` - Story outline template
 - `design/templates/writing-plan-template.md` - Writing plan template
 
 **Examples:**
+
 - `design/examples/research-example.md` - Research notes example
 - `apps/website/src/app/projects/sample-post/page.tsx` - Complete PostLayout example
 
 **Component Reference:**
+
 - `apps/website/src/components/post-layout/` - PostLayout component source
 
 **Related Workflows:**
+
 - `docs/design-workflow.md` - Design-first workflow
 - `docs/ai-agents.md` - General AI agent guidelines
 
@@ -1098,19 +1186,24 @@ When asked to create content:
 ## Additional Notes
 
 ### Content Maintenance
+
 - Keep design docs updated as brand evolves
 - Archive outdated content appropriately
 - Review existing content periodically for voice consistency
 
 ### Future Enhancements
+
 As the component library grows, update this document to reflect:
+
 - New PostLayout section types
 - New content type templates
 - New interaction patterns
 - Evolved voice guidelines
 
 ### Feedback Loop
+
 After publishing content:
+
 - Note what worked well
 - Document what could be improved
 - Update templates and guidelines accordingly

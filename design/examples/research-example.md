@@ -39,9 +39,11 @@ https://sre.google/sre-book/monitoring-distributed-systems/
 **Relevance:** This validates the problem we're solving and provides authoritative context
 
 **Quote/Data:**
+
 > "The most fundamental principle of good alerting is that alerts should be actionable. An alert that requires no action is noise."
 
 **Key Insights:**
+
 - Traditional threshold-based alerts create alert fatigue
 - Teams receive hundreds of alerts daily, most are false positives
 - Important anomalies get lost in the noise
@@ -56,11 +58,13 @@ https://sre.google/sre-book/monitoring-distributed-systems/
 **Relevance:** Sets context for the scale challenge we're addressing
 
 **Key Data Points:**
+
 - Modern microservices architectures can generate millions of metrics per minute
 - Traditional monitoring tools struggle with high-cardinality data
 - Need for dimensionality reduction before applying ML
 
 **Notes for Content:**
+
 - Use this to establish the "big picture" problem
 - Emphasize scale as a practical concern, not just a buzzword
 - Our approach: "Across thousands of services, not 'at scale'"
@@ -77,12 +81,14 @@ https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf
 **Relevance:** Core algorithm we used, need to explain why it's well-suited
 
 **Technical Details:**
+
 - Works by isolating observations rather than modeling normal behavior
 - Efficient for high-dimensional data (O(n log n) complexity)
 - Doesn't require labeled data (unsupervised)
 - Robust to irrelevant features
 
 **How to Explain (Context → Concept → Why It Matters):**
+
 - Context: "Traditional methods try to model 'normal' behavior, which is hard in complex systems"
 - Concept: "Isolation forests work differently - they identify points that are easy to isolate from the rest"
 - Why it matters: "This makes them fast and effective for real-time use, even with thousands of metrics"
@@ -92,17 +98,20 @@ https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf
 **Finding:** Autoencoders for dimensionality reduction in telemetry data
 
 **Source:** Multiple papers on autoencoders for anomaly detection, including:
+
 - "Deep Learning for Anomaly Detection: A Survey" (Chalapathy & Chawla, 2019)
 
 **Relevance:** Our approach used autoencoders before isolation forests
 
 **Technical Details:**
+
 - Neural networks that learn compressed representations of normal data
 - Reconstruction error indicates anomalies
 - Can reduce hundreds of metrics to tens of dimensions
 - Requires training on "normal" historical data
 
 **Trade-offs to Discuss:**
+
 - Pro: Effective dimensionality reduction
 - Pro: Learns complex patterns
 - Con: Requires careful selection of training data (concept drift risk)
@@ -115,18 +124,21 @@ https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf
 **Finding:** Feature stores enable real-time ML inference
 
 **Source:** Industry practice from companies like Uber, Airbnb
+
 - Uber's Michelangelo platform case study
 - "Introducing Feast: an open source feature store for machine learning"
 
 **Relevance:** Our infrastructure pattern for low-latency predictions
 
 **Key Insights:**
+
 - Feature stores maintain pre-computed features for fast retrieval
 - Essential for sub-second inference latency
 - Separates feature engineering from model serving
 - Enables feature reuse across models
 
 **How We Used This:**
+
 - Redis-based feature store with rolling windows of metrics
 - Enabled sub-second detection latency
 - Specific detail: "maintained 5-minute rolling windows updated every 10 seconds"
@@ -142,12 +154,14 @@ https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf
 **Relevance:** Need to explain why we used additional metrics
 
 **Key Insight:**
+
 - Precision: What % of alerts are real issues? (False positive rate)
 - Recall: What % of real issues did we catch? (False negative rate)
 - Time-to-detect matters more than just binary detection
 - Alert fatigue reduction is a key outcome metric
 
 **Metrics We'll Highlight:**
+
 - Precision: 94%
 - Recall: 89%
 - MTTD (Mean Time To Detection): 73% improvement
@@ -167,11 +181,13 @@ https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf
 **Relevance:** A major lesson we learned - SREs need to understand WHY alerts fire
 
 **Key Challenge:**
+
 - Black-box ML models create distrust
 - Engineers won't act on alerts they don't understand
 - Need explainability mechanisms even for unsupervised methods
 
 **Our Solution:**
+
 - Added SHAP values to show which metrics contributed most
 - Provided metric-level breakdowns in alert UI
 - Iterative deployment with SRE feedback
@@ -187,16 +203,19 @@ https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf
 **Relevance:** Systems change over time, models must adapt
 
 **Key Insight:**
+
 - System behavior changes: new services, infrastructure updates, traffic patterns
 - Models trained on old data become less accurate
 - Need automated retraining pipelines
 
 **Our Approach:**
+
 - Automated weekly retraining on recent data
 - Human-in-the-loop validation of model updates
 - Monitoring model performance metrics over time
 
 **Trade-off to Discuss:**
+
 - Automated retraining reduces drift but adds complexity
 - Need balance between stability and adaptability
 
@@ -211,11 +230,13 @@ https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf
 **Relevance:** Validates our technology choices
 
 **Why These Technologies:**
+
 - Kafka: Reliable, scalable event streaming
 - Flink: Stateful stream processing with exactly-once semantics
 - Both have production track records at scale
 
 **Specific Implementation Details to Mention:**
+
 - Kafka for telemetry ingestion
 - Flink for real-time feature computation and inference
 - TensorFlow Serving for model deployment
@@ -228,49 +249,61 @@ https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf
 ## Alignment with Brand Values
 
 ### Pragmatic Innovation
+
 **How this project demonstrates it:**
+
 - Real production system serving thousands of services
 - Solved actual problem (alert fatigue) not just research
 - Focus on deployment challenges, not just algorithms
 - Specific outcome metrics (not vague claims)
 
 **Content Opportunities:**
+
 - Emphasize production deployment over algorithm novelty
 - Discuss operational considerations (OTA updates, monitoring)
 - Show business impact (reduced pages, faster incident response)
 
 ### Technical Depth with Perspective
+
 **How this demonstrates it:**
+
 - Deep ML/algorithms (isolation forests, autoencoders)
 - Infrastructure design (streaming, feature stores)
 - BUT ALSO: why these choices mattered for the problem
 - Big picture: reducing operational burden, not just ML for ML's sake
 
 **Content Opportunities:**
+
 - Layer complexity: start with problem, then show technical solution
 - Use "Context → Concept → Why It Matters" for each technical decision
 - Include architecture diagrams to support explanations
 
 ### Genuine Curiosity
+
 **What's genuinely interesting here:**
+
 - Multi-stage pipeline approach (dimensionality reduction → anomaly scoring)
 - Trade-off between model sophistication and explainability
 - How ML + domain expertise > pure ML
 - Collaboration between ML engineers and SREs
 
 **Content Opportunities:**
+
 - Frame as exploration: "The interesting question was whether..."
 - Share surprising findings or lessons
 - Show enthusiasm through curiosity, not exclamation points
 
 ### Constructive Realism
+
 **Honest challenges to discuss:**
+
 - Initial model lacked explainability, SREs were skeptical
 - Concept drift required ongoing investment in retraining
 - Not all anomalies are important (precision/recall trade-off)
 - Success required tight collaboration, not just good algorithms
 
 **How to Frame:**
+
 - Present challenges as learning opportunities
 - Discuss how we addressed each challenge
 - Be honest about trade-offs without being negative
@@ -379,11 +412,13 @@ https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf
   - Learning: Deployment and collaboration matter as much as algorithms
 
 **Words to Use:**
+
 - Specific numbers: "94% precision," "5,000 services," "sub-second latency"
 - Concrete examples: "memory leak in payment service," "cascading failures in microservices mesh"
 - Direct language: "This worked," "This was challenging," "We learned"
 
 **Words to Avoid:**
+
 - Hype: "revolutionary," "game-changing," "cutting-edge"
 - Vague: "at scale," "significantly," "extensively"
 - Corporate: "leverage," "synergy," "ideate"
@@ -391,6 +426,7 @@ https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf
 ---
 
 **This research document demonstrates:**
+
 - Thorough investigation of the problem space
 - Understanding of technical approaches and trade-offs
 - Alignment with brand values

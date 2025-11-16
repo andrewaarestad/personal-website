@@ -5,7 +5,9 @@ This directory contains brand and strategy documentation.
 ## Files to Create
 
 ### guidelines.md
+
 Defines the brand foundation:
+
 - Mission statement
 - Core values
 - Brand personality
@@ -13,7 +15,9 @@ Defines the brand foundation:
 - Key messages
 
 ### persona.md
+
 Defines target audience:
+
 - Demographics
 - Professional background
 - Goals and motivations
@@ -21,7 +25,9 @@ Defines target audience:
 - User journey
 
 ### voice-tone.md
+
 Defines communication style:
+
 - Writing style (formal/casual, technical/accessible)
 - Tone spectrum for different contexts
 - Do's and don'ts

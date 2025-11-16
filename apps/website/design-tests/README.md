@@ -5,6 +5,7 @@ Playwright tests for design workflow automation.
 ## Purpose
 
 These tests are **not** traditional E2E tests. They are automation scripts for:
+
 - Capturing screenshots of mood boards
 - Generating visual documentation
 - Comparing design iterations
@@ -23,11 +24,13 @@ design-tests/
 ## Prerequisites
 
 1. **Install Playwright**:
+
    ```bash
    pnpm --filter @personal-website/website add -D @playwright/test
    ```
 
 2. **Install browsers**:
+
    ```bash
    pnpm --filter @personal-website/website exec playwright install chromium
    ```
@@ -58,6 +61,7 @@ pnpm --filter @personal-website/website exec playwright test design-tests/mood-b
 ## Configuration
 
 Playwright config should include:
+
 - Multiple viewports (mobile, tablet, desktop)
 - headless mode for CI
 - Screenshots saved to design directory

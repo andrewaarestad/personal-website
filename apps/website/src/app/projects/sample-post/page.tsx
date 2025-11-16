@@ -25,10 +25,7 @@ export default function SamplePostPage() {
     <PostLayout>
       {[
         // Section 1: Title
-        <H1Section
-          key="title"
-          text="[SAMPLE] Building a Real-Time Anomaly Detection System"
-        />,
+        <H1Section key="title" text="[SAMPLE] Building a Real-Time Anomaly Detection System" />,
 
         // Section 2: Introduction
         <TextSection

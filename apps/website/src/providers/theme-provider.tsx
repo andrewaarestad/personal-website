@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import * as React from "react"
-import { ThemeProvider as NextThemesProvider } from "next-themes"
+import * as React from "react";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 /**
  * Theme provider with system preference detection
@@ -13,7 +13,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes"
  * - Persists user's choice in localStorage
  * - Prevents flash of unstyled content (FOUC)
  */
-type ThemeProviderProps = React.ComponentProps<typeof NextThemesProvider>
+type ThemeProviderProps = React.ComponentProps<typeof NextThemesProvider>;
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   return (
@@ -26,5 +26,5 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
     >
       {children}
     </NextThemesProvider>
-  )
+  );
 }

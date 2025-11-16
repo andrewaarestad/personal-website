@@ -17,9 +17,7 @@ import type { TextSectionProps } from "./types";
 export function TextSection({ text }: TextSectionProps) {
   return (
     <div className="prose prose-lg max-w-none">
-      <p className="text-body-lg text-text-secondary leading-relaxed whitespace-pre-wrap">
-        {text}
-      </p>
+      <p className="text-body-lg text-text-secondary leading-relaxed whitespace-pre-wrap">{text}</p>
     </div>
   );
 }

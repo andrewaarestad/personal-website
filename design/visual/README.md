@@ -5,7 +5,9 @@ This directory contains the visual design system specification.
 ## Files to Create
 
 ### color-system.md
+
 Define the color palette:
+
 - Primary colors
 - Neutral colors (backgrounds, text, borders)
 - Semantic colors (success, error, warning, info)
@@ -14,7 +16,9 @@ Define the color palette:
 - Tailwind configuration code
 
 ### typography.md
+
 Define the type system:
+
 - Font families (heading, body, monospace)
 - Type scale (H1-H6, body, small, label)
 - Font weights and sizes
@@ -23,7 +27,9 @@ Define the type system:
 - Tailwind configuration code
 
 ### spacing-layout.md
+
 Define spacing and layout:
+
 - Spacing scale (based on 4px or 8px units)
 - Grid system
 - Container widths
@@ -31,7 +37,9 @@ Define spacing and layout:
 - Common layout patterns
 
 ### components-catalog.md
+
 Document component design patterns:
+
 - List of needed components
 - Design specifications for each
 - Variants and states
@@ -47,6 +55,7 @@ Document component design patterns:
 ## Implementation
 
 Once approved, these specifications will be implemented in:
+
 - `tailwind.config.ts` - Tailwind theme configuration
 - `src/app/globals.css` - CSS custom properties
 - Individual components - Component-level styles

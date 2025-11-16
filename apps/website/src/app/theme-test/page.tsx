@@ -2,13 +2,7 @@ import { PageContainer } from "@/components/ui/page-container";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { FeatureCard } from "@/components/ui/feature-card";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Dark Mode Theme Test | Personal Website",
@@ -35,12 +29,10 @@ export default function ThemeTestPage() {
           <div className="space-y-16">
             {/* Header */}
             <div className="text-center">
-              <h1 className="text-h1 font-extrabold text-foreground mb-4">
-                Dark Mode Theme Test
-              </h1>
+              <h1 className="text-h1 font-extrabold text-foreground mb-4">Dark Mode Theme Test</h1>
               <p className="text-body-lg text-text-secondary max-w-2xl mx-auto">
-                This page demonstrates all colors and components in both light and
-                dark modes. Toggle the theme using the button in the top-right corner.
+                This page demonstrates all colors and components in both light and dark modes.
+                Toggle the theme using the button in the top-right corner.
               </p>
             </div>
 
@@ -114,9 +106,7 @@ export default function ThemeTestPage() {
 
             {/* Semantic Colors */}
             <div className="space-y-6">
-              <h2 className="text-h2 font-bold text-foreground mb-4">
-                Semantic Colors
-              </h2>
+              <h2 className="text-h2 font-bold text-foreground mb-4">Semantic Colors</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <Card>
                   <CardHeader>
@@ -186,9 +176,7 @@ export default function ThemeTestPage() {
                     <p className="text-body text-text-secondary">2rem, bold</p>
                   </div>
                   <div className="pt-4 space-y-2">
-                    <p className="text-body text-text-primary">
-                      Primary text - Main content
-                    </p>
+                    <p className="text-body text-text-primary">Primary text - Main content</p>
                     <p className="text-body text-text-secondary">
                       Secondary text - Supporting content
                     </p>
@@ -210,33 +198,25 @@ export default function ThemeTestPage() {
                       <Button variant="brand" className="w-full">
                         Brand
                       </Button>
-                      <p className="text-body-sm text-text-secondary text-center">
-                        Primary CTA
-                      </p>
+                      <p className="text-body-sm text-text-secondary text-center">Primary CTA</p>
                     </div>
                     <div className="space-y-2">
                       <Button variant="info" className="w-full">
                         Info
                       </Button>
-                      <p className="text-body-sm text-text-secondary text-center">
-                        Secondary
-                      </p>
+                      <p className="text-body-sm text-text-secondary text-center">Secondary</p>
                     </div>
                     <div className="space-y-2">
                       <Button variant="highlight" className="w-full">
                         Highlight
                       </Button>
-                      <p className="text-body-sm text-text-secondary text-center">
-                        Accent
-                      </p>
+                      <p className="text-body-sm text-text-secondary text-center">Accent</p>
                     </div>
                     <div className="space-y-2">
                       <Button variant="emphasis" className="w-full">
                         Emphasis
                       </Button>
-                      <p className="text-body-sm text-text-secondary text-center">
-                        Strong
-                      </p>
+                      <p className="text-body-sm text-text-secondary text-center">Strong</p>
                     </div>
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
@@ -259,59 +239,37 @@ export default function ThemeTestPage() {
 
             {/* Feature Cards */}
             <div className="space-y-6">
-              <h2 className="text-h2 font-bold text-foreground mb-4">
-                Feature Cards
-              </h2>
+              <h2 className="text-h2 font-bold text-foreground mb-4">Feature Cards</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <FeatureCard border="brand">
-                  <h3 className="text-h5 font-bold text-foreground mb-2">
-                    Brand Border
-                  </h3>
-                  <p className="text-body text-text-secondary">
-                    Primary brand color accent
-                  </p>
+                  <h3 className="text-h5 font-bold text-foreground mb-2">Brand Border</h3>
+                  <p className="text-body text-text-secondary">Primary brand color accent</p>
                 </FeatureCard>
 
                 <FeatureCard border="info">
-                  <h3 className="text-h5 font-bold text-foreground mb-2">
-                    Info Border
-                  </h3>
-                  <p className="text-body text-text-secondary">
-                    Secondary info color accent
-                  </p>
+                  <h3 className="text-h5 font-bold text-foreground mb-2">Info Border</h3>
+                  <p className="text-body text-text-secondary">Secondary info color accent</p>
                 </FeatureCard>
 
                 <FeatureCard border="highlight">
-                  <h3 className="text-h5 font-bold text-foreground mb-2">
-                    Highlight Border
-                  </h3>
-                  <p className="text-body text-text-secondary">
-                    Accent highlight color
-                  </p>
+                  <h3 className="text-h5 font-bold text-foreground mb-2">Highlight Border</h3>
+                  <p className="text-body text-text-secondary">Accent highlight color</p>
                 </FeatureCard>
               </div>
             </div>
 
             {/* Backgrounds and Surfaces */}
             <div className="space-y-6">
-              <h2 className="text-h2 font-bold text-foreground mb-4">
-                Backgrounds & Surfaces
-              </h2>
+              <h2 className="text-h2 font-bold text-foreground mb-4">Backgrounds & Surfaces</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-background border-2 border-border-light rounded-lg p-6">
-                  <h3 className="text-h5 font-bold text-foreground mb-2">
-                    Background
-                  </h3>
-                  <p className="text-body text-text-secondary">
-                    Main page background color
-                  </p>
+                  <h3 className="text-h5 font-bold text-foreground mb-2">Background</h3>
+                  <p className="text-body text-text-secondary">Main page background color</p>
                 </div>
 
                 <div className="bg-card border-2 border-border-default rounded-lg p-6">
                   <h3 className="text-h5 font-bold text-foreground mb-2">Card</h3>
-                  <p className="text-body text-text-secondary">
-                    Surface/card background color
-                  </p>
+                  <p className="text-body text-text-secondary">Surface/card background color</p>
                 </div>
 
                 <div className="bg-muted border-2 border-border-light rounded-lg p-6">

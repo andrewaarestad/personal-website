@@ -12,23 +12,14 @@ describe("DesignProcessPage", () => {
   it("displays the meta-project section", () => {
     render(<DesignProcessPage />);
     expect(screen.getByRole("heading", { name: /a meta-project/i })).toBeInTheDocument();
-    expect(
-      screen.getByText(/This website is inherently recursive/i),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/This website is inherently recursive/i)).toBeInTheDocument();
   });
 
   it("displays the design-first workflow section with timeline", () => {
     render(<DesignProcessPage />);
-    expect(
-      screen.getByRole("heading", { name: /the design-first workflow/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /the design-first workflow/i })).toBeInTheDocument();
     // Check for timeline phases - use getAllByText since some text appears in headings and body
-    const phases = [
-      /Brand Foundation/i,
-      /Visual System/i,
-      /Review & Refine/i,
-      /Build & Deploy/i,
-    ];
+    const phases = [/Brand Foundation/i, /Visual System/i, /Review & Refine/i, /Build & Deploy/i];
     phases.forEach((phase) => {
       expect(screen.getByText(phase)).toBeInTheDocument();
     });
@@ -37,7 +28,7 @@ describe("DesignProcessPage", () => {
   it("displays the mood board links section", () => {
     render(<DesignProcessPage />);
     expect(
-      screen.getByRole("heading", { name: /explore the design evolution/i }),
+      screen.getByRole("heading", { name: /explore the design evolution/i })
     ).toBeInTheDocument();
   });
 
@@ -60,7 +51,7 @@ describe("DesignProcessPage", () => {
   it("displays the AI collaboration section", () => {
     render(<DesignProcessPage />);
     expect(
-      screen.getByRole("heading", { name: /built with ai collaboration/i }),
+      screen.getByRole("heading", { name: /built with ai collaboration/i })
     ).toBeInTheDocument();
     expect(screen.getByText(/This entire project is built using Claude Code/i)).toBeInTheDocument();
   });
@@ -71,7 +62,7 @@ describe("DesignProcessPage", () => {
     expect(githubLink).toBeInTheDocument();
     expect(githubLink).toHaveAttribute(
       "href",
-      "https://github.com/andrewaarestad/personal-website",
+      "https://github.com/andrewaarestad/personal-website"
     );
     expect(githubLink).toHaveAttribute("target", "_blank");
     expect(githubLink).toHaveAttribute("rel", "noopener noreferrer");

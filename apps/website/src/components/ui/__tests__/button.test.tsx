@@ -75,14 +75,22 @@ describe("Button", () => {
 
   describe("Combining variants", () => {
     it("combines semantic variant with size", () => {
-      render(<Button variant="brand" size="lg">Click me</Button>);
+      render(
+        <Button variant="brand" size="lg">
+          Click me
+        </Button>
+      );
       const button = screen.getByRole("button");
       expect(button).toHaveClass("bg-brand");
       expect(button).toHaveClass("h-10");
     });
 
     it("combines semantic variant with custom className", () => {
-      render(<Button variant="info" className="custom-class">Click me</Button>);
+      render(
+        <Button variant="info" className="custom-class">
+          Click me
+        </Button>
+      );
       const button = screen.getByRole("button");
       expect(button).toHaveClass("bg-brand-secondary");
       expect(button).toHaveClass("custom-class");
@@ -102,7 +110,11 @@ describe("Button", () => {
     });
 
     it("accepts and forwards HTML button attributes", () => {
-      render(<Button type="submit" disabled>Submit</Button>);
+      render(
+        <Button type="submit" disabled>
+          Submit
+        </Button>
+      );
       const button = screen.getByRole("button");
       expect(button).toHaveAttribute("type", "submit");
       expect(button).toBeDisabled();

@@ -32,6 +32,7 @@ You should:
 **Key:** Always STOP for approval after outline/plan, before writing.
 
 **PostLayout Components:**
+
 - H1Section, H2Section - Headings
 - TextSection - Body text
 - ImageSection - Full-width images
@@ -231,6 +232,7 @@ Phase 6: Implementation
 ## 🚨 Important Rules
 
 ### Always Do
+
 - ✅ Check existing design docs before creating new ones
 - ✅ Use CLI tools (pnpx shadcn, playwright) not MCP servers
 - ✅ Show screenshots to user (multimodal capability!)
@@ -240,6 +242,7 @@ Phase 6: Implementation
 - ✅ Create descriptive commits
 
 ### Never Do
+
 - ❌ Create production features before design is approved
 - ❌ Use MCP servers (not available in cloud environment)
 - ❌ Skip design documentation
@@ -249,12 +252,14 @@ Phase 6: Implementation
 ## 💬 User Communication
 
 ### When Showing Screenshots
+
 ```markdown
 Here's the mood board iteration for v1-minimal:
 
 [Show screenshot inline using multimodal capability]
 
 **Design Decisions:**
+
 - Colors: [Explain choices based on brand]
 - Typography: [Explain choices]
 - Layout: [Explain approach]
@@ -263,8 +268,10 @@ Here's the mood board iteration for v1-minimal:
 ```
 
 ### When Asking for Feedback
+
 ```markdown
 I've created three variations:
+
 1. [Variation 1 with screenshot]
 2. [Variation 2 with screenshot]
 3. [Variation 3 with screenshot]
@@ -273,8 +280,10 @@ Which direction do you prefer, or should I explore something different?
 ```
 
 ### When Design is Approved
+
 ```markdown
 Great! I'll mark this iteration as approved and update the design tokens:
+
 1. Update tailwind.config.ts with final colors
 2. Update globals.css with CSS variables
 3. Document component specifications
@@ -286,12 +295,14 @@ Should we start building the homepage with this design?
 ## 🔧 Troubleshooting
 
 ### "Playwright not found"
+
 ```bash
 pnpm --filter @personal-website/website add -D @playwright/test
 pnpm --filter @personal-website/website exec playwright install chromium
 ```
 
 ### "Component not found after adding with shadcn"
+
 ```bash
 # Check it was added:
 ls apps/website/src/components/ui/
@@ -305,6 +316,7 @@ import { Button } from "../components/ui/button"  // ❌
 ```
 
 ### "Screenshots are blank"
+
 ```bash
 # Ensure dev server is running:
 pnpm dev
@@ -317,6 +329,7 @@ await page.waitForLoadState('networkidle')
 ```
 
 ### "Build fails on Vercel"
+
 ```bash
 # Run checks locally first:
 pnpm pr-check

@@ -101,6 +101,7 @@ Now work through each chunk interactively with the user.
 **For each chunk, follow this algorithm:**
 
 1. **Display the chunk:**
+
    ```
    ## Reviewing Chunk [N]/[Total]: [Section Name]
 
@@ -133,6 +134,7 @@ Now work through each chunk interactively with the user.
    ```
 
 4. **Provide two suggestions for rewording:**
+
    ```
    **Suggestion A:** [First alternative]
    *Rationale:* [Why this is better aligned with brand guidelines]
@@ -149,6 +151,7 @@ Now work through each chunk interactively with the user.
    - Maintain the same general content and purpose
 
 5. **Ask the user what they'd like to do:**
+
    ```
    **Options:**
    - Type "A" to use Suggestion A

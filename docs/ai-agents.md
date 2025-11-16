@@ -11,6 +11,7 @@ This repository is configured as a showcase for AI-assisted development, demonst
 **Before building features, we establish comprehensive design guidelines.**
 
 This project uses a design-first approach optimized for AI collaboration:
+
 1. Define brand guidelines and personas
 2. Create a visual design system (colors, typography, spacing)
 3. Generate interactive mood boards
@@ -40,15 +41,18 @@ When creating long-form content (project pages, thought leadership, tutorials), 
 ### Key Copywriting Resources
 
 **Guidelines:**
+
 - `design/brand/guidelines.md` - Brand mission, values, personality
 - `design/brand/voice-tone.md` - Writing style, tone spectrum, do's/don'ts
 - `design/brand/copywriting-checklist.md` - Quick reference during writing
 
 **Templates:**
+
 - `design/templates/story-outline-template.md` - Structure your content
 - `design/templates/writing-plan-template.md` - Plan tone and style
 
 **Examples:**
+
 - `design/examples/research-example.md` - Sample research notes
 - `apps/website/src/app/projects/sample-post/page.tsx` - Complete PostLayout example
 
@@ -57,6 +61,7 @@ When creating long-form content (project pages, thought leadership, tutorials), 
 For long-form content, use the PostLayout component system:
 
 **Available Components:**
+
 - `H1Section` - Main page title
 - `H2Section` - Section headings
 - `TextSection` - Body text (supports multi-paragraph)
@@ -99,6 +104,7 @@ export default function MyStory() {
 When writing content:
 
 ✅ **DO:**
+
 - Start with big picture before technical details
 - Use specific numbers ("5,000 devices" not "at scale")
 - Explain technical terms in context
@@ -106,6 +112,7 @@ When writing content:
 - Write like a human (occasional fragments OK)
 
 ❌ **DON'T:**
+
 - Use hype language (revolutionary, game-changing)
 - Hide behind jargon without explanation
 - Be performatively enthusiastic ("Super excited to share...")
@@ -130,6 +137,7 @@ pnpx shadcn@latest add form
 ```
 
 **Configuration:**
+
 - Configured in `apps/website/components.json`
 - Components added to `apps/website/src/components/ui/`
 - Automatically configured for Tailwind CSS
@@ -153,6 +161,7 @@ pnpm --filter @personal-website/website exec playwright install chromium
 ```
 
 **Configuration:**
+
 - Config file: `apps/website/playwright.config.ts`
 - Design tests: `apps/website/design-tests/`
 - E2E tests: `apps/website/tests/e2e/` (future)
@@ -174,6 +183,7 @@ If using Claude Desktop locally, MCP servers can be configured:
 Provides semantic search and discovery of components.
 
 **Benefits:**
+
 - Browse component registry
 - Search by purpose ("find form components")
 - Get detailed component metadata
@@ -185,6 +195,7 @@ Provides semantic search and discovery of components.
 Enables interactive browser automation.
 
 **Benefits:**
+
 - Record interactions
 - Generate test code automatically
 - Structured page data

@@ -5,6 +5,7 @@ This document outlines the design-first development workflow for this project, s
 ## Philosophy
 
 Before writing production code, we establish comprehensive design guidelines through:
+
 1. **Brand & Strategy** - Who we are and who we serve
 2. **Visual Design System** - Colors, typography, spacing, components
 3. **Mood Board Iterations** - Live, interactive pages deployed to Vercel
@@ -49,16 +50,19 @@ Before writing production code, we establish comprehensive design guidelines thr
 Since this workflow is designed for Claude Code mobile (cloud environment), we use **CLI/API approaches** rather than MCP servers:
 
 ### shadcn/ui
+
 - **Tool**: `pnpx shadcn@latest add [component]`
 - **Config**: `apps/website/components.json` (already configured)
 - **Usage**: Direct CLI commands to add components
 
 ### Playwright
+
 - **Tool**: `@playwright/test` package
 - **Config**: `apps/website/playwright.config.ts` (to be created)
 - **Usage**: Programmatic Node.js API for screenshots and testing
 
 ### Vercel Deployment
+
 - **Tool**: Git push triggers automatic deployment
 - **Config**: `vercel.json` (already configured)
 - **Usage**: Push to branch → Vercel creates preview URL
@@ -112,20 +116,25 @@ When asked to create brand guidelines, follow these steps:
 # Brand Guidelines
 
 ## Mission Statement
+
 [What is the purpose of this website/brand?]
 
 ## Core Values
+
 - [Value 1]
 - [Value 2]
 - [Value 3]
 
 ## Brand Personality
+
 [Adjectives: professional, playful, minimal, bold, etc.]
 
 ## Competitive Positioning
+
 [How is this different from similar sites/brands?]
 
 ## Key Messages
+
 [What should users take away from this site?]
 ```
 
@@ -137,19 +146,23 @@ When asked to create brand guidelines, follow these steps:
 ## Primary Persona: [Name]
 
 **Demographics:**
+
 - Age range
 - Professional background
 - Technical expertise level
 
 **Goals:**
+
 - What they want to achieve
 - Why they visit the site
 
 **Pain Points:**
+
 - Challenges they face
 - Frustrations with current solutions
 
 **User Journey:**
+
 1. Discovery
 2. Exploration
 3. Engagement
@@ -162,19 +175,21 @@ When asked to create brand guidelines, follow these steps:
 # Voice & Tone Guide
 
 ## Writing Style
+
 - [Formal/Casual]
 - [Technical/Accessible]
 - [Concise/Detailed]
 
 ## Tone Spectrum
 
-| Context | Tone | Example |
-|---------|------|---------|
-| Homepage | [e.g., Welcoming, Professional] | "Welcome to..." |
-| Error Messages | [e.g., Helpful, Apologetic] | "Oops, something went wrong..." |
-| Technical Content | [e.g., Clear, Authoritative] | "This feature allows..." |
+| Context           | Tone                            | Example                         |
+| ----------------- | ------------------------------- | ------------------------------- |
+| Homepage          | [e.g., Welcoming, Professional] | "Welcome to..."                 |
+| Error Messages    | [e.g., Helpful, Apologetic]     | "Oops, something went wrong..." |
+| Technical Content | [e.g., Clear, Authoritative]    | "This feature allows..."        |
 
 ## Do's and Don'ts
+
 - ✅ Do: [Example]
 - ❌ Don't: [Example]
 ```
@@ -191,35 +206,35 @@ When asked to create brand guidelines, follow these steps:
 
 ### Template: `design/visual/color-system.md`
 
-```markdown
+````markdown
 # Color System
 
 ## Primary Colors
 
-| Name | Hex | RGB | Usage |
-|------|-----|-----|-------|
-| Primary | #XXXXXX | rgb(XXX, XXX, XXX) | CTAs, links, primary actions |
-| Primary Dark | #XXXXXX | rgb(XXX, XXX, XXX) | Hover states, emphasis |
+| Name          | Hex     | RGB                | Usage                          |
+| ------------- | ------- | ------------------ | ------------------------------ |
+| Primary       | #XXXXXX | rgb(XXX, XXX, XXX) | CTAs, links, primary actions   |
+| Primary Dark  | #XXXXXX | rgb(XXX, XXX, XXX) | Hover states, emphasis         |
 | Primary Light | #XXXXXX | rgb(XXX, XXX, XXX) | Backgrounds, subtle highlights |
 
 ## Neutral Colors
 
-| Name | Hex | RGB | Usage |
-|------|-----|-----|-------|
-| Background | #XXXXXX | rgb(XXX, XXX, XXX) | Page background |
-| Surface | #XXXXXX | rgb(XXX, XXX, XXX) | Card backgrounds |
-| Border | #XXXXXX | rgb(XXX, XXX, XXX) | Borders, dividers |
-| Text Primary | #XXXXXX | rgb(XXX, XXX, XXX) | Main text |
-| Text Secondary | #XXXXXX | rgb(XXX, XXX, XXX) | Supporting text |
+| Name           | Hex     | RGB                | Usage             |
+| -------------- | ------- | ------------------ | ----------------- |
+| Background     | #XXXXXX | rgb(XXX, XXX, XXX) | Page background   |
+| Surface        | #XXXXXX | rgb(XXX, XXX, XXX) | Card backgrounds  |
+| Border         | #XXXXXX | rgb(XXX, XXX, XXX) | Borders, dividers |
+| Text Primary   | #XXXXXX | rgb(XXX, XXX, XXX) | Main text         |
+| Text Secondary | #XXXXXX | rgb(XXX, XXX, XXX) | Supporting text   |
 
 ## Semantic Colors
 
-| Name | Hex | Usage |
-|------|-----|-------|
-| Success | #XXXXXX | Success messages, confirmations |
-| Error | #XXXXXX | Error messages, destructive actions |
-| Warning | #XXXXXX | Warnings, cautions |
-| Info | #XXXXXX | Informational messages |
+| Name    | Hex     | Usage                               |
+| ------- | ------- | ----------------------------------- |
+| Success | #XXXXXX | Success messages, confirmations     |
+| Error   | #XXXXXX | Error messages, destructive actions |
+| Warning | #XXXXXX | Warnings, cautions                  |
+| Info    | #XXXXXX | Informational messages              |
 
 ## Dark Mode
 
@@ -248,7 +263,9 @@ theme: {
   }
 }
 ```
-```
+````
+
+````
 
 ### Template: `design/visual/typography.md`
 
@@ -307,8 +324,9 @@ theme: {
     }
   }
 }
-```
-```
+````
+
+````
 
 ### Template: `design/visual/spacing-layout.md`
 
@@ -353,7 +371,7 @@ Based on [4px/8px] base unit:
 
 ### Section Spacing
 - Top/Bottom: [Xpx mobile, Xpx desktop]
-```
+````
 
 ### Template: `design/visual/components-catalog.md`
 
@@ -365,6 +383,7 @@ List of components needed for the site, with design specifications.
 ## Navigation Components
 
 ### Header
+
 - **Type**: [Fixed / Sticky / Static]
 - **Height**: [Xpx]
 - **Background**: [Color / Transparent]
@@ -372,6 +391,7 @@ List of components needed for the site, with design specifications.
 - **States**: Default, Scrolled, Mobile menu open
 
 ### Footer
+
 - **Layout**: [Multi-column / Simple]
 - **Elements**: Links, Social icons, Copyright
 - **Background**: [Color]
@@ -379,12 +399,14 @@ List of components needed for the site, with design specifications.
 ## Content Components
 
 ### Hero Section
+
 - **Layout**: [Centered / Split / Full-width]
 - **Elements**: Heading, Subtitle, CTA, Optional image/graphic
 - **Background**: [Gradient / Solid / Image]
 - **Height**: [Viewport height / Fixed]
 
 ### Card
+
 - **Variants**: [Default / Elevated / Bordered]
 - **Padding**: [Xpx]
 - **Border Radius**: [Xpx]
@@ -394,12 +416,14 @@ List of components needed for the site, with design specifications.
 ## Interactive Components
 
 ### Button
+
 - **Variants**: Primary, Secondary, Ghost, Destructive
 - **Sizes**: Small, Medium, Large
 - **States**: Default, Hover, Active, Disabled, Loading
 - **Border Radius**: [Xpx]
 
 ### Form Input
+
 - **Height**: [Xpx]
 - **Border**: [Color, width]
 - **Focus State**: [Border color, ring]
@@ -524,6 +548,7 @@ export default async function MoodBoardPage({
 Vercel automatically deploys on every push to any branch:
 
 1. **Commit mood board changes**:
+
    ```bash
    git add apps/website/src/app/design-preview/
    git add design/
@@ -531,6 +556,7 @@ Vercel automatically deploys on every push to any branch:
    ```
 
 2. **Push to branch**:
+
    ```bash
    git push -u origin [branch-name]
    ```
@@ -578,23 +604,27 @@ Share this checklist with the user to guide their review:
 ## Design Review Checklist
 
 ### Brand Alignment
+
 - [ ] Colors reflect brand personality
 - [ ] Typography matches brand voice
 - [ ] Overall feel matches brand guidelines
 
 ### User Experience
+
 - [ ] Clear visual hierarchy
 - [ ] Intuitive navigation and interaction
 - [ ] Readable text (contrast, size)
 - [ ] Responsive across devices (test on phone/tablet/desktop)
 
 ### Accessibility
+
 - [ ] Color contrast meets WCAG AA
 - [ ] Text is resizable
 - [ ] Focus states are visible
 - [ ] Interactive elements are keyboard accessible
 
 ### Technical
+
 - [ ] Loads quickly
 - [ ] No console errors (check browser DevTools)
 - [ ] Works across browsers
@@ -608,11 +638,13 @@ Share this checklist with the user to guide their review:
 Once design is approved:
 
 1. **Mark iteration as approved** in README:
+
    ```markdown
    **Status**: ✅ Approved - Implementation Ready
    ```
 
 2. **Update Tailwind config** with final design tokens:
+
    ```typescript
    // apps/website/tailwind.config.ts
    theme: {
@@ -625,6 +657,7 @@ Once design is approved:
    ```
 
 3. **Update globals.css** with CSS custom properties:
+
    ```css
    @layer base {
      :root {
@@ -714,6 +747,7 @@ git push -u origin [branch-name]
 Playwright configuration is already included in this project for E2E testing. To use it for design screenshots:
 
 1. **Ensure Playwright is installed**:
+
    ```bash
    pnpm --filter @personal-website/website add -D @playwright/test
    pnpm --filter @personal-website/website exec playwright install chromium
@@ -736,7 +770,7 @@ export default defineConfig({
   test: {
     exclude: [
       "**/node_modules/**",
-      "**/design-tests/**",  // Exclude Playwright tests
+      "**/design-tests/**", // Exclude Playwright tests
       // ... other exclusions
     ],
   },
@@ -748,11 +782,13 @@ export default defineConfig({
 ### Deployment Issues
 
 **Vercel build fails**
+
 - Run `pnpm pr-check` locally first
 - Check build logs in Vercel dashboard
 - Ensure all dependencies are in package.json
 
 **Preview URL not working**
+
 - Wait for deployment to complete (1-2 minutes)
 - Check GitHub PR for Vercel comment
 - Verify branch is pushed to GitHub
@@ -760,11 +796,13 @@ export default defineConfig({
 ### Design Issues
 
 **Colors look different on mobile**
+
 - Check dark mode support
 - Verify color values in multiple contexts
 - Test on actual devices via Vercel preview
 
 **Fonts not loading**
+
 - Ensure fonts are imported in layout.tsx
 - Check font file paths
 - Verify Google Fonts URL if using
