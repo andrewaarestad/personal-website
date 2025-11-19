@@ -30,7 +30,7 @@ export default function FLUIDWaterMeterPage() {
         // Section 2: Introduction
         <TextSection
           key="intro"
-          text="I cofounded FLUID in 2015 to build an IoT water monitoring platform for homeowners. Over three years, I built everything from ultrasonic signal processing to cloud ML pipelines, produced about 100 devices, and learned the difference between technical risk and business risk.\n\nResidential water damage costs billions annually, but monitoring systems were expensive commercial products. We saw an opportunity for affordable clamp-on sensors—no plumber required."
+          text="I cofounded FLUID in 2015 with talented partners to build an IoT water monitoring platform for homeowners. Over three years, with support from investors who believed in our vision, I built everything from ultrasonic signal processing to cloud ML pipelines. We produced about 100 devices and learned invaluable lessons about bringing hardware to market.\n\nResidential water damage costs billions annually, but monitoring systems were expensive commercial products. We saw an opportunity for affordable clamp-on sensors—no plumber required."
         />,
 
         // Section 3: The Journey
@@ -39,7 +39,7 @@ export default function FLUIDWaterMeterPage() {
         // Section 4: Journey narrative
         <TextSection
           key="journey-text"
-          text="Started with an off-the-shelf ultrasonic meter to learn time-of-flight measurement. Launched a Kickstarter to fund custom clamp-on sensors with injection-molded enclosures. As the only engineer, I built most of the tech while managing contractors for PCB design, FPGA programming, and mechanical work.\n\nWe progressed from 3D-printed prototypes to production units with proper tooling, built a calibration lab for training data, and shipped working devices. Ultimately, we couldn't secure funding for large-scale production. The company folded, but not before building a complete IoT platform."
+          text="We started with an off-the-shelf ultrasonic meter to learn time-of-flight measurement. Our Kickstarter campaign brought in early supporters who helped fund custom clamp-on sensors with injection-molded enclosures. As the technical lead, I built most of the platform while managing contractors for PCB design, FPGA programming, and mechanical work.\n\nWe progressed from 3D-printed prototypes to production units with proper tooling, built a calibration lab for training data, and shipped working devices. While we ultimately didn't reach the scale needed for sustainable manufacturing economics, we're proud of the complete IoT platform we built and grateful for the opportunity to tackle this challenge."
         />,
 
         // Section 5: The Technical Challenge
@@ -162,13 +162,13 @@ export default function FLUIDWaterMeterPage() {
           </div>
         </DataVisualizationSection>,
 
-        // Section 17: Why It Didn't Work
-        <H2Section key="failure-heading" text="Why It Didn't Work" />,
+        // Section 17: The Scaling Challenge
+        <H2Section key="scaling-heading" text="The Scaling Challenge" />,
 
-        // Section 18: Business analysis
+        // Section 18: Business reality
         <TextSection
-          key="failure-text"
-          text="We solved the technical challenges but couldn't bridge the funding gap for production scale.\n\nHardware requires enormous upfront investment before shipping a unit. Software builds MVPs cheaply and iterates. Hardware needs tooling, inventory, assembly, testing, regulatory compliance—all costing money before revenue.\n\nWe needed capital to reach volumes where unit economics work. That meant substantial investment or enough pre-orders to fund manufacturing. We couldn't secure either. Investors saw capital intensity and long cycles as risky. Customers hesitated on unproven products.\n\nClassic chicken-and-egg: need volume for unit costs, need capital for volume. We had 100 devices validating technology, but needed thousands for sustainable economics. Technical excellence doesn't guarantee business success. Hardware demands capital and patience we couldn't secure."
+          key="scaling-text"
+          text="Hardware startups face a fundamentally different challenge than software. While we succeeded technically—building working sensors, reliable firmware, and scalable cloud infrastructure—we learned that hardware economics require a different playbook.\n\nTooling, inventory, assembly, testing, and regulatory compliance all demand significant capital before generating revenue. To reach the volumes where unit economics become sustainable, you need either substantial investment or enough pre-orders to fund manufacturing directly. Despite the support of investors who believed in our vision and customers who backed us on Kickstarter, we didn't reach the scale needed to bridge that gap.\n\nThe classic challenge: you need volume for viable unit costs, but you need capital to reach volume. Our 100 devices validated the technology, but sustainable manufacturing required thousands. We're grateful to everyone who supported us on this journey—our investors who took a chance on the vision, our Kickstarter backers who believed early, and our team who worked incredibly hard to bring this to life. The experience taught us that in hardware, technical excellence is necessary but not sufficient."
         />,
 
         // Section 19: What I Learned
@@ -186,7 +186,7 @@ export default function FLUIDWaterMeterPage() {
         // Section 21: Conclusion
         <TextSection
           key="conclusion"
-          text="FLUID didn't become a successful company, but it was a successful project. We built technology that worked, learned deeply across domains from ultrasonic physics to ML to manufacturing economics.\n\nThe experience shaped my approach to production systems. Shipping matters more than perfection. Real-world conditions humble lab results. OTA infrastructure isn't optional for IoT. Business viability requires more than technical excellence.\n\nThree years, 100 devices, lessons that informed every project since. Not every startup succeeds, but the best ones teach you things you can't learn any other way."
+          text="FLUID taught me more than any project before or since. We built technology that worked, learned deeply across domains from ultrasonic physics to ML to manufacturing economics, and had the privilege of working with talented cofounders, supportive investors, and early believers who took a chance on our vision.\n\nThe experience shaped my approach to production systems. Shipping matters more than perfection. Real-world conditions humble lab results. OTA infrastructure isn't optional for IoT. Business viability requires more than technical excellence.\n\nThree years, 100 devices, countless lessons. I'm grateful for the opportunity to have tackled this challenge and for everyone who made it possible."
         />,
       ]}
     </PostLayout>
