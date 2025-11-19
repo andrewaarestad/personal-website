@@ -63,7 +63,7 @@ export default function HomePage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="emphasis">
+              <Button variant="brand">
                 View on GitHub →
               </Button>
             </Link>
