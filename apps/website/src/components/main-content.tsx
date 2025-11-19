@@ -19,8 +19,9 @@ export function MainContent({ children }: MainContentProps) {
   return (
     <div
       className={cn(
-        // Ensure background matches page content and fills viewport
-        "min-h-screen bg-canvas",
+        // Ensure background matches page content, html, and body elements
+        // Using bg-background explicitly to ensure no color mismatch
+        "min-h-screen bg-background",
         // Add top padding on all pages except homepage to account for fixed breadcrumb
         // The breadcrumb has py-4 padding and text content, resulting in ~56px height
         !isHomepage && "pt-16"
