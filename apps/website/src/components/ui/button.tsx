@@ -23,7 +23,7 @@ const buttonVariants = cva(
         emphasis: "bg-black text-white shadow hover:bg-black/90",
       },
       size: {
-        default: "h-9 px-4 py-2",
+        default: "h-10 rounded-md px-8",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
         icon: "h-9 w-9",
