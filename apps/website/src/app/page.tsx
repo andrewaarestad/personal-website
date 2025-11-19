@@ -41,7 +41,7 @@ export default function HomePage() {
               collaboration shapes modern web development.
             </p>
             <Link href="/design-process">
-              <Button size="lg" variant="brand">
+              <Button variant="brand">
                 View Design Process →
               </Button>
             </Link>
@@ -63,7 +63,7 @@ export default function HomePage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button size="lg" variant="emphasis">
+              <Button variant="brand">
                 View on GitHub →
               </Button>
             </Link>

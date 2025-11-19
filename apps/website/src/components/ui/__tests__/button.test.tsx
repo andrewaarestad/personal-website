@@ -57,7 +57,7 @@ describe("Button", () => {
     it("renders default size", () => {
       render(<Button>Click me</Button>);
       const button = screen.getByRole("button");
-      expect(button).toHaveClass("h-9");
+      expect(button).toHaveClass("h-10");
     });
 
     it("renders small size with correct classes", () => {
