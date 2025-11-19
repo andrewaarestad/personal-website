@@ -66,20 +66,32 @@ We needed reliability across pipe materials (copper, PVC, PEX), diameters (½-in
         <H2Section key="built-heading" text="What We Built" />,
 
         // Section 8: Tech stack enumeration
-        <TextSection
-          key="built-text"
-          text={`**Hardware:** Clamp-on ultrasonic sensor, injection-molded enclosure, custom PCBs, FPGA signal processing, battery management
-
-**Firmware:** C++ real-time signal processing, Kalman filtering, temperature compensation, low-power wireless
-
-**Calibration Lab:** PLC-controlled water systems generating labeled datasets with known flow rates
-
-**Cloud:** AWS IoT Core, Lambda, DynamoDB for telemetry processing and storage
-
-**ML:** Anomaly detection for leaks, usage pattern classification, training on calibration data
-
-**Apps:** Mobile (iOS/Android), web dashboard, fleet management, OTA firmware updates`}
-        />,
+        <TextSection key="built-text">
+          <p>
+            <strong>Hardware:</strong> Clamp-on ultrasonic sensor, injection-molded enclosure,
+            custom PCBs, FPGA signal processing, battery management
+          </p>
+          <p>
+            <strong>Firmware:</strong> C++ real-time signal processing, Kalman filtering,
+            temperature compensation, low-power wireless
+          </p>
+          <p>
+            <strong>Calibration Lab:</strong> PLC-controlled water systems generating labeled
+            datasets with known flow rates
+          </p>
+          <p>
+            <strong>Cloud:</strong> AWS IoT Core, Lambda, DynamoDB for telemetry processing and
+            storage
+          </p>
+          <p>
+            <strong>ML:</strong> Anomaly detection for leaks, usage pattern classification,
+            training on calibration data
+          </p>
+          <p>
+            <strong>Apps:</strong> Mobile (iOS/Android), web dashboard, fleet management, OTA
+            firmware updates
+          </p>
+        </TextSection>,
 
         // Section 9: Interactive flow visualization
         <DataVisualizationSection
@@ -217,19 +229,36 @@ The classic challenge: you need volume for viable unit costs, but you need capit
         // Section 20: Lessons learned
         <TextImageSection
           key="lessons"
-          text={`**Ultrasonic Tech:** Signal processing is as hard as the physics. Kalman filtering essential but required extensive calibration. Temperature compensation mattered more than expected. Real-world messier than lab.
-
-**Machine Learning:** Labeled data harder than models. Calibration lab was critical. Usage patterns more diverse than anticipated. Anomaly detection requires understanding 'normal'—which varies by household.
-
-**Manufacturing:** Tooling and MOQs dominate unit economics. Prototype-to-production gap is enormous. Design for manufacturing isn't added later. Managing contractors across disciplines requires tight integration.
-
-**Startup Economics:** Technical risk differs from business risk. We reduced technical risk substantially, but business risk remained. Hardware needs different capital structures than software.
-
-**Solo Engineering:** One person can build remarkable systems by managing scope and delegating specialized work. Full-stack means knowing enough about each layer to make good decisions, not being expert at everything.`}
           imageUrl="https://placehold.co/800x600/F59E0B/FFFFFF/png?text=Calibration+Lab"
           imageAlt="FLUID calibration lab with PLC-controlled water systems and sensor test fixtures"
           layout="image-right"
-        />,
+        >
+          <p>
+            <strong>Ultrasonic Tech:</strong> Signal processing is as hard as the physics. Kalman
+            filtering essential but required extensive calibration. Temperature compensation mattered
+            more than expected. Real-world messier than lab.
+          </p>
+          <p>
+            <strong>Machine Learning:</strong> Labeled data harder than models. Calibration lab was
+            critical. Usage patterns more diverse than anticipated. Anomaly detection requires
+            understanding 'normal'—which varies by household.
+          </p>
+          <p>
+            <strong>Manufacturing:</strong> Tooling and MOQs dominate unit economics.
+            Prototype-to-production gap is enormous. Design for manufacturing isn't added later.
+            Managing contractors across disciplines requires tight integration.
+          </p>
+          <p>
+            <strong>Startup Economics:</strong> Technical risk differs from business risk. We
+            reduced technical risk substantially, but business risk remained. Hardware needs
+            different capital structures than software.
+          </p>
+          <p>
+            <strong>Solo Engineering:</strong> One person can build remarkable systems by managing
+            scope and delegating specialized work. Full-stack means knowing enough about each layer
+            to make good decisions, not being expert at everything.
+          </p>
+        </TextImageSection>,
 
         // Section 21: Conclusion
         <TextSection
