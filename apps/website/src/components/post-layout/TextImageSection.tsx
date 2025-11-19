@@ -6,11 +6,13 @@ import type { TextImageSectionProps } from "./types";
  *
  * Renders text alongside an image in a responsive grid layout.
  * Supports two layout modes: image-left and image-right.
+ * Supports both plain text (via text prop) and rich HTML content (via children).
  *
  * On mobile, the image always appears above the text regardless of layout.
  *
  * @example
  * ```tsx
+ * // Plain text
  * <TextImageSection
  *   key="feature-1"
  *   text="Our platform uses advanced machine learning algorithms..."
@@ -18,10 +20,21 @@ import type { TextImageSectionProps } from "./types";
  *   imageAlt="Machine learning architecture diagram"
  *   layout="image-left"
  * />
+ *
+ * // Rich HTML content
+ * <TextImageSection
+ *   key="feature-1"
+ *   imageUrl="/images/ml-architecture.jpg"
+ *   imageAlt="Machine learning architecture diagram"
+ *   layout="image-left"
+ * >
+ *   <p><strong>Machine Learning:</strong> Advanced algorithms...</p>
+ * </TextImageSection>
  * ```
  */
 export function TextImageSection({
   text,
+  children,
   imageUrl,
   imageAlt = "Project image",
   layout,
@@ -36,9 +49,15 @@ export function TextImageSection({
     >
       {/* Text Content */}
       <div className={`space-y-4 ${isImageLeft ? "md:order-2" : "md:order-1"}`}>
-        <p className="text-body-lg text-text-secondary leading-relaxed whitespace-pre-wrap">
-          {text}
-        </p>
+        {text ? (
+          <p className="text-body-lg text-text-secondary leading-relaxed whitespace-pre-wrap">
+            {text}
+          </p>
+        ) : (
+          <div className="text-body-lg text-text-secondary leading-relaxed [&_p]:whitespace-pre-wrap">
+            {children}
+          </div>
+        )}
       </div>
 
       {/* Image */}

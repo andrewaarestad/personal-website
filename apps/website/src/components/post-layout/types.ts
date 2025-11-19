@@ -35,9 +35,11 @@ export interface H2SectionProps extends PostSectionProps {
 
 /**
  * Props for TextSection component
+ * Supports either text prop (for plain text) or children (for rich HTML content)
  */
 export interface TextSectionProps extends PostSectionProps {
-  text: string;
+  text?: string;
+  children?: ReactNode;
 }
 
 /**
@@ -50,9 +52,11 @@ export interface ImageSectionProps extends PostSectionProps {
 
 /**
  * Props for TextImageSection component
+ * Supports either text prop (for plain text) or children (for rich HTML content)
  */
 export interface TextImageSectionProps extends PostSectionProps {
-  text: string;
+  text?: string;
+  children?: ReactNode;
   imageUrl: string;
   imageAlt?: string;
   layout: TextImageSectionLayout;
