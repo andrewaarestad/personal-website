@@ -11,25 +11,41 @@ describe("PageContainer", () => {
     });
 
     it("renders narrow variant with correct max-width", () => {
-      render(<PageContainer size="narrow" data-testid="container">Content</PageContainer>);
+      render(
+        <PageContainer size="narrow" data-testid="container">
+          Content
+        </PageContainer>
+      );
       const container = screen.getByTestId("container");
       expect(container).toHaveClass("max-w-2xl");
     });
 
     it("renders medium variant with correct max-width", () => {
-      render(<PageContainer size="medium" data-testid="container">Content</PageContainer>);
+      render(
+        <PageContainer size="medium" data-testid="container">
+          Content
+        </PageContainer>
+      );
       const container = screen.getByTestId("container");
       expect(container).toHaveClass("max-w-3xl");
     });
 
     it("renders wide variant with correct max-width", () => {
-      render(<PageContainer size="wide" data-testid="container">Content</PageContainer>);
+      render(
+        <PageContainer size="wide" data-testid="container">
+          Content
+        </PageContainer>
+      );
       const container = screen.getByTestId("container");
       expect(container).toHaveClass("max-w-5xl");
     });
 
     it("renders full variant with correct max-width", () => {
-      render(<PageContainer size="full" data-testid="container">Content</PageContainer>);
+      render(
+        <PageContainer size="full" data-testid="container">
+          Content
+        </PageContainer>
+      );
       const container = screen.getByTestId("container");
       expect(container).toHaveClass("max-w-7xl");
     });
@@ -47,7 +63,11 @@ describe("PageContainer", () => {
 
   describe("Custom className", () => {
     it("accepts and merges custom className", () => {
-      render(<PageContainer className="custom-class" data-testid="container">Content</PageContainer>);
+      render(
+        <PageContainer className="custom-class" data-testid="container">
+          Content
+        </PageContainer>
+      );
       const container = screen.getByTestId("container");
       expect(container).toHaveClass("custom-class");
       expect(container).toHaveClass("container");

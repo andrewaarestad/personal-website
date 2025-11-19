@@ -37,9 +37,7 @@ export function PostLayout({ children, className }: PostLayoutProps) {
         <PageContainer size="medium">
           <div className="py-12 space-y-12">
             {children.map((child) => (
-              <div key={child.key}>
-                {child}
-              </div>
+              <div key={child.key}>{child}</div>
             ))}
           </div>
         </PageContainer>

@@ -203,7 +203,9 @@
   button,
   a[role="button"],
   .button {
-    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+    transition:
+      transform 200ms ease-out,
+      box-shadow 200ms ease-out;
   }
 
   button:hover,
@@ -223,20 +225,26 @@
   /* Target shadcn Card components and custom card containers */
   [data-card],
   .card {
-    transition: transform 250ms ease-out, box-shadow 250ms ease-out;
+    transition:
+      transform 250ms ease-out,
+      box-shadow 250ms ease-out;
   }
 
   [data-card]:hover,
   .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.15), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    box-shadow:
+      0 10px 25px -5px rgb(0 0 0 / 0.15),
+      0 8px 10px -6px rgb(0 0 0 / 0.1);
   }
 
   /* Input Focus Animations */
   input:not([type="checkbox"]):not([type="radio"]),
   textarea,
   select {
-    transition: border-color 200ms ease-out, box-shadow 200ms ease-out;
+    transition:
+      border-color 200ms ease-out,
+      box-shadow 200ms ease-out;
   }
 
   input:focus,
@@ -264,12 +272,24 @@
     animation: fadeInUp 600ms ease-out backwards;
   }
 
-  main > *:nth-child(1) { animation-delay: 0ms; }
-  main > *:nth-child(2) { animation-delay: 100ms; }
-  main > *:nth-child(3) { animation-delay: 200ms; }
-  main > *:nth-child(4) { animation-delay: 300ms; }
-  main > *:nth-child(5) { animation-delay: 400ms; }
-  main > *:nth-child(6) { animation-delay: 500ms; }
+  main > *:nth-child(1) {
+    animation-delay: 0ms;
+  }
+  main > *:nth-child(2) {
+    animation-delay: 100ms;
+  }
+  main > *:nth-child(3) {
+    animation-delay: 200ms;
+  }
+  main > *:nth-child(4) {
+    animation-delay: 300ms;
+  }
+  main > *:nth-child(5) {
+    animation-delay: 400ms;
+  }
+  main > *:nth-child(6) {
+    animation-delay: 500ms;
+  }
 }
 
 /* ============================================

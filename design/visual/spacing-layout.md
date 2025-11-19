@@ -5,6 +5,7 @@
 The spacing and layout system creates **visual rhythm and breathing room** that supports the art studio aesthetic. Think of it as the invisible grid that organizes the creative work - structured but not rigid, spacious but not wasteful.
 
 **Key principles:**
+
 - Mobile-first responsive design
 - Consistent vertical rhythm (4px base unit)
 - Generous whitespace for clarity
@@ -17,38 +18,42 @@ The spacing and layout system creates **visual rhythm and breathing room** that 
 
 Based on a **4px base unit** with an 8px rhythm for larger spacing. This provides fine-grained control for tight spacing while maintaining visual consistency.
 
-| Token | Value | Rem | Usage |
-|-------|-------|-----|-------|
-| `xs` | 4px | 0.25rem | Tight spacing, icon gaps |
-| `sm` | 8px | 0.5rem | Small gaps, compact elements |
-| `md` | 12px | 0.75rem | Default element spacing |
-| `base` | 16px | 1rem | Standard spacing unit |
-| `lg` | 24px | 1.5rem | Comfortable spacing |
-| `xl` | 32px | 2rem | Large spacing |
-| `2xl` | 48px | 3rem | Section spacing |
-| `3xl` | 64px | 4rem | Major section breaks |
-| `4xl` | 96px | 6rem | Hero/featured spacing |
-| `5xl` | 128px | 8rem | Extra large spacing |
+| Token  | Value | Rem     | Usage                        |
+| ------ | ----- | ------- | ---------------------------- |
+| `xs`   | 4px   | 0.25rem | Tight spacing, icon gaps     |
+| `sm`   | 8px   | 0.5rem  | Small gaps, compact elements |
+| `md`   | 12px  | 0.75rem | Default element spacing      |
+| `base` | 16px  | 1rem    | Standard spacing unit        |
+| `lg`   | 24px  | 1.5rem  | Comfortable spacing          |
+| `xl`   | 32px  | 2rem    | Large spacing                |
+| `2xl`  | 48px  | 3rem    | Section spacing              |
+| `3xl`  | 64px  | 4rem    | Major section breaks         |
+| `4xl`  | 96px  | 6rem    | Hero/featured spacing        |
+| `5xl`  | 128px | 8rem    | Extra large spacing          |
 
 ### Spacing Usage Guide
 
 **Tight Spacing (4px - 8px)**
+
 - Gap between icon and text
 - Padding in small badges
 - Spacing between inline elements
 
 **Standard Spacing (12px - 24px)**
+
 - Padding inside buttons
 - Margin between paragraphs
 - Gap between form elements
 - Card internal padding
 
 **Section Spacing (32px - 64px)**
+
 - Margin between content sections
 - Spacing between major UI elements
 - Vertical rhythm in layouts
 
 **Hero Spacing (96px - 128px)**
+
 - Hero section padding
 - Major page section breaks
 - Landing page spacing
@@ -59,14 +64,14 @@ Based on a **4px base unit** with an 8px rhythm for larger spacing. This provide
 
 Following Tailwind's default breakpoint system, optimized for modern device sizes:
 
-| Breakpoint | Min Width | Target Devices | Columns |
-|------------|-----------|----------------|---------|
-| `xs` | 0px | Mobile (default) | 4 |
-| `sm` | 640px | Large mobile / small tablet | 8 |
-| `md` | 768px | Tablet portrait | 8 |
-| `lg` | 1024px | Tablet landscape / laptop | 12 |
-| `xl` | 1280px | Desktop | 12 |
-| `2xl` | 1536px | Large desktop | 12 |
+| Breakpoint | Min Width | Target Devices              | Columns |
+| ---------- | --------- | --------------------------- | ------- |
+| `xs`       | 0px       | Mobile (default)            | 4       |
+| `sm`       | 640px     | Large mobile / small tablet | 8       |
+| `md`       | 768px     | Tablet portrait             | 8       |
+| `lg`       | 1024px    | Tablet landscape / laptop   | 12      |
+| `xl`       | 1280px    | Desktop                     | 12      |
+| `2xl`      | 1536px    | Large desktop               | 12      |
 
 ### Mobile-First Approach
 
@@ -74,9 +79,7 @@ Design for mobile first, then progressively enhance:
 
 ```html
 <!-- Mobile default, then tablet, then desktop -->
-<div class="p-4 md:p-8 lg:p-12">
-  Content
-</div>
+<div class="p-4 md:p-8 lg:p-12">Content</div>
 ```
 
 ---
@@ -87,13 +90,13 @@ Containers center content and provide consistent max-widths across the site.
 
 ### Container Sizes
 
-| Size | Max Width | Usage |
-|------|-----------|-------|
-| `container-sm` | 640px | Narrow content (articles, forms) |
-| `container-md` | 768px | Standard content width |
-| `container-lg` | 1024px | Wide content (dashboards, tables) |
-| `container-xl` | 1280px | Full-width content sections |
-| `container-full` | 100% | Edge-to-edge content |
+| Size             | Max Width | Usage                             |
+| ---------------- | --------- | --------------------------------- |
+| `container-sm`   | 640px     | Narrow content (articles, forms)  |
+| `container-md`   | 768px     | Standard content width            |
+| `container-lg`   | 1024px    | Wide content (dashboards, tables) |
+| `container-xl`   | 1280px    | Full-width content sections       |
+| `container-full` | 100%      | Edge-to-edge content              |
 
 ### Container Padding
 
@@ -187,12 +190,8 @@ Large, impactful header section with generous spacing.
 ```html
 <section class="bg-canvas">
   <div class="max-w-container-xl mx-auto px-4 md:px-8 lg:px-12 py-16 md:py-24 lg:py-32">
-    <h1 class="text-h1 font-extrabold text-black mb-4 md:mb-6">
-      Andrew Aarestad
-    </h1>
-    <p class="text-body-xl text-text-secondary max-w-2xl mb-8">
-      15+ years building ML systems
-    </p>
+    <h1 class="text-h1 font-extrabold text-black mb-4 md:mb-6">Andrew Aarestad</h1>
+    <p class="text-body-xl text-text-secondary max-w-2xl mb-8">15+ years building ML systems</p>
     <button class="bg-brand hover:bg-brand-dark text-white px-6 py-3 rounded-lg">
       View Projects
     </button>
@@ -207,9 +206,7 @@ Standard content section with breathing room.
 ```html
 <section class="bg-canvas py-12 md:py-16 lg:py-24">
   <div class="max-w-container-lg mx-auto px-4 md:px-8 lg:px-12">
-    <h2 class="text-h2 font-bold text-black-accent mb-6 md:mb-8">
-      Featured Projects
-    </h2>
+    <h2 class="text-h2 font-bold text-black-accent mb-6 md:mb-8">Featured Projects</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
       <!-- Project cards -->
     </div>
@@ -223,12 +220,8 @@ Cards with consistent padding and spacing.
 
 ```html
 <div class="bg-surface border border-border rounded-lg p-6 md:p-8">
-  <h3 class="text-h3 font-bold text-black-accent mb-3">
-    FLUID Water Meter
-  </h3>
-  <p class="text-body text-text-primary mb-4">
-    IoT + Signal Processing + Machine Learning
-  </p>
+  <h3 class="text-h3 font-bold text-black-accent mb-3">FLUID Water Meter</h3>
+  <p class="text-body text-text-primary mb-4">IoT + Signal Processing + Machine Learning</p>
   <div class="flex flex-wrap gap-2">
     <!-- Tags -->
   </div>
@@ -242,13 +235,9 @@ Optimized for long-form reading with narrow line length.
 ```html
 <article class="bg-canvas py-12 md:py-16">
   <div class="max-w-container-sm mx-auto px-4 md:px-8">
-    <h1 class="text-h1 font-extrabold text-black mb-6">
-      Building Production ML Systems
-    </h1>
+    <h1 class="text-h1 font-extrabold text-black mb-6">Building Production ML Systems</h1>
 
-    <p class="text-body-xl text-text-primary mb-8">
-      Lead paragraph with larger text...
-    </p>
+    <p class="text-body-xl text-text-primary mb-8">Lead paragraph with larger text...</p>
 
     <div class="prose prose-lg">
       <!-- Article content with automatic spacing -->
@@ -266,12 +255,8 @@ Side-by-side layout that stacks on mobile.
   <div class="max-w-container-xl mx-auto px-4 md:px-8 lg:px-12">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
       <div>
-        <h2 class="text-h2 font-bold text-black-accent mb-4">
-          About Me
-        </h2>
-        <p class="text-body text-text-primary">
-          I'm an AI/ML engineer...
-        </p>
+        <h2 class="text-h2 font-bold text-black-accent mb-4">About Me</h2>
+        <p class="text-body text-text-primary">I'm an AI/ML engineer...</p>
       </div>
       <div>
         <!-- Image or visual element -->
@@ -342,19 +327,13 @@ Internal spacing for common UI components.
 
 ```html
 <!-- Small button -->
-<button class="px-4 py-2 text-body-sm">
-  Small Button
-</button>
+<button class="px-4 py-2 text-body-sm">Small Button</button>
 
 <!-- Standard button -->
-<button class="px-6 py-3 text-body">
-  Standard Button
-</button>
+<button class="px-6 py-3 text-body">Standard Button</button>
 
 <!-- Large button -->
-<button class="px-8 py-4 text-body-lg">
-  Large Button
-</button>
+<button class="px-8 py-4 text-body-lg">Large Button</button>
 ```
 
 ### Input Fields
@@ -371,19 +350,13 @@ Internal spacing for common UI components.
 
 ```html
 <!-- Compact card -->
-<div class="p-4 bg-surface border border-border rounded-lg">
-  Compact content
-</div>
+<div class="p-4 bg-surface border border-border rounded-lg">Compact content</div>
 
 <!-- Standard card -->
-<div class="p-6 md:p-8 bg-surface border border-border rounded-lg">
-  Standard content
-</div>
+<div class="p-6 md:p-8 bg-surface border border-border rounded-lg">Standard content</div>
 
 <!-- Spacious card -->
-<div class="p-8 md:p-12 bg-surface border border-border rounded-lg">
-  Spacious content
-</div>
+<div class="p-8 md:p-12 bg-surface border border-border rounded-lg">Spacious content</div>
 ```
 
 ### Badges/Tags
@@ -432,13 +405,9 @@ Grid gaps that scale with viewport:
 Responsive vertical padding for sections:
 
 ```html
-<section class="py-8 md:py-12 lg:py-16">
-  Content with responsive vertical spacing
-</section>
+<section class="py-8 md:py-12 lg:py-16">Content with responsive vertical spacing</section>
 
-<section class="py-12 md:py-16 lg:py-24">
-  Major section with generous spacing
-</section>
+<section class="py-12 md:py-16 lg:py-24">Major section with generous spacing</section>
 ```
 
 ---
@@ -447,15 +416,15 @@ Responsive vertical padding for sections:
 
 Consistent corner rounding for visual cohesion.
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `rounded-sm` | 2px | Small elements, badges |
-| `rounded` | 4px | Buttons, inputs (default) |
-| `rounded-md` | 6px | Cards, panels |
-| `rounded-lg` | 8px | Large cards, modals |
-| `rounded-xl` | 12px | Hero cards, featured content |
-| `rounded-2xl` | 16px | Extra large elements |
-| `rounded-full` | 9999px | Pills, circular avatars |
+| Token          | Value  | Usage                        |
+| -------------- | ------ | ---------------------------- |
+| `rounded-sm`   | 2px    | Small elements, badges       |
+| `rounded`      | 4px    | Buttons, inputs (default)    |
+| `rounded-md`   | 6px    | Cards, panels                |
+| `rounded-lg`   | 8px    | Large cards, modals          |
+| `rounded-xl`   | 12px   | Hero cards, featured content |
+| `rounded-2xl`  | 16px   | Extra large elements         |
+| `rounded-full` | 9999px | Pills, circular avatars      |
 
 ### Usage Examples
 
@@ -479,26 +448,22 @@ Consistent corner rounding for visual cohesion.
 
 Subtle elevation for depth and hierarchy.
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | Subtle lift |
-| `shadow` | `0 1px 3px rgba(0,0,0,0.1)` | Cards, buttons |
-| `shadow-md` | `0 4px 6px rgba(0,0,0,0.1)` | Elevated cards |
+| Token       | Value                         | Usage             |
+| ----------- | ----------------------------- | ----------------- |
+| `shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)`  | Subtle lift       |
+| `shadow`    | `0 1px 3px rgba(0,0,0,0.1)`   | Cards, buttons    |
+| `shadow-md` | `0 4px 6px rgba(0,0,0,0.1)`   | Elevated cards    |
 | `shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | Modals, dropdowns |
-| `shadow-xl` | `0 20px 25px rgba(0,0,0,0.1)` | Featured content |
+| `shadow-xl` | `0 20px 25px rgba(0,0,0,0.1)` | Featured content  |
 
 ### Usage
 
 ```html
 <!-- Card with subtle shadow -->
-<div class="bg-surface rounded-lg shadow-sm p-6">
-  Card content
-</div>
+<div class="bg-surface rounded-lg shadow-sm p-6">Card content</div>
 
 <!-- Elevated card -->
-<div class="bg-surface rounded-lg shadow-md p-8">
-  Elevated content
-</div>
+<div class="bg-surface rounded-lg shadow-md p-8">Elevated content</div>
 
 <!-- Card with hover effect -->
 <div class="bg-surface rounded-lg shadow-sm hover:shadow-md transition-shadow p-6">
@@ -513,38 +478,38 @@ Subtle elevation for depth and hierarchy.
 Add spacing, container, and layout settings to `apps/website/tailwind.config.ts`:
 
 ```typescript
-import type { Config } from 'tailwindcss';
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   theme: {
     extend: {
       spacing: {
-        'xs': '0.25rem',    // 4px
-        'sm': '0.5rem',     // 8px
-        'md': '0.75rem',    // 12px
-        'base': '1rem',     // 16px
-        'lg': '1.5rem',     // 24px
-        'xl': '2rem',       // 32px
-        '2xl': '3rem',      // 48px
-        '3xl': '4rem',      // 64px
-        '4xl': '6rem',      // 96px
-        '5xl': '8rem',      // 128px
+        xs: "0.25rem", // 4px
+        sm: "0.5rem", // 8px
+        md: "0.75rem", // 12px
+        base: "1rem", // 16px
+        lg: "1.5rem", // 24px
+        xl: "2rem", // 32px
+        "2xl": "3rem", // 48px
+        "3xl": "4rem", // 64px
+        "4xl": "6rem", // 96px
+        "5xl": "8rem", // 128px
       },
       maxWidth: {
-        'container-sm': '640px',
-        'container-md': '768px',
-        'container-lg': '1024px',
-        'container-xl': '1280px',
-        'container-full': '100%',
+        "container-sm": "640px",
+        "container-md": "768px",
+        "container-lg": "1024px",
+        "container-xl": "1280px",
+        "container-full": "100%",
       },
       borderRadius: {
-        'sm': '2px',
-        DEFAULT: '4px',
-        'md': '6px',
-        'lg': '8px',
-        'xl': '12px',
-        '2xl': '16px',
-        'full': '9999px',
+        sm: "2px",
+        DEFAULT: "4px",
+        md: "6px",
+        lg: "8px",
+        xl: "12px",
+        "2xl": "16px",
+        full: "9999px",
       },
     },
   },
@@ -599,16 +564,12 @@ Always use containers for centered content:
 ```html
 <!-- ✅ Good: Consistent container pattern -->
 <section>
-  <div class="max-w-container-lg mx-auto px-4 md:px-8 lg:px-12">
-    Content
-  </div>
+  <div class="max-w-container-lg mx-auto px-4 md:px-8 lg:px-12">Content</div>
 </section>
 
 <!-- ❌ Bad: Inconsistent max-widths -->
 <section>
-  <div class="max-w-7xl mx-auto px-6">
-    Content
-  </div>
+  <div class="max-w-7xl mx-auto px-6">Content</div>
 </section>
 ```
 
@@ -618,18 +579,14 @@ Images should adapt to container width:
 
 ```html
 <!-- Responsive image -->
-<img
-  src="/project.jpg"
-  alt="Project screenshot"
-  class="w-full h-auto rounded-lg"
-/>
+<img src="/project.jpg" alt="Project screenshot" class="w-full h-auto rounded-lg" />
 
 <!-- With Next.js Image component -->
-<Image
+<image
   src="/project.jpg"
   alt="Project screenshot"
-  width={1200}
-  height={800}
+  width="{1200}"
+  height="{800}"
   className="w-full h-auto rounded-lg"
 />
 ```
@@ -657,7 +614,10 @@ Ensure interactive elements have clear focus indicators:
 Provide keyboard navigation shortcuts:
 
 ```html
-<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-brand text-white px-4 py-2 rounded-lg">
+<a
+  href="#main-content"
+  class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-brand text-white px-4 py-2 rounded-lg"
+>
   Skip to main content
 </a>
 
@@ -672,14 +632,10 @@ Ensure interactive elements are large enough (minimum 44×44px):
 
 ```html
 <!-- ✅ Good: Large enough touch target -->
-<button class="px-6 py-3 min-h-[44px]">
-  Tap me
-</button>
+<button class="px-6 py-3 min-h-[44px]">Tap me</button>
 
 <!-- ❌ Bad: Too small for touch -->
-<button class="px-2 py-1 text-xs">
-  Tiny button
-</button>
+<button class="px-2 py-1 text-xs">Tiny button</button>
 ```
 
 ---
@@ -692,16 +648,10 @@ Ensure interactive elements are large enough (minimum 44×44px):
 <header class="bg-surface border-b border-border sticky top-0 z-50">
   <div class="max-w-container-xl mx-auto px-4 md:px-8 lg:px-12">
     <nav class="flex items-center justify-between h-16 md:h-20">
-      <a href="/" class="text-h4 font-bold text-black">
-        Andrew Aarestad
-      </a>
+      <a href="/" class="text-h4 font-bold text-black"> Andrew Aarestad </a>
       <div class="flex items-center gap-6">
-        <a href="/projects" class="text-body text-text-primary hover:text-brand">
-          Projects
-        </a>
-        <a href="/about" class="text-body text-text-primary hover:text-brand">
-          About
-        </a>
+        <a href="/projects" class="text-body text-text-primary hover:text-brand"> Projects </a>
+        <a href="/about" class="text-body text-text-primary hover:text-brand"> About </a>
       </div>
     </nav>
   </div>
@@ -715,29 +665,29 @@ Ensure interactive elements are large enough (minimum 44×44px):
   <div class="max-w-container-xl mx-auto px-4 md:px-8 lg:px-12 py-8 md:py-12">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div>
-        <h3 class="text-h5 font-semibold text-black mb-4">
-          Andrew Aarestad
-        </h3>
-        <p class="text-body-sm text-text-secondary">
-          AI/ML Engineer
-        </p>
+        <h3 class="text-h5 font-semibold text-black mb-4">Andrew Aarestad</h3>
+        <p class="text-body-sm text-text-secondary">AI/ML Engineer</p>
       </div>
       <div>
-        <h4 class="text-label font-medium text-text-primary mb-3">
-          Links
-        </h4>
+        <h4 class="text-label font-medium text-text-primary mb-3">Links</h4>
         <ul class="space-y-2">
-          <li><a href="/projects" class="text-body-sm text-text-secondary hover:text-brand">Projects</a></li>
-          <li><a href="/about" class="text-body-sm text-text-secondary hover:text-brand">About</a></li>
+          <li>
+            <a href="/projects" class="text-body-sm text-text-secondary hover:text-brand"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a href="/about" class="text-body-sm text-text-secondary hover:text-brand">About</a>
+          </li>
         </ul>
       </div>
       <div>
-        <h4 class="text-label font-medium text-text-primary mb-3">
-          Connect
-        </h4>
+        <h4 class="text-label font-medium text-text-primary mb-3">Connect</h4>
         <ul class="space-y-2">
           <li><a href="#" class="text-body-sm text-text-secondary hover:text-brand">GitHub</a></li>
-          <li><a href="#" class="text-body-sm text-text-secondary hover:text-brand">LinkedIn</a></li>
+          <li>
+            <a href="#" class="text-body-sm text-text-secondary hover:text-brand">LinkedIn</a>
+          </li>
         </ul>
       </div>
     </div>

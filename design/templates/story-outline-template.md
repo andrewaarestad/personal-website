@@ -29,6 +29,7 @@ Use this template to plan your content structure before writing. A well-crafted 
 [Your thesis statement here]
 
 **Key Concepts/Points Surfaced:**
+
 - [Concept 1]
 - [Concept 2]
 - [Concept 3]
@@ -55,6 +56,7 @@ Use this template to plan your content structure before writing. A well-crafted 
 ## Narrative Structure
 
 **Instructions:** List the major sections in order. For each section, note:
+
 - Section heading (if applicable)
 - Key points to cover
 - PostLayout components to use
@@ -63,6 +65,7 @@ Use this template to plan your content structure before writing. A well-crafted 
 ### Section 1: [Section Name]
 
 **PostLayout Components:**
+
 - [ ] H1Section
 - [ ] H2Section
 - [ ] TextSection
@@ -71,6 +74,7 @@ Use this template to plan your content structure before writing. A well-crafted 
 - [ ] DataVisualizationSection
 
 **Key Points:**
+
 - [Point 1]
 - [Point 2]
 - [Point 3]
@@ -83,6 +87,7 @@ Use this template to plan your content structure before writing. A well-crafted 
 ### Section 2: [Section Name]
 
 **PostLayout Components:**
+
 - [ ] H2Section
 - [ ] TextSection
 - [ ] ImageSection
@@ -90,6 +95,7 @@ Use this template to plan your content structure before writing. A well-crafted 
 - [ ] DataVisualizationSection
 
 **Key Points:**
+
 - [Point 1]
 - [Point 2]
 
@@ -101,9 +107,11 @@ Use this template to plan your content structure before writing. A well-crafted 
 ### Section 3: [Section Name]
 
 **PostLayout Components:**
+
 - [ ] [Component types]
 
 **Key Points:**
+
 - [Points to cover]
 
 **Purpose in Narrative:**
@@ -120,6 +128,7 @@ Use this template to plan your content structure before writing. A well-crafted 
 **Instructions:** List the exact sequence of PostLayout components you'll use. This gives you a visual map of the content flow.
 
 **Example:**
+
 ```
 1. H1Section (Title)
 2. TextSection (Introduction)
@@ -133,6 +142,7 @@ Use this template to plan your content structure before writing. A well-crafted 
 ```
 
 **Your Sequence:**
+
 ```
 1. [Component type] ([Purpose])
 2. [Component type] ([Purpose])
@@ -148,10 +158,10 @@ Use this template to plan your content structure before writing. A well-crafted 
 
 **Instructions:** List all images you'll need, with descriptions. Note if you have the actual image or need a placeholder.
 
-| Section | Image Description | Dimensions | Source | Status |
-|---------|------------------|------------|--------|--------|
+| Section        | Image Description      | Dimensions       | Source                                | Status                                       |
+| -------------- | ---------------------- | ---------------- | ------------------------------------- | -------------------------------------------- |
 | [Section name] | [What the image shows] | [e.g., 1200x600] | [URL / Placeholder / User to provide] | [Available / Placeholder needed / Requested] |
-| [Section name] | [Description] | [Dimensions] | [Source] | [Status] |
+| [Section name] | [Description]          | [Dimensions]     | [Source]                              | [Status]                                     |
 
 **Example:**
 | Section | Image Description | Dimensions | Source | Status |
@@ -163,9 +173,9 @@ Use this template to plan your content structure before writing. A well-crafted 
 
 **Instructions:** List charts, graphs, or interactive visualizations needed.
 
-| Section | Visualization Type | Description | Component Available? | Notes |
-|---------|-------------------|-------------|---------------------|-------|
-| [Section] | [Chart type] | [What it shows] | [Yes / No / Partial] | [Additional notes] |
+| Section   | Visualization Type | Description     | Component Available? | Notes              |
+| --------- | ------------------ | --------------- | -------------------- | ------------------ |
+| [Section] | [Chart type]       | [What it shows] | [Yes / No / Partial] | [Additional notes] |
 
 **Example:**
 | Section | Visualization Type | Description | Component Available? | Notes |
@@ -206,19 +216,25 @@ Use this template to plan your content structure before writing. A well-crafted 
 **Instructions:** Define where you'll go deep technically vs. staying high-level. Plan how you'll layer complexity.
 
 ### High-Level Sections
+
 **These sections stay accessible to all readers:**
+
 - [Section name]: [What we'll cover at high level]
 - [Section name]: [High-level coverage]
 
 ### Technical Deep-Dive Sections
+
 **These sections provide detail for technical readers:**
+
 - [Section name]: [What technical details we'll explore]
 - [Section name]: [Technical coverage]
 
 ### Layering Strategy
+
 **How will we make technical depth accessible?**
 
 [Describe your approach, e.g.:]
+
 - Start each technical section with big picture context
 - Use Context → Concept → Why It Matters pattern
 - Provide real-world examples to ground abstract concepts
@@ -234,15 +250,18 @@ Use this template to plan your content structure before writing. A well-crafted 
 **Primary Tone:** [Select from tone spectrum in voice-tone.md]
 
 **Specific Voice Considerations:**
+
 - [e.g., "Avoid sounding like we're complaining about the problem"]
 - [e.g., "Show enthusiasm through curiosity about technical approach"]
 - [e.g., "Be honest about the challenges we faced without being negative"]
 
 **Words/Phrases to Avoid:**
+
 - [e.g., "Revolutionary," "game-changing," "at scale"]
 - [Any other hype language or corporate speak relevant to this topic]
 
 **Words/Phrases to Use:**
+
 - [e.g., "Across 5,000 devices," "73% reduction," "real-time processing"]
 - [Concrete, specific language]
 
@@ -253,11 +272,13 @@ Use this template to plan your content structure before writing. A well-crafted 
 **Instructions:** List anything you need clarification on before writing.
 
 **Questions for User:**
+
 1. [Question 1 - e.g., "Do you have any actual images from the project?"]
 2. [Question 2 - e.g., "What were the specific metrics/results?"]
 3. [Question 3 - e.g., "How technical should section X be?"]
 
 **Information Needed:**
+
 - [Info item 1]
 - [Info item 2]
 

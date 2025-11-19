@@ -15,12 +15,14 @@ This copyright applies to all **content, design, and personal information** in t
 ## Permissions
 
 **You may NOT**:
+
 - Copy, republish, or redistribute this content
 - Use personal information, images, or biography
 - Present yourself as the author or owner of this content
 - Use the design or branding for your own site
 
 **You MAY**:
+
 - Link to or reference this website
 - Quote brief excerpts with proper attribution
 - Use the code under the MIT License (see LICENSE file)

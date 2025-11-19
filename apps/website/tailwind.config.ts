@@ -11,27 +11,47 @@ const config: Config = {
     extend: {
       // Font families (loaded via Google Fonts)
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+        sans: [
+          "Inter",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          '"Helvetica Neue"',
+          "Arial",
+          "sans-serif",
+        ],
+        mono: [
+          '"JetBrains Mono"',
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Monaco",
+          "Consolas",
+          '"Liberation Mono"',
+          '"Courier New"',
+          "monospace",
+        ],
       },
       // Typography scale
       fontSize: {
         // Headings
-        'h1': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '800' }],
-        'h2': ['2.5rem', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '700' }],
-        'h3': ['2rem', { lineHeight: '1.25', letterSpacing: '-0.01em', fontWeight: '700' }],
-        'h4': ['1.5rem', { lineHeight: '1.3', fontWeight: '600' }],
-        'h5': ['1.25rem', { lineHeight: '1.4', fontWeight: '600' }],
-        'h6': ['1.125rem', { lineHeight: '1.4', fontWeight: '600' }],
+        h1: ["3rem", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "800" }],
+        h2: ["2.5rem", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "700" }],
+        h3: ["2rem", { lineHeight: "1.25", letterSpacing: "-0.01em", fontWeight: "700" }],
+        h4: ["1.5rem", { lineHeight: "1.3", fontWeight: "600" }],
+        h5: ["1.25rem", { lineHeight: "1.4", fontWeight: "600" }],
+        h6: ["1.125rem", { lineHeight: "1.4", fontWeight: "600" }],
         // Body text
-        'body-xl': ['1.25rem', { lineHeight: '1.6' }],
-        'body-lg': ['1.125rem', { lineHeight: '1.6' }],
-        'body': ['1rem', { lineHeight: '1.6' }],
-        'body-sm': ['0.875rem', { lineHeight: '1.5' }],
+        "body-xl": ["1.25rem", { lineHeight: "1.6" }],
+        "body-lg": ["1.125rem", { lineHeight: "1.6" }],
+        body: ["1rem", { lineHeight: "1.6" }],
+        "body-sm": ["0.875rem", { lineHeight: "1.5" }],
         // UI text
-        'label': ['0.875rem', { lineHeight: '1.4', letterSpacing: '0.01em', fontWeight: '500' }],
-        'label-sm': ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.02em', fontWeight: '500' }],
-        'code': ['0.875rem', { lineHeight: '1.6' }],
+        label: ["0.875rem", { lineHeight: "1.4", letterSpacing: "0.01em", fontWeight: "500" }],
+        "label-sm": ["0.75rem", { lineHeight: "1.4", letterSpacing: "0.02em", fontWeight: "500" }],
+        code: ["0.875rem", { lineHeight: "1.6" }],
       },
       colors: {
         // shadcn/ui CSS variables (for compatibility)
@@ -94,7 +114,7 @@ const config: Config = {
           DEFAULT: "hsl(var(--brand))",
           dark: "hsl(var(--brand-dark))",
         },
-        'brand-secondary': {
+        "brand-secondary": {
           light: "hsl(var(--brand-secondary-light))",
           DEFAULT: "hsl(var(--brand-secondary))",
           dark: "hsl(var(--brand-secondary-dark))",
@@ -106,8 +126,8 @@ const config: Config = {
         },
 
         // Gradient-specific colors with CSS variables
-        'gradient-brand-subtle': "hsl(var(--gradient-brand-subtle))",
-        'gradient-brand-secondary-subtle': "hsl(var(--gradient-brand-secondary-subtle))",
+        "gradient-brand-subtle": "hsl(var(--gradient-brand-subtle))",
+        "gradient-brand-secondary-subtle": "hsl(var(--gradient-brand-secondary-subtle))",
 
         // Semantic
         success: {
@@ -128,13 +148,13 @@ const config: Config = {
         },
 
         // Text
-        'text-primary': "hsl(var(--text-primary))",
-        'text-secondary': "hsl(var(--text-secondary))",
-        'text-tertiary': "hsl(var(--text-tertiary))",
+        "text-primary": "hsl(var(--text-primary))",
+        "text-secondary": "hsl(var(--text-secondary))",
+        "text-tertiary": "hsl(var(--text-tertiary))",
 
         // Borders
-        'border-light': "hsl(var(--border-light))",
-        'border-default': "hsl(var(--border-default))",
+        "border-light": "hsl(var(--border-light))",
+        "border-default": "hsl(var(--border-default))",
       },
       borderRadius: {
         lg: "var(--radius)",

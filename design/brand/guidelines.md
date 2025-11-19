@@ -31,6 +31,7 @@ The site serves as a digital portfolio and a window into both the technical dept
 - **Avoids the engineer trap** - Technical depth presented with big-picture context and business impact
 
 **Not trying to be:**
+
 - A consulting/agency website (no client acquisition focus)
 - Academic/research-heavy (though technically rigorous)
 - Generic tech portfolio (emphasizes unique positioning and personal voice)

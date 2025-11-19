@@ -12,9 +12,5 @@ import type { H2SectionProps } from "./types";
  * ```
  */
 export function H2Section({ text }: H2SectionProps) {
-  return (
-    <h2 className="text-h2 font-bold text-black pt-4">
-      {text}
-    </h2>
-  );
+  return <h2 className="text-h2 font-bold text-black pt-4">{text}</h2>;
 }

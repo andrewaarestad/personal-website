@@ -21,7 +21,12 @@ export function ProjectOverview({
   ctaText = "View Project",
 }: ProjectOverviewProps) {
   return (
-    <FeatureCard background="canvas" border="light" padding="default" className="hover:border-brand transition-colors">
+    <FeatureCard
+      background="canvas"
+      border="light"
+      padding="default"
+      className="hover:border-brand transition-colors"
+    >
       <div className="space-y-6">
         {/* Project Image */}
         <div className="relative w-full h-64 rounded-lg overflow-hidden bg-surface">

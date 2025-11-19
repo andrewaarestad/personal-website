@@ -103,13 +103,10 @@ export default function ColorExplorationPage() {
           >
             ← Back to Home
           </Link>
-          <h1 className="text-h1 font-extrabold text-black mb-2">
-            Color Palette Exploration
-          </h1>
+          <h1 className="text-h1 font-extrabold text-black mb-2">Color Palette Exploration</h1>
           <p className="text-body-lg text-text-secondary max-w-2xl">
-            Exploring alternative color combinations for the design system. The
-            active theme uses semantic component variants, while explorations
-            below show alternative color options.
+            Exploring alternative color combinations for the design system. The active theme uses
+            semantic component variants, while explorations below show alternative color options.
           </p>
         </PageContainer>
       </Section>
@@ -120,27 +117,32 @@ export default function ColorExplorationPage() {
           <div className="mb-8">
             <h2 className="text-h3 font-bold text-black mb-2">Current Active Theme</h2>
             <p className="text-body text-text-secondary max-w-3xl mb-8">
-              This section uses the actual shared component system with semantic
-              variant names. If theme colors change in tailwind.config.ts, these
-              components will automatically reflect the new colors.
+              This section uses the actual shared component system with semantic variant names. If
+              theme colors change in tailwind.config.ts, these components will automatically reflect
+              the new colors.
             </p>
           </div>
 
           <FeatureCard className="mb-8">
-            <h3 className="text-h5 font-bold text-black mb-4">
-              Semantic Component Variants
-            </h3>
+            <h3 className="text-h5 font-bold text-black mb-4">Semantic Component Variants</h3>
             <p className="text-body text-text-secondary mb-6">
-              These buttons use semantic variants (brand, info, highlight, emphasis)
-              that map to the current theme colors. Change the theme, and these
-              update automatically.
+              These buttons use semantic variants (brand, info, highlight, emphasis) that map to the
+              current theme colors. Change the theme, and these update automatically.
             </p>
 
             <div className="flex gap-3 mb-6 flex-wrap">
-              <Button variant="brand" size="lg">Brand (Primary)</Button>
-              <Button variant="info" size="lg">Info (Secondary)</Button>
-              <Button variant="highlight" size="lg">Highlight (Tertiary)</Button>
-              <Button variant="emphasis" size="lg">Emphasis (Contrast)</Button>
+              <Button variant="brand" size="lg">
+                Brand (Primary)
+              </Button>
+              <Button variant="info" size="lg">
+                Info (Secondary)
+              </Button>
+              <Button variant="highlight" size="lg">
+                Highlight (Tertiary)
+              </Button>
+              <Button variant="emphasis" size="lg">
+                Emphasis (Contrast)
+              </Button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -175,13 +177,11 @@ export default function ColorExplorationPage() {
       {/* Exploratory Palettes Header */}
       <Section className="pt-12">
         <PageContainer>
-          <h2 className="text-h3 font-bold text-black mb-2">
-            Exploratory Color Variations
-          </h2>
+          <h2 className="text-h3 font-bold text-black mb-2">Exploratory Color Variations</h2>
           <p className="text-body text-text-secondary max-w-3xl mb-8">
-            These are alternative color palette explorations using inline styles.
-            They show different color combinations we've considered but haven't
-            integrated into the component system yet.
+            These are alternative color palette explorations using inline styles. They show
+            different color combinations we've considered but haven't integrated into the component
+            system yet.
           </p>
         </PageContainer>
       </Section>
@@ -201,9 +201,9 @@ export default function ColorExplorationPage() {
       <Section className="border-t border-border-light">
         <PageContainer>
           <p className="text-body-sm text-text-secondary text-center">
-            Exploratory palettes use inline styles for rapid iteration. The
-            Current Active Theme section above uses the production component
-            system and will update automatically when theme colors change.
+            Exploratory palettes use inline styles for rapid iteration. The Current Active Theme
+            section above uses the production component system and will update automatically when
+            theme colors change.
           </p>
         </PageContainer>
       </Section>
@@ -211,13 +211,7 @@ export default function ColorExplorationPage() {
   );
 }
 
-function PaletteCard({
-  palette,
-  index,
-}: {
-  palette: ColorPalette;
-  index: number;
-}) {
+function PaletteCard({ palette, index }: { palette: ColorPalette; index: number }) {
   return (
     <div
       style={{
@@ -230,7 +224,9 @@ function PaletteCard({
     >
       {/* Header */}
       <div style={{ marginBottom: "1.5rem" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem" }}>
+        <div
+          style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem" }}
+        >
           <span
             style={{
               fontSize: "0.75rem",
@@ -252,9 +248,7 @@ function PaletteCard({
         >
           {palette.name}
         </h2>
-        <p style={{ fontSize: "0.875rem", color: "#6B7280" }}>
-          {palette.description}
-        </p>
+        <p style={{ fontSize: "0.875rem", color: "#6B7280" }}>{palette.description}</p>
       </div>
 
       {/* Color Swatches */}
@@ -266,21 +260,9 @@ function PaletteCard({
           marginBottom: "1.5rem",
         }}
       >
-        <ColorSwatch
-          name={palette.primary.name}
-          hex={palette.primary.hex}
-          label="Primary"
-        />
-        <ColorSwatch
-          name={palette.secondary.name}
-          hex={palette.secondary.hex}
-          label="Secondary"
-        />
-        <ColorSwatch
-          name={palette.tertiary.name}
-          hex={palette.tertiary.hex}
-          label="Tertiary"
-        />
+        <ColorSwatch name={palette.primary.name} hex={palette.primary.hex} label="Primary" />
+        <ColorSwatch name={palette.secondary.name} hex={palette.secondary.hex} label="Secondary" />
+        <ColorSwatch name={palette.tertiary.name} hex={palette.tertiary.hex} label="Tertiary" />
       </div>
 
       {/* Example Components */}
@@ -426,15 +408,7 @@ function PaletteCard({
   );
 }
 
-function ColorSwatch({
-  name,
-  hex,
-  label,
-}: {
-  name: string;
-  hex: string;
-  label: string;
-}) {
+function ColorSwatch({ name, hex, label }: { name: string; hex: string; label: string }) {
   return (
     <div>
       <div

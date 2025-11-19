@@ -7,6 +7,7 @@ The color system reflects an **art studio aesthetic**: a light, airy foundation 
 **Semantic Naming:** Colors use semantic names (brand, brand-secondary, highlight) that map to current color choices. This allows theme changes without code updates - simply update hex values in tailwind.config.ts.
 
 **Key principles:**
+
 - Light mode as primary experience
 - High contrast for readability and accessibility
 - Bold, saturated accent colors inspired by primary hues
@@ -17,12 +18,12 @@ The color system reflects an **art studio aesthetic**: a light, airy foundation 
 
 ## Foundation Colors (The Studio Space)
 
-| Name | Hex | RGB | Usage |
-|------|-----|-----|-------|
-| Canvas | `#FAFAFA` | rgb(250, 250, 250) | Page background - the studio walls |
-| Surface | `#FFFFFF` | rgb(255, 255, 255) | Card backgrounds, elevated surfaces |
-| Border Light | `#E5E7EB` | rgb(229, 231, 235) | Subtle borders, dividers |
-| Border | `#D1D5DB` | rgb(209, 213, 219) | Standard borders, input outlines |
+| Name         | Hex       | RGB                | Usage                               |
+| ------------ | --------- | ------------------ | ----------------------------------- |
+| Canvas       | `#FAFAFA` | rgb(250, 250, 250) | Page background - the studio walls  |
+| Surface      | `#FFFFFF` | rgb(255, 255, 255) | Card backgrounds, elevated surfaces |
+| Border Light | `#E5E7EB` | rgb(229, 231, 235) | Subtle borders, dividers            |
+| Border       | `#D1D5DB` | rgb(209, 213, 219) | Standard borders, input outlines    |
 
 **Rationale:** Very light gray (`#FAFAFA`) creates warmth without the harshness of pure white, mimicking natural studio lighting. Pure white is reserved for elevated elements (cards, modals) to create subtle depth.
 
@@ -30,12 +31,12 @@ The color system reflects an **art studio aesthetic**: a light, airy foundation 
 
 ## Structure Colors (The Framework)
 
-| Name | Hex | RGB | Usage |
-|------|-----|-----|-------|
-| Text Primary | `#1A1A1A` | rgb(26, 26, 26) | Main content text |
-| Text Secondary | `#6B7280` | rgb(107, 114, 128) | Supporting text, captions |
-| Text Tertiary | `#9CA3AF` | rgb(156, 163, 175) | Placeholder text, disabled states |
-| Black Accent | `#000000` | rgb(0, 0, 0) | Headlines, strong emphasis |
+| Name           | Hex       | RGB                | Usage                             |
+| -------------- | --------- | ------------------ | --------------------------------- |
+| Text Primary   | `#1A1A1A` | rgb(26, 26, 26)    | Main content text                 |
+| Text Secondary | `#6B7280` | rgb(107, 114, 128) | Supporting text, captions         |
+| Text Tertiary  | `#9CA3AF` | rgb(156, 163, 175) | Placeholder text, disabled states |
+| Black Accent   | `#000000` | rgb(0, 0, 0)       | Headlines, strong emphasis        |
 
 **Rationale:** Near-black (`#1A1A1A`) is easier on the eyes than pure black for body text, while pure black is reserved for impact moments (large headlines, strong CTAs). Gray scale provides hierarchy.
 
@@ -47,33 +48,33 @@ These are the "artist's paints" - bold, saturated colors inspired by primary hue
 
 ### Brand (Primary)
 
-| Name | Hex | RGB | Usage |
-|------|-----|-----|-------|
-| Brand | `#EF4444` | rgb(239, 68, 68) | Primary CTAs, links, important highlights |
-| Brand Dark | `#DC2626` | rgb(220, 38, 38) | Hover states, active elements |
-| Brand Light | `#FEE2E2` | rgb(254, 226, 226) | Backgrounds, subtle highlights |
+| Name        | Hex       | RGB                | Usage                                     |
+| ----------- | --------- | ------------------ | ----------------------------------------- |
+| Brand       | `#EF4444` | rgb(239, 68, 68)   | Primary CTAs, links, important highlights |
+| Brand Dark  | `#DC2626` | rgb(220, 38, 38)   | Hover states, active elements             |
+| Brand Light | `#FEE2E2` | rgb(254, 226, 226) | Backgrounds, subtle highlights            |
 
 **Current Color:** Bright Red
 **Rationale:** Bold, energetic, and attention-grabbing without being aggressive. This is the color that makes visitors take action.
 
 ### Brand Secondary (Secondary)
 
-| Name | Hex | RGB | Usage |
-|------|-----|-----|-------|
-| Brand Secondary | `#06B6D4` | rgb(6, 182, 212) | Secondary actions, technical content highlights |
-| Brand Secondary Dark | `#0891B2` | rgb(8, 145, 178) | Hover states |
-| Brand Secondary Light | `#CFFAFE` | rgb(207, 250, 254) | Backgrounds, code highlights |
+| Name                  | Hex       | RGB                | Usage                                           |
+| --------------------- | --------- | ------------------ | ----------------------------------------------- |
+| Brand Secondary       | `#06B6D4` | rgb(6, 182, 212)   | Secondary actions, technical content highlights |
+| Brand Secondary Dark  | `#0891B2` | rgb(8, 145, 178)   | Hover states                                    |
+| Brand Secondary Light | `#CFFAFE` | rgb(207, 250, 254) | Backgrounds, code highlights                    |
 
 **Current Color:** Cyan
 **Rationale:** Technical and trustworthy. Provides cool contrast to the warm brand color. Perfect for engineering content.
 
 ### Highlight (Tertiary)
 
-| Name | Hex | RGB | Usage |
-|------|-----|-----|-------|
-| Highlight | `#84CC16` | rgb(132, 204, 22) | Special highlights, creative elements, accents |
-| Highlight Dark | `#65A30D` | rgb(101, 163, 13) | Text on light backgrounds |
-| Highlight Light | `#ECFCCB` | rgb(236, 252, 203) | Backgrounds, subtle accents |
+| Name            | Hex       | RGB                | Usage                                          |
+| --------------- | --------- | ------------------ | ---------------------------------------------- |
+| Highlight       | `#84CC16` | rgb(132, 204, 22)  | Special highlights, creative elements, accents |
+| Highlight Dark  | `#65A30D` | rgb(101, 163, 13)  | Text on light backgrounds                      |
+| Highlight Light | `#ECFCCB` | rgb(236, 252, 203) | Backgrounds, subtle accents                    |
 
 **Current Color:** Lime
 **Rationale:** Adds energy and creative warmth. Used sparingly as an accent - the "highlight pen" that draws attention to special moments.
@@ -82,16 +83,16 @@ These are the "artist's paints" - bold, saturated colors inspired by primary hue
 
 ## Semantic Colors
 
-| Name | Hex | RGB | Usage |
-|------|-----|-----|-------|
-| Success | `#10B981` | rgb(16, 185, 129) | Success messages, confirmations |
-| Success Light | `#D1FAE5` | rgb(209, 250, 229) | Success backgrounds |
-| Error | `#EF4444` | rgb(239, 68, 68) | Error messages, destructive actions |
-| Error Light | `#FEE2E2` | rgb(254, 226, 226) | Error backgrounds |
-| Warning | `#F59E0B` | rgb(245, 158, 11) | Warnings, cautions |
-| Warning Light | `#FEF3C7` | rgb(254, 243, 199) | Warning backgrounds |
-| Info | `#3B82F6` | rgb(59, 130, 246) | Informational messages |
-| Info Light | `#DBEAFE` | rgb(219, 234, 254) | Info backgrounds |
+| Name          | Hex       | RGB                | Usage                               |
+| ------------- | --------- | ------------------ | ----------------------------------- |
+| Success       | `#10B981` | rgb(16, 185, 129)  | Success messages, confirmations     |
+| Success Light | `#D1FAE5` | rgb(209, 250, 229) | Success backgrounds                 |
+| Error         | `#EF4444` | rgb(239, 68, 68)   | Error messages, destructive actions |
+| Error Light   | `#FEE2E2` | rgb(254, 226, 226) | Error backgrounds                   |
+| Warning       | `#F59E0B` | rgb(245, 158, 11)  | Warnings, cautions                  |
+| Warning Light | `#FEF3C7` | rgb(254, 243, 199) | Warning backgrounds                 |
+| Info          | `#3B82F6` | rgb(59, 130, 246)  | Informational messages              |
+| Info Light    | `#DBEAFE` | rgb(219, 234, 254) | Info backgrounds                    |
 
 ---
 
@@ -99,19 +100,20 @@ These are the "artist's paints" - bold, saturated colors inspired by primary hue
 
 Dark mode is fully implemented with system preference detection and manual theme toggle.
 
-| Name | Hex | RGB | Usage |
-|------|-----|-----|-------|
-| Dark Canvas | `#0F1419` | rgb(15, 20, 25) | Page background |
-| Dark Surface | `#1A1F25` | rgb(26, 31, 37) | Card backgrounds |
-| Dark Text Primary | `#E5E7EB` | rgb(229, 231, 235) | Main text |
-| Dark Text Secondary | `#9CA3AF` | rgb(156, 163, 175) | Supporting text |
-| Dark Text Tertiary | `#6B7280` | rgb(107, 114, 128) | Dimmer text |
-| Dark Border Light | `#2D333A` | rgb(45, 51, 58) | Subtle borders |
-| Dark Border Default | `#353B43` | rgb(53, 59, 67) | Standard borders |
+| Name                | Hex       | RGB                | Usage            |
+| ------------------- | --------- | ------------------ | ---------------- |
+| Dark Canvas         | `#0F1419` | rgb(15, 20, 25)    | Page background  |
+| Dark Surface        | `#1A1F25` | rgb(26, 31, 37)    | Card backgrounds |
+| Dark Text Primary   | `#E5E7EB` | rgb(229, 231, 235) | Main text        |
+| Dark Text Secondary | `#9CA3AF` | rgb(156, 163, 175) | Supporting text  |
+| Dark Text Tertiary  | `#6B7280` | rgb(107, 114, 128) | Dimmer text      |
+| Dark Border Light   | `#2D333A` | rgb(45, 51, 58)    | Subtle borders   |
+| Dark Border Default | `#353B43` | rgb(53, 59, 67)    | Standard borders |
 
 **Key Principle:** Accent colors (brand, brand-secondary, highlight) remain the same in dark mode, providing consistency across themes. The bold saturation works well against both light and dark backgrounds.
 
 **Behavior:**
+
 - Respects system preference (light/dark) by default
 - Falls back to light mode if system preference unavailable
 - User can manually select light, dark, or system theme via footer toggle
@@ -187,6 +189,7 @@ All color combinations meet **WCAG 2.1 Level AA** requirements at minimum:
 ### CSS Custom Properties (Source of Truth)
 
 All colors are defined as **CSS custom properties** in `apps/website/src/app/globals.css`. This approach provides:
+
 - **Dark mode support**: Easy theme switching via `.dark` class
 - **Consistency**: Single source of truth for all color values
 - **Flexibility**: Colors can be changed globally without modifying code
@@ -220,7 +223,7 @@ Tailwind utilities reference the CSS custom properties defined above:
 **File**: `apps/website/tailwind.config.ts`
 
 ```typescript
-import type { Config } from 'tailwindcss';
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   theme: {
@@ -233,7 +236,7 @@ const config: Config = {
           DEFAULT: "hsl(var(--brand))",
           dark: "hsl(var(--brand-dark))",
         },
-        'brand-secondary': {
+        "brand-secondary": {
           light: "hsl(var(--brand-secondary-light))",
           DEFAULT: "hsl(var(--brand-secondary))",
           dark: "hsl(var(--brand-secondary-dark))",
@@ -274,6 +277,7 @@ All instances of `bg-brand`, `text-brand`, `border-brand`, etc. will now be blue
 Here's how the colors work together:
 
 **Light Studio Background** (`canvas`) with:
+
 - **Headlines** in `black` for impact
 - **Body text** in `text-primary` for readability
 - **Primary CTAs** in `brand` for bold action
@@ -297,13 +301,17 @@ Here's how the colors work together:
 <article class="bg-surface border border-border rounded-lg p-6">
   <h3 class="text-2xl font-bold text-black-accent">FLUID Water Meter</h3>
   <p class="text-text-primary mt-2">IoT + ML for leak detection</p>
-  <span class="inline-block bg-brand-secondary-light text-brand-secondary-dark px-3 py-1 rounded text-sm mt-4">
+  <span
+    class="inline-block bg-brand-secondary-light text-brand-secondary-dark px-3 py-1 rounded text-sm mt-4"
+  >
     Signal Processing
   </span>
   <span class="inline-block bg-brand-light text-brand-dark px-3 py-1 rounded text-sm mt-4 ml-2">
     Machine Learning
   </span>
-  <span class="inline-block bg-highlight-light text-highlight-dark px-3 py-1 rounded text-sm mt-4 ml-2">
+  <span
+    class="inline-block bg-highlight-light text-highlight-dark px-3 py-1 rounded text-sm mt-4 ml-2"
+  >
     Featured
   </span>
 </article>
@@ -316,6 +324,7 @@ Here's how the colors work together:
 ✅ **Implemented** - This color system is fully implemented across the website.
 
 **Quick Reference:**
+
 - **Source of truth**: `apps/website/src/app/globals.css` (CSS custom properties)
 - **Tailwind mapping**: `apps/website/tailwind.config.ts` (references CSS variables)
 - **Theme toggle**: Located in global footer with light/dark/system modes

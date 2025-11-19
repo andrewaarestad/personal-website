@@ -1,198 +1,194 @@
 import type { Metadata } from "next";
-import { PageContainer } from "@/components/ui/page-container";
-import { Section } from "@/components/ui/section";
-import { FeatureCard } from "@/components/ui/feature-card";
+import {
+  PostLayout,
+  H1Section,
+  H2Section,
+  TextSection,
+  ImageSection,
+  TextImageSection,
+  DataVisualizationSection,
+} from "@/components/post-layout";
+import { WaterFlowChart } from "@/components/charts/WaterFlowChart";
+import { generateWaterFlowData } from "@/lib/sample-data";
 
 export const metadata: Metadata = {
   title: "FLUID Water Meter - Andrew Aarestad",
-  description: "Co-founded and led development of an IoT water monitoring platform applying signal processing, state estimation, and machine learning to real-world sensor data.",
+  description:
+    "Built a complete IoT water monitoring platform from ultrasonic sensors to cloud ML pipelines. A technical success that taught hard lessons about hardware startup economics.",
 };
 
 export default function FLUIDWaterMeterPage() {
+  // Generate sample water flow data for visualization
+  const waterFlowData = generateWaterFlowData();
+
   return (
-    <main className="min-h-screen bg-canvas">
-      {/* Hero Section */}
-      <Section className="bg-gradient-to-br from-gradient-brand-subtle via-canvas to-gradient-brand-secondary-subtle">
-        <PageContainer>
-          <div className="py-20 space-y-8">
-            <div className="w-16 h-1 bg-brand" aria-hidden="true" />
-            <div>
-              <h1 className="text-h1 font-extrabold text-black mb-6">
-                FLUID Water Meter
-              </h1>
-              <p className="text-h3 text-text-secondary max-w-3xl">
-                Co-founded and led development of an IoT water monitoring platform applying
-                signal processing, state estimation, and machine learning to real-world sensor data.
-              </p>
-            </div>
-          </div>
-        </PageContainer>
-      </Section>
+    <PostLayout>
+      {[
+        // Section 1: Title
+        <H1Section key="title" text="FLUID Water Meter" />,
 
-      {/* Overview Section */}
-      <Section>
-        <PageContainer>
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-h2 font-bold text-black mb-4">Project Overview</h2>
-              <p className="text-body-lg text-text-secondary max-w-3xl">
-                FLUID was an IoT water monitoring platform designed to help homeowners and businesses
-                detect leaks, monitor usage patterns, and prevent water damage. The system combined
-                ultrasonic flow sensing with advanced signal processing and machine learning to provide
-                accurate, real-time water monitoring across thousands of deployed devices.
-              </p>
-            </div>
-          </div>
-        </PageContainer>
-      </Section>
+        // Section 2: Introduction
+        <TextSection
+          key="intro"
+          text="I cofounded FLUID in 2015 with talented partners to build an IoT water monitoring platform for homeowners. Over three years, with support from investors who believed in our vision, I built everything from ultrasonic signal processing to cloud ML pipelines. We produced about 100 devices and learned invaluable lessons about bringing hardware to market.\n\nResidential water damage costs billions annually, but monitoring systems were expensive commercial products. We saw an opportunity for affordable clamp-on sensors—no plumber required."
+        />,
 
-      {/* Key Accomplishments */}
-      <Section className="bg-surface">
-        <PageContainer>
-          <div className="space-y-8">
-            <h2 className="text-h2 font-bold text-black">Key Accomplishments</h2>
+        // Section 3: The Journey
+        <H2Section key="journey-heading" text="The Journey" />,
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FeatureCard background="canvas" border="light" padding="default">
-                <div className="space-y-3">
-                  <h3 className="text-h4 font-bold text-black">State Estimation & Signal Processing</h3>
-                  <p className="text-body text-text-secondary">
-                    Developed ultrasonic state estimation algorithms using Kalman filtering and
-                    real-time signal processing to achieve accurate flow measurement in challenging
-                    field conditions.
-                  </p>
-                </div>
-              </FeatureCard>
+        // Section 4: Journey narrative
+        <TextSection
+          key="journey-text"
+          text="We started with an off-the-shelf ultrasonic meter to learn time-of-flight measurement. Our Kickstarter campaign brought in early supporters who helped fund custom clamp-on sensors with injection-molded enclosures. As the technical lead, I built most of the platform while managing contractors for PCB design, FPGA programming, and mechanical work.\n\nWe progressed from 3D-printed prototypes to production units with proper tooling, built a calibration lab for training data, and shipped working devices. While we ultimately didn't reach the scale needed for sustainable manufacturing economics, we're proud of the complete IoT platform we built and grateful for the opportunity to tackle this challenge."
+        />,
 
-              <FeatureCard background="canvas" border="light" padding="default">
-                <div className="space-y-3">
-                  <h3 className="text-h4 font-bold text-black">Machine Learning for Leak Detection</h3>
-                  <p className="text-body text-text-secondary">
-                    Built statistical and ML models for leak detection and usage pattern analysis
-                    across thousands of deployed devices, enabling proactive alerting and water
-                    conservation insights.
-                  </p>
-                </div>
-              </FeatureCard>
+        // Section 5: The Technical Challenge
+        <H2Section key="challenge-heading" text="The Technical Challenge" />,
 
-              <FeatureCard background="canvas" border="light" padding="default">
-                <div className="space-y-3">
-                  <h3 className="text-h4 font-bold text-black">AWS-Based Data Pipelines</h3>
-                  <p className="text-body text-text-secondary">
-                    Architected cloud infrastructure ingesting and processing high-frequency telemetry
-                    from lab and field sensors, handling data from thousands of devices in real-time.
-                  </p>
-                </div>
-              </FeatureCard>
+        // Section 6: Ultrasonic challenges with image
+        <TextImageSection
+          key="ultrasonic-challenge"
+          text="Ultrasonic flow measurement is deceptively hard. Send sound waves upstream and downstream, measure the time difference, calculate flow. Simple in principle.\n\nReal-world conditions complicate everything. Transducer alignment matters—a few degrees off and readings fail. Temperature changes affect sound speed in water. Air bubbles scatter the signal. Partial pipe fill breaks the math. Crosstalk from solid-fluid interfaces adds noise.\n\nWe needed reliability across pipe materials (copper, PVC, PEX), diameters (½-inch to 2-inch), varying flow rates, and environmental conditions—all on battery power with strict computational limits."
+          imageUrl="https://placehold.co/800x600/06B6D4/FFFFFF/png?text=Ultrasonic+Time-of-Flight"
+          imageAlt="Ultrasonic transducers measuring time-of-flight for upstream and downstream sound waves"
+          layout="image-left"
+        />,
 
-              <FeatureCard background="canvas" border="light" padding="default">
-                <div className="space-y-3">
-                  <h3 className="text-h4 font-bold text-black">Automated Test Infrastructure</h3>
-                  <p className="text-body text-text-secondary">
-                    Created labeled datasets via automated test facilities with PLC-controlled water
-                    systems to support ML model training and validation at scale.
-                  </p>
-                </div>
-              </FeatureCard>
+        // Section 7: What We Built
+        <H2Section key="built-heading" text="What We Built" />,
 
-              <FeatureCard background="canvas" border="light" padding="default">
-                <div className="space-y-3">
-                  <h3 className="text-h4 font-bold text-black">Product Engineering & DevOps</h3>
-                  <p className="text-body text-text-secondary">
-                    Directed product engineering including OTA firmware updates, device provisioning,
-                    and telemetry infrastructure to ensure reliable operation across deployed fleet.
-                  </p>
-                </div>
-              </FeatureCard>
+        // Section 8: Tech stack enumeration
+        <TextSection
+          key="built-text"
+          text="**Hardware:** Clamp-on ultrasonic sensor, injection-molded enclosure, custom PCBs, FPGA signal processing, battery management\n\n**Firmware:** C++ real-time signal processing, Kalman filtering, temperature compensation, low-power wireless\n\n**Calibration Lab:** PLC-controlled water systems generating labeled datasets with known flow rates\n\n**Cloud:** AWS IoT Core, Lambda, DynamoDB for telemetry processing and storage\n\n**ML:** Anomaly detection for leaks, usage pattern classification, training on calibration data\n\n**Apps:** Mobile (iOS/Android), web dashboard, fleet management, OTA firmware updates"
+        />,
 
-              <FeatureCard background="canvas" border="light" padding="default">
-                <div className="space-y-3">
-                  <h3 className="text-h4 font-bold text-black">Hardware Development Oversight</h3>
-                  <p className="text-body text-text-secondary">
-                    Oversaw contract development of hardware components including custom PCBs,
-                    FPGA programming, and enclosures, bridging software and hardware domains.
-                  </p>
-                </div>
-              </FeatureCard>
-            </div>
-          </div>
-        </PageContainer>
-      </Section>
+        // Section 9: Interactive flow visualization
+        <DataVisualizationSection
+          key="flow-visualization"
+          title="Real-Time Flow Detection"
+          description="5 minutes of ultrasonic data at 1Hz showing household usage: faucet at 30s, toilet flush at 90s, shower at 2.5min. Our signal processing extracted these patterns from noisy sensor data in real-time."
+        >
+          <WaterFlowChart data={waterFlowData} height={400} enableArea={true} />
+        </DataVisualizationSection>,
 
-      {/* Tech Stack */}
-      <Section>
-        <PageContainer>
-          <div className="space-y-8">
-            <h2 className="text-h2 font-bold text-black">Tech Stack</h2>
+        // Section 10: Engineering Deep Dive
+        <H2Section key="engineering-heading" text="Engineering Deep Dive" />,
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                "C++",
-                "Python",
-                "Node.js",
-                "React Native",
-                "FPGA",
-                "AWS IoT",
-                "Kalman Filtering",
-                "Signal Processing"
-              ].map((tech) => (
-                <div
-                  key={tech}
-                  className="px-4 py-3 bg-surface border border-border-light rounded-lg text-center"
-                >
-                  <span className="text-body font-medium text-black">{tech}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </PageContainer>
-      </Section>
+        // Section 11: Signal Processing
+        <TextImageSection
+          key="signal-processing"
+          text="Extracting accurate flow from noisy ultrasonic signals on constrained hardware was the core challenge.\n\nKalman filtering estimated true flow by combining measurements over time. The filter maintains a state estimate and updates as readings arrive, weighing each by reliability. This handled air bubbles, turbulence, and temperature fluctuations.\n\nThe algorithm ran on embedded hardware with milliwatt power budgets. Temperature compensation was critical—sound speed in water changes 0.17% per degree Celsius. We continuously adjusted timing calculations across basement to outdoor conditions."
+          imageUrl="https://placehold.co/800x600/7C3AED/FFFFFF/png?text=Signal+Processing"
+          imageAlt="Raw sensor data processed through Kalman filtering to produce accurate flow estimates"
+          layout="image-right"
+        />,
 
-      {/* Technical Highlights */}
-      <Section className="bg-surface">
-        <PageContainer>
-          <div className="space-y-8">
-            <h2 className="text-h2 font-bold text-black">Technical Highlights</h2>
+        // Section 12: Machine Learning Analytics
+        <TextSection
+          key="ml-analytics"
+          text="Leak detection requires pattern recognition, not just flow measurement.\n\nWe trained ML models on calibration lab data. PLC-automated valves created labeled datasets with known flow rates—ground truth for training and validation. Anomaly detection learned baseline usage per household, then flagged deviations. A running toilet shows sustained low flow. A pinhole leak creates constant baseline. Models distinguished these from legitimate use like filling bathtubs.\n\nUsage classification identified fixtures by signature. Showers: 2-3 GPM sustained. Toilets: sharp spike plus refill. Faucets: intermittent on-off. Irrigation: scheduled high flow. Cloud infrastructure ingested 1Hz telemetry, storing time-series and running batch ML jobs."
+        />,
 
-            <div className="space-y-6 max-w-3xl">
-              <div className="space-y-3">
-                <h3 className="text-h4 font-bold text-black">Embedded Systems Development</h3>
-                <p className="text-body text-text-secondary">
-                  Developed firmware in C++ for resource-constrained IoT devices, implementing
-                  real-time signal processing algorithms with strict power and memory constraints.
+        // Section 13: Fleet Management
+        <TextImageSection
+          key="fleet-management"
+          text="Can't touch deployed devices. Everything works remotely or not at all.\n\nOTA firmware updates became critical. We found bugs, optimized algorithms, added features—all requiring updates to devices in crawl spaces. The system needed to be bulletproof: interrupted updates can't brick devices, rollbacks must work, remote diagnostics essential.\n\nWe built device provisioning, health telemetry (battery, signal strength, reliability), and remote configuration. AWS IoT Core handled MQTT messaging, shadow states, and job management. Lambda processed data streams, DynamoDB stored device states."
+          imageUrl="https://placehold.co/800x600/10B981/FFFFFF/png?text=System+Architecture"
+          imageAlt="Device to cloud flow: sensors to AWS IoT Core to Lambda to DynamoDB to dashboard"
+          layout="image-left"
+        />,
+
+        // Section 14: Manufacturing & Hardware
+        <H2Section key="manufacturing-heading" text="Manufacturing & Hardware" />,
+
+        // Section 15: Manufacturing challenges
+        <TextSection
+          key="manufacturing-text"
+          text="Hardware has fundamentally different economics than software.\n\nInjection molding tooling costs tens of thousands before making a single part. Kickstarter funded initial tooling, but bridging prototype to production requires massive capital. Economics work at volume—but reaching volume needs upfront capital.\n\nMOQs dominate decisions. PCB manufacturers want 1,000+ boards. Injection molding becomes viable around 5,000+ units. Component suppliers have MOQs. You're negotiating batch sizes against unit economics against cash flow.\n\nManaging contractors across mechanical, electrical, and firmware requires tight integration. An enclosure change affects PCB mounting. Firmware optimization might enable smaller batteries, changing mechanical design. We produced 100 devices—enough to validate technology, nowhere near sustainable economics."
+        />,
+
+        // Section 16: Product Evolution Timeline
+        <DataVisualizationSection
+          key="timeline"
+          title="From Prototype to Production"
+          description="Three years from concept to production: off-the-shelf validation, 3D-printed iteration, injection-molded manufacturing."
+        >
+          <div className="space-y-6">
+            <div className="flex gap-4 items-start">
+              <div className="flex-shrink-0 w-32 pt-1">
+                <div className="font-semibold text-sm">2015</div>
+                <div className="text-xs text-text-tertiary">Prototype</div>
+              </div>
+              <div className="flex-shrink-0 w-2 h-2 mt-2 rounded-full bg-brand" />
+              <div className="flex-1 pb-8 border-l-2 border-border-light pl-6 -ml-1">
+                <h3 className="font-semibold text-base mb-2">Off-the-Shelf Sensor</h3>
+                <p className="text-sm text-text-secondary">
+                  Commercial ultrasonic meter to validate concept and learn time-of-flight
+                  fundamentals.
                 </p>
               </div>
+            </div>
 
-              <div className="space-y-3">
-                <h3 className="text-h4 font-bold text-black">Cloud-Scale Data Processing</h3>
-                <p className="text-body text-text-secondary">
-                  Built scalable AWS infrastructure using IoT Core, Lambda, and DynamoDB to handle
-                  telemetry ingestion, processing, and storage for thousands of devices generating
-                  high-frequency sensor data.
+            <div className="flex gap-4 items-start">
+              <div className="flex-shrink-0 w-32 pt-1">
+                <div className="font-semibold text-sm">2016</div>
+                <div className="text-xs text-text-tertiary">Campaign</div>
+              </div>
+              <div className="flex-shrink-0 w-2 h-2 mt-2 rounded-full bg-brand" />
+              <div className="flex-1 pb-8 border-l-2 border-border-light pl-6 -ml-1">
+                <h3 className="font-semibold text-base mb-2">Kickstarter & 3D Prints</h3>
+                <p className="text-sm text-text-secondary">
+                  Kickstarter for custom sensor development. Rapid iteration with 3D-printed
+                  enclosures. Built calibration lab.
                 </p>
               </div>
+            </div>
 
-              <div className="space-y-3">
-                <h3 className="text-h4 font-bold text-black">Machine Learning in Production</h3>
-                <p className="text-body text-text-secondary">
-                  Deployed ML models for anomaly detection and usage pattern classification,
-                  trained on labeled datasets generated through automated test infrastructure and
-                  validated against real-world field data.
-                </p>
+            <div className="flex gap-4 items-start">
+              <div className="flex-shrink-0 w-32 pt-1">
+                <div className="font-semibold text-sm">2017-2018</div>
+                <div className="text-xs text-text-tertiary">Production</div>
               </div>
-
-              <div className="space-y-3">
-                <h3 className="text-h4 font-bold text-black">Full-Stack IoT Platform</h3>
-                <p className="text-body text-text-secondary">
-                  Built end-to-end IoT platform spanning embedded firmware, cloud infrastructure,
-                  data pipelines, ML models, and mobile applications, demonstrating versatility
-                  across the entire technology stack.
+              <div className="flex-shrink-0 w-2 h-2 mt-2 rounded-full bg-brand" />
+              <div className="flex-1 pl-6 -ml-1">
+                <h3 className="font-semibold text-base mb-2">Injection-Molded Units</h3>
+                <p className="text-sm text-text-secondary">
+                  ~100 devices with injection-molded enclosures, custom PCBs, FPGA processing. Full
+                  cloud platform, mobile apps, ML analytics deployed.
                 </p>
               </div>
             </div>
           </div>
-        </PageContainer>
-      </Section>
-    </main>
+        </DataVisualizationSection>,
+
+        // Section 17: The Scaling Challenge
+        <H2Section key="scaling-heading" text="The Scaling Challenge" />,
+
+        // Section 18: Business reality
+        <TextSection
+          key="scaling-text"
+          text="Hardware startups face a fundamentally different challenge than software. While we succeeded technically—building working sensors, reliable firmware, and scalable cloud infrastructure—we learned that hardware economics require a different playbook.\n\nTooling, inventory, assembly, testing, and regulatory compliance all demand significant capital before generating revenue. To reach the volumes where unit economics become sustainable, you need either substantial investment or enough pre-orders to fund manufacturing directly. Despite the support of investors who believed in our vision and customers who backed us on Kickstarter, we didn't reach the scale needed to bridge that gap.\n\nThe classic challenge: you need volume for viable unit costs, but you need capital to reach volume. Our 100 devices validated the technology, but sustainable manufacturing required thousands. We're grateful to everyone who supported us on this journey—our investors who took a chance on the vision, our Kickstarter backers who believed early, and our team who worked incredibly hard to bring this to life. The experience taught us that in hardware, technical excellence is necessary but not sufficient."
+        />,
+
+        // Section 19: What I Learned
+        <H2Section key="lessons-heading" text="What I Learned" />,
+
+        // Section 20: Lessons learned
+        <TextImageSection
+          key="lessons"
+          text="**Ultrasonic Tech:** Signal processing is as hard as the physics. Kalman filtering essential but required extensive calibration. Temperature compensation mattered more than expected. Real-world messier than lab.\n\n**Machine Learning:** Labeled data harder than models. Calibration lab was critical. Usage patterns more diverse than anticipated. Anomaly detection requires understanding 'normal'—which varies by household.\n\n**Manufacturing:** Tooling and MOQs dominate unit economics. Prototype-to-production gap is enormous. Design for manufacturing isn't added later. Managing contractors across disciplines requires tight integration.\n\n**Startup Economics:** Technical risk differs from business risk. We reduced technical risk substantially, but business risk remained. Hardware needs different capital structures than software.\n\n**Solo Engineering:** One person can build remarkable systems by managing scope and delegating specialized work. Full-stack means knowing enough about each layer to make good decisions, not being expert at everything."
+          imageUrl="https://placehold.co/800x600/F59E0B/FFFFFF/png?text=Calibration+Lab"
+          imageAlt="FLUID calibration lab with PLC-controlled water systems and sensor test fixtures"
+          layout="image-right"
+        />,
+
+        // Section 21: Conclusion
+        <TextSection
+          key="conclusion"
+          text="FLUID taught me more than any project before or since. We built technology that worked, learned deeply across domains from ultrasonic physics to ML to manufacturing economics, and had the privilege of working with talented cofounders, supportive investors, and early believers who took a chance on our vision.\n\nThe experience shaped my approach to production systems. Shipping matters more than perfection. Real-world conditions humble lab results. OTA infrastructure isn't optional for IoT. Business viability requires more than technical excellence.\n\nThree years, 100 devices, countless lessons. I'm grateful for the opportunity to have tackled this challenge and for everyone who made it possible."
+        />,
+      ]}
+    </PostLayout>
   );
 }

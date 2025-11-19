@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Moon, Sun, Monitor } from "lucide-react"
-import { useTheme } from "next-themes"
+import * as React from "react";
+import { Moon, Sun, Monitor } from "lucide-react";
+import { useTheme } from "next-themes";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
 /**
  * Theme toggle component with light/dark/system options
@@ -25,13 +25,13 @@ import {
  * - Persists user preference
  */
 export function ThemeToggle() {
-  const { setTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
+  const { setTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
 
   // Wait for hydration to prevent mismatch
   React.useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   if (!mounted) {
     // Return a placeholder to prevent hydration mismatch
@@ -40,7 +40,7 @@ export function ThemeToggle() {
         <Sun className="h-5 w-5" />
         <span className="sr-only">Toggle theme</span>
       </Button>
-    )
+    );
   }
 
   return (
@@ -67,5 +67,5 @@ export function ThemeToggle() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

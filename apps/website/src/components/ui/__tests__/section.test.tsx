@@ -11,7 +11,11 @@ describe("Section", () => {
     });
 
     it("renders no spacing with none variant", () => {
-      render(<Section spacing="none" data-testid="section">Content</Section>);
+      render(
+        <Section spacing="none" data-testid="section">
+          Content
+        </Section>
+      );
       const section = screen.getByTestId("section");
       expect(section).not.toHaveClass("py-8");
       expect(section).not.toHaveClass("py-16");
@@ -19,19 +23,31 @@ describe("Section", () => {
     });
 
     it("renders small spacing with correct classes", () => {
-      render(<Section spacing="small" data-testid="section">Content</Section>);
+      render(
+        <Section spacing="small" data-testid="section">
+          Content
+        </Section>
+      );
       const section = screen.getByTestId("section");
       expect(section).toHaveClass("py-8");
     });
 
     it("renders medium spacing with correct classes", () => {
-      render(<Section spacing="medium" data-testid="section">Content</Section>);
+      render(
+        <Section spacing="medium" data-testid="section">
+          Content
+        </Section>
+      );
       const section = screen.getByTestId("section");
       expect(section).toHaveClass("py-16");
     });
 
     it("renders large spacing with correct classes", () => {
-      render(<Section spacing="large" data-testid="section">Content</Section>);
+      render(
+        <Section spacing="large" data-testid="section">
+          Content
+        </Section>
+      );
       const section = screen.getByTestId("section");
       expect(section).toHaveClass("py-24");
     });
@@ -47,7 +63,11 @@ describe("Section", () => {
 
   describe("Custom className", () => {
     it("accepts and merges custom className", () => {
-      render(<Section className="custom-class" data-testid="section">Content</Section>);
+      render(
+        <Section className="custom-class" data-testid="section">
+          Content
+        </Section>
+      );
       const section = screen.getByTestId("section");
       expect(section).toHaveClass("custom-class");
       expect(section).toHaveClass("w-full");

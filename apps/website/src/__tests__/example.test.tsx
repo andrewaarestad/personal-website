@@ -15,7 +15,7 @@ describe("HomePage", () => {
     render(<HomePage />);
     expect(screen.getByRole("heading", { name: /design process/i })).toBeInTheDocument();
     expect(
-      screen.getByText(/This site is built using a design-first workflow/i),
+      screen.getByText(/This site is built using a design-first workflow/i)
     ).toBeInTheDocument();
   });
 

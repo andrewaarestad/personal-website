@@ -63,6 +63,7 @@ This workflow is optimized for **Claude Code mobile** using CLI tools (shadcn, P
 **📖 See [Copywriting Workflow Guide](./docs/copywriting-workflow.md) for complete instructions.**
 
 **Key Resources:**
+
 - Brand guidelines: `design/brand/guidelines.md`
 - Voice & tone guide: `design/brand/voice-tone.md`
 - Templates: `design/templates/`

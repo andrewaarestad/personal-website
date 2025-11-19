@@ -35,8 +35,7 @@ describe("HomepageContactInfo", () => {
       this.options = options;
     });
 
-    global.IntersectionObserver =
-      intersectionObserverMock as any as typeof IntersectionObserver;
+    global.IntersectionObserver = intersectionObserverMock as any as typeof IntersectionObserver;
   });
 
   afterEach(() => {
@@ -159,9 +158,7 @@ describe("HomepageContactInfo", () => {
 
       // Should create 4 observers (one for each contact card)
       expect(intersectionObserverMock).toHaveBeenCalled();
-      expect(intersectionObserverMock.mock.calls.length).toBeGreaterThanOrEqual(
-        1
-      );
+      expect(intersectionObserverMock.mock.calls.length).toBeGreaterThanOrEqual(1);
     });
 
     it("IntersectionObserver is created with correct options", () => {

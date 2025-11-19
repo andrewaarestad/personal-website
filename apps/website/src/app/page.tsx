@@ -25,9 +25,9 @@ export default function HomePage() {
           <div className="mb-12">
             <h2 className="text-h3 font-bold text-foreground mb-3">Design Process</h2>
             <p className="text-body-lg text-text-secondary max-w-2xl">
-              This site is built using a design-first workflow with AI assistance.
-              Learn about the phases, explore interactive mood boards, and see the
-              meta-project of building a website about someone who builds websites.
+              This site is built using a design-first workflow with AI assistance. Learn about the
+              phases, explore interactive mood boards, and see the meta-project of building a
+              website about someone who builds websites.
             </p>
           </div>
 
@@ -36,9 +36,9 @@ export default function HomePage() {
               Explore the Full Design Journey
             </h3>
             <p className="text-body text-text-secondary mb-6 max-w-2xl">
-              Dive into the complete design process, from brand foundation to
-              implementation. See the 5-phase workflow, explore interactive mood boards,
-              and understand how AI collaboration shapes modern web development.
+              Dive into the complete design process, from brand foundation to implementation. See
+              the 5-phase workflow, explore interactive mood boards, and understand how AI
+              collaboration shapes modern web development.
             </p>
             <Link href="/design-process">
               <Button size="lg" variant="brand">
@@ -55,8 +55,8 @@ export default function HomePage() {
           <div className="text-center">
             <h2 className="text-h4 font-bold text-foreground mb-4">Open Source</h2>
             <p className="text-body-lg text-text-secondary mb-8 max-w-2xl mx-auto">
-              This project is open source. Check out the code, see the commit history,
-              and explore how AI-assisted development works in practice.
+              This project is open source. Check out the code, see the commit history, and explore
+              how AI-assisted development works in practice.
             </p>
             <Link
               href="https://github.com/andrewaarestad/personal-website"
