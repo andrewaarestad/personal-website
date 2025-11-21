@@ -32,7 +32,7 @@ export interface PostLayoutProps {
  */
 export function PostLayout({ children, className }: PostLayoutProps) {
   return (
-    <main className={`min-h-screen bg-canvas ${className || ""}`}>
+    <main className={`min-h-screen bg-background ${className || ""}`}>
       <Section spacing="none">
         <PageContainer size="medium">
           <div className="py-12 space-y-12">
