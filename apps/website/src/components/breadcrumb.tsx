@@ -67,7 +67,7 @@ export function Breadcrumb() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-40 flex items-center gap-2 text-body-sm px-6 py-4 bg-card/80 backdrop-blur-sm border-b border-border-light",
+        "fixed top-0 left-0 right-0 z-40 flex items-center gap-2 text-body-sm px-6 h-[var(--nav-height)] bg-card border-b border-border-light",
         "transition-transform duration-300 ease-in-out",
         isVisible ? "translate-y-0" : "-translate-y-full"
       )}
