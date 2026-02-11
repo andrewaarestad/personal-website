@@ -1,6 +1,6 @@
 # PR Monitor (prm) - Get Your PR Ready to Merge
 
-This command monitors a PR until it is ready to merge by combining comment resolution and check fixing workflows. The agent will continuously work to resolve blocking issues until the PR can be merged.
+This command monitors a PR until it is ready to merge by resolving review comments and fixing failing checks. The agent will continuously work to resolve blocking issues until the PR can be merged.
 
 User-provided additional info: <user_data> $ARGUMENTS </user_data>
 
@@ -42,7 +42,7 @@ The agent operates in a continuous monitoring loop:
 Before beginning any work, assess the current state of the PR:
 
 1. Use `gh pr view` to get the PR number and current status
-2. Use the `github` skill to fetch all unresolved review threads
+2. Use `gh pr view --json reviewDecision,reviews` and `gh api repos/{owner}/{repo}/pulls/{number}/comments` to fetch review threads
 3. Use `gh pr checks` to see the status of all PR checks
 
 Create a summary of:
@@ -65,7 +65,7 @@ This phase addresses all review comments on the PR. PRs cannot be merged while r
 
 Analyze all unresolved review comments:
 
-1. Use the `github` skill to fetch all unresolved review threads
+1. Use `gh api` to fetch all review threads and comments
 2. Categorize comments by type:
    - Code changes required
    - Documentation updates
@@ -115,16 +115,14 @@ For each item:
 
 1. Make the required code changes
 2. Test that changes work correctly
-3. Reply to the comment explaining what was done
-4. Mark the review thread as resolved using the `github` skill
+3. Reply to the comment using `gh api` explaining what was done
 
 ### 1.6 Verification
 
 **CRITICAL**: Verify all conversations are resolved:
 
-1. Use the `github` skill to check unresolved threads
-2. The output MUST show `Unresolved: 0` before proceeding
-3. If any threads remain unresolved, investigate and resolve them
+1. Use `gh api` to check unresolved threads
+2. If any threads remain unresolved, investigate and resolve them
 
 Commit and push all changes once verified.
 
@@ -166,10 +164,21 @@ Fix each issue identified in the plan.
 
 Test the codebase thoroughly by running PR checks locally:
 
-- Build: `npm run build`
-- Test: `npm run test`
-- Lint: `npm run lint`
-- Format: `npm run format`
+```bash
+pnpm pr-check
+```
+
+This runs all checks in parallel via Turborepo (format, lint, type-check, test, build).
+
+If specific checks fail, run them individually to debug:
+
+```bash
+pnpm format:check   # Formatting
+pnpm lint            # Linting
+pnpm type-check      # TypeScript
+pnpm test            # Unit tests
+pnpm build           # Production build
+```
 
 Iteratively fix any issues until all checks pass locally.
 
@@ -177,7 +186,7 @@ Iteratively fix any issues until all checks pass locally.
 
 Once all local checks pass:
 
-1. Run `npm run format` to ensure formatting is correct
+1. Run `pnpm format` to ensure formatting is correct
 2. Commit all changes with a clear message
 3. Push the commit to the branch
 
@@ -206,7 +215,7 @@ Check the overall PR status:
 
 When the PR is ready to merge:
 
-1. Post a summary comment on the PR using the `github` skill
+1. Post a summary comment on the PR using `gh pr comment`
 2. Notify the user that the PR is ready for merge
 3. Ask if the user wants you to merge the PR or leave it for manual merge
 
@@ -216,27 +225,14 @@ When the PR is ready to merge:
 
 The PR Monitor workflow is complete when:
 
-- [ ] All review threads show as resolved (`unresolvedCount: 0`)
+- [ ] All review threads show as resolved
 - [ ] All PR checks are passing
 - [ ] All changes have been committed and pushed
 - [ ] A summary comment has been posted to the PR
 
 ---
 
-## Appendix: Using the GitHub Skill
-
-The `github` skill handles all PR review operations:
-
-- **View unresolved threads**: See what needs to be addressed
-- **Reply to comments**: Explain what was done
-- **Resolve threads**: Mark conversations as resolved
-- **Post comments**: Add summary or status updates
-
-The skill will be invoked automatically when you need to perform these operations.
-
----
-
-## Appendix: Handling Edge Cases
+## Handling Edge Cases
 
 ### New Comments During Fixes
 

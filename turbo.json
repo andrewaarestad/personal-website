@@ -18,7 +18,7 @@
       "dependsOn": ["^build"]
     },
     "type-check": {
-      "dependsOn": ["^build", "^db:generate"]
+      "dependsOn": ["build", "^build", "^db:generate"]
     },
     "test": {
       "dependsOn": ["^build", "^db:generate"]

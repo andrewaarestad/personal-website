@@ -7,11 +7,11 @@ User-provided additional info: <user_data> $ARGUMENTS </user_data>
 ## Overview
 
 Run the same checks that CI/CD runs on pull requests:
-1. **lint** - ESLint/linting checks
-2. **format:check** - Prettier/formatting checks
-3. **typecheck** - TypeScript type checking
-4. **test** - Unit tests with coverage
-5. **build** - Production build
+1. **format:check** - Prettier formatting checks
+2. **lint** - ESLint linting checks
+3. **type-check** - TypeScript type checking
+4. **test** - Unit tests (Vitest)
+5. **build** - Production build (Next.js + tsc)
 
 When issues are found, attempt to fix them automatically and re-run until all pass.
 
@@ -22,16 +22,16 @@ When issues are found, attempt to fix them automatically and re-run until all pa
 First, run the formatter to auto-fix any formatting issues upfront (this prevents re-runs due to format failures):
 
 ```bash
-npm run format
+pnpm format
 ```
 
-Then run the full check:
+Then run the full check (runs all checks in parallel via Turborepo):
 
 ```bash
-npm run check:pr:readiness
+pnpm pr-check
 ```
 
-This executes all checks via Turborepo. If all pass, report success and exit.
+If all pass, report success and exit.
 
 If any checks fail, proceed to Phase 2.
 
@@ -43,37 +43,32 @@ Handle failures in this order (earlier fixes often resolve later issues):
 
 ### 2.1 Lint Errors
 
-1. **First, try auto-fix:**
-   ```bash
-   npm run lint:fix
-   ```
-
-2. **Re-run lint to see remaining issues:**
-   ```bash
-   npm run lint
-   ```
-
-3. **If issues remain**, read the error output and make manual edits:
+1. **Read the lint error output** and make manual edits:
    - Unused variables/imports → remove them
    - Missing imports → add them
    - Code style issues → fix per linter suggestions
    - Complexity issues → refactor the code
 
+2. **Re-run lint to verify:**
+   ```bash
+   pnpm lint
+   ```
+
 ### 2.2 Format Errors
 
 1. **Run the formatter to auto-fix:**
    ```bash
-   npm run format
+   pnpm format
    ```
 
 2. **Re-run format check to verify:**
    ```bash
-   npm run format:check
+   pnpm format:check
    ```
 
-Format errors should always be fixable with `npm run format`.
+Format errors should always be fixable with `pnpm format`.
 
-### 2.3 Typecheck Errors
+### 2.3 Type-check Errors
 
 TypeScript errors require manual fixes. Common issues:
 
@@ -92,7 +87,7 @@ Read error messages carefully and edit the relevant files.
    - If the test is wrong/outdated → fix the test
 3. **Re-run tests:**
    ```bash
-   npm run test
+   pnpm test
    ```
 
 ### 2.5 Build Errors
@@ -112,7 +107,7 @@ Read the build output and fix the underlying issues.
 After fixing issues, run the full check again:
 
 ```bash
-npm run check:pr:readiness
+pnpm pr-check
 ```
 
 If failures remain, return to Phase 2 and fix them.
@@ -127,9 +122,9 @@ When all checks pass, report to the user:
 
 ```
 All PR readiness checks passed:
-✓ Lint
 ✓ Format
-✓ Typecheck
+✓ Lint
+✓ Type-check
 ✓ Test
 ✓ Build
 
@@ -138,40 +133,40 @@ The branch is ready for PR.
 
 ---
 
-## Running Checks on Specific Apps
+## Running Checks on Specific Packages
 
-To run checks on a specific app only:
+To run checks on a specific package only:
 
 ```bash
-# Lint only frontend
-npx turbo run lint --filter=desty-frontend
+# Lint only the website app
+pnpm turbo run lint --filter=@personal-website/website
 
-# Test only vue-frontend
-npx turbo run test --filter=godesty-web
+# Test only the db-client package
+pnpm turbo run test --filter=@personal-website/db-client
 
-# Build only api
-npx turbo run build --filter=desty-api
+# Build only the website app
+pnpm turbo run build --filter=@personal-website/website
 ```
 
 ---
 
 ## Task Reference
 
-| Task | Command | Auto-fixable |
-|------|---------|--------------|
-| lint | `npm run lint` | Partially (`npm run lint:fix`) |
-| format:check | `npm run format:check` | Yes (`npm run format`) |
-| typecheck | `npm run typecheck` | No - manual fixes required |
-| test | `npm run test` | No - manual fixes required |
-| build | `npm run build` | No - fix underlying issues |
+| Task | Check Command | Auto-fixable |
+|------|---------------|--------------|
+| format:check | `pnpm format:check` | Yes (`pnpm format`) |
+| lint | `pnpm lint` | No - manual fixes required |
+| type-check | `pnpm type-check` | No - manual fixes required |
+| test | `pnpm test` | No - manual fixes required |
+| build | `pnpm build` | No - fix underlying issues |
 
 ---
 
 ## Important Notes
 
-1. **Always run the full check** (`npm run check:pr:readiness`) at the end to verify everything passes together.
+1. **Always run the full check** (`pnpm pr-check`) at the end to verify everything passes together.
 
-2. **Fix issues in order**: lint/format first, then typecheck, then tests, then build.
+2. **Fix issues in order**: format/lint first, then type-check, then tests, then build.
 
 3. **Don't skip checks**: All checks must pass for CI/CD to succeed.
 
@@ -183,9 +178,9 @@ npx turbo run build --filter=desty-api
 
 The PR Readiness Check is complete when:
 
-- [ ] `npm run check:pr:readiness` passes with no errors
-- [ ] All lint errors resolved
+- [ ] `pnpm pr-check` passes with no errors
 - [ ] All format errors resolved
-- [ ] All typecheck errors resolved
+- [ ] All lint errors resolved
+- [ ] All type-check errors resolved
 - [ ] All tests passing
 - [ ] Build succeeds
