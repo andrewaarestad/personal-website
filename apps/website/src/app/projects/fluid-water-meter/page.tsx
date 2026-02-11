@@ -14,7 +14,7 @@ import { generateWaterFlowData } from "@/lib/sample-data";
 export const metadata: Metadata = {
   title: "FLUID Water Meter - Andrew Aarestad",
   description:
-    "Built a complete IoT water monitoring platform from ultrasonic sensors to cloud ML pipelines. A technical success that taught hard lessons about hardware startup economics.",
+    "I cofounded a hardware startup to build an ultrasonic water meter for homes. We built a full IoT platform from sensor firmware to cloud ML, and learned the hard way that great technology isn't enough.",
 };
 
 export default function FLUIDWaterMeterPage() {
@@ -30,41 +30,21 @@ export default function FLUIDWaterMeterPage() {
         // Section 2: Introduction
         <TextSection
           key="intro"
-          text={`I cofounded FLUID in 2015 with talented partners
-            to build an IoT water monitoring platform for
-            homeowners. Over three years, with support from
-            investors who believed in our vision, I built
-            everything from ultrasonic signal processing to
-            cloud ML pipelines. We produced about 100 devices
-            and learned invaluable lessons about bringing
-            hardware to market.
+          text={`I cofounded FLUID in 2015 to build a water monitor
+            for homeowners — clamp it onto a pipe, no plumber
+            needed, and it'd track your usage and catch leaks.
+            Residential water damage costs billions a year,
+            but the monitoring systems that existed were
+            expensive commercial products. We thought we
+            could do it cheaper with ultrasonic sensors.
 
-            Residential water damage costs billions annually,
-            but monitoring systems were expensive commercial
-            products. We saw an opportunity for affordable
-            clamp-on sensors—no plumber required.`}
-        />,
-
-        // Section 3: The Journey
-        <H2Section key="journey-heading" text="The Journey" />,
-
-        // Section 4: Journey narrative
-        <TextSection
-          key="journey-text"
-          text={`We started with an off-the-shelf ultrasonic
-            meter to learn time-of-flight measurement. Our
-            Kickstarter campaign brought in early supporters
-            who helped fund custom clamp-on sensors with
-            injection-molded enclosures.
-
-            We started with a 3D-printed prototype and made
-            a production run of units with proper tooling,
-            built a calibration lab for training data, and
-            shipped working devices. While we ultimately
-            didn't reach the scale needed for sustainable
-            manufacturing economics, we're proud of the
-            complete IoT platform we built and grateful for
-            the opportunity to tackle this challenge.`}
+            We started with an off-the-shelf meter to learn
+            the physics, ran a Kickstarter, then ground
+            through 3D-printed prototypes to injection-molded
+            production. Over three years I built everything
+            from signal processing firmware to cloud ML
+            pipelines. We shipped about 100 devices. The
+            technology worked. The business didn't.`}
         />,
 
         // Section 5: The Technical Challenge
@@ -74,23 +54,19 @@ export default function FLUIDWaterMeterPage() {
         <TextImageSection
           key="ultrasonic-challenge"
           text={`Ultrasonic flow measurement has been around
-            for decades, but takes precise engineering to
-            get right. The concept is intuitive: send sound
-            waves upstream and downstream, measure the time
-            difference, calculate flow.
+            for decades, but getting it to work reliably in
+            people's houses is a different story. The concept
+            is simple enough: send sound waves upstream and
+            downstream, measure the time difference,
+            calculate flow.
 
-            This works great in the lab, but in real-world
-            conditions there are some gotchas. Transducer
-            alignment is important: few degrees off and the
-            signal disappears. Temperature changes affect
-            sound speed in water. Air bubbles scatter the
-            signal. Partial pipe fill breaks the math.
-            Crosstalk from solid-fluid interfaces adds noise.
-
-            We needed reliability across pipe materials
-            (copper, PVC, PEX), diameters (½-inch to
-            2-inch), and varying flow rates, all while
-            streaming the data to the cloud.`}
+            In the lab, this works great. In someone's
+            basement, not so much. Transducer alignment
+            matters — a few degrees off and the signal
+            vanishes. Temperature changes affect sound speed
+            in water. Air bubbles scatter the signal. Partial
+            pipe fill breaks the math. And crosstalk from the
+            solid-fluid interfaces adds noise everywhere.`}
           imageUrl="/img/clamp-on-flow-time-of-flight.png"
           imageAlt="Diagram showing clamp-on ultrasonic flow measurement using time-of-flight"
           layout="image-left"
@@ -103,7 +79,7 @@ export default function FLUIDWaterMeterPage() {
         <TextSection key="built-text">
           <p>
             <strong>Hardware:</strong> Clamp-on ultrasonic sensor, injection-molded enclosure,
-            custom PCBs, FPGA signal processing, battery management
+            custom PCBs, FPGA signal processing, power management
           </p>
           <p>
             <strong>Firmware:</strong> C++ real-time signal processing, Kalman filtering,
@@ -134,9 +110,9 @@ export default function FLUIDWaterMeterPage() {
           description={
             "5 minutes of ultrasonic data at 1Hz showing " +
             "household usage: faucet at 30s, toilet flush " +
-            "at 90s, shower at 2.5min. Our signal processing " +
-            "extracted these patterns from noisy sensor data " +
-            "in real-time."
+            "at 90s, shower at 2.5min. The signal processing " +
+            "pipeline extracted these patterns from noisy " +
+            "sensor data in real time."
           }
         >
           <WaterFlowChart data={waterFlowData} height={400} enableArea={true} />
@@ -148,61 +124,61 @@ export default function FLUIDWaterMeterPage() {
         // Section 11: Signal Processing
         <TextImageSection
           key="signal-processing"
-          text={`Extracting accurate flow from noisy ultrasonic
-            signals on constrained hardware was the core
-            challenge.
+          text={`The hardest part of the whole project was
+            getting accurate flow readings from noisy
+            ultrasonic signals on hardware with real power
+            constraints.
 
-            Kalman filtering estimated true flow by combining
-            measurements over time. The filter maintains a
-            state estimate and updates as readings arrive,
-            weighing each by reliability. This helped compensate for air
-            bubbles, turbulence, and temperature fluctuations.`}
+            We used Kalman filtering to estimate true flow
+            by combining measurements over time. The filter
+            maintains a state estimate and updates as new
+            readings arrive, weighing each measurement by
+            its reliability. This helped smooth out the
+            noise from air bubbles, turbulence, and
+            temperature swings.`}
           imageUrl="/img/ultrasonic.jpg"
           imageAlt="Ultrasonic transducers used for signal processing and flow measurement"
           layout="image-right"
         />,
 
         // Section 12: Machine Learning Analytics
-        <TextSection
+        <TextImageSection
           key="ml-analytics"
-          text={`Leak detection requires pattern recognition,
-            not just flow measurement.
+          text={`Leak detection isn't just about measuring
+            flow — it's pattern recognition.
 
-            We trained ML models on calibration lab data.
-            PLC-automated valves created labeled datasets
-            with known flow rates—ground truth for training
-            and validation. Anomaly detection learned
-            baseline usage per household, then flagged
-            deviations. A running toilet shows sustained
-            low flow. A pinhole leak creates constant
-            baseline. Models distinguished these from
-            legitimate use like filling bathtubs.
-
-            Usage classification identified fixtures by
-            signature. Showers: 2-3 GPM sustained. Toilets:
-            sharp spike plus refill. Faucets: intermittent
-            on-off. Irrigation: scheduled high flow.`}
+            We trained ML models on data from the
+            calibration lab. PLC-automated valves created
+            labeled datasets with known flow rates, which
+            gave us ground truth for training and validation.
+            The anomaly detection models learned each
+            household's baseline usage and flagged deviations.
+            A running toilet looks like sustained low flow.
+            A pinhole leak creates a constant baseline shift.
+            The trick was distinguishing these from legitimate
+            use like filling a bathtub.`}
+          imageUrl="/img/washing_machine.png"
+          imageAlt="FLUID water meter installed on a washing machine water line"
+          layout="image-left"
         />,
 
         // Section 13: Fleet Management
         <TextImageSection
           key="fleet-management"
-          text={`Can't touch deployed devices. Everything works
-            remotely or not at all.
+          text={`Once a device is mounted on someone's water
+            line, you can't exactly ask them to ship it back
+            for a firmware update. Everything has to work
+            remotely or it doesn't work at all. A botched
+            update can't brick someone's device, rollbacks
+            have to work every time, and remote diagnostics
+            need to actually tell you what's going on.
 
-            OTA firmware updates became critical. We found
-            bugs, optimized algorithms, added features—all
-            requiring updates to devices in the field.
-            The cost of failure here is high: interrupted
-            updates can't brick devices, rollbacks must
-            work, remote diagnostics essential.
-
-            It's a point of pride for me that we built OTA
-            updates of not just the microcontroller but the
-            FPGA that did the ultrasonic measurements. In
-            other words, we could remotely deploy new 
-            signal processing techniques to the FPGA.
-            `}
+            The thing I'm most proud of technically is that
+            we built OTA updates for not just the
+            microcontroller but the FPGA that handled the
+            ultrasonic measurements. We could remotely deploy
+            entirely new signal processing logic to the
+            hardware itself.`}
           imageUrl="/img/meter_cad.png"
           imageAlt="CAD rendering of the FLUID water meter design"
           layout="image-left"
@@ -214,30 +190,18 @@ export default function FLUIDWaterMeterPage() {
         // Section 15: Manufacturing challenges
         <TextSection
           key="manufacturing-text"
-          text={`Hardware has fundamentally different economics
-            than software.
+          text={`This is where I really learned that hardware
+            has fundamentally different economics than
+            software.
 
             Injection molding tooling costs tens of
-            thousands before making a single part.
-            Kickstarter funded initial tooling, but bridging
-            prototype to production requires massive
-            capital. Economics work at volume—but reaching
-            volume needs upfront capital.
-
-            MOQs dominate decisions. PCB manufacturers want
-            1,000+ boards. Injection molding becomes viable
-            around 5,000+ units. Component suppliers have
-            MOQs. You're negotiating batch sizes against
-            unit economics against cash flow.
-
-            Managing contractors across mechanical,
-            electrical, and firmware requires tight
-            integration. An enclosure change affects PCB
-            mounting. Firmware optimization might enable
-            smaller batteries, changing mechanical design.
-            We produced 100 devices—enough to validate
-            technology, nowhere near sustainable
-            economics.`}
+            thousands of dollars before you make a single
+            part. PCB manufacturers want 1,000+ boards.
+            Component suppliers have their own MOQs. The
+            math only works at volume — but reaching
+            volume requires capital you don't have yet.
+            You end up constantly negotiating batch sizes
+            against unit economics against cash flow.`}
         />,
 
         // Section 16: Product Evolution Timeline
@@ -300,97 +264,61 @@ export default function FLUIDWaterMeterPage() {
         // Section 18: Business reality
         <TextSection
           key="scaling-text"
-          text={`Hardware startups face a fundamentally
-            different challenge than software. While we
-            succeeded technically—building working sensors,
-            reliable firmware, and scalable cloud
-            infrastructure—we learned that hardware
-            economics require a different playbook.
+          text={`The technology worked. That wasn't the
+            problem. We explored partnerships, additional
+            funding rounds, and alternative go-to-market
+            strategies, but we couldn't bridge the gap
+            between where we were and the volume we needed.
+            The company wound down around 2018.
 
-            Tooling, inventory, assembly, testing, and
-            regulatory compliance all demand significant
-            capital before generating revenue. To reach the
-            volumes where unit economics become sustainable,
-            you need either substantial investment or enough
-            pre-orders to fund manufacturing directly.
-            Despite the support of investors who believed in
-            our vision and customers who backed us on
-            Kickstarter, we didn't reach the scale needed
-            to bridge that gap.
-
-            The classic challenge: you need volume for
-            viable unit costs, but you need capital to reach
-            volume. Our 100 devices validated the
-            technology, but sustainable manufacturing
-            required thousands. We're grateful to everyone
-            who supported us on this journey—our investors
-            who took a chance on the vision, our Kickstarter
-            backers who believed early, and our team who
-            worked incredibly hard to bring this to life.
-            The experience taught us that in hardware,
-            technical excellence is necessary but not
-            sufficient.`}
+            It's a common story in hardware startups, and
+            living through it taught me something I
+            couldn't have learned any other way: building
+            something that works and building a viable
+            business are two very different problems.`}
         />,
 
         // Section 19: What I Learned
         <H2Section key="lessons-heading" text="What I Learned" />,
 
         // Section 20: Lessons learned
-        <TextImageSection
-          key="lessons"
-          imageUrl="/img/washing_machine.png"
-          imageAlt="FLUID water meter installed on a washing machine water line"
-          layout="image-right"
-        >
+        <TextSection key="lessons">
           <p>
-            <strong>Ultrasonic Tech:</strong> Signal processing is as hard as the physics. Kalman
-            filtering essential but required extensive calibration. Temperature compensation
-            mattered more than expected. Real-world messier than lab.
+            <strong>Signal Processing:</strong> Getting clean data out of noisy sensors was harder
+            than I expected. Kalman filtering helped enormously but needed extensive calibration.
+            Temperature compensation mattered way more than I&apos;d anticipated. The lab and the
+            real world were very different places.
           </p>
           <p>
-            <strong>Machine Learning:</strong> Labeled data harder than models. Calibration lab was
-            critical. Usage patterns more diverse than anticipated. Anomaly detection requires
-            understanding 'normal'—which varies by household.
+            <strong>Machine Learning:</strong> Getting labeled data was harder than building models.
+            The calibration lab was the single most important thing we built. Usage patterns turned
+            out to be more diverse than we planned for — &quot;normal&quot; varies a lot from
+            household to household.
           </p>
           <p>
-            <strong>Manufacturing:</strong> Tooling and MOQs dominate unit economics.
-            Prototype-to-production gap is enormous. Design for manufacturing isn't added later.
-            Managing contractors across disciplines requires tight integration.
+            <strong>Hardware Business:</strong> Design for manufacturing can&apos;t be bolted on at
+            the end. And solving the technical risk doesn&apos;t solve the business risk —
+            they&apos;re completely separate problems that need separate strategies.
           </p>
           <p>
-            <strong>Startup Economics:</strong> Technical risk differs from business risk. We
-            reduced technical risk substantially, but business risk remained. Hardware needs
-            different capital structures than software.
+            <strong>Wearing Every Hat:</strong> One person can build a surprising amount of a system
+            if you manage scope carefully and delegate the specialized work. Full-stack in this
+            context meant knowing enough about each layer to make good decisions — not being expert
+            at everything.
           </p>
-          <p>
-            <strong>Solo Engineering:</strong> One person can build remarkable systems by managing
-            scope and delegating specialized work. Full-stack means knowing enough about each layer
-            to make good decisions, not being expert at everything.
-          </p>
-        </TextImageSection>,
+        </TextSection>,
 
         // Section 21: Conclusion
         <TextSection
           key="conclusion"
-          text={`FLUID taught me more than any project before
-            or since. We built technology that worked,
-            learned deeply across domains from ultrasonic
-            physics to ML to manufacturing economics, and
-            had the privilege of working with talented
-            cofounders, supportive investors, and early
-            believers who took a chance on our vision.
+          text={`FLUID taught me more about building real
+            systems than anything else I've worked on.
+            Ultrasonic physics, ML pipelines, manufacturing
+            economics, startup fundraising — I got a crash
+            course in all of it.
 
-            The experience shaped my approach to production
-            systems. Shipping matters more than perfection.
-            Real-world conditions humble lab results. OTA
-            infrastructure isn't optional for IoT. Business
-            viability requires more than technical
-            excellence.
-
-            Three years, 100 devices, countless lessons.
-            I'm grateful for the opportunity to have
-            tackled this challenge and for everyone who
-            made it possible.`}
+            Three years, 100 devices, one shutdown, and a
+            lot of lessons I still carry with me.`}
         />,
       ]}
     </PostLayout>
