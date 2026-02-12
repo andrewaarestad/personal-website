@@ -18,14 +18,16 @@ import type { ImageSectionProps } from "./types";
  */
 export function ImageSection({ imageUrl, alt = "Project image" }: ImageSectionProps) {
   return (
-    <div className="relative w-full h-[400px] md:h-[500px] rounded-lg overflow-hidden">
-      <Image
-        src={imageUrl}
-        alt={alt}
-        fill
-        className="object-contain"
-        sizes="(max-width: 768px) 100vw, 768px"
-      />
+    <div className="aspect-square w-full max-w-[500px] mx-auto rounded-lg overflow-hidden bg-white p-6 border border-border-light">
+      <div className="relative w-full h-full">
+        <Image
+          src={imageUrl}
+          alt={alt}
+          fill
+          className="object-contain"
+          sizes="(max-width: 768px) 100vw, 768px"
+        />
+      </div>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { PageContainer } from "@/components/ui/page-container";
 import { Section } from "@/components/ui/section";
 import { FeatureCard } from "@/components/ui/feature-card";
 import { ScrollArrow } from "@/components/scroll-arrow";
+import { GitHubButton } from "@/components/ui/github-button";
 
 export default function HomePage() {
   return (
@@ -22,30 +23,30 @@ export default function HomePage() {
       {/* Design Process Section */}
       <Section>
         <PageContainer>
-          <div className="mb-12">
-            <h2 className="text-h3 font-bold text-foreground mb-3">Design Process</h2>
-            <p className="text-body-lg text-text-secondary max-w-2xl">
-              This site is built using a design-first workflow with AI assistance. Learn about the
-              phases, explore interactive mood boards, and see the meta-project of building a
-              website about someone who builds websites.
-            </p>
-          </div>
+          <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-12">
+            <div className="md:flex-1">
+              <h2 className="text-h3 font-bold text-foreground mb-3 pt-4">Design Process</h2>
+              <p className="text-body-lg text-text-secondary">
+                This site is built using a design-first workflow with Claude Code's mobile app. Learn about
+                the phases, explore interactive mood boards, and see the meta-project of building a
+                website about someone who builds websites.
+              </p>
+            </div>
 
-          <FeatureCard border="brand">
-            <h3 className="text-h5 font-bold text-foreground mb-3">
-              Explore the Full Design Journey
-            </h3>
-            <p className="text-body text-text-secondary mb-6 max-w-2xl">
-              Dive into the complete design process, from brand foundation to implementation. See
-              the 5-phase workflow, explore interactive mood boards, and understand how AI
-              collaboration shapes modern web development.
-            </p>
-            <Link href="/design-process">
-              <Button variant="brand">
-                View Design Process →
-              </Button>
-            </Link>
-          </FeatureCard>
+            <FeatureCard border="brand" className="md:flex-1">
+              <h3 className="text-h5 font-bold text-foreground mb-3">
+                Explore the Design-First Workflow
+              </h3>
+              <p className="text-body text-text-secondary mb-6">
+                Check out my process for building from brand foundation to implementation. 
+                This process mimics what I do with clients by starting with the foundations of
+                visual aesthetics and product vision.
+              </p>
+              <Link href="/design-process">
+                <Button variant="brand">View Design Process →</Button>
+              </Link>
+            </FeatureCard>
+          </div>
         </PageContainer>
       </Section>
 
@@ -58,15 +59,10 @@ export default function HomePage() {
               This project is open source. Check out the code, see the commit history, and explore
               how AI-assisted development works in practice.
             </p>
-            <Link
-              href="https://github.com/andrewaarestad/personal-website"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="brand">
-                View on GitHub →
-              </Button>
-            </Link>
+            <GitHubButton
+              text="View on GitHub"
+              url="https://github.com/andrewaarestad/personal-website"
+            />
           </div>
         </PageContainer>
       </Section>

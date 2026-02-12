@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 interface ContactLink {
   name: string;
   url: string;
+  handle: string;
   icon: React.ReactNode;
   color: string;
   hoverColor: string;
@@ -61,7 +62,7 @@ function ContactCard({ link }: ContactCardProps) {
           {link.name}
         </div>
         <div className="text-body-sm text-text-tertiary">
-          {link.name === "Email" ? "andrew@aarestad.com" : `@andrewaarestad`}
+          {link.handle}
         </div>
       </div>
       <svg
@@ -81,6 +82,7 @@ export function HomepageContactInfo() {
     {
       name: "GitHub",
       url: "https://github.com/andrewaarestad",
+      handle: "@andrewaarestad",
       color: "text-black",
       hoverColor: "group-hover:text-brand",
       icon: (
@@ -96,6 +98,7 @@ export function HomepageContactInfo() {
     {
       name: "LinkedIn",
       url: "https://www.linkedin.com/in/andrewaarestad/",
+      handle: "@andrewaarestad",
       color: "text-black",
       hoverColor: "group-hover:text-brand-secondary",
       icon: (
@@ -106,7 +109,8 @@ export function HomepageContactInfo() {
     },
     {
       name: "Medium",
-      url: "https://medium.com/@andrewaarestad",
+      url: "https://medium.com/@andrew.aarestad",
+      handle: "@andrew.aarestad",
       color: "text-black",
       hoverColor: "group-hover:text-highlight",
       icon: (
@@ -117,7 +121,8 @@ export function HomepageContactInfo() {
     },
     {
       name: "Email",
-      url: "mailto:andrew@aarestad.com",
+      url: "mailto:andrew@hypercolordigital.com",
+      handle: "andrew@hypercolordigital.com",
       color: "text-black",
       hoverColor: "group-hover:text-brand",
       icon: (
@@ -141,7 +146,7 @@ export function HomepageContactInfo() {
 
   return (
     <section className="border-t border-border-light bg-surface">
-      <div className="container mx-auto px-6 py-16 max-w-5xl">
+      <div className="container mx-auto px-6 py-16 max-w-3xl">
         <div className="max-w-2xl">
           <h2 className="text-h3 font-bold text-black mb-3">Get in Touch</h2>
           <p className="text-body-lg text-text-secondary mb-8">

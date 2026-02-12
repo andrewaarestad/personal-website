@@ -6,9 +6,20 @@ import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/providers/theme-provider";
 
 export const metadata: Metadata = {
-  title: "Personal Website",
+  title: "Andrew Aarestad",
   description: "A modern personal website built with Next.js and AI-assisted development",
   authors: [{ name: "Andrew Aarestad" }],
+  openGraph: {
+    title: "Andrew Aarestad",
+    description: "A modern personal website built with Next.js and AI-assisted development",
+    images: [{ url: "/img/andrew_head.jpg" }],
+  },
+  twitter: {
+    card: "summary",
+    title: "Andrew Aarestad",
+    description: "A modern personal website built with Next.js and AI-assisted development",
+    images: ["/img/andrew_head.jpg"],
+  },
 };
 
 export default function RootLayout({

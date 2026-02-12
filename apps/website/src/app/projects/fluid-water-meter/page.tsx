@@ -10,6 +10,7 @@ import {
 } from "@/components/post-layout";
 import { WaterFlowChart } from "@/components/charts/WaterFlowChart";
 import { generateWaterFlowData } from "@/lib/sample-data";
+import { GitHubButton } from "@/components/ui/github-button";
 
 export const metadata: Metadata = {
   title: "FLUID Water Meter - Andrew Aarestad",
@@ -25,13 +26,15 @@ export default function FLUIDWaterMeterPage() {
     <PostLayout>
       {[
         // Section 1: Title
-        <H1Section key="title" text="FLUID Water Meter" />,
+        <div key="title" className="mb-8">
+          <H1Section text="FLUID Water Meter" />
+        </div>,
 
         // Section 2: Introduction
         <TextSection
           key="intro"
           text={`I cofounded FLUID in 2015 to build a water monitor
-            for homeowners — clamp it onto a pipe, no plumber
+            for homeowners. Clamp it onto a pipe, no plumber
             needed, and it'd track your usage and catch leaks.
             Residential water damage costs billions a year,
             but the monitoring systems that existed were
@@ -47,6 +50,13 @@ export default function FLUIDWaterMeterPage() {
             technology worked. The business didn't.`}
         />,
 
+        <div key="github" className="text-center">
+          <GitHubButton
+            text="View on GitHub"
+            url="https://github.com/andrewaarestad/fluid-code"
+          />
+        </div>,
+
         // Section 5: The Technical Challenge
         <H2Section key="challenge-heading" text="The Technical Challenge" />,
 
@@ -60,13 +70,9 @@ export default function FLUIDWaterMeterPage() {
             downstream, measure the time difference,
             calculate flow.
 
-            In the lab, this works great. In someone's
-            basement, not so much. Transducer alignment
-            matters — a few degrees off and the signal
-            vanishes. Temperature changes affect sound speed
-            in water. Air bubbles scatter the signal. Partial
-            pipe fill breaks the math. And crosstalk from the
-            solid-fluid interfaces adds noise everywhere.`}
+            In practice, there are factors that make it challenging.
+            Transducer alignment, temperature changes, and air bubbles 
+            are just a few of the engineering headaches.`}
           imageUrl="/img/clamp-on-flow-time-of-flight.jpg"
           imageAlt="Diagram showing clamp-on ultrasonic flow measurement using time-of-flight"
           layout="image-left"
@@ -145,7 +151,7 @@ export default function FLUIDWaterMeterPage() {
         <TextImageSection
           key="ml-analytics"
           text={`Leak detection isn't just about measuring
-            flow — it's pattern recognition.
+            flow. It's pattern recognition.
 
             We trained ML models on data from the
             calibration lab. PLC-automated valves created
@@ -198,7 +204,7 @@ export default function FLUIDWaterMeterPage() {
             thousands of dollars before you make a single
             part. PCB manufacturers want 1,000+ boards.
             Component suppliers have their own MOQs. The
-            math only works at volume — but reaching
+            math only works at volume, but reaching
             volume requires capital you don't have yet.
             You end up constantly negotiating batch sizes
             against unit economics against cash flow.`}
@@ -292,18 +298,18 @@ export default function FLUIDWaterMeterPage() {
           <p>
             <strong>Machine Learning:</strong> Getting labeled data was harder than building models.
             The calibration lab was the single most important thing we built. Usage patterns turned
-            out to be more diverse than we planned for — &quot;normal&quot; varies a lot from
+            out to be more diverse than we planned for. &quot;Normal&quot; varies a lot from
             household to household.
           </p>
           <p>
             <strong>Hardware Business:</strong> Design for manufacturing can&apos;t be bolted on at
-            the end. And solving the technical risk doesn&apos;t solve the business risk —
-            they&apos;re completely separate problems that need separate strategies.
+            the end. And solving the technical risk doesn&apos;t solve the business risk.
+            They&apos;re completely separate problems that need separate strategies.
           </p>
           <p>
             <strong>Wearing Every Hat:</strong> One person can build a surprising amount of a system
             if you manage scope carefully and delegate the specialized work. Full-stack in this
-            context meant knowing enough about each layer to make good decisions — not being expert
+            context meant knowing enough about each layer to make good decisions, not being expert
             at everything.
           </p>
         </TextSection>,
@@ -314,11 +320,8 @@ export default function FLUIDWaterMeterPage() {
           text={`FLUID taught me more about building real
             systems than anything else I've worked on.
             Ultrasonic physics, ML pipelines, manufacturing
-            economics, startup fundraising — I got a crash
-            course in all of it.
-
-            Three years, 100 devices, one shutdown, and a
-            lot of lessons I still carry with me.`}
+            economics, startup fundraising.. I got a crash
+            course in all of it.`}
         />,
       ]}
     </PostLayout>
