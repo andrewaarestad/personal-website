@@ -1,3 +1,4 @@
+import { normalizeText } from "./normalizeText";
 import type { TextSectionProps } from "./types";
 
 /**
@@ -6,12 +7,18 @@ import type { TextSectionProps } from "./types";
  * Renders paragraph text with consistent styling and spacing.
  * Supports both plain text (via text prop) and rich HTML content (via children).
  *
+ * The text prop normalizes whitespace so authors can wrap lines freely
+ * in source code. Double newlines create separate paragraphs.
+ *
  * @example
  * ```tsx
- * // Plain text with newlines
+ * // Plain text - wrap freely, double newline = new paragraph
  * <TextSection
  *   key="intro"
- *   text="This project explores the intersection of machine learning and IoT..."
+ *   text={`This project explores the intersection
+ *     of machine learning and IoT sensors.
+ *
+ *     We built a complete platform from scratch.`}
  * />
  *
  * // Rich HTML content
@@ -24,11 +31,16 @@ export function TextSection({ text, children }: TextSectionProps) {
   return (
     <div className="prose prose-lg max-w-none">
       {text ? (
-        <p className="text-body-lg text-text-secondary leading-relaxed whitespace-pre-wrap">
-          {text}
-        </p>
+        normalizeText(text).map((paragraph, index) => (
+          <p
+            key={index}
+            className="text-body-lg text-text-secondary leading-relaxed"
+          >
+            {paragraph}
+          </p>
+        ))
       ) : (
-        <div className="text-body-lg text-text-secondary leading-relaxed [&_p]:whitespace-pre-wrap">
+        <div className="text-body-lg text-text-secondary leading-relaxed">
           {children}
         </div>
       )}

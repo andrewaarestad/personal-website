@@ -13,7 +13,7 @@ export default function ProjectsPage() {
   return (
     <main className="min-h-screen bg-canvas">
       {/* Hero Section */}
-      <Section className="bg-gradient-to-br from-gradient-brand-subtle via-canvas to-gradient-brand-secondary-subtle">
+      <Section className="-mt-[var(--nav-height)] pt-[var(--nav-height)] bg-gradient-to-br from-gradient-brand-subtle via-canvas to-gradient-brand-secondary-subtle">
         <PageContainer>
           <div className="py-16 space-y-6">
             <div className="w-16 h-1 bg-brand" aria-hidden="true" />
@@ -34,7 +34,7 @@ export default function ProjectsPage() {
             <ProjectOverview
               title="FLUID Water Meter"
               description="Co-founded an IoT platform to detect water leaks in homes before they became expensive disasters. Built ultrasonic flow meter, telemetry infrastructure, app/web platforms, ML models and other fun stuff."
-              imageUrl="https://placehold.co/800x600/4F46E5/FFFFFF/png?text=FLUID+Water+Meter"
+              imageUrl="/img/kickstarter_meter.png"
               imageAlt="FLUID Water Meter - IoT water monitoring platform"
               projectSlug="fluid-water-meter"
             />
@@ -42,7 +42,7 @@ export default function ProjectsPage() {
             <ProjectOverview
               title="Ambient Temperature Estimation"
               description="Multi-sensor data fusion system for ambient temperature estimation. Combined physical/statistical modeling with edge inference to create a network of weather stations using cell phones. Open sourced the key tech."
-              imageUrl="https://placehold.co/800x600/7C3AED/FFFFFF/png?text=Temperature+Estimation"
+              imageUrl="/img/ambient_calibration.png"
               imageAlt="Ambient Temperature Estimation"
               projectSlug="ambient-temperature-estimation"
             />

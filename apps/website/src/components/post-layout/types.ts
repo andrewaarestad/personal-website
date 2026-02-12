@@ -2,11 +2,8 @@ import type { ReactElement, ReactNode } from "react";
 
 /**
  * Base interface for all post sections
- * Each section must have a key for rendering in lists
  */
-export interface PostSectionProps {
-  key: string;
-}
+export interface PostSectionProps {}
 
 /**
  * Type for post section components

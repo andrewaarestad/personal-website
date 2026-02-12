@@ -99,6 +99,9 @@
     --black-accent: 0 0% 10%; /* #1A1A1A */
 
     --radius: 0.5rem;
+
+    /* Layout */
+    --nav-height: 54px;
   }
 
   .dark {
