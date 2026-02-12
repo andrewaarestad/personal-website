@@ -29,7 +29,7 @@ import type { TextSectionProps } from "./types";
  */
 export function TextSection({ text, children }: TextSectionProps) {
   return (
-    <div className="prose prose-lg max-w-none">
+    <div className="prose prose-lg dark:prose-invert max-w-none">
       {text ? (
         normalizeText(text).map((paragraph, index) => (
           <p

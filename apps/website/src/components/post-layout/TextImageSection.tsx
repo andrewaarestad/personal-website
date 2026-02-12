@@ -51,7 +51,7 @@ export function TextImageSection({
 
   return (
     <div
-      className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-center ${
+      className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-start ${
         isImageLeft ? "" : "md:grid-flow-dense"
       }`}
     >
@@ -75,17 +75,19 @@ export function TextImageSection({
 
       {/* Image */}
       <div
-        className={`relative w-full h-[300px] md:h-[350px] rounded-lg overflow-hidden ${
+        className={`aspect-square w-full rounded-lg overflow-hidden bg-white p-6 border border-border-light ${
           isImageLeft ? "md:order-1" : "md:order-2"
         }`}
       >
-        <Image
-          src={imageUrl}
-          alt={imageAlt}
-          fill
-          className="object-contain"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
+        <div className="relative w-full h-full">
+          <Image
+            src={imageUrl}
+            alt={imageAlt}
+            fill
+            className="object-contain"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </div>
       </div>
     </div>
   );

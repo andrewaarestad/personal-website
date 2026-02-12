@@ -13,7 +13,7 @@ import type { H1SectionProps } from "./types";
  */
 export function H1Section({ text }: H1SectionProps) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <div className="w-16 h-1 bg-brand" aria-hidden="true" />
       <h1 className="text-h1 font-extrabold text-black">{text}</h1>
     </div>

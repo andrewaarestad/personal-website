@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { PageContainer } from "@/components/ui/page-container";
 import { Section } from "@/components/ui/section";
 import { FeatureCard } from "@/components/ui/feature-card";
+import { GitHubButton } from "@/components/ui/github-button";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -228,17 +229,11 @@ export default function DesignProcessPage() {
                 AI-assisted development workflow in action.
               </p>
             </div>
-            <div className="mt-8">
-              <Link
-                href="https://github.com/andrewaarestad/personal-website"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button variant="emphasis">
-                  View on GitHub →
-                </Button>
-              </Link>
-            </div>
+            <GitHubButton
+              text="View on GitHub"
+              url="https://github.com/andrewaarestad/personal-website"
+              className="mt-8"
+            />
           </div>
 
           {/* Tech Stack Section */}
