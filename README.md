@@ -222,11 +222,3 @@ See [.github/workflows/pr-checks.yml](./.github/workflows/pr-checks.yml) for det
 ## License
 
 MIT © [Andrew Aarestad](https://github.com/andrewaarestad)
-
-## Acknowledgments
-
-- [Next.js](https://nextjs.org/) - The React framework
-- [Turborepo](https://turbo.build/) - Monorepo tool
-- [shadcn/ui](https://ui.shadcn.com/) - UI component library
-- [Prisma](https://www.prisma.io/) - Database ORM
-- [Anthropic Claude](https://www.anthropic.com/) - AI assistance
