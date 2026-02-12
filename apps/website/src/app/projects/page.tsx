@@ -34,7 +34,7 @@ export default function ProjectsPage() {
             <ProjectOverview
               title="FLUID Water Meter"
               description="Co-founded an IoT platform to detect water leaks in homes before they became expensive disasters. Built ultrasonic flow meter, telemetry infrastructure, app/web platforms, ML models and other fun stuff."
-              imageUrl="/img/kickstarter_meter.png"
+              imageUrl="/img/kickstarter_meter.jpg"
               imageAlt="FLUID Water Meter - IoT water monitoring platform"
               projectSlug="fluid-water-meter"
             />

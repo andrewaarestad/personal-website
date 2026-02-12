@@ -67,7 +67,7 @@ export default function FLUIDWaterMeterPage() {
             in water. Air bubbles scatter the signal. Partial
             pipe fill breaks the math. And crosstalk from the
             solid-fluid interfaces adds noise everywhere.`}
-          imageUrl="/img/clamp-on-flow-time-of-flight.png"
+          imageUrl="/img/clamp-on-flow-time-of-flight.jpg"
           imageAlt="Diagram showing clamp-on ultrasonic flow measurement using time-of-flight"
           layout="image-left"
         />,
@@ -179,7 +179,7 @@ export default function FLUIDWaterMeterPage() {
             ultrasonic measurements. We could remotely deploy
             entirely new signal processing logic to the
             hardware itself.`}
-          imageUrl="/img/meter_cad.png"
+          imageUrl="/img/meter_cad.jpg"
           imageAlt="CAD rendering of the FLUID water meter design"
           layout="image-left"
         />,
