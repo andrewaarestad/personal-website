@@ -47,6 +47,14 @@ export default function ProjectsPage() {
               imageAlt="Ambient Temperature Estimation"
               projectSlug="ambient-temperature-estimation"
             />
+
+            <ProjectOverview
+              title="Modeling RNA Decay Kinetics"
+              description="Cross-functional ML and modeling work with the Ameres lab at Max Perutz Labs. Built the C++/TypeScript/Python pipeline that fit reaction-kinetic models to high-throughput RNA tailing data across 4,096 substrates, revealing how the enzyme Tailor encodes RNA decay competence."
+              imageUrl="/img/ACGATC_6NTailing_residuals.png"
+              imageAlt="Model fit and residuals for an RNA tailing substrate, showing fitted first-order kinetic curves over measured time-course data."
+              projectSlug="rna-decay-kinetics"
+            />
           </div>
         </PageContainer>
       </Section>
