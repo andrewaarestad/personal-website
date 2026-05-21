@@ -26,19 +26,19 @@ export default function RnaDecayKineticsPage() {
 
         <TextSection
           key="intro"
-          text={`Through Sense AI, I collaborated with the Ameres
+          text={`Starting in 2022, I have been collaborating with a team at the Ameres
             lab at Max Perutz Labs in Vienna on a study of how
             cells decide which RNAs to throw away. My role on
-            the project was cross-functional ML and modeling
-            IC: I worked directly with the wet-lab scientists,
-            took their experimental time-course data, iterated
-            with them on the underlying mathematical model, and
-            shipped the implementation that made it scale from
-            a single substrate to the 4,096 unique sequences
-            assayed in parallel. The kinetic modeling was a
+            the project was cross-functional ML and model engineering:
+            I worked directly with the experimentalists to
+            translate their time-course assays into a kinetic
+            model, refined the model with them as the data
+            came in, and built the implementation that scaled
+            it from a single substrate to the 4,096 unique
+            sequences they ran in parallel. The kinetic modeling was a
             three-person effort (with David Mörsdorf and
-            Benjamin Jordan), and the results are the
-            quantitative spine of the paper.`}
+            Benjamin Jordan), and the resulting framework
+            underpins much of the paper's analysis.`}
         />,
 
         <div key="preprint-top" className="text-center">
@@ -49,27 +49,25 @@ export default function RnaDecayKineticsPage() {
 
         <TextSection
           key="problem"
-          text={`Cells flag broken or unwanted RNAs for
-            destruction by tacking short strings of uridines
-            ("U-tails") onto their 3' ends. An enzyme called
-            Tailor adds those U's one at a time; a downstream
-            nuclease called Dis3l2 reads the resulting tail and
-            decides whether to chew the RNA up. The biological
-            puzzle: Tailor doesn't just paste on a long poly-U
-            tract, it produces short, surprisingly precise tails
-            of about four U's. How does an enzyme that adds
-            nucleotides one by one count to four?
-
-            To answer that, the lab ran tailing reactions on
-            4,096 distinct RNA substrates in parallel, sampled
-            the products at a dozen timepoints, and sequenced
-            them. The result was, for each substrate, a
+          text={`The biology, at a high level: an enzyme called
+            Tailor modifies RNA molecules by adding short runs
+            of nucleotides to their 3' ends one at a time,
+            and the lab wanted to understand the kinetics of
+            that process in detail. The experimental setup ran
+            tailing reactions on 4,096 distinct RNA substrates
+            in parallel, sampling and sequencing the products
+            at a series of timepoints. The result was a
             time-resolved distribution over intermediate states
-            U₀, U₁, U₂, … U₁₀. Buried in that data are the
-            per-step rate constants k₁ through k₁₀ — how fast
-            Tailor adds the first uridine, the second, and so on
-            — but you can only recover them by fitting a
-            kinetic model.`}
+            (U₀, U₁, U₂, … U₁₀) for every substrate.
+
+            Buried in that data are the per-step rate constants
+            k₁ through k₁₀ — how fast Tailor adds the first
+            nucleotide, the second, and so on — but you can
+            only recover them by fitting a kinetic model. That
+            was my piece of the project: a model and an
+            implementation that could pull step-resolved rate
+            constants out of the time-course data, for all
+            4,096 substrates, fast enough to iterate on.`}
         />,
 
         <H2Section key="approach-heading" text="The Approach" />,
@@ -92,10 +90,8 @@ export default function RnaDecayKineticsPage() {
             wrapped it in TypeScript and Python so the rest of
             the team could orchestrate runs, prep data, and
             slice results without touching the C++. The fits
-            converged with RMSE under 0.06 across the full
-            substrate pool, which is what made every downstream
-            biological claim in the paper quantitative rather
-            than qualitative.`}
+            converged stably across the substrate pool, which
+            is what made the downstream analysis possible.`}
         />,
 
         <ImageSection
@@ -104,53 +100,23 @@ export default function RnaDecayKineticsPage() {
           alt="Model fit and residuals for the ACGATC substrate, showing measured intermediate fractions over time and the fitted first-order kinetic curves."
         />,
 
-        <H2Section key="result-heading" text="What it revealed" />,
+        <H2Section key="result-heading" text="Why this approach mattered" />,
 
         <TextSection
           key="result"
-          text={`Once we had per-step rate constants for every
-            substrate, a striking pattern fell out: Tailor's
-            kinetics aren't constant. The fits showed a
-            reproducible "burst-halt-ramp" signature — the
-            first couple of uridines go on fast (burst), the
-            third and fourth go on much more slowly (halt),
-            and only after that does processive elongation
-            take over (ramp). The slowdown is where the
-            "count" happens. By engineering substrates that
-            already carried pre-installed U's at the 3' end,
-            we showed the halt tracks the number of uridines
-            already present, not the substrate sequence — the
-            enzyme is sensing its own product. That's the
-            mechanism behind the short, discrete tails
-            Dis3l2 needs to commit an RNA to decay. None of
-            this is visible in the bulk data; it only emerges
-            once you have step-resolved rate constants on
-            thousands of substrates.`}
-        />,
-
-        <H2Section key="bonus-heading" text="A second model" />,
-
-        <TextSection
-          key="bonus"
-          text={`A separate piece of the modeling work
-            addressed why Tailor doesn't run away into long
-            poly-U tails under realistic conditions. In the
-            cell, Tailor sees not just UTP but also ATP, CTP,
-            and GTP, and it occasionally mis-incorporates a
-            non-uridine that effectively caps the tail. I
-            built a chain-termination model that predicts
-            average tail length given the observed
-            mis-incorporation frequency. Under equal-NTP
-            conditions the model matched the data well
-            (R² = 0.76); under physiological NTP
-            concentrations it predicted much longer tails
-            than were actually observed (R² = 0.13). That
-            mismatch wasn't a failure — it was the result.
-            It established that chain termination alone can't
-            account for the kinetic slowdown seen in cells;
-            non-productive ATP binding also competes with
-            UTP at the active site, and the model's failure
-            is what quantifies that.`}
+          text={`Step-resolved rate constants are a different
+            object than the bulk averages you get from the raw
+            time courses. With one rate constant per step per
+            substrate, you can compare how an enzyme behaves
+            on its first nucleotide addition versus its fifth,
+            line that up against substrate features, and ask
+            whether the kinetics are constant or change as
+            the reaction proceeds — questions that aren't
+            answerable from bulk data alone. The interesting
+            biological patterns in the paper live in that
+            higher-resolution view, and the fitted rate
+            constants are what made that view possible. The
+            specific findings are best read in the preprint.`}
         />,
 
         <H2Section key="status-heading" text="Status" />,
