@@ -54,6 +54,7 @@ export default function ProjectsPage() {
               imageUrl="/img/ACGATC_6NTailing_residuals.png"
               imageAlt="Model fit and residuals for an RNA tailing substrate, showing fitted first-order kinetic curves over measured time-course data."
               projectSlug="rna-decay-kinetics"
+              imageFit="contain"
             />
           </div>
         </PageContainer>
