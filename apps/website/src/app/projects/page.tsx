@@ -46,6 +46,7 @@ export default function ProjectsPage() {
               imageUrl="/img/ambient_calibration.png"
               imageAlt="Ambient Temperature Estimation"
               projectSlug="ambient-temperature-estimation"
+              imageFit="contain"
             />
 
             <ProjectOverview
