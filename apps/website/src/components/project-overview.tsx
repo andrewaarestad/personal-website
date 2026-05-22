@@ -9,6 +9,7 @@ export interface ProjectOverviewProps {
   imageAlt: string;
   projectSlug: string;
   ctaText?: string;
+  imageFit?: "cover" | "contain";
 }
 
 export function ProjectOverview({
@@ -18,7 +19,12 @@ export function ProjectOverview({
   imageAlt,
   projectSlug,
   ctaText = "View Project",
+  imageFit = "cover",
 }: ProjectOverviewProps) {
+  const imageContainerBg = imageFit === "contain" ? "bg-white" : "bg-surface";
+  const imageClass =
+    imageFit === "contain" ? "object-contain p-4" : "object-cover object-top";
+
   return (
     <Link
       href={`/projects/${projectSlug}`}
@@ -32,13 +38,13 @@ export function ProjectOverview({
       >
         <div className="flex flex-col h-full">
           {/* Project Image */}
-          <div className="relative w-full h-64 rounded-lg overflow-hidden bg-surface shrink-0">
+          <div className={`relative w-full h-64 rounded-lg overflow-hidden shrink-0 ${imageContainerBg}`}>
             <Image
               src={imageUrl}
               alt={imageAlt}
               fill
               priority
-              className="object-cover object-top"
+              className={imageClass}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
