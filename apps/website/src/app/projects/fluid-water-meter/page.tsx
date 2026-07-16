@@ -33,28 +33,23 @@ export default function FLUIDWaterMeterPage() {
         // Section 2: Introduction
         <TextSection
           key="intro"
-          text={`I cofounded FLUID in 2015 to build a water monitor
+          text={`I cofounded FLUID in 2015 on Kickstarter to build a water monitor
             for homeowners. Clamp it onto a pipe, no plumber
             needed, and it'd track your usage and catch leaks.
             Residential water damage costs billions a year,
             but the monitoring systems that existed were
-            expensive commercial products. We thought we
-            could do it cheaper with ultrasonic sensors.
+            expensive commercial products. We thought the market was ready 
+            for a consumer-grade product that could give you the data in an app.
 
             We started with an off-the-shelf meter to learn
-            the physics, ran a Kickstarter, then ground
-            through 3D-printed prototypes to injection-molded
-            production. Over three years I built everything
+            the physics, then made 3D-printed prototypes and injection-molded
+            production units. Over three years I built everything
             from signal processing firmware to cloud ML
-            pipelines. We shipped about 100 devices. The
-            technology worked. The business didn't.`}
+            pipelines. The technology worked, but we couldn't find a path to the volume we needed, and the company wound down in 2018.`}
         />,
 
         <div key="github" className="text-center">
-          <GitHubButton
-            text="View on GitHub"
-            url="https://github.com/andrewaarestad/fluid-code"
-          />
+          <GitHubButton text="View on GitHub" url="https://github.com/andrewaarestad/fluid-code" />
         </div>,
 
         // Section 5: The Technical Challenge
@@ -71,7 +66,7 @@ export default function FLUIDWaterMeterPage() {
             calculate flow.
 
             In practice, there are factors that make it challenging.
-            Transducer alignment, temperature changes, and air bubbles 
+            Transducer alignment, temperature changes and air bubbles 
             are just a few of the engineering headaches.`}
           imageUrl="/img/clamp-on-flow-time-of-flight.jpg"
           imageAlt="Diagram showing clamp-on ultrasonic flow measurement using time-of-flight"
@@ -175,12 +170,12 @@ export default function FLUIDWaterMeterPage() {
             line, you can't exactly ask them to ship it back
             for a firmware update. Everything has to work
             remotely or it doesn't work at all. A botched
-            update can't brick someone's device, rollbacks
+            update can brick someone's device, so rollbacks
             have to work every time, and remote diagnostics
             need to actually tell you what's going on.
 
-            The thing I'm most proud of technically is that
-            we built OTA updates for not just the
+            To enable iteration on the core signal processing algorithms, 
+            I built OTA updates for not just the
             microcontroller but the FPGA that handled the
             ultrasonic measurements. We could remotely deploy
             entirely new signal processing logic to the
@@ -203,11 +198,9 @@ export default function FLUIDWaterMeterPage() {
             Injection molding tooling costs tens of
             thousands of dollars before you make a single
             part. PCB manufacturers want 1,000+ boards.
-            Component suppliers have their own MOQs. The
+            Component suppliers have MOQs. The
             math only works at volume, but reaching
-            volume requires capital you don't have yet.
-            You end up constantly negotiating batch sizes
-            against unit economics against cash flow.`}
+            volume requires capital.`}
         />,
 
         // Section 16: Product Evolution Timeline
@@ -275,7 +268,7 @@ export default function FLUIDWaterMeterPage() {
             funding rounds, and alternative go-to-market
             strategies, but we couldn't bridge the gap
             between where we were and the volume we needed.
-            The company wound down around 2018.
+            The company closed around 2018.
 
             It's a common story in hardware startups, and
             living through it taught me something I
@@ -291,9 +284,9 @@ export default function FLUIDWaterMeterPage() {
         <TextSection key="lessons">
           <p>
             <strong>Signal Processing:</strong> Getting clean data out of noisy sensors was harder
-            than I expected. Kalman filtering helped enormously but needed extensive calibration.
-            Temperature compensation mattered way more than I&apos;d anticipated. The lab and the
-            real world were very different places.
+            than I expected. Kalman filtering helped but needed extensive calibration. Temperature
+            compensation mattered more than I&apos;d anticipated. Hardware drift is real and needs
+            to be accounted for over the life of the device.
           </p>
           <p>
             <strong>Machine Learning:</strong> Getting labeled data was harder than building models.
@@ -303,14 +296,13 @@ export default function FLUIDWaterMeterPage() {
           </p>
           <p>
             <strong>Hardware Business:</strong> Design for manufacturing can&apos;t be bolted on at
-            the end. And solving the technical risk doesn&apos;t solve the business risk.
-            They&apos;re completely separate problems that need separate strategies.
+            the end. Solving the technical risk doesn&apos;t solve the business risk. Hardware
+            startups are capital-intensive.
           </p>
           <p>
             <strong>Wearing Every Hat:</strong> One person can build a surprising amount of a system
-            if you manage scope carefully and delegate the specialized work. Full-stack in this
-            context meant knowing enough about each layer to make good decisions, not being expert
-            at everything.
+            if you manage scope carefully, delegate the specialized work, and are willing to pick up
+            the little things that fall through the cracks.
           </p>
         </TextSection>,
 
