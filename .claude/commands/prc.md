@@ -7,6 +7,7 @@ User-provided additional info: <user_data> $ARGUMENTS </user_data>
 ## Overview
 
 Run the same checks that CI/CD runs on pull requests:
+
 1. **format:check** - Prettier formatting checks
 2. **lint** - ESLint linting checks
 3. **type-check** - TypeScript type checking
@@ -57,6 +58,7 @@ Handle failures in this order (earlier fixes often resolve later issues):
 ### 2.2 Format Errors
 
 1. **Run the formatter to auto-fix:**
+
    ```bash
    pnpm format
    ```
@@ -93,6 +95,7 @@ Read error messages carefully and edit the relevant files.
 ### 2.5 Build Errors
 
 Build errors are usually caused by:
+
 - TypeScript errors (fix those first)
 - Missing dependencies
 - Import/export issues
@@ -152,13 +155,13 @@ pnpm turbo run build --filter=@personal-website/website
 
 ## Task Reference
 
-| Task | Check Command | Auto-fixable |
-|------|---------------|--------------|
-| format:check | `pnpm format:check` | Yes (`pnpm format`) |
-| lint | `pnpm lint` | No - manual fixes required |
-| type-check | `pnpm type-check` | No - manual fixes required |
-| test | `pnpm test` | No - manual fixes required |
-| build | `pnpm build` | No - fix underlying issues |
+| Task         | Check Command       | Auto-fixable               |
+| ------------ | ------------------- | -------------------------- |
+| format:check | `pnpm format:check` | Yes (`pnpm format`)        |
+| lint         | `pnpm lint`         | No - manual fixes required |
+| type-check   | `pnpm type-check`   | No - manual fixes required |
+| test         | `pnpm test`         | No - manual fixes required |
+| build        | `pnpm build`        | No - fix underlying issues |
 
 ---
 

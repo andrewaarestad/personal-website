@@ -27,9 +27,9 @@ export default function HomePage() {
             <div className="md:flex-1">
               <h2 className="text-h3 font-bold text-foreground mb-3 pt-4">Design Process</h2>
               <p className="text-body-lg text-text-secondary">
-                This site is built using a design-first workflow with Claude Code's mobile app. Learn about
-                the phases, explore interactive mood boards, and see the meta-project of building a
-                website about someone who builds websites.
+                This site is built using a design-first workflow with Claude Code's mobile app.
+                Learn about the phases, explore interactive mood boards, and see the meta-project of
+                building a website about someone who builds websites.
               </p>
             </div>
 
@@ -38,9 +38,9 @@ export default function HomePage() {
                 Explore the Design-First Workflow
               </h3>
               <p className="text-body text-text-secondary mb-6">
-                Check out my process for building from brand foundation to implementation. 
-                This process mimics what I do with clients by starting with the foundations of
-                visual aesthetics and product vision.
+                Check out my process for building from brand foundation to implementation. This
+                process mimics what I do with clients by starting with the foundations of visual
+                aesthetics and product vision.
               </p>
               <Link href="/design-process">
                 <Button variant="brand">View Design Process →</Button>

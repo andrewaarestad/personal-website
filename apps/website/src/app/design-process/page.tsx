@@ -167,9 +167,7 @@ export default function DesignProcessPage() {
                   following brand voice guidelines: direct, problem-solver, and understated expert.
                 </p>
                 <Link href="/design-preview/mobile-hero">
-                  <Button variant="info">
-                    View Mobile Hero →
-                  </Button>
+                  <Button variant="info">View Mobile Hero →</Button>
                 </Link>
               </FeatureCard>
 
@@ -181,9 +179,7 @@ export default function DesignProcessPage() {
                   components, and real-world examples. Built with the art studio aesthetic.
                 </p>
                 <Link href="/design-preview/v1-initial">
-                  <Button variant="brand">
-                    View Mood Board →
-                  </Button>
+                  <Button variant="brand">View Mood Board →</Button>
                 </Link>
               </FeatureCard>
 

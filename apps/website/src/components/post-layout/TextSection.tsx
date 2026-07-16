@@ -32,17 +32,12 @@ export function TextSection({ text, children }: TextSectionProps) {
     <div className="prose prose-lg dark:prose-invert max-w-none">
       {text ? (
         normalizeText(text).map((paragraph, index) => (
-          <p
-            key={index}
-            className="text-body-lg text-text-secondary leading-relaxed"
-          >
+          <p key={index} className="text-body-lg text-text-secondary leading-relaxed">
             {paragraph}
           </p>
         ))
       ) : (
-        <div className="text-body-lg text-text-secondary leading-relaxed">
-          {children}
-        </div>
+        <div className="text-body-lg text-text-secondary leading-relaxed">{children}</div>
       )}
     </div>
   );

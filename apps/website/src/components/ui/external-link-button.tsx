@@ -16,7 +16,7 @@ export function ExternalLinkButton({ text, url, className }: ExternalLinkButtonP
         "group inline-flex items-center gap-2 px-6 py-3 font-semibold rounded-lg transition-colors",
         "bg-gray-900 text-gray-50 hover:bg-gray-800",
         "dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-200",
-        className,
+        className
       )}
     >
       <svg

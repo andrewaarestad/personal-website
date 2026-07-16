@@ -61,9 +61,7 @@ function ContactCard({ link }: ContactCardProps) {
         <div className="font-semibold text-body text-black group-hover:text-current transition-colors">
           {link.name}
         </div>
-        <div className="text-body-sm text-text-tertiary">
-          {link.handle}
-        </div>
+        <div className="text-body-sm text-text-tertiary">{link.handle}</div>
       </div>
       <svg
         className="ml-auto w-5 h-5 text-text-tertiary group-hover:text-current transition-colors"
