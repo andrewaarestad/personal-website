@@ -11,7 +11,7 @@ import { ExternalLinkButton } from "@/components/ui/external-link-button";
 export const metadata: Metadata = {
   title: "Modeling RNA Decay Kinetics - Andrew Aarestad",
   description:
-    "Cross-functional ML and modeling work with the Ameres lab at Max Perutz Labs: fitting reaction-kinetic models to high-throughput RNA tailing data to reveal how the enzyme Tailor encodes RNA decay competence.",
+    "Cross-functional ML and modeling work with the Ameres lab at Max Perutz Labs: fitting reaction-kinetic models to RNA tailing data.",
 };
 
 const PREPRINT_URL = "https://www.biorxiv.org/content/10.64898/2026.03.27.714668v1";

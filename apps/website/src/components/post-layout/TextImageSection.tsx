@@ -59,17 +59,12 @@ export function TextImageSection({
       <div className={`space-y-4 ${isImageLeft ? "md:order-2" : "md:order-1"}`}>
         {text ? (
           normalizeText(text).map((paragraph, index) => (
-            <p
-              key={index}
-              className="text-body-lg text-text-secondary leading-relaxed"
-            >
+            <p key={index} className="text-body-lg text-text-secondary leading-relaxed">
               {paragraph}
             </p>
           ))
         ) : (
-          <div className="text-body-lg text-text-secondary leading-relaxed">
-            {children}
-          </div>
+          <div className="text-body-lg text-text-secondary leading-relaxed">{children}</div>
         )}
       </div>
 

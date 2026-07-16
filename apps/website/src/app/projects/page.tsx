@@ -68,10 +68,7 @@ export default function ProjectsPage() {
             <p className="text-body-lg text-text-secondary mb-4">
               Find the code for these projects and more:
             </p>
-            <GitHubButton
-              text="View my GitHub profile"
-              url="https://github.com/andrewaarestad"
-            />
+            <GitHubButton text="View my GitHub profile" url="https://github.com/andrewaarestad" />
           </div>
         </PageContainer>
       </Section>
