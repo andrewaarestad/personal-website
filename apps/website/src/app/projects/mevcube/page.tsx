@@ -48,7 +48,10 @@ export default function MevCubePage() {
             the two pulled in the same direction — specifically,
             whether the clout of solving a puzzle in public could
             hold its own against the purely financial incentives
-            that drive MEV bots.`}
+            that drive MEV bots. Underneath that sat a question I
+            kept coming back to: how do you scramble a puzzle
+            fairly on a machine that, by design, can't do
+            anything random?`}
         />,
 
         <DataVisualizationSection
@@ -111,6 +114,54 @@ export default function MevCubePage() {
             solved cube, race to call scramble(), collect.`}
         />,
 
+        <H2Section key="random-heading" text="Pseudorandom scrambling" />,
+
+        <TextSection key="random">
+          <p className={paragraphClass}>
+            A blockchain is deterministic on purpose: every node replays every transaction and has
+            to arrive at exactly the same state. That rules out real randomness. What a contract can
+            do is hash inputs that are hard to choose in advance and treat the output as if it were
+            random. <code>scramble()</code> seeds itself from the caller&apos;s address and the
+            current block number, hashes that seed together with the move index for each of 30
+            turns, and maps each hash onto one of the nine layers:
+          </p>
+          <pre className={codeBlockClass}>
+            {`seed = encode(4, msg.sender, block.number)
+for i in 0..29:
+    layer = uniform(keccak256(seed, i), 9)
+    turn(layer)`}
+          </pre>
+          <p className={paragraphClass}>
+            The <code>uniform</code> step is a small library by Brendan Asselstine that re-hashes
+            any value that would bias the modulo, so all nine layers come up equally often. The
+            result looks random. It isn&apos;t: the entire scramble is fixed the moment the inputs
+            are known, and anyone can simulate it before the transaction lands. A scrambler can even
+            shop for a scramble they like by trying different addresses or waiting for a different
+            block.
+          </p>
+          <p className={paragraphClass}>
+            The commit history is a short tour of how easy this is to get wrong. The first version
+            hashed the literal string <code>&quot;Hello&quot;</code>, so every scramble was the same
+            scramble. The next derived one seed per call and reused it for every turn, which turned
+            the same layer 30 times. Mixing the move index into each hash fixed that. Along the way
+            I also tried drawing the number of turns from a bell curve, borrowing a trick from the
+            Gaussian Protocol NFT project: sum sixteen pseudorandom bytes and let the central limit
+            theorem do the rest. My port passed the same offset on all sixteen draws, so it summed
+            one byte sixteen times and produced no bell curve at all. It was replaced by a fixed 30
+            turns, which is more than any position needs to be solved.
+          </p>
+          <p className={paragraphClass}>
+            The principled fix is a verifiable randomness oracle such as Chainlink VRF, which
+            returns a random value together with a proof that it wasn&apos;t tampered with. I was
+            working with VRF on a separate project, an NFT collection whose rarity was locked in by
+            a VRF reveal, and found it hard to get working. Requests are asynchronous and answered
+            in a later transaction, each one costs LINK, and a local test chain has no oracle node
+            to answer them. It never made it into mevcube. For a cube, predictable scrambles are
+            mostly harmless, since scrambling is just a reset. Once randomness decides who gets
+            paid, where it comes from matters a lot more.
+          </p>
+        </TextSection>,
+
         <H2Section key="mev-heading" text="Where the MEV comes in" />,
 
         <TextSection
@@ -127,10 +178,7 @@ export default function MevCubePage() {
             outbid the gas, and land the solve first. The
             scramble bounty has the same shape: once a solving
             move is pending, a bot can line up a scramble() to
-            land right behind it in the same block. The
-            scramble's randomness came from hashing the caller's
-            address and the block number, which is predictable
-            to anyone willing to simulate it.
+            land right behind it in the same block.
 
             So the experiment was a question of which incentive
             wins. A bot that steals a solution pays the same fee
@@ -167,33 +215,6 @@ export default function MevCubePage() {
             Aaron Bird's open-source rubiks-cube visualization,
             reworked to read and write the contract's string
             format.`}
-        />,
-
-        <H2Section key="outcome-heading" text="How it turned out" />,
-
-        <TextSection
-          key="outcome"
-          text={`Nobody played it. The site went up, the contract
-            worked, and the cube sat there waiting for a solver
-            that never came. That means the core question — can
-            clout offset the financial pull of MEV — never got
-            an answer from real players or real bots, and I'm not
-            going to pretend the design was validated.
-
-            Some of it I'd do differently now. A commit-reveal
-            scheme for solutions would let me choose whether
-            front-running is part of the game instead of an
-            unavoidable side effect. Block-number randomness was
-            fine for a testnet toy, but anything with real money
-            in it needs a proper randomness source. And a
-            leaderboard is only worth fighting for if there's an
-            audience watching it, which is a distribution
-            problem, not a contract problem.
-
-            Polygon shut down the Mumbai testnet in 2024 and the
-            contract went with it. The cube above is what's left:
-            the same renderer, no longer attached to anything,
-            still happy to be scrambled.`}
         />,
 
         <div key="github-bottom" className="flex flex-wrap justify-center gap-4">
