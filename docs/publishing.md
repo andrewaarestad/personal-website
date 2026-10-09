@@ -66,7 +66,7 @@ prerendered HTML.
   title: "My Experiment",
   summary: "One or two sentences for search results and link previews.",
   listingSummary: "Optional longer blurb for the /projects card.",
-  publishedAt: "2026-10-09",          // the day it actually goes live
+  publishedAt: "2026-10-09",          // the date of the commit that publishes it
   projectPeriod: { start: "2026", ongoing: true },
   authors: [DEFAULT_AUTHOR],
   tags: ["simulation"],
@@ -86,8 +86,9 @@ The registry is also validated at import time (unique slugs/paths, valid dates,
 
 ## Date rules
 
-- **`publishedAt`**: the date the page first went public. Set it only when you know it. Never
-  substitute a build, commit, project-start or "today" date.
+- **`publishedAt`**: the date the page first went public. The commit (merge to `main`) that lands
+  the substantive page is an accepted source. Placeholder or "coming soon" versions don't count.
+  Never substitute a build, project-start or "today" date.
 - **`updatedAt`**: only for substantive editorial changes (new findings, rewritten sections), not
   typo fixes or code deploys. Requires `publishedAt`.
 - **`projectPeriod`**: when the _work_ happened. It is displayed as "Project: 2015–2018" and is

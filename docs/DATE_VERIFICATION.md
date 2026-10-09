@@ -1,27 +1,23 @@
 # Date & Content Verification Checklist
 
-The content registry (`apps/website/src/content/registry.ts`) leaves `publishedAt` unset for every
-existing page. Git history shows when code merged, but not when a page was first public or
-announced. Production deploy history (Vercel) wasn't reachable when this was written. Until each
-date is confirmed, these pages show no "Published" date and are **omitted from `/feed.xml`**, which
-currently has no items.
+Publication dates follow the owner's decision that **the commit (merge to `main`) that landed the
+substantive page** is the publication date. Placeholder or "coming soon" versions don't count.
+`updatedAt` is set only for substantive editorial rewrites, not formatting or meta-description
+tweaks.
 
-To confirm a date, set `publishedAt` (and optionally `updatedAt`) on the entry and tick the box.
+## Publication dates (resolved)
 
-## Publication dates (owner confirmation needed)
+| Page                                       | `publishedAt`      | `updatedAt`        | Notes                                                                                                                                                   |
+| ------------------------------------------ | ------------------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/projects/rna-decay-kinetics`             | `2026-05-22` (#42) | —                  | #43 only changed the meta description.                                                                                                                  |
+| `/projects/fluid-water-meter`              | `2025-11-18` (#33) | `2026-07-16` (#43) | #26 (2025-11-09) was a short overview. #43 rewrote the narrative (wind-down date, corrected claims). The #38 rewrite (2026-02-11) is superseded by #43. |
+| `/projects/ambient-temperature-estimation` | `2026-05-22` (#42) | —                  | Earlier versions (#20/#26/#38) were a "Coming Soon" placeholder.                                                                                        |
+| `/design-process`                          | `2025-11-07` (#17) | —                  | Later edits were layout and formatting tweaks.                                                                                                          |
 
-| Page                                       | Evidence from git (merge to `main`, US Central)                                                                                 | Candidate `publishedAt`    |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| `/projects/rna-decay-kinetics`             | Full page added in #42 on 2026-05-22. Copy-only edits in #43 (2026-07-16).                                                      | `2026-05-22`?              |
-| `/projects/fluid-water-meter`              | Placeholder in #26 (2025-11-09); full article in #33 (2025-11-18); copy revisions in #38–#40 (2026-02-11) and #43 (2026-07-16). | `2025-11-18`?              |
-| `/projects/ambient-temperature-estimation` | Placeholder from #20/#26 (2025-11-08/09); expanded in #38 (2026-02-11); full article in #42 (2026-05-22).                       | `2026-05-22`? (or earlier) |
-| `/design-process`                          | Evolving since #17 (2025-11-07). It's a living page, so it may be better left undated.                                          | leave unset?               |
-
-- [ ] RNA decay kinetics `publishedAt`
-- [ ] FLUID water meter `publishedAt` (and whether the 2026 copy revisions count as a substantive
-      `updatedAt`)
-- [ ] Ambient temperature estimation `publishedAt`
-- [ ] Design process: dated or intentionally undated
+- [x] RNA decay kinetics `publishedAt`
+- [x] FLUID water meter `publishedAt` / `updatedAt`
+- [x] Ambient temperature estimation `publishedAt`
+- [x] Design process `publishedAt`
 
 ## Project periods
 

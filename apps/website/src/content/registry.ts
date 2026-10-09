@@ -7,8 +7,9 @@ import type { ContentEntry } from "./types";
  * Plain data only — never import page or interactive components here.
  *
  * Dates policy (see docs/DATE_VERIFICATION.md):
- * - `publishedAt` is set only when the original public publication date is
- *   verified. Never fall back to the build, commit, project-start or current date.
+ * - `publishedAt` is set only when the original publication date is confirmed.
+ *   For legacy pages the owner confirmed the commit that landed the substantive
+ *   page. Never fall back to the build, project-start or current date.
  * - `projectPeriod` records when the work happened, sourced from the page copy.
  *
  * Declaration order is the display order for entries without `publishedAt`.
@@ -23,6 +24,8 @@ export const contentEntries: readonly ContentEntry[] = [
       "Cross-functional ML and modeling work with the Ameres lab at Max Perutz Labs: fitting reaction-kinetic models to RNA tailing data.",
     listingSummary:
       "Cross-functional ML and modeling work with the Ameres lab at Max Perutz Labs. Built the C++/TypeScript/Python pipeline that fit reaction-kinetic models to high-throughput RNA tailing data across 4,096 substrates, revealing how the enzyme Tailor encodes RNA decay competence.",
+    // Commit date of the full page (#42), confirmed by the owner as the publication date.
+    publishedAt: "2026-05-22",
     // Page copy: "Starting in 2022, I have been collaborating…". End/ongoing unconfirmed.
     projectPeriod: { start: "2022" },
     authors: [DEFAULT_AUTHOR],
@@ -43,6 +46,10 @@ export const contentEntries: readonly ContentEntry[] = [
       "I cofounded a hardware startup to build an ultrasonic water meter for homes. We built a full IoT platform from sensor firmware to cloud ML, and learned the hard way that great technology isn't enough.",
     listingSummary:
       "Co-founded an IoT platform to detect water leaks in homes before they became expensive disasters. Built ultrasonic flow meter, telemetry infrastructure, app/web platforms, ML models and other fun stuff.",
+    // Full article (#33). The earlier #26 version was a short overview page.
+    publishedAt: "2025-11-18",
+    // Narrative rewrite (#43): wind-down date and corrected claims.
+    updatedAt: "2026-07-16",
     // Page copy: "I cofounded FLUID in 2015…" and "…the company wound down in 2018."
     projectPeriod: { start: "2015", end: "2018" },
     authors: [DEFAULT_AUTHOR],
@@ -62,6 +69,8 @@ export const contentEntries: readonly ContentEntry[] = [
       "A physics-based thermal estimator that recovers ambient temperature from device temperature alone, calibrated in Python and deployed in C++ to edge devices.",
     listingSummary:
       "Multi-sensor data fusion system for ambient temperature estimation. Combined physical/statistical modeling with edge inference to create a network of weather stations using cell phones. Open sourced the key tech.",
+    // Full article (#42). Earlier versions were a "Coming Soon" placeholder.
+    publishedAt: "2026-05-22",
     // Project period not stated in page copy — needs owner confirmation.
     authors: [DEFAULT_AUTHOR],
     tags: ["embedded", "physical modeling", "C++", "open source"],
@@ -80,6 +89,8 @@ export const contentEntries: readonly ContentEntry[] = [
     summary:
       "A transparent look at building a personal website using design-first workflows and AI-assisted development. Explore the phases, mood boards, and the meta-project of showcasing web development through a developer's personal site.",
     authors: [DEFAULT_AUTHOR],
+    // First commit of the page (#17).
+    publishedAt: "2025-11-07",
     tags: ["design systems", "AI-assisted development", "Next.js"],
     repositoryUrl: "https://github.com/andrewaarestad/personal-website",
   },
