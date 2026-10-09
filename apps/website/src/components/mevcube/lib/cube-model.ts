@@ -3,18 +3,23 @@ import { roundedEdgeBox, roundedPlane } from "./geometries";
 import { stateToCubelets } from "./cube-state";
 import type { Face } from "./types";
 
-/** Sticker colours (sRGB hex), matching the original MevCube palette. */
+/**
+ * Sticker colours (sRGB hex), drawn from the site palette in globals.css:
+ * brand red, brand-secondary cyan and highlight lime, plus white, warning
+ * amber and info blue. Opposite faces (U/D, R/L, F/B) are kept far apart in
+ * hue so every face stays easy to tell from its neighbours.
+ */
 export const FACE_HEX: Record<Face, string> = {
-  U: "#FEFEFE", // white
-  R: "#891214", // red
-  F: "#199B4C", // green
-  D: "#FED52F", // yellow
-  L: "#FF5525", // orange
-  B: "#0D48AC", // blue
+  U: "#FFFFFF", // white (surface)
+  D: "#F59E0B", // amber (warning)
+  R: "#EF4444", // red (brand)
+  L: "#3B82F6", // blue (info)
+  F: "#84CC16", // lime (highlight)
+  B: "#06B6D4", // cyan (brand-secondary)
 };
 
-/** Colour of the plastic cubelet body. */
-const BODY_HEX = "#333333";
+/** Colour of the plastic cubelet body (site black-accent). */
+const BODY_HEX = "#1A1A1A";
 
 const FACE_TRANSFORMS: Record<
   Face,
