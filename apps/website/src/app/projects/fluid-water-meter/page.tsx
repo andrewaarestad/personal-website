@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { getPageMetadata } from "@/lib/publishing/metadata";
+import { ContentMeta } from "@/components/content-meta";
+import { ContentJsonLd } from "@/components/json-ld";
 import {
   PostLayout,
   H1Section,
@@ -12,11 +15,9 @@ import { WaterFlowChart } from "@/components/charts/WaterFlowChart";
 import { generateWaterFlowData } from "@/lib/sample-data";
 import { GitHubButton } from "@/components/ui/github-button";
 
-export const metadata: Metadata = {
-  title: "FLUID Water Meter - Andrew Aarestad",
-  description:
-    "I cofounded a hardware startup to build an ultrasonic water meter for homes. We built a full IoT platform from sensor firmware to cloud ML, and learned the hard way that great technology isn't enough.",
-};
+const PAGE_PATH = "/projects/fluid-water-meter";
+
+export const metadata: Metadata = getPageMetadata(PAGE_PATH);
 
 export default function FLUIDWaterMeterPage() {
   // Generate sample water flow data for visualization
@@ -27,7 +28,9 @@ export default function FLUIDWaterMeterPage() {
       {[
         // Section 1: Title
         <div key="title" className="mb-8">
+          <ContentJsonLd path={PAGE_PATH} />
           <H1Section text="FLUID Water Meter" />
+          <ContentMeta path={PAGE_PATH} className="mt-6" />
         </div>,
 
         // Section 2: Introduction

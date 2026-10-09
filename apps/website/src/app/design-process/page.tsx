@@ -5,21 +5,18 @@ import { Section } from "@/components/ui/section";
 import { FeatureCard } from "@/components/ui/feature-card";
 import { GitHubButton } from "@/components/ui/github-button";
 import type { Metadata } from "next";
+import { getPageMetadata } from "@/lib/publishing/metadata";
+import { ContentMeta } from "@/components/content-meta";
+import { ContentJsonLd } from "@/components/json-ld";
 
-export const metadata: Metadata = {
-  title: "Design Process | Andrew Aarestad",
-  description:
-    "A transparent look at building a personal website using design-first workflows and AI-assisted development. Explore the phases, mood boards, and the meta-project of showcasing web development through a developer's personal site.",
-  openGraph: {
-    title: "Design Process | Andrew Aarestad",
-    description:
-      "Building a website about someone who builds websites - a transparent look at design-first workflows and AI collaboration.",
-  },
-};
+const PAGE_PATH = "/design-process";
+
+export const metadata: Metadata = getPageMetadata(PAGE_PATH);
 
 export default function DesignProcessPage() {
   return (
     <main className="min-h-screen bg-canvas">
+      <ContentJsonLd path={PAGE_PATH} />
       {/* Hero Section */}
       <Section>
         <PageContainer>
@@ -30,6 +27,7 @@ export default function DesignProcessPage() {
               phases, mood boards, and the recursive journey of building a website about someone who
               builds websites.
             </p>
+            <ContentMeta path={PAGE_PATH} className="mt-6" />
           </div>
 
           {/* Meta-Project Section */}

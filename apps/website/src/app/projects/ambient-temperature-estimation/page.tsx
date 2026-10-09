@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { getPageMetadata } from "@/lib/publishing/metadata";
+import { ContentMeta } from "@/components/content-meta";
+import { ContentJsonLd } from "@/components/json-ld";
 import {
   PostLayout,
   H1Section,
@@ -8,11 +11,9 @@ import {
 } from "@/components/post-layout";
 import { GitHubButton } from "@/components/ui/github-button";
 
-export const metadata: Metadata = {
-  title: "Ambient Temperature Estimation - Andrew Aarestad",
-  description:
-    "A physics-based thermal estimator that recovers ambient temperature from device temperature alone, calibrated in Python and deployed in C++ to edge devices.",
-};
+const PAGE_PATH = "/projects/ambient-temperature-estimation";
+
+export const metadata: Metadata = getPageMetadata(PAGE_PATH);
 
 const REPO_URL = "https://github.com/parameter-estimation/ambient-temperature-estimation";
 
@@ -21,7 +22,9 @@ export default function AmbientTemperatureEstimationPage() {
     <PostLayout>
       {[
         <div key="title" className="mb-8">
+          <ContentJsonLd path={PAGE_PATH} />
           <H1Section text="Ambient Temperature Estimation" />
+          <ContentMeta path={PAGE_PATH} className="mt-6" />
         </div>,
 
         <TextSection

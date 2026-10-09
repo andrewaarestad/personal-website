@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { getPageMetadata } from "@/lib/publishing/metadata";
+import { ContentMeta } from "@/components/content-meta";
+import { ContentJsonLd } from "@/components/json-ld";
 import {
   PostLayout,
   H1Section,
@@ -8,11 +11,9 @@ import {
 } from "@/components/post-layout";
 import { ExternalLinkButton } from "@/components/ui/external-link-button";
 
-export const metadata: Metadata = {
-  title: "Modeling RNA Decay Kinetics - Andrew Aarestad",
-  description:
-    "Cross-functional ML and modeling work with the Ameres lab at Max Perutz Labs: fitting reaction-kinetic models to RNA tailing data.",
-};
+const PAGE_PATH = "/projects/rna-decay-kinetics";
+
+export const metadata: Metadata = getPageMetadata(PAGE_PATH);
 
 const PREPRINT_URL = "https://www.biorxiv.org/content/10.64898/2026.03.27.714668v1";
 
@@ -21,7 +22,9 @@ export default function RnaDecayKineticsPage() {
     <PostLayout>
       {[
         <div key="title" className="mb-8">
+          <ContentJsonLd path={PAGE_PATH} />
           <H1Section text="Modeling RNA Decay Kinetics" />
+          <ContentMeta path={PAGE_PATH} className="mt-6" />
         </div>,
 
         <TextSection

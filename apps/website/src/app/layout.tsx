@@ -5,11 +5,17 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { MainContent } from "@/components/main-content";
 import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { FEED_PATH, FEED_TITLE, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Andrew Aarestad",
   description: "A modern personal website built with Next.js and AI-assisted development",
   authors: [{ name: "Andrew Aarestad" }],
+  // RSS autodiscovery. No canonical here: it would be inherited by every page.
+  alternates: {
+    types: { "application/rss+xml": [{ url: FEED_PATH, title: FEED_TITLE }] },
+  },
   openGraph: {
     title: "Andrew Aarestad",
     description: "A modern personal website built with Next.js and AI-assisted development",
