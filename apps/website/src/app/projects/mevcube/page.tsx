@@ -140,15 +140,12 @@ for i in 0..29:
             block.
           </p>
           <p className={paragraphClass}>
-            The commit history is a short tour of how easy this is to get wrong. The first version
-            hashed the literal string <code>&quot;Hello&quot;</code>, so every scramble was the same
-            scramble. The next derived one seed per call and reused it for every turn, which turned
-            the same layer 30 times. Mixing the move index into each hash fixed that. Along the way
-            I also tried drawing the number of turns from a bell curve, borrowing a trick from the
-            Gaussian Protocol NFT project: sum sixteen pseudorandom bytes and let the central limit
-            theorem do the rest. My port passed the same offset on all sixteen draws, so it summed
-            one byte sixteen times and produced no bell curve at all. It was replaced by a fixed 30
-            turns, which is more than any position needs to be solved.
+            A hash gives you uniform noise, so any other shape has to be built on top of it. I
+            explored drawing the number of scramble turns from a bell curve instead of fixing it,
+            using a trick from the Gaussian Protocol NFT project: add up sixteen pseudorandom bytes
+            and let the central limit theorem pull the sum toward a normal distribution. It&apos;s a
+            neat way to get a Gaussian out of a contract with nothing but integer math. In the end a
+            fixed 30 turns was simpler, and it&apos;s more than any position needs to be solved.
           </p>
           <p className={paragraphClass}>
             The principled fix is a verifiable randomness oracle such as Chainlink VRF, which
