@@ -19,18 +19,17 @@ const PREPRINT_URL = "https://www.biorxiv.org/content/10.64898/2026.03.27.714668
 
 export default function RnaDecayKineticsPage() {
   return (
-    <>
-      <ContentJsonLd path={PAGE_PATH} />
-      <PostLayout>
-        {[
-          <div key="title" className="mb-8">
-            <H1Section text="Modeling RNA Decay Kinetics" />
-            <ContentMeta path={PAGE_PATH} className="mt-6" />
-          </div>,
+    <PostLayout>
+      {[
+        <div key="title" className="mb-8">
+          <ContentJsonLd path={PAGE_PATH} />
+          <H1Section text="Modeling RNA Decay Kinetics" />
+          <ContentMeta path={PAGE_PATH} className="mt-6" />
+        </div>,
 
-          <TextSection
-            key="intro"
-            text={`Starting in 2022, I have been collaborating with a team at the Ameres
+        <TextSection
+          key="intro"
+          text={`Starting in 2022, I have been collaborating with a team at the Ameres
             lab at Max Perutz Labs in Vienna on a study of how
             cells decide which RNAs to throw away. My role on
             the project was cross-functional ML and model engineering:
@@ -43,17 +42,17 @@ export default function RnaDecayKineticsPage() {
             three-person effort (with David Mörsdorf and
             Benjamin Jordan), and the resulting framework
             underpins much of the paper's analysis.`}
-          />,
+        />,
 
-          <div key="preprint-top" className="text-center">
-            <ExternalLinkButton text="Read the preprint on bioRxiv" url={PREPRINT_URL} />
-          </div>,
+        <div key="preprint-top" className="text-center">
+          <ExternalLinkButton text="Read the preprint on bioRxiv" url={PREPRINT_URL} />
+        </div>,
 
-          <H2Section key="problem-heading" text="The Problem" />,
+        <H2Section key="problem-heading" text="The Problem" />,
 
-          <TextSection
-            key="problem"
-            text={`The biology, at a high level: an enzyme called
+        <TextSection
+          key="problem"
+          text={`The biology, at a high level: an enzyme called
             Tailor modifies RNA molecules by adding short runs
             of nucleotides to their 3' ends one at a time,
             and the lab wanted to understand the kinetics of
@@ -72,13 +71,13 @@ export default function RnaDecayKineticsPage() {
             implementation that could pull step-resolved rate
             constants out of the time-course data, for all
             4,096 substrates, fast enough to iterate on.`}
-          />,
+        />,
 
-          <H2Section key="approach-heading" text="The Approach" />,
+        <H2Section key="approach-heading" text="The Approach" />,
 
-          <TextSection
-            key="approach"
-            text={`We modeled uridylation as a chain of
+        <TextSection
+          key="approach"
+          text={`We modeled uridylation as a chain of
             irreversible pseudo-first-order reactions
             (Uₙ → Uₙ₊₁), giving a small system of ODEs per
             substrate with ten unknown rate constants. For each
@@ -96,19 +95,19 @@ export default function RnaDecayKineticsPage() {
             slice results without touching the C++. The fits
             converged stably across the substrate pool, which
             is what made the downstream analysis possible.`}
-          />,
+        />,
 
-          <ImageSection
-            key="residuals-image"
-            imageUrl="/img/ACGATC_6NTailing_residuals.png"
-            alt="Model fit and residuals for the ACGATC substrate, showing measured intermediate fractions over time and the fitted first-order kinetic curves."
-          />,
+        <ImageSection
+          key="residuals-image"
+          imageUrl="/img/ACGATC_6NTailing_residuals.png"
+          alt="Model fit and residuals for the ACGATC substrate, showing measured intermediate fractions over time and the fitted first-order kinetic curves."
+        />,
 
-          <H2Section key="result-heading" text="Why this approach mattered" />,
+        <H2Section key="result-heading" text="Why this approach mattered" />,
 
-          <TextSection
-            key="result"
-            text={`Step-resolved rate constants are a different
+        <TextSection
+          key="result"
+          text={`Step-resolved rate constants are a different
             object than the bulk averages you get from the raw
             time courses. With one rate constant per step per
             substrate, you can compare how an enzyme behaves
@@ -121,24 +120,23 @@ export default function RnaDecayKineticsPage() {
             higher-resolution view, and the fitted rate
             constants are what made that view possible. The
             specific findings are best read in the preprint.`}
-          />,
+        />,
 
-          <H2Section key="status-heading" text="Status" />,
+        <H2Section key="status-heading" text="Status" />,
 
-          <TextSection
-            key="status"
-            text={`The paper is currently a preprint on bioRxiv
+        <TextSection
+          key="status"
+          text={`The paper is currently a preprint on bioRxiv
             and hasn't yet been through peer review. The
             modeling code will be linked here once the
             project's repository is public — for now, the
             preprint is the best entry point.`}
-          />,
+        />,
 
-          <div key="preprint-bottom" className="text-center">
-            <ExternalLinkButton text="Read the preprint on bioRxiv" url={PREPRINT_URL} />
-          </div>,
-        ]}
-      </PostLayout>
-    </>
+        <div key="preprint-bottom" className="text-center">
+          <ExternalLinkButton text="Read the preprint on bioRxiv" url={PREPRINT_URL} />
+        </div>,
+      ]}
+    </PostLayout>
   );
 }
