@@ -57,7 +57,7 @@ export default function MevCubePage() {
         <DataVisualizationSection
           key="cube"
           title="The cube"
-          description="The original front end's visualization, running locally with no chain behind it. Drag a face to turn a layer, drag the background to orbit."
+          description="The original front end's visualization, running locally with no chain behind it. Drag a face to turn a layer and drag the background to orbit. Your turns queue up below as the move() call you would have sent to the contract."
         >
           <MevCube />
         </DataVisualizationSection>,
@@ -84,6 +84,12 @@ export default function MevCubePage() {
             turns it back, so a player submits a whole sequence as one string:
           </p>
           <pre className={codeBlockClass}>{'move("RUrURUUr")'}</pre>
+          <p className={paragraphClass}>
+            That&apos;s what the pending transaction panel under the cube is building. The original
+            front end let you explore turns locally, queued them up, and only touched the chain when
+            you submitted the whole sequence as one call — one fee, one transaction, however many
+            turns it took.
+          </p>
           <p className={paragraphClass}>
             Checking for a solution is cheap: if five faces are each a single color, the sixth has
             to be too, so <code>isSolved()</code> only walks five of them. Keeping the state this

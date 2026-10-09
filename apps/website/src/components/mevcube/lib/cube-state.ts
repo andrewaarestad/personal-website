@@ -231,6 +231,41 @@ export function getNotation(axis: Axis, value: AxisValue, quarterTurns: number):
   return isClockwise ? base : `${base}'`;
 }
 
+/**
+ * Encode moves in the MevCube contract's `move(string)` format: one letter per quarter
+ * turn, uppercase for a clockwise turn and lowercase for counter-clockwise, so
+ * ["R", "U'", "F2"] -> "RuFF". The contract shares this module's swap table, so the
+ * encoded string produces the same state on-chain.
+ */
+export function toContractMoves(moves: readonly string[]): string {
+  return moves
+    .flatMap(parseMoves)
+    .map((move) => {
+      const base = move[0];
+      const extra = move.slice(1);
+      if (!isNotationBase(base)) throw new Error(`Unknown move: ${move}`);
+      if (extra === "") return base;
+      if (extra === "'") return base.toLowerCase();
+      if (extra === "2") return base + base;
+      throw new Error(`Unknown move: ${move}`);
+    })
+    .join("");
+}
+
+/**
+ * Mirrors the contract's `isSolved()`: every face is a single colour. Slice moves can
+ * move the centres, so a solved cube need not equal SOLVED_STATE.
+ */
+export function isSolvedState(state: string): boolean {
+  for (let face = 0; face < 6; face++) {
+    const first = state[face * 9];
+    for (let i = 1; i < 9; i++) {
+      if (state[face * 9 + i] !== first) return false;
+    }
+  }
+  return true;
+}
+
 /** A random single move, e.g. "R", "M'", "U2". */
 export function randomMove(rng: () => number = Math.random): string {
   const base = NOTATION_BASES[Math.floor(rng() * NOTATION_BASES.length)]!;

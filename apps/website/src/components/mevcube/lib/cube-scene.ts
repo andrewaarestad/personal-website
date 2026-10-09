@@ -51,8 +51,11 @@ export type CubeStateChangeSource = "user" | "scramble" | "reset";
 export interface CubeSceneOptions {
   /** 54-char URFDLB facelet string. Defaults to solved. */
   initialState?: string;
-  /** Called whenever the logical cube state changes. */
-  onStateChange?: (state: string, source: CubeStateChangeSource) => void;
+  /**
+   * Called whenever the logical cube state changes. For user turns, `move` is the turn
+   * in Singmaster notation (e.g. "R'", "U2").
+   */
+  onStateChange?: (state: string, source: CubeStateChangeSource, move?: string) => void;
   /** Fade the layer being dragged (original behaviour). Default true. */
   highlightActiveLayer?: boolean;
 }
@@ -218,9 +221,9 @@ export class CubeScene {
 
   /**
    * Jump (without animation) to `state`, defaulting to solved, and restore the default
-   * view. Cancels a running scramble.
+   * view unless `keepView` is set. Cancels a running scramble.
    */
-  reset(state: string = SOLVED_STATE) {
+  reset(state: string = SOLVED_STATE, { keepView = false }: { keepView?: boolean } = {}) {
     if (this.disposed) return;
     if (!isValidState(state)) throw new Error(`Invalid cube state: ${state}`);
     this.generation++;
@@ -230,7 +233,7 @@ export class CubeScene {
     this.draggable = true;
     this.rebuild(state);
     // Also restore the default camera angle.
-    this.controls.reset();
+    if (!keepView) this.controls.reset();
     this.emit("reset");
   }
 
@@ -299,8 +302,8 @@ export class CubeScene {
   // Internals
   // ---------------------------------------------------------------------------
 
-  private emit(source: CubeStateChangeSource) {
-    this.options.onStateChange?.(this.currentState, source);
+  private emit(source: CubeStateChangeSource, move?: string) {
+    this.options.onStateChange?.(this.currentState, source, move);
   }
 
   private animate = (now: number) => {
@@ -566,6 +569,6 @@ export class CubeScene {
     this.ungroupLayer();
     this.draggable = true;
     this.clearDrag();
-    if (notation) this.emit("user");
+    if (notation) this.emit("user", notation);
   };
 }
