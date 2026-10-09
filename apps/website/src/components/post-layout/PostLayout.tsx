@@ -35,11 +35,11 @@ export function PostLayout({ children, className }: PostLayoutProps) {
     <main className={`min-h-screen bg-canvas ${className || ""}`}>
       <Section spacing="none">
         <PageContainer size="medium">
-          <div className="py-20 space-y-12">
+          <article className="py-20 space-y-12">
             {children.map((child) => (
               <div key={child.key}>{child}</div>
             ))}
-          </div>
+          </article>
         </PageContainer>
       </Section>
     </main>

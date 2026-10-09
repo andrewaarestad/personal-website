@@ -30,6 +30,7 @@ personal-website/
 - [Agent Quick Reference](./docs/agent-quick-reference.md) - Quick start guide for AI agents
 - [Design Workflow Guide](./docs/design-workflow.md) - Design-first development workflow
 - [AI-Assisted Development Guide](./docs/ai-agents.md) - Comprehensive guide for AI collaboration
+- [Publishing Guide](./docs/publishing.md) - Registering page metadata, sitemap, RSS and JSON-LD
 - [Root README](./README.md) - Project setup and architecture
 - Package READMEs in `apps/website/` and `packages/db-client/`
 
@@ -146,7 +147,9 @@ This project is configured for Model Context Protocol integrations:
 ### Adding a New Page
 
 1. Create route in `apps/website/src/app/[route]/page.tsx`
-2. Add metadata for SEO
+2. For projects/articles: register metadata in `apps/website/src/content/registry.ts` and use
+   `getPageMetadata`, `<ContentMeta>` and `<ContentJsonLd>` (see [Publishing Guide](./docs/publishing.md));
+   never invent `publishedAt` dates
 3. Use Server Components by default
 4. Write tests in `__tests__` directory
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getPageMetadata } from "@/lib/publishing/metadata";
 import {
   PostLayout,
   H1Section,
@@ -11,11 +12,9 @@ import {
 import { WaterFlowChart } from "@/components/charts/WaterFlowChart";
 import { generateWaterFlowData } from "@/lib/sample-data";
 
-export const metadata: Metadata = {
-  title: "Sample Post - PostLayout Demo - Andrew Aarestad",
-  description:
-    "A demonstration of the PostLayout system showcasing all available section types and layouts.",
-};
+const PAGE_PATH = "/projects/sample-post";
+
+export const metadata: Metadata = getPageMetadata(PAGE_PATH);
 
 export default function SamplePostPage() {
   // Generate sample water flow data (5 minutes at 1Hz)

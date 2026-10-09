@@ -3,11 +3,15 @@ import { PageContainer } from "@/components/ui/page-container";
 import { Section } from "@/components/ui/section";
 import { ProjectOverview } from "@/components/project-overview";
 import { GitHubButton } from "@/components/ui/github-button";
+import { ContentMeta } from "@/components/content-meta";
+import { getProjectIndexEntries } from "@/content";
+import { siteAlternates } from "@/lib/publishing/metadata";
 
 export const metadata: Metadata = {
   title: "Projects - Andrew Aarestad",
   description:
     "Things I've built - production ML systems, IoT devices, experimental algorithms, and technical rabbit holes worth documenting.",
+  alternates: siteAlternates("/projects"),
 };
 
 export default function ProjectsPage() {
@@ -31,32 +35,21 @@ export default function ProjectsPage() {
       {/* Projects Grid */}
       <Section>
         <PageContainer>
+          {/* Driven by the content registry: dated entries newest-first, then undated
+              legacy projects in registry order. See src/content/registry.ts. */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <ProjectOverview
-              title="Modeling RNA Decay Kinetics"
-              description="Cross-functional ML and modeling work with the Ameres lab at Max Perutz Labs. Built the C++/TypeScript/Python pipeline that fit reaction-kinetic models to high-throughput RNA tailing data across 4,096 substrates, revealing how the enzyme Tailor encodes RNA decay competence."
-              imageUrl="/img/ACGATC_6NTailing_residuals.png"
-              imageAlt="Model fit and residuals for an RNA tailing substrate, showing fitted first-order kinetic curves over measured time-course data."
-              projectSlug="rna-decay-kinetics"
-              imageFit="contain"
-            />
-
-            <ProjectOverview
-              title="FLUID Water Meter"
-              description="Co-founded an IoT platform to detect water leaks in homes before they became expensive disasters. Built ultrasonic flow meter, telemetry infrastructure, app/web platforms, ML models and other fun stuff."
-              imageUrl="/img/kickstarter_meter.jpg"
-              imageAlt="FLUID Water Meter - IoT water monitoring platform"
-              projectSlug="fluid-water-meter"
-            />
-
-            <ProjectOverview
-              title="Ambient Temperature Estimation"
-              description="Multi-sensor data fusion system for ambient temperature estimation. Combined physical/statistical modeling with edge inference to create a network of weather stations using cell phones. Open sourced the key tech."
-              imageUrl="/img/ambient_calibration.png"
-              imageAlt="Ambient Temperature Estimation"
-              projectSlug="ambient-temperature-estimation"
-              imageFit="contain"
-            />
+            {getProjectIndexEntries().map((entry) => (
+              <ProjectOverview
+                key={entry.path}
+                title={entry.title}
+                description={entry.listingSummary ?? entry.summary}
+                imageUrl={entry.image?.url}
+                imageAlt={entry.image?.alt}
+                imageFit={entry.image?.fit}
+                href={entry.path}
+                meta={<ContentMeta entry={entry} showAuthor={false} />}
+              />
+            ))}
           </div>
         </PageContainer>
       </Section>

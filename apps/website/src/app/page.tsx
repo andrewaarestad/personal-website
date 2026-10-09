@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { HomepageHero } from "@/components/homepage-hero";
@@ -7,6 +8,11 @@ import { Section } from "@/components/ui/section";
 import { FeatureCard } from "@/components/ui/feature-card";
 import { ScrollArrow } from "@/components/scroll-arrow";
 import { GitHubButton } from "@/components/ui/github-button";
+import { siteAlternates } from "@/lib/publishing/metadata";
+
+export const metadata: Metadata = {
+  alternates: siteAlternates("/"),
+};
 
 export default function HomePage() {
   return (
