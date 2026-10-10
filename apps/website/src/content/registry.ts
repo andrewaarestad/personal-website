@@ -90,7 +90,8 @@ export const contentEntries: readonly ContentEntry[] = [
       "A single Rubik's cube stored in a smart contract: an experiment in whether leaderboard clout could offset MEV bot incentives, and in how to scramble fairly on a deterministic machine.",
     listingSummary:
       "One shared Rubik's cube whose state lived on-chain. Solvers paid a fee for leaderboard clout; the fees funded a bounty for bots to re-scramble it. An experiment in aligning incentive mechanisms with game mechanics, and in pseudorandom scrambling on-chain.",
-    // publishedAt: set to the merge date of the PR that lands this page.
+    // Merge date of the PR that lands the page (#45), confirmed by the owner.
+    publishedAt: "2026-10-10",
     // Commit history in both repos runs Feb–Jun 2022.
     projectPeriod: { start: "2022", end: "2022" },
     authors: [DEFAULT_AUTHOR],
