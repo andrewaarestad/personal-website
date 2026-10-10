@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getPageMetadata } from "@/lib/publishing/metadata";
 import { ContentMeta } from "@/components/content-meta";
 import { ContentJsonLd } from "@/components/json-ld";
@@ -148,9 +149,10 @@ for i in 0..29:
           <p className={paragraphClass}>
             To get true randomness, the solution is to use a verifiable randomness oracle such as
             Chainlink VRF, which returns a random value and a proof that it wasn&apos;t tampered
-            with. I was working with VRF on a separate project, an NFT collection whose rarity was
-            locked in by a VRF reveal, but never brought that into mevcube. For the cube,
-            predictable scrambles are mostly harmless, since incentives should be orthogonal.
+            with. I was working with VRF on a separate project,{" "}
+            <Link href="/projects/vrnft">vrnft</Link>, a sample NFT contract whose rarity was locked
+            in by a VRF reveal, but never brought that into mevcube. For the cube, predictable
+            scrambles are mostly harmless, since incentives should be orthogonal.
           </p>
         </TextSection>,
 
