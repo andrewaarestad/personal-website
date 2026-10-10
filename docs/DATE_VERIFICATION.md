@@ -13,6 +13,7 @@ tweaks.
 | `/projects/fluid-water-meter`              | `2025-11-18` (#33) | `2026-07-16` (#43) | #26 (2025-11-09) was a short overview. #43 rewrote the narrative (wind-down date, corrected claims). The #38 rewrite (2026-02-11) is superseded by #43. |
 | `/projects/ambient-temperature-estimation` | `2026-05-22` (#42) | —                  | Earlier versions (#20/#26/#38) were a "Coming Soon" placeholder.                                                                                        |
 | `/design-process`                          | `2025-11-07` (#17) | —                  | Later edits were layout and formatting tweaks.                                                                                                          |
+| `/projects/mevcube`                        | `2026-10-10` (#45) | —                  | Owner set the publication date to the planned merge day.                                                                                                |
 
 - [x] RNA decay kinetics `publishedAt`
 - [x] FLUID water meter `publishedAt` / `updatedAt`

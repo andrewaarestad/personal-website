@@ -14,6 +14,7 @@ describe("sitemap", () => {
         "https://www.andrewaarestad.com/projects/rna-decay-kinetics",
         "https://www.andrewaarestad.com/projects/fluid-water-meter",
         "https://www.andrewaarestad.com/projects/ambient-temperature-estimation",
+        "https://www.andrewaarestad.com/projects/mevcube",
         "https://www.andrewaarestad.com/design-process",
       ])
     );
@@ -43,6 +44,7 @@ describe("/feed.xml", () => {
       (item) => item.getElementsByTagName("link")[0]?.textContent
     );
     expect(links).toEqual([
+      "https://www.andrewaarestad.com/projects/mevcube",
       "https://www.andrewaarestad.com/projects/rna-decay-kinetics",
       "https://www.andrewaarestad.com/projects/ambient-temperature-estimation",
       "https://www.andrewaarestad.com/projects/fluid-water-meter",

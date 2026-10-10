@@ -82,6 +82,28 @@ export const contentEntries: readonly ContentEntry[] = [
     },
   },
   {
+    slug: "mevcube",
+    path: "/projects/mevcube",
+    kind: "experiment",
+    title: "mevcube",
+    summary:
+      "A single Rubik's cube stored in a smart contract: an experiment in whether leaderboard clout could offset MEV bot incentives, and in how to scramble fairly on a deterministic machine.",
+    listingSummary:
+      "One shared Rubik's cube whose state lived on-chain. Solvers paid a fee for leaderboard clout; the fees funded a bounty for bots to re-scramble it. An experiment in aligning incentive mechanisms with game mechanics, and in pseudorandom scrambling on-chain.",
+    // Merge date of the PR that lands the page (#45), confirmed by the owner.
+    publishedAt: "2026-10-10",
+    // Commit history in both repos runs Feb–Jun 2022.
+    projectPeriod: { start: "2022", end: "2022" },
+    authors: [DEFAULT_AUTHOR],
+    tags: ["Solidity", "MEV", "pseudorandomness", "mechanism design", "three.js"],
+    repositoryUrl: "https://github.com/andrewaarestad/mevcube-contracts",
+    image: {
+      url: "/img/mevcube.png",
+      alt: "A partially scrambled 3D Rubik's cube rendered with three.js.",
+      fit: "contain",
+    },
+  },
+  {
     slug: "design-process",
     path: "/design-process",
     kind: "article",
