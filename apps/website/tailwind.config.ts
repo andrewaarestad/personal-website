@@ -161,6 +161,26 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      // Inline code in prose: drop the plugin's decorative backticks and use a subtle chip instead.
+      typography: {
+        DEFAULT: {
+          css: {
+            "code::before": { content: '""' },
+            "code::after": { content: '""' },
+            code: {
+              fontWeight: "500",
+              backgroundColor: "hsl(var(--muted))",
+              borderRadius: "0.25rem",
+              padding: "0.125rem 0.375rem",
+            },
+            "pre code": {
+              backgroundColor: "transparent",
+              padding: "0",
+              fontWeight: "inherit",
+            },
+          },
+        },
+      },
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
