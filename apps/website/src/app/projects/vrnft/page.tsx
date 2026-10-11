@@ -126,36 +126,32 @@ rank 1001+      Common`}
 
         <H2Section key="cost-heading" text="What it costs" />,
 
-        <TextSection
-          key="cost"
-          text={`Verifiable randomness isn't free. Each VRF request
-            costs LINK, 0.1 per reveal in this contract, so the
-            contract has to hold LINK before it can reveal. The
-            request is also asynchronous: reveal() only asks, and
-            the collection stays unrevealed until the oracle
-            answers in a separate transaction.
-
-            That makes it awkward to test. A local chain has no
-            oracle to answer the request, so the tests ran against
-            a fork of Ethereum mainnet, swapping ETH for LINK
-            through Uniswap to fund the contract first.`}
-        />,
+        <TextSection key="cost">
+          <p className={paragraphClass}>
+            Verifiable randomness isn&apos;t free. Each VRF request is serviced by the Chainlink
+            oracles, so the contract has to hold LINK tokens before it can reveal. The request is
+            asynchronous: <code>reveal()</code> pays for the seed in one transaction, and the
+            collection stays unrevealed until the oracle answers in a separate transaction.
+          </p>
+          <p className={paragraphClass}>
+            That makes it awkward to test. A local chain has no oracle to answer the request, so I
+            tested against a fork of Ethereum mainnet, swapping ETH for LINK through Uniswap to fund
+            the contract first.
+          </p>
+        </TextSection>,
 
         <H2Section key="market-heading" text="Nobody was asking for this" />,
 
         <TextSection
           key="market"
-          text={`I never deployed a collection on top of vrnft, and
-            the reason wasn't technical. The more I looked at the
-            market, the clearer it was that there wasn't one for a
-            fairer reveal.
+          text={`I still think this is a useful concept, but it
+            never got used in a serious collection.
 
-            NFT buyers mostly followed the people driving the
-            projects: the artists and influencers with an audience.
-            If a popular artist announced a drop, it sold out, and
-            nobody cared which contract it ran on or how the
-            reveal worked. Fairness was a feature I cared about,
-            not one buyers were willing to choose a project for.`}
+            At the end of the day, NFT buyers mostly followed the
+            people driving the projects: the artists and
+            influencers with an audience. If a popular artist
+            announced a drop, it sold out, and nobody cared which
+            contract it ran on or how the reveal worked.`}
         />,
 
         <div key="github-bottom" className="text-center">
