@@ -104,6 +104,27 @@ export const contentEntries: readonly ContentEntry[] = [
     },
   },
   {
+    slug: "vrnft",
+    path: "/projects/vrnft",
+    kind: "experiment",
+    title: "vrnft",
+    summary:
+      "A sample NFT contract whose rarity reveal uses Chainlink VRF, so nobody, founders included, can know which tokens are rare before the reveal.",
+    listingSummary:
+      "NFT reveals in 2021 let founders see the rarity map before mint. vrnft assigns rarity only at reveal, from a verifiable random seed and an on-chain shuffle, with an interactive simulator comparing the two.",
+    // publishedAt: set to the merge date of the PR that lands this page.
+    // Commit history runs Oct 2021–Jun 2022.
+    projectPeriod: { start: "2021", end: "2022" },
+    authors: [DEFAULT_AUTHOR],
+    tags: ["Solidity", "NFT", "Chainlink VRF", "pseudorandomness"],
+    repositoryUrl: "https://github.com/andrewaarestad/vrnft",
+    image: {
+      url: "/img/vrnft.png",
+      alt: "A grid of NFT tokens after a vrnft reveal, colored by rarity tier.",
+      fit: "contain",
+    },
+  },
+  {
     slug: "design-process",
     path: "/design-process",
     kind: "article",
