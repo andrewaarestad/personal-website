@@ -14,6 +14,7 @@ tweaks.
 | `/projects/ambient-temperature-estimation` | `2026-05-22` (#42) | —                  | Earlier versions (#20/#26/#38) were a "Coming Soon" placeholder.                                                                                        |
 | `/design-process`                          | `2025-11-07` (#17) | —                  | Later edits were layout and formatting tweaks.                                                                                                          |
 | `/projects/mevcube`                        | `2026-10-10` (#45) | —                  | Owner set the publication date to the planned merge day.                                                                                                |
+| `/projects/vrnft`                          | `2026-10-11` (#46) | —                  | Merge date of the PR that landed the page.                                                                                                              |
 
 - [x] RNA decay kinetics `publishedAt`
 - [x] FLUID water meter `publishedAt` / `updatedAt`
