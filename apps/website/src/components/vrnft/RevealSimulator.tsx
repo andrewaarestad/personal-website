@@ -11,6 +11,7 @@ import {
   countTiers,
   emptyOwners,
   friendsHoldings,
+  buyRaresSecondary,
   insiderTargets,
   mintInsider,
   mintPublic,
@@ -18,13 +19,14 @@ import {
   randomSeed,
   rarityRanksFromSeed,
   sameMap,
+  secondaryTargets,
   shortHex,
   tiersFromRanks,
   type Owner,
   type Tier,
 } from "./lib/reveal";
 
-export type RevealMode = "typical" | "vrnft";
+export type ScenarioId = "insider-mint" | "secondary-buy" | "vrnft";
 
 export interface RevealSimulatorProps {
   /** Classes for the outer wrapper. The simulator draws no card of its own. */
@@ -34,7 +36,6 @@ export interface RevealSimulatorProps {
 type Phase = "minting" | "requesting" | "revealing" | "revealed";
 
 const GRID_SIZE = Math.sqrt(COLLECTION_SIZE); // 10 × 10
-const MINT_BATCH = 25;
 /** The cascade sweeps the grid diagonally: one step per anti-diagonal. */
 const CASCADE_STEPS = GRID_SIZE * 2 - 1;
 const CASCADE_STEP_MS = 50;
@@ -52,7 +53,7 @@ const TIER_FILL: Record<Tier, string> = {
   common: "bg-text-tertiary/30 border-transparent",
 };
 
-/** Founder's-view tint before reveal (Common tokens are left plain to keep the signal clear). */
+/** The team's view of the pre-baked map before reveal (Common tokens are left plain). */
 const TIER_TINT: Record<Tier, string> = {
   legendary: "border-warning bg-warning/25 dark:bg-warning/40",
   rare: "border-brand-secondary bg-brand-secondary/25 dark:bg-brand-secondary/40",
@@ -60,18 +61,90 @@ const TIER_TINT: Record<Tier, string> = {
   common: "",
 };
 
-const MODES: { value: RevealMode; label: string; blurb: string }[] = [
+type StepId =
+  | "peek"
+  | "insiderMint"
+  | "insiderMintBlind"
+  | "publicMint"
+  | "insiderBuy"
+  | "reveal"
+  | "verify";
+
+interface StepDef {
+  id: StepId;
+  /** What the step list calls this step. */
+  label: string;
+  /** The primary button's label while this is the next step. */
+  action: string;
+}
+
+interface ScenarioDef {
+  id: ScenarioId;
+  /** Short name on the scenario picker. */
+  title: string;
+  /** Which reveal model the scenario uses, shown under the title. */
+  model: string;
+  blurb: string;
+  steps: StepDef[];
+}
+
+/** How many tokens insiders mint blind in the vrnft scenario (same as the rares they target elsewhere). */
+const BLIND_MINT = 10;
+
+const PEEK: StepDef = {
+  id: "peek",
+  label: "Team looks at the rarity map",
+  action: "Peek at the map",
+};
+
+const SCENARIOS: ScenarioDef[] = [
   {
-    value: "typical",
-    label: "Typical reveal",
+    id: "insider-mint",
+    title: "Insiders mint the rares",
+    model: "Typical reveal",
     blurb:
-      "The rarity map is generated off-chain before the drop. Reveal just makes it public, but the team has had it all along.",
+      "The rarity map is made before the drop. The team can see which token IDs will be rare and mint them for friends before the public sale.",
+    steps: [
+      PEEK,
+      { id: "insiderMint", label: "Insiders mint the rare IDs", action: "Insiders mint the rares" },
+      { id: "publicMint", label: "Public mints the rest", action: "Public mints the rest" },
+      { id: "reveal", label: "Reveal", action: "Reveal" },
+    ],
   },
   {
-    value: "vrnft",
-    label: "vrnft reveal",
+    id: "secondary-buy",
+    title: "Insiders buy the rares",
+    model: "Typical reveal",
     blurb:
-      "Tokens mint with no rarity attached. After mint-out the owner calls reveal(), Chainlink VRF returns one random seed, and a shuffle seeded by it assigns every rank.",
+      "The public mints the whole collection. Before the reveal, insiders use the map to buy the rare tokens on OpenSea from holders who don't know what they have.",
+    steps: [
+      { id: "publicMint", label: "Public mints out", action: "Public mints out" },
+      PEEK,
+      {
+        id: "insiderBuy",
+        label: "Insiders buy the rares on OpenSea",
+        action: "Buy the rares on OpenSea",
+      },
+      { id: "reveal", label: "Reveal", action: "Reveal" },
+    ],
+  },
+  {
+    id: "vrnft",
+    title: "Insiders get random tokens",
+    model: "vrnft reveal",
+    blurb:
+      "No rarity exists until the reveal, when a Chainlink VRF seed shuffles every rank. Insiders can still mint early, but they can only get random tokens.",
+    steps: [
+      PEEK,
+      {
+        id: "insiderMintBlind",
+        label: `Insiders mint ${BLIND_MINT} tokens`,
+        action: `Insiders mint ${BLIND_MINT} tokens`,
+      },
+      { id: "publicMint", label: "Public mints the rest", action: "Public mints the rest" },
+      { id: "reveal", label: "Reveal with Chainlink VRF", action: "Request VRF reveal" },
+      { id: "verify", label: "Verify the map from the seed", action: "Verify" },
+    ],
   },
 ];
 
@@ -86,9 +159,10 @@ function prefersReducedMotion(): boolean {
 /**
  * RevealSimulator - interactive comparison of a typical NFT rarity reveal and vrnft's.
  *
- * Mint a 100-token collection, peek with "Founder's view", optionally steer the rare IDs to
- * friends, then reveal. In typical mode the map existed from deploy, so insiders can target it;
- * in vrnft mode the map is created from a VRF seed after mint-out and anyone can recompute it.
+ * Three guided scenarios over a 100-token collection, each a short sequence of steps with one
+ * "next step" button: insiders minting the rare IDs before the public (typical reveal), insiders
+ * buying the rares on OpenSea before the reveal (typical reveal), and insiders minting early under
+ * vrnft, where the map doesn't exist until a VRF seed shuffles it after mint-out.
  *
  * @example
  * ```tsx
@@ -98,13 +172,16 @@ function prefersReducedMotion(): boolean {
  * ```
  */
 export function RevealSimulator({ className }: RevealSimulatorProps) {
-  const [mode, setMode] = useState<RevealMode>("typical");
+  const [scenarioId, setScenarioId] = useState<ScenarioId>("insider-mint");
+  /** Number of completed steps in the current scenario. */
+  const [stepsDone, setStepsDone] = useState(0);
   const [phase, setPhase] = useState<Phase>("minting");
   const [owners, setOwners] = useState<(Owner | null)[]>(() => emptyOwners());
-  const [founderView, setFounderView] = useState(false);
-  /** Typical mode: the map baked in at "deploy". Created on the client to avoid hydration drift. */
+  /** What the last completed step did, in a sentence. */
+  const [message, setMessage] = useState<string | null>(null);
+  /** Typical reveal: the map baked in at "deploy". Created on the client to avoid hydration drift. */
   const [deployRanks, setDeployRanks] = useState<number[] | null>(null);
-  /** The map being shown after reveal (either mode). */
+  /** The map being shown after reveal (either model). */
   const [revealRanks, setRevealRanks] = useState<number[] | null>(null);
   const [seed, setSeed] = useState<string | null>(null);
   const [cascadeStep, setCascadeStep] = useState(0);
@@ -122,9 +199,14 @@ export function RevealSimulator({ className }: RevealSimulatorProps) {
     return clearTimers;
   }, [clearTimers]);
 
+  const scenario = SCENARIOS.find((s) => s.id === scenarioId) ?? SCENARIOS[0]!;
+  const isVrnft = scenario.id === "vrnft";
+  const steps = scenario.steps;
+  const nextStep = steps[stepsDone] ?? null;
+  const busy = phase === "requesting" || phase === "revealing";
   const minted = mintedCount(owners);
-  const mintedOut = minted === COLLECTION_SIZE;
-  const isMinting = phase === "minting";
+  const peeked = steps.slice(0, stepsDone).some((step) => step.id === "peek");
+
   const deployTiers = useMemo(
     () => (deployRanks ? tiersFromRanks(deployRanks) : null),
     [deployRanks]
@@ -133,16 +215,17 @@ export function RevealSimulator({ className }: RevealSimulatorProps) {
     () => (revealRanks ? tiersFromRanks(revealRanks) : null),
     [revealRanks]
   );
-  const showFounderTint = mode === "typical" && founderView && isMinting && deployTiers !== null;
-  const insiderCount = deployTiers ? insiderTargets(owners, deployTiers).length : 0;
+  const showFounderTint = !isVrnft && peeked && phase === "minting" && deployTiers !== null;
   const friendsCount = owners.filter((owner) => owner === "friends").length;
 
   const reset = useCallback(
-    (nextMode: RevealMode = mode) => {
+    (nextScenario: ScenarioId = scenarioId) => {
       clearTimers();
-      setMode(nextMode);
+      setScenarioId(nextScenario);
+      setStepsDone(0);
       setPhase("minting");
       setOwners(emptyOwners());
+      setMessage(null);
       setRevealRanks(null);
       setSeed(null);
       setCascadeStep(0);
@@ -151,20 +234,14 @@ export function RevealSimulator({ className }: RevealSimulatorProps) {
       // A fresh "deploy": typical drops get a new pre-baked map.
       setDeployRanks(rarityRanksFromSeed(randomSeed()));
     },
-    [clearTimers, mode]
+    [clearTimers, scenarioId]
   );
 
-  const mint = (amount: number) => setOwners((current) => mintPublic(current, amount));
-
-  const insiderMint = () => {
-    if (mode !== "typical" || !deployTiers) return;
-    setOwners((current) => mintInsider(current, deployTiers));
-  };
-
-  const runCascade = (reduced: boolean) => {
+  const runCascade = (reduced: boolean, done: () => void) => {
     if (reduced) {
       setCascadeStep(CASCADE_STEPS);
       setPhase("revealed");
+      done();
       return;
     }
     setPhase("revealing");
@@ -172,36 +249,98 @@ export function RevealSimulator({ className }: RevealSimulatorProps) {
       timersRef.current.push(
         setTimeout(() => {
           setCascadeStep(step);
-          if (step === CASCADE_STEPS) setPhase("revealed");
+          if (step === CASCADE_STEPS) {
+            setPhase("revealed");
+            done();
+          }
         }, step * CASCADE_STEP_MS)
       );
     }
   };
 
-  const reveal = () => {
-    if (!mintedOut || !isMinting) return;
+  const revealNow = () => {
     const reduced = prefersReducedMotion();
-    if (mode === "typical") {
+    if (!isVrnft) {
       // Nothing random happens here: the map was decided at deploy.
       setRevealRanks(deployRanks ?? rarityRanksFromSeed(randomSeed()));
       setCascadeStep(CASCADE_STEPS);
       setPhase("revealed");
+      setMessage("Revealed. It's the same map the team has had since deploy.");
+      setStepsDone((n) => n + 1);
       return;
     }
     setPhase("requesting");
+    setMessage(null);
     const fulfil = () => {
       const vrfSeed = randomSeed();
       setSeed(vrfSeed);
       setRevealRanks(rarityRanksFromSeed(vrfSeed));
-      runCascade(reduced);
+      runCascade(reduced, () => {
+        setMessage("Revealed. Every rank came from one seed that nobody knew during the mint.");
+        setStepsDone((n) => n + 1);
+      });
     };
     if (reduced) fulfil();
     else timersRef.current.push(setTimeout(fulfil, VRF_DELAY_MS));
   };
 
-  const verify = () => {
-    if (!seed || !revealRanks) return;
-    setVerified(sameMap(rarityRanksFromSeed(seed), revealRanks));
+  const advance = () => {
+    if (!nextStep || busy) return;
+    const complete = (text: string) => {
+      setMessage(text);
+      setStepsDone((n) => n + 1);
+    };
+    switch (nextStep.id) {
+      case "peek":
+        complete(
+          isVrnft
+            ? "There's nothing to see. Rarity is assigned at reveal, so no map exists yet."
+            : "The team can see the whole map. Tinted tiles are the Legendary and Rare tokens."
+        );
+        return;
+      case "insiderMint": {
+        if (!deployTiers) return;
+        const count = insiderTargets(owners, deployTiers).length;
+        setOwners(mintInsider(owners, deployTiers));
+        complete(
+          `Insiders minted the ${count} Legendary and Rare token IDs before the public sale.`
+        );
+        return;
+      }
+      case "insiderMintBlind":
+        setOwners(mintPublic(owners, BLIND_MINT, "friends"));
+        complete(
+          `Insiders minted ${BLIND_MINT} tokens early. With no map, they're just the first ${BLIND_MINT} IDs.`
+        );
+        return;
+      case "publicMint": {
+        const remaining = COLLECTION_SIZE - minted;
+        setOwners(mintPublic(owners, COLLECTION_SIZE));
+        complete(
+          minted === 0
+            ? "The public minted all 100 tokens. Every rarity is already fixed, just hidden from them."
+            : `The public minted the remaining ${remaining} tokens. Sold out.`
+        );
+        return;
+      }
+      case "insiderBuy": {
+        if (!deployTiers) return;
+        const count = secondaryTargets(owners, deployTiers).length;
+        setOwners(buyRaresSecondary(owners, deployTiers));
+        complete(
+          `Insiders bought ${count} tokens on OpenSea at floor price. The sellers didn't know they were rare.`
+        );
+        return;
+      }
+      case "reveal":
+        revealNow();
+        return;
+      case "verify":
+        if (!seed || !revealRanks) return;
+        setVerified(sameMap(rarityRanksFromSeed(seed), revealRanks));
+        setStepsDone((n) => n + 1);
+        return;
+    }
   };
 
   const copySeed = async () => {
@@ -217,23 +356,20 @@ export function RevealSimulator({ className }: RevealSimulatorProps) {
   const status = useMemo(() => {
     if (phase === "requesting") return "Requesting randomness from Chainlink VRF…";
     if (phase === "revealing") return "Seed received with its proof. Shuffling ranks…";
-    if (phase === "revealed") {
-      return mode === "typical"
-        ? "Revealed. This is the same map the team had since deploy."
-        : "Revealed. Every rank came from one seed nobody knew during the mint.";
-    }
-    if (mintedOut) return "Sold out. The owner can now call reveal().";
-    const base = `Minted ${minted} / ${COLLECTION_SIZE}.`;
-    return mode === "typical"
-      ? `${base} Rarity is already fixed, just hidden.`
-      : `${base} No token has a rarity yet.`;
-  }, [phase, mode, mintedOut, minted]);
+    if (message) return message;
+    return `Press "${steps[0]?.action}" to start.`;
+  }, [phase, message, steps]);
 
   const revealedTierCounts = revealTiers ? countTiers(revealTiers) : null;
   const holdings =
-    mode === "typical" && revealTiers && phase === "revealed"
+    revealTiers && phase === "revealed" && friendsCount > 0
       ? friendsHoldings(owners, revealTiers)
       : null;
+  /** Expected holdings for this many tokens picked at random, for comparison in the vrnft scenario. */
+  const expected = (tier: Tier) =>
+    ((friendsCount * TIER_TOTALS[tier]) / COLLECTION_SIZE).toLocaleString(undefined, {
+      maximumFractionDigits: 1,
+    });
 
   const gridSummary = useMemo(() => {
     if (revealTiers && phase === "revealed") {
@@ -247,38 +383,44 @@ export function RevealSimulator({ className }: RevealSimulatorProps) {
       return `Revealed collection of ${COLLECTION_SIZE} tokens. Legendary token IDs: ${legendary.join(", ")}.${friendsNote}`;
     }
     return `Collection of ${COLLECTION_SIZE} tokens, ${minted} minted${
-      friendsCount > 0 ? `, ${friendsCount} to the friends wallet` : ""
-    }, not yet revealed.${showFounderTint ? " Founder's view is tinting the pre-baked rarity map." : ""}`;
+      friendsCount > 0 ? `, ${friendsCount} held by the friends wallet` : ""
+    }, not yet revealed.${showFounderTint ? " The team's view is tinting the pre-baked rarity map." : ""}`;
   }, [revealTiers, phase, friendsCount, owners, minted, showFounderTint]);
-
-  const activeMode = MODES.find((m) => m.value === mode) ?? MODES[0];
 
   return (
     <div className={cn("w-full text-left", className)}>
-      {/* Mode toggle */}
+      {/* Scenario picker */}
       <div
         role="group"
-        aria-label="Reveal model"
-        className="inline-flex w-full rounded-lg border border-border-light bg-canvas p-1 sm:w-auto"
+        aria-label="Scenario"
+        className="grid gap-1 rounded-lg border border-border-light bg-canvas p-1 sm:grid-cols-3"
       >
-        {MODES.map(({ value, label }) => (
+        {SCENARIOS.map(({ id, title, model }, index) => (
           <button
-            key={value}
+            key={id}
             type="button"
-            aria-pressed={mode === value}
-            onClick={() => mode !== value && reset(value)}
+            aria-pressed={scenario.id === id}
+            onClick={() => scenario.id !== id && reset(id)}
             className={cn(
-              "flex-1 rounded-md px-3 py-1.5 text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring sm:flex-none",
-              mode === value
-                ? "bg-surface text-text-primary shadow-sm ring-1 ring-border-light"
-                : "text-text-secondary hover:text-text-primary"
+              "flex flex-col justify-start rounded-md px-3 py-2 text-left focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+              scenario.id === id
+                ? "bg-surface shadow-sm ring-1 ring-border-light"
+                : "hover:bg-surface/60"
             )}
           >
-            {label}
+            <span
+              className={cn(
+                "block text-sm font-medium",
+                scenario.id === id ? "text-text-primary" : "text-text-secondary"
+              )}
+            >
+              {index + 1}. {title}
+            </span>
+            <span className="block text-xs text-text-tertiary">{model}</span>
           </button>
         ))}
       </div>
-      <p className="mt-3 text-sm leading-relaxed text-text-secondary">{activeMode?.blurb}</p>
+      <p className="mt-3 text-sm leading-relaxed text-text-secondary">{scenario.blurb}</p>
 
       <div className="mt-5 grid gap-6 md:grid-cols-[minmax(0,320px)_minmax(0,1fr)] md:items-start">
         {/* Token grid */}
@@ -336,7 +478,7 @@ export function RevealSimulator({ className }: RevealSimulatorProps) {
           >
             <div className="flex items-center justify-between gap-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">
               <span>
-                {phase === "minting" ? "Mint" : phase === "revealed" ? "Revealed" : "Reveal"}
+                {phase === "minting" ? "Minted" : phase === "revealed" ? "Revealed" : "Revealing"}
               </span>
               <span className="font-mono normal-case tracking-normal text-text-tertiary">
                 {minted}/{COLLECTION_SIZE}
@@ -356,6 +498,12 @@ export function RevealSimulator({ className }: RevealSimulatorProps) {
               <p className="mt-1 font-medium text-text-primary">
                 Friends hold {holdings.legendary}/{TIER_TOTALS.legendary} Legendary, {holdings.rare}
                 /{TIER_TOTALS.rare} Rare.
+                {isVrnft && (
+                  <span className="block font-normal text-text-secondary">
+                    Chance alone gives {friendsCount} random tokens about {expected("legendary")}{" "}
+                    Legendary and {expected("rare")} Rare.
+                  </span>
+                )}
               </p>
             )}
             {verified !== null && (
@@ -371,7 +519,7 @@ export function RevealSimulator({ className }: RevealSimulatorProps) {
           </div>
 
           {/* Seed */}
-          {mode === "vrnft" && phase !== "minting" && (
+          {isVrnft && phase !== "minting" && (
             <div className="rounded-lg border border-border-light bg-canvas px-3 py-2.5">
               <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">
                 VRF seed
@@ -398,88 +546,66 @@ export function RevealSimulator({ className }: RevealSimulatorProps) {
             </div>
           )}
 
-          {/* Controls */}
-          <div className="flex flex-wrap gap-2">
-            {isMinting ? (
-              <>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => mint(MINT_BATCH)}
-                  disabled={mintedOut}
-                >
-                  Mint {MINT_BATCH}
+          {/* Steps */}
+          <div>
+            <ol className="space-y-1.5" aria-label="Steps">
+              {steps.map((step, index) => {
+                const done = index < stepsDone;
+                const current = index === stepsDone;
+                return (
+                  <li
+                    key={step.id}
+                    aria-current={current ? "step" : undefined}
+                    className={cn(
+                      "flex items-center gap-2 text-sm",
+                      done
+                        ? "text-text-secondary"
+                        : current
+                          ? "font-medium text-text-primary"
+                          : "text-text-tertiary"
+                    )}
+                  >
+                    <span
+                      aria-hidden
+                      className={cn(
+                        "flex h-5 w-5 shrink-0 items-center justify-center rounded-full border text-[11px]",
+                        done
+                          ? "border-highlight bg-highlight text-white dark:text-text-primary"
+                          : current
+                            ? "border-brand text-brand"
+                            : "border-border-default"
+                      )}
+                    >
+                      {done ? "✓" : index + 1}
+                    </span>
+                    <span>
+                      {step.label}
+                      {done && <span className="sr-only"> (done)</span>}
+                    </span>
+                  </li>
+                );
+              })}
+            </ol>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {nextStep ? (
+                <Button size="sm" onClick={advance} disabled={busy || deployRanks === null}>
+                  {nextStep.action}
                 </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => mint(COLLECTION_SIZE)}
-                  disabled={mintedOut}
-                >
-                  Mint all
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={insiderMint}
-                  disabled={mode !== "typical" || insiderCount === 0}
-                  aria-describedby="reveal-sim-founder-note"
-                  title={
-                    mode === "typical"
-                      ? "Mint the Legendary and Rare token IDs to a friends wallet before the public"
-                      : "No rarity map exists yet, so there is nothing to target"
-                  }
-                >
-                  Insider mint
-                </Button>
-                <Button size="sm" onClick={reveal} disabled={!mintedOut}>
-                  Reveal
-                </Button>
-              </>
-            ) : (
-              mode === "vrnft" &&
-              seed && (
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={verify}
-                  disabled={phase !== "revealed"}
-                >
-                  Verify
-                </Button>
-              )
-            )}
-            <Button size="sm" variant="ghost" onClick={() => reset()}>
-              Reset
-            </Button>
-          </div>
-
-          {/* Founder's view */}
-          {isMinting && (
-            <div>
-              <label className="inline-flex cursor-pointer items-center gap-2 text-sm font-medium text-text-primary">
-                <input
-                  type="checkbox"
-                  checked={founderView}
-                  onChange={(event) => setFounderView(event.target.checked)}
-                  className="h-4 w-4 cursor-pointer accent-[hsl(var(--brand))]"
-                />
-                Founder&apos;s view
-              </label>
-              <p
-                id="reveal-sim-founder-note"
-                className="mt-1 text-xs leading-relaxed text-text-secondary"
+              ) : (
+                <span className="self-center text-sm text-text-secondary">
+                  Scenario complete. Try another one above.
+                </span>
+              )}
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={() => reset()}
+                disabled={stepsDone === 0 && !busy}
               >
-                {mode === "typical"
-                  ? founderView
-                    ? "Tinted tiles are the pre-baked rarity map, visible to the team on every token, minted or not. Insider mint sends the Legendary and Rare IDs to friends."
-                    : "The team can see the full rarity map before anyone mints. Turn this on to see what they see."
-                  : founderView
-                    ? "No rarity map exists yet — it's created at reveal, so there is nothing to see and nothing to leak."
-                    : "Insider mint is unavailable: no rarity map exists until reveal."}
-              </p>
+                Start over
+              </Button>
             </div>
-          )}
+          </div>
 
           {/* Legend */}
           <ul

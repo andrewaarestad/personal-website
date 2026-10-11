@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   COLLECTION_SIZE,
   DEMO_TIERS,
+  buyRaresSecondary,
   bytesToHex,
   countTiers,
   emptyOwners,
@@ -14,7 +15,9 @@ import {
   mintPublic,
   mintedCount,
   rarityRanksFromSeed,
+  randomSeed,
   sameMap,
+  secondaryTargets,
   sha256,
   shortHex,
   tierForRank,
@@ -191,5 +194,23 @@ describe("minting", () => {
     const afterPublic = mintPublic(afterInsider, COLLECTION_SIZE);
     expect(afterPublic.filter((o) => o === "friends")).toHaveLength(10);
     expect(mintedCount(afterPublic)).toBe(COLLECTION_SIZE);
+  });
+
+  it("public mint can mint to the friends wallet instead", () => {
+    const owners = mintPublic(emptyOwners(5), 2, "friends");
+    expect(owners).toEqual(["friends", "friends", null, null, null]);
+  });
+
+  it("secondary buy moves exactly the publicly held Legendary and Rare tokens to friends", () => {
+    const tiers = tiersFromRanks(rarityRanksFromSeed(randomSeed()));
+    const owners = mintPublic(emptyOwners(), COLLECTION_SIZE);
+    const targets = secondaryTargets(owners, tiers);
+    expect(targets).toHaveLength(10);
+    const after = buyRaresSecondary(owners, tiers);
+    after.forEach((owner, i) => {
+      const rare = tiers[i] === "legendary" || tiers[i] === "rare";
+      expect(owner).toBe(rare ? "friends" : "public");
+    });
+    expect(secondaryTargets(after, tiers)).toHaveLength(0);
   });
 });

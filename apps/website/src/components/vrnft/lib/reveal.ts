@@ -256,13 +256,17 @@ export function emptyOwners(size = COLLECTION_SIZE): (Owner | null)[] {
   return Array.from({ length: size }, () => null);
 }
 
-/** Public mint: the next `amount` unminted token IDs, lowest first. */
-export function mintPublic(owners: Owners, amount: number): (Owner | null)[] {
+/** Mint the next `amount` unminted token IDs, lowest first, to `owner` (default: the public). */
+export function mintPublic(
+  owners: Owners,
+  amount: number,
+  owner: Owner = "public"
+): (Owner | null)[] {
   const next = owners.slice();
   let remaining = amount;
   for (let i = 0; i < next.length && remaining > 0; i++) {
     if (next[i] === null) {
-      next[i] = "public";
+      next[i] = owner;
       remaining--;
     }
   }
@@ -295,4 +299,23 @@ export function mintedCount(owners: Owners): number {
 /** How many tokens of each tier the friends wallet holds. */
 export function friendsHoldings(owners: Owners, tiers: readonly Tier[]): Record<Tier, number> {
   return countTiers(tiers.filter((_, i) => owners[i] === "friends"));
+}
+
+/**
+ * Token indices insiders would buy on the secondary market before the reveal: every Legendary
+ * or Rare token currently held by the public.
+ */
+export function secondaryTargets(owners: Owners, tiers: readonly Tier[]): number[] {
+  const targets: number[] = [];
+  tiers.forEach((tier, i) => {
+    if ((tier === "legendary" || tier === "rare") && owners[i] === "public") targets.push(i);
+  });
+  return targets;
+}
+
+/** Transfer the secondary targets from the public to the friends wallet. */
+export function buyRaresSecondary(owners: Owners, tiers: readonly Tier[]): (Owner | null)[] {
+  const next = owners.slice();
+  for (const i of secondaryTargets(owners, tiers)) next[i] = "friends";
+  return next;
 }
