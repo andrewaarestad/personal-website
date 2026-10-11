@@ -35,28 +35,34 @@ export default function VrnftPage() {
 
         <TextSection key="intro">
           <p className={paragraphClass}>
-            vrnft is a sample NFT contract with a verifiably random rarity reveal. I built it out of
-            frustration with how NFT drops worked in 2021.
+            vrnft is a sample NFT contract with a verifiably random rarity reveal. I built it as an
+            experiment with randomness in a blockchain setting. It was also a proof that there is a
+            better way to do NFT drops in 2021.
           </p>
           <p className={paragraphClass}>
-            The pattern was always the same. A collection mints with every token hidden, and once it
-            sells out the project &quot;reveals&quot; which tokens are rare. On paper that&apos;s a
-            lottery. In practice the rarity map was usually generated before the mint even started,
-            which meant the founders could know exactly which token IDs were going to be valuable
-            and make sure their friends ended up holding them. Every big reveal seemed to come with
-            a round of insider accusations, and there was no way for a buyer to tell whether they
-            were justified.
+            If you paid attention to the space at that time you will remember the pattern: a new
+            collection would get hyped, buyers would go and mint all the tokens, then they would do
+            the big reveal. The reveal was a map that said which tokens were rare and what
+            attributes they had. If you were lucky the tokens you minted would be at the top of the
+            chart.
           </p>
           <p className={paragraphClass}>
-            I wanted to show that a reveal could be done so that nobody, the founders included,
-            could know the rarity of any token until it was revealed for everyone at once.
+            The problem: collection founders could get a sneak peek at the map. Seems crazy in
+            retrospect but it was standard practice for collections to use rarity maps that were
+            essentially just a spreadsheet the founders would upload. In other words, even if they
+            acted with complete honesty, there was no way for the community to be confident that no
+            insider trading had taken place.
+          </p>
+          <p className={paragraphClass}>
+            I wanted to show that a reveal could be done so that nobody could know the rarity of any
+            token until the reveal, and it could be provably random.
           </p>
         </TextSection>,
 
         <DataVisualizationSection
           key="simulator"
           title="Try both reveals"
-          description="Mint the collection, then reveal it. In the typical reveal the rarity map exists from the start, so the founder's view can see it and insiders can mint the rare tokens first. In the vrnft reveal there is nothing to see until a random seed arrives."
+          description="Mint the collection below, then reveal it. In the typical reveal the rarity map existed from the start, so the founders can see it and insiders can acquire the rare tokens first. In the vrnft reveal there is nothing to see until the random seed is generated."
         >
           <RevealSimulator />
         </DataVisualizationSection>,
@@ -73,25 +79,27 @@ export default function VrnftPage() {
             off-chain ahead of time, assigned them to token IDs,
             and uploaded the metadata somewhere the contract would
             point to after the reveal. The reveal itself was just
-            the project switching that pointer on.
+            the project locking in that pointer.
 
-            That puts the whole rarity map in the hands of whoever
-            generated it, before a single token is sold. Even if
-            the team behaves perfectly, buyers have to take their
-            word for it. And a team that wants to reward early
-            supporters, or itself, only has to mint the right IDs
-            before the public sale opens.`}
+            Since they controlled the rarity map pre-reveal,
+            duplicitous founders could steer their friends toward
+            the valuable tokens. Sometimes this meant minting
+            specific tokens, other times it meant buying valuable
+            tokens second-hand before the reveal. It was not
+            uncommon for projects to have accusations of insider
+            trading, with wallets suspiciously holding multiple
+            valuable mints or OpenSea purchases.`}
         />,
 
-        <H2Section key="mechanism-heading" text="A reveal nobody can see coming" />,
+        <H2Section key="mechanism-heading" text="A reveal nobody can game" />,
 
         <TextSection key="mechanism">
           <p className={paragraphClass}>
-            vrnft flips the order. Tokens mint as plain sequential IDs with no rarity attached,
-            because no rarity exists yet. Once the collection sells out, the owner calls{" "}
-            <code>reveal()</code>, which asks Chainlink VRF for a single random number. VRF answers
-            in a later transaction with the number and a cryptographic proof that it wasn&apos;t
-            chosen or tampered with by anyone, including the oracle.
+            vrnft flips the order. Tokens mint as plain sequential IDs with no rarity attached. Once
+            the collection sells out, the owner calls <code>reveal()</code>, which asks Chainlink
+            VRF for a single random number. VRF answers in a later transaction with the number and a
+            cryptographic proof that it wasn&apos;t chosen or tampered with by anyone, including the
+            oracle.
           </p>
           <p className={paragraphClass}>
             When that number arrives, the contract expands it into one value per token and runs a
@@ -106,14 +114,13 @@ rank 1001+      Common`}
           </pre>
           <p className={paragraphClass}>
             The owner still decides when to reveal, but not what the reveal produces. And because
-            the seed is public and the shuffle is deterministic, anyone can recompute the whole
-            rarity map from the seed and check it against what the contract says.
+            the seed is public, the shuffle is deterministic, and the contract is open, anyone can
+            verify that the rarity was not gamed.
           </p>
           <p className={paragraphClass}>
-            It&apos;s the same problem I ran into with the scrambles in{" "}
+            It&apos;s the same mechanism I explored with the cube scrambles in{" "}
             <Link href="/projects/mevcube">mevcube</Link>: a blockchain can&apos;t produce
-            randomness on its own, so anything that needs to be fair has to bring it in from
-            somewhere it can be verified.
+            randomness, so any reordering done will be pseudorandom without some external seed.
           </p>
         </TextSection>,
 
