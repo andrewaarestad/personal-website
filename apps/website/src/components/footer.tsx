@@ -38,7 +38,7 @@ export function Footer() {
                 </svg>
               </Link>
               <Link
-                href="https://www.linkedin.com/in/andrewaarestad/"
+                href="https://www.linkedin.com/in/andrew-aarestad/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-text-tertiary hover:text-foreground transition-colors"

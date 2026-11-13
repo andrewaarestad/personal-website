@@ -95,8 +95,8 @@ export function HomepageContactInfo() {
     },
     {
       name: "LinkedIn",
-      url: "https://www.linkedin.com/in/andrewaarestad/",
-      handle: "@andrewaarestad",
+      url: "https://www.linkedin.com/in/andrew-aarestad/",
+      handle: "@andrew-aarestad",
       color: "text-black",
       hoverColor: "group-hover:text-brand-secondary",
       icon: (
