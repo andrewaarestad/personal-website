@@ -199,8 +199,7 @@ describe("HomepageContactInfo", () => {
       const linkedinLink = screen.getByRole("link", {
         name: /linkedin/i,
       }) as HTMLAnchorElement;
-      expect(linkedinLink).toHaveAttribute("href");
-      expect(linkedinLink.getAttribute("href")).toContain("linkedin.com");
+      expect(linkedinLink).toHaveAttribute("href", "https://www.linkedin.com/in/andrew-aarestad/");
     });
 
     it("Medium link has href attribute", () => {
